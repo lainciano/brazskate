@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design system Braz Skate — transcrição de docs/05-DESIGN.md §2.
+ * Os nomes de token abaixo são os nomes a usar no código.
+ */
+@theme {
+  /* tinta — o "preto" da marca (preto aquecido, não #000) */
+  --color-tinta: #191314;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* creme — o "branco" da marca (papel, não #fff) */
+  --color-creme: #f5ebe4;
+  --color-creme-elevado: #faf4ef;
+  --color-rosa: #f0d9ce;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* vermelho queimado — cor da marca.
+     vermelho-500 NUNCA como texto normal (§2.1): só texto ≥24px ou gráfico */
+  --color-vermelho-300: #d98b85;
+  --color-vermelho-500: #a84b4b;
+  --color-vermelho-600: #9c4242;
+  --color-vermelho-700: #8e3a3a;
+
+  /* azul pista — utilitário (links e foco), nunca decorativo */
+  --color-azul-300: #7cc3e0;
+  --color-azul-600: #1e7fa6;
+  --color-azul-700: #176688;
+
+  /* cantos firmes de cartaz, nunca "fofos" de SaaS (§2.3) */
+  --radius-btn: 4px;
+  --radius-card: 8px;
+  --radius-sticker: 999px;
+
+  /* colagem, não elevação: sombra dura deslocada, sem blur (§2.3) */
+  --shadow-sticker: 2px 3px 0 var(--color-tinta);
+  --shadow-card: 4px 4px 0 var(--color-tinta);
+  --shadow-card-hover: 6px 6px 0 var(--color-tinta);
+
+  /* Anton nunca em texto corrido nem abaixo de 2rem (§2.2) */
+  --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
+  --font-sans: var(--font-archivo), system-ui, "Segoe UI", Roboto, sans-serif;
+
+  /* faixa marquee (§3.9): duas metades idênticas, desloca -50% e reinicia */
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Registros (§2.1): as seções alternam entre asfalto (escuro) e concreto
+ * (claro). Os papéis semânticos viram variáveis para os componentes
+ * funcionarem nos dois registros sem variantes duplicadas.
+ */
+:root,
+.registro-concreto {
+  --fg: var(--color-tinta);
+  --fg-secundario: color-mix(in srgb, var(--color-tinta) 70%, transparent);
+  --surface: var(--color-creme-elevado);
+  --acento: var(--color-vermelho-700);
+  --link: var(--color-azul-700);
+  --borda: color-mix(in srgb, var(--color-tinta) 15%, transparent);
+}
+
+.registro-concreto {
+  background-color: var(--color-creme);
+  color: var(--color-tinta);
+}
+
+.registro-asfalto {
+  background-color: var(--color-tinta);
+  color: var(--color-creme);
+  --fg: var(--color-creme);
+  --fg-secundario: color-mix(in srgb, var(--color-creme) 75%, transparent);
+  --surface: var(--color-tinta);
+  --acento: var(--color-vermelho-300);
+  --link: var(--color-azul-300);
+  --borda: color-mix(in srgb, var(--color-creme) 20%, transparent);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-creme);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+  }
+
+  /* Regra geral de foco (§3): visível em TUDO, nunca via sombra */
+  :focus-visible {
+    outline: 3px solid var(--color-azul-600);
+    outline-offset: 2px;
+  }
 }
