@@ -72,7 +72,7 @@ Páginas/seções (pode ser one-page com âncoras + páginas secundárias):
   - Quem é a ASB e propósito do evento (movimentar a cena, atrair o DF e
   entorno, parceria com a cidade). Tom celebratório.
 3. **Categorias e premiação (versão resumida)**
-  - Mirim, iniciante, amador, feminino.
+  - Iniciante, amador, feminino.
   - Regra de premiação já decidida (feminino: medalha + premiação para
   todas; demais: medalha para todos + premiação ao top 3).
   - Marcar claramente: "detalhes do regulamento em breve".
@@ -171,7 +171,6 @@ e na validação do formulário se houver embed):
 
 ```ts
 export const categories = [
-  { id: 'mirim',     nome: 'Mirim',     premiacao: 'medalha-todos-top3' },
   { id: 'iniciante', nome: 'Iniciante', premiacao: 'medalha-todos-top3' },
   { id: 'amador',    nome: 'Amador',    premiacao: 'medalha-todos-top3' },
   { id: 'feminino',  nome: 'Feminino',  premiacao: 'medalha-e-premiacao-todas' },
@@ -201,7 +200,7 @@ Termo/autorização em papel no credenciamento para quem se inscrever no dia.
 | Nome completo                                        | texto                                     | sim           |                                                     |
 | Apelido/nome de pista                                | texto                                     | não           | Para locução e resultados                           |
 | **Data de nascimento**                               | data                                      | sim           | Determina se é menor — em qualquer categoria        |
-| Categoria                                            | seleção (mirim/iniciante/amador/feminino) | sim           |                                                     |
+| Categoria                                            | seleção (iniciante/amador/feminino) | sim           |                                                     |
 | Cidade/RA                                            | texto                                     | sim           | Métrica de alcance (DF e entorno) p/ patrocinadores |
 | WhatsApp                                             | telefone                                  | sim           | Canal de confirmação/avisos                         |
 | Instagram                                            | texto                                     | não           | Divulgação                                          |
