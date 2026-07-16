@@ -51,17 +51,20 @@ de todo o Distrito Federal e entorno.
 
 | Categoria  | Quem participa           | Premiação                                            |
 |------------|--------------------------|------------------------------------------------------|
-| Mirim      | Crianças (faixa a definir) | Medalha para todos + premiação adicional ao top 3   |
 | Iniciante  | A definir                | Medalha para todos + premiação adicional ao top 3    |
 | Amador     | A definir                | Medalha para todos + premiação adicional ao top 3    |
 | Feminino   | Categoria própria        | **Medalha + premiação para TODAS as participantes**  |
 
-> Faixas etárias exatas, critérios de enquadramento e valores/itens de
-> premiação: **pendentes** (dependem da reunião e da captação).
+> Sem categoria mirim (baixa adesão esperada na faixa infantil). Faixas
+> etárias exatas, critérios de enquadramento e valores/itens de premiação:
+> **pendentes** (dependem da reunião e da captação). Há um levantamento
+> inicial (não confirmado) de itens de premiação por colocação — ver
+> `02-DECISOES.md`, seção "Premiação — estrutura cogitada".
 
 ## Ponto de atenção: menores de idade
 
-Menores podem se inscrever em **qualquer** categoria (não apenas na mirim).
+Menores podem se inscrever em **qualquer** categoria (iniciante, amador ou
+feminino).
 Toda inscrição de menor exige **autorização do responsável legal** e termo de
 responsabilidade. Por isso o formulário de inscrição coleta **data de
 nascimento** e condiciona os campos de responsável a partir dela — nunca a
