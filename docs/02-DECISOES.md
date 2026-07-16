@@ -19,9 +19,9 @@
 | D5 | **Sem resultados/chaveamento ao vivo** | Sem internet confiável na pista; risco alto e valor baixo. Resultados publicados de forma estática pós-baterias/evento | 07/07/2026 |
 | D6 | Tom do site: **celebratório/institucional** | Não atritar com a Administração antes/depois da reunião; advocacy fica nos canais e documentos próprios | 07/07/2026 |
 | D7 | Conteúdo editado **no repositório** (MDX/JSON + `git push`), sem CMS | Somente uma pessoa edita o site por enquanto | 07/07/2026 |
-| D8 | Categorias: **mirim, iniciante, amador e feminino** (categoria própria) | Definição da organização | 07/07/2026 |
+| D8 | Categorias: **iniciante, amador e feminino** (categoria própria) — sem categoria mirim | Baixa adesão esperada na faixa infantil não justifica categoria própria | 16/07/2026 |
 | D9 | Premiação: **feminino = medalha + premiação para todas**; demais categorias = medalha para todos + premiação adicional ao top 3 | Valorização da participação feminina e da participação em geral | 07/07/2026 |
-| D10 | Formulário coleta **data de nascimento** e exige responsável/autorização para menores em **qualquer categoria** | Menores não estão restritos à mirim; a obrigação legal segue a idade, não a categoria | 07/07/2026 |
+| D10 | Formulário coleta **data de nascimento** e exige responsável/autorização para menores em **qualquer categoria** | Menores não estão restritos a uma categoria específica; a obrigação legal segue a idade, não a categoria | 07/07/2026 |
 | D11 | Domínio: `*.vercel.app` no MVP; avaliar compra de `.com.br` quando a data for confirmada | Não gastar antes de o evento ter data | 07/07/2026 |
 
 ## Pendências (bloqueadas pela reunião com a Administração)
@@ -31,10 +31,25 @@
 | P1 | Data do evento | Countdown, página de inscrição aberta, compra de domínio |
 | P2 | Autorização de uso do espaço / fechamento de rua | Página "data e local" definitiva |
 | P3 | Infraestrutura (banheiros, água, som, público) — responsável definido: **UIEMAPV** (ver D12); detalhes ainda a alinhar | FAQ, seção de estrutura do evento |
-| P4 | Verba / patrocínio institucional — responsável definido: **UIEMAPV** (ver D12); valores ainda a alinhar | Valores da premiação no regulamento; lista de patrocinadores |
+| P4 | Verba / patrocínio institucional — responsável definido: **UIEMAPV** (ver D12); valores ainda a alinhar. Estrutura de itens cogitada, ver seção "Premiação — estrutura cogitada" abaixo | Valores da premiação no regulamento; lista de patrocinadores |
 | P5 | Reparos na pista (iluminação, rachaduras) | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo (faixas etárias, pontuação, formato de baterias, tamanho da cota presencial) | Página de regulamento; campos/validações finais do formulário |
 | P7 | Composição da equipe ASB (funções/responsáveis) | Seção "quem somos" completa |
+
+## Premiação — estrutura cogitada (NÃO confirmada)
+
+> A princípio seria essa a premiação, mas nada está confirmado — depende de
+> patrocínio/verba (ver P4 e D12). Não usar estes itens como definitivos em
+> nenhuma peça do site; tratar como placeholder até confirmação.
+
+- **1º lugar:** 2 shapes, calçado de skate, jogo de rolamento, lixa, blusa.
+- **2º lugar:** 1 shape, calçado de skate, lixa, blusa.
+- **3º lugar:** 1 shape, 1 calçado de skate.
+- Mesma estrutura para todas as categorias, com mais foco (mais itens) na
+  categoria amador.
+- **Brincadeiras** (best trick, sorteio etc.): premiação à parte.
+- Pool geral de prêmios avulsos: vários shapes, calçados, blusas,
+  rolamentos, rodas, acessórios de skate.
 
 ## Pendências internas (não dependem da Administração)
 
@@ -49,4 +64,8 @@
 
 ## Decisões revisadas
 
-_(vazio — registrar aqui qualquer decisão alterada, com data e motivo)_
+- **D8 (categorias)** — versão anterior (07/07/2026): "Categorias: mirim,
+  iniciante, amador e feminino (categoria própria)". Revisado em 16/07/2026:
+  categoria mirim removida — baixa adesão esperada na faixa infantil não
+  justifica categoria própria. Categorias atuais: iniciante, amador,
+  feminino.
