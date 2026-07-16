@@ -38,6 +38,15 @@
   /* Anton nunca em texto corrido nem abaixo de 2rem (§2.2) */
   --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
   --font-sans: var(--font-archivo), system-ui, "Segoe UI", Roboto, sans-serif;
+
+  /* faixa marquee (§3.9): duas metades idênticas, desloca -50% e reinicia */
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 /*

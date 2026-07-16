@@ -72,6 +72,15 @@ export function Footer() {
           © {new Date().getFullYear()} ASB — Associação Skate Brazlândia
         </p>
       </div>
+
+      {/* wordmark gigante fechando a página (§3.8) — decorativo, o nome já
+          existe como texto acima */}
+      <p
+        aria-hidden="true"
+        className="relative -mb-[0.5vw] select-none whitespace-nowrap text-center font-display text-[13.5vw] uppercase leading-[0.8] text-creme"
+      >
+        Braz Skate
+      </p>
     </footer>
   );
 }

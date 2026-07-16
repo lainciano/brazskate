@@ -3,6 +3,8 @@ import { Botao } from "@/components/botao";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
+import { Marquee } from "@/components/marquee";
+import { Rasgo } from "@/components/rasgo";
 import {
   RabiscoCirculo,
   RabiscoSeta,
@@ -139,8 +141,16 @@ export default function Styleguide() {
           <DemoMotion />
         </Bloco>
 
-        {/* registro asfalto: os mesmos componentes no fundo escuro */}
+        {/* marquee full-bleed (§3.9): pausa no hover, estática c/ reduced-motion */}
+        <Marquee
+          texto="Braz Skate · Brazlândia-DF"
+          className="border-y-2 border-tinta py-3"
+        />
+
+        {/* registro asfalto: os mesmos componentes no fundo escuro,
+            com o rasgo de papel fazendo a transição (§3.9) */}
         <section className="registro-asfalto relative overflow-hidden">
+          <Rasgo cor="creme" />
           <Grao />
           <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
             <SectionHeader
