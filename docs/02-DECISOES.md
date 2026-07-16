@@ -10,6 +10,7 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D13 | Arquitetura de componentes separando a lógica da UI (Container/Presenter com Custom Hooks) | Isolar as regras de negócio e estados (Custom Hooks) da interface gráfica (View) para manter o código organizado e facilitar a manutenção. | 16/07/2026 |
 | D12 | Estrutura e premiação do evento ficam sob responsabilidade do instituto/ONG parceiro **UIEMAPV** ([@uiemapvsocial](https://www.instagram.com/uiemapvsocial)) | Parceria institucional viabiliza infraestrutura e premiação sem depender só de captação da ASB | 16/07/2026 |
 | D1 | Inscrição em **modelo híbrido**: pré-inscrição online + cota presencial no dia | Base de planejamento (nº por categoria) + coleta antecipada de termo/autorização de menores, mantendo inclusão de quem só aparece no dia | 07/07/2026 |
 | D2 | Pré-inscrição via **formulário-serviço externo → planilha** (Tally ou Google Forms); **nenhum backend próprio** | <40 competidores, sem taxa; backend seria over-engineering e criaria carga de manutenção no período mais atarefado da organização | 07/07/2026 |
