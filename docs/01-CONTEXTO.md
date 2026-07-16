@@ -4,7 +4,7 @@
 > A reunião com a Administração Regional de Brazlândia ainda não aconteceu.
 > Data do evento, valores de premiação, infraestrutura e apoios institucionais
 > estão em aberto e podem alterar qualquer ponto deste documento.
-> Última atualização: 07/07/2026.
+> Última atualização: 16/07/2026.
 
 ## O que é
 
@@ -32,6 +32,8 @@ de todo o Distrito Federal e entorno.
 - **ASB — Associação Skate Brazlândia**: grupo de skatistas locais
   (composição da equipe em formação; será detalhada após reunião presencial).
 - Organização núcleo: 3 skatistas + 1 administrador regional apoiador.
+- **UIEMAPV** (instituto/ONG parceiro, [@uiemapvsocial](https://www.instagram.com/uiemapvsocial)):
+  responsável pela estrutura e premiação do evento.
 - Não há equipe de TI. O site é mantido por **uma única pessoa**
   (desenvolvedor full stack: Java/Spring Boot, React/Next.js/TypeScript,
   Linux Fedora/KDE, fluxo de trabalho com Claude Code).
