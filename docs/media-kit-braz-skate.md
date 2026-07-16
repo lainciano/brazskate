@@ -19,7 +19,7 @@ A execução da estrutura e da premiação do campeonato será conduzida em parc
 - **Impacto real e visível.** O evento nasce de uma comunidade organizada, não de uma iniciativa institucional de cima para baixo — o apoio chega direto a quem pratica o esporte.
 - **Alcance regional.** O campeonato pretende atrair competidores e público de todo o Distrito Federal e entorno, não apenas de Brazlândia.
 - **Marco para o esporte na cidade.** O Braz Skate busca estabelecer um precedente de parceria entre a comunidade e a Administração Regional, abrindo caminho para investimentos futuros na pista e no esporte.
-- **Público engajado e diverso.** Categorias para diferentes perfis — Mirim, Iniciante, Amador e Feminino — reúnem famílias, jovens atletas e a cena skatista adulta em um único evento.
+- **Público engajado e diverso.** Categorias para diferentes perfis — Iniciante, Amador e Feminino — reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.
 - **Associação a uma causa autêntica.** Marcas que apoiam o Braz Skate se associam a um movimento genuíno de revitalização esportiva e cultural local, não a um evento genérico.
 
 ## 4. Formas de apoio
