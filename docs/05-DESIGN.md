@@ -48,6 +48,8 @@ celular e nada parece quebrado ou amador.
 | Rabiscos | Traços à mão em SVG próprio: sublinhados, setas, círculos | Sublinhado de títulos de seção, apontadores de CTA |
 | Tipografia de cartaz | Display condensada gigante em caixa alta, apertada | Hero, títulos de seção |
 | Colagem | Sombras duras deslocadas (sem blur) em cards e botões, como papel colado em camadas | Cards, CTAs |
+| Papel rasgado | Divisor de seção com borda irregular de rasgo (SVG, custo zero) | Transições entre registros asfalto ⇄ concreto |
+| Marquee | Faixa de texto repetido rolando na horizontal, como fita de cartaz | Entre hero e sobre; wordmark de energia |
 
 **A assinatura do site — "o placeholder é adesivo":** este projeto tem uma
 disciplina rígida de placeholder (nada de data/premiação inventada — ver
@@ -248,6 +250,13 @@ Foco NUNCA usa sombra — usa `outline` (ver §3, regra geral).
   cartaz vertical.
 - **Alvos de toque:** mínimo **44×44px** em qualquer elemento interativo,
   com ≥8px de respiro entre alvos vizinhos.
+- **Composição até as bordas** (referência de layout aprovada pelo Lain em
+  16/07/2026): o container `max-w-6xl` é o padrão de LEITURA (texto
+  corrido, cards), não uma prisão. Display do hero, marquee, rasgos e o
+  wordmark do footer sangram na largura total; stickers e elementos
+  gráficos podem vazar dos limites da seção. Elementos grandes perto das
+  bordas são parte da linguagem — o que fica confinado é o texto que
+  precisa ser lido com conforto.
 
 ---
 
@@ -361,7 +370,9 @@ Responsividade: QR + textos empilhados no mobile, lado a lado em `sm+`.
 
 Anatomia: registro asfalto com grão; logo pequeno, uma linha sobre a ASB,
 links de âncora, redes (Instagram `@brazskate`, WhatsApp), ano. Fecha o
-cartaz com o mesmo clima do hero.
+cartaz com o mesmo clima do hero e com o **wordmark gigante**: "BRAZ
+SKATE" em Anton ocupando a largura total, última coisa da página
+(decorativo, `aria-hidden` — o nome já existe como texto no footer).
 
 Acessibilidade: `<footer>` com `nav aria-label="Rodapé"`; ícones de rede
 com nome acessível ("Instagram do Braz Skate").
@@ -374,6 +385,14 @@ com nome acessível ("Instagram do Braz Skate").
 - **Grão** (`components/grao.tsx` ou classe utilitária): overlay de ruído
   via SVG `feTurbulence` inline (custo zero de rede), opacidade ~0.06 em
   fundos asfalto. Nunca sobre texto corrido.
+- **Rasgo** (`components/rasgo.tsx`): divisor de papel rasgado entre
+  registros — SVG de largura total (`preserveAspectRatio="none"`) com
+  borda irregular, preenchido com a cor da seção vizinha. Decorativo
+  (`aria-hidden`); não cria altura de layout inesperada (altura fixa).
+- **Marquee** (`components/marquee.tsx`): faixa de texto repetido
+  ("BRAZ SKATE · BRAZLÂNDIA-DF ·") rolando via CSS puro, largura total.
+  Pausa no hover; estática com `prefers-reduced-motion`. O texto existe
+  UMA vez para leitores de tela; as repetições são `aria-hidden`.
 
 ---
 
@@ -497,6 +516,7 @@ puxar um stencil, descolar um papel).
 | CTA hover | "descola da parede": translate(-2px,-2px) + sombra 4→6px | 150ms, CSS puro (sem JS) |
 | Link hover | sublinhado-rabisco cresce (`scaleX 0→1`) | 200ms, CSS puro |
 | Rabisco do hero | traço se desenha (`stroke-dashoffset`) após load | 0.6s, delay 0.3s |
+| Marquee | rolagem horizontal contínua | CSS puro (~30s/ciclo), pausa no hover, estática com reduced-motion |
 
 ### 6.2 GSAP — ferramenta aprovada e seus guardrails
 
