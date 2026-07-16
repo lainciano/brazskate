@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-type Gsap = typeof import("gsap")["gsap"];
+export type Gsap = typeof import("gsap")["gsap"];
 
 // Setup de motion aprovado (docs/05-DESIGN.md §6.2): gsap core +
 // ScrollTrigger, nada além. Guardrails embutidos:

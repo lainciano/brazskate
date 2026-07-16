@@ -28,7 +28,7 @@ export function Header() {
         Pular para o conteúdo
       </a>
 
-      <header className="sticky top-0 z-40 bg-tinta/95 text-creme">
+      <header className="sticky top-0 z-40 bg-tinta/95 text-creme backdrop-blur-sm">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <a href="#conteudo" className="shrink-0" aria-label="Braz Skate — início">
             <Image
