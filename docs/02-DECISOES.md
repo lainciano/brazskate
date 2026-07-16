@@ -4,12 +4,13 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 07/07/2026.
+> Última atualização: 16/07/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D12 | Estrutura e premiação do evento ficam sob responsabilidade do instituto/ONG parceiro **UIEMAPV** ([@uiemapvsocial](https://www.instagram.com/uiemapvsocial)) | Parceria institucional viabiliza infraestrutura e premiação sem depender só de captação da ASB | 16/07/2026 |
 | D1 | Inscrição em **modelo híbrido**: pré-inscrição online + cota presencial no dia | Base de planejamento (nº por categoria) + coleta antecipada de termo/autorização de menores, mantendo inclusão de quem só aparece no dia | 07/07/2026 |
 | D2 | Pré-inscrição via **formulário-serviço externo → planilha** (Tally ou Google Forms); **nenhum backend próprio** | <40 competidores, sem taxa; backend seria over-engineering e criaria carga de manutenção no período mais atarefado da organização | 07/07/2026 |
 | D3 | **Apoio via Pix** (chave/QR estático) presente no site | Verba é o principal gargalo do evento; Pix estático tem custo zero de infra | 07/07/2026 |
@@ -28,8 +29,8 @@
 |---|-----------|------------------------|
 | P1 | Data do evento | Countdown, página de inscrição aberta, compra de domínio |
 | P2 | Autorização de uso do espaço / fechamento de rua | Página "data e local" definitiva |
-| P3 | Infraestrutura (banheiros, água, som, público) | FAQ, seção de estrutura do evento |
-| P4 | Verba / patrocínio institucional | Valores da premiação no regulamento; lista de patrocinadores |
+| P3 | Infraestrutura (banheiros, água, som, público) — responsável definido: **UIEMAPV** (ver D12); detalhes ainda a alinhar | FAQ, seção de estrutura do evento |
+| P4 | Verba / patrocínio institucional — responsável definido: **UIEMAPV** (ver D12); valores ainda a alinhar | Valores da premiação no regulamento; lista de patrocinadores |
 | P5 | Reparos na pista (iluminação, rachaduras) | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo (faixas etárias, pontuação, formato de baterias, tamanho da cota presencial) | Página de regulamento; campos/validações finais do formulário |
 | P7 | Composição da equipe ASB (funções/responsáveis) | Seção "quem somos" completa |
