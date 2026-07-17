@@ -31,11 +31,11 @@ export function Sobre() {
               O skate faz parte de Brazlândia desde o início dos anos 2000. A
               pista à beira do lago, no complexo esportivo da cidade, é ponto
               de encontro de gerações — pra quem compete, pra quem aprende e
-              pra quem vive o role como lazer, identidade e estilo de vida.
+              pra quem vive o rolê como lazer, identidade e estilo de vida.
             </p>
             <p data-reveal>
               Em 2021, os próprios skatistas colocaram um campeonato de pé — e
-            ele marcou a cena. O Braz Skate nasce dessa inspiração, em maior
+              ele marcou a cena. O Braz Skate nasce dessa inspiração, em maior
               escala: um evento feito pela comunidade para atrair competidores
               e público de todo o DF e entorno.
             </p>

@@ -84,7 +84,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           src="/logo.png"
           alt=""
           width={88}
-          height={88}
+          height={62}
           priority
           className="rotate-3 rounded-full shadow-sticker"
         />
