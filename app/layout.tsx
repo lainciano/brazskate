@@ -17,10 +17,42 @@ const archivo = Archivo({
   variable: "--font-archivo",
 });
 
+// Domínio do MVP (D11, docs/02-DECISOES.md): *.vercel.app até o evento
+// ter data confirmada.
+const SITE_URL = "https://braz-skate.vercel.app";
+const TITLE = "Braz Skate — Campeonato de Skate de Brazlândia";
+const DESCRIPTION =
+  "Campeonato de skate em Brazlândia-DF, organizado pela ASB — Associação Skate Brazlândia. Data a confirmar.";
+
 export const metadata: Metadata = {
-  title: "Braz Skate — ASB",
-  description:
-    "Campeonato Braz Skate, organizado pela ASB — Associação Skate Brazlândia.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s — Braz Skate",
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Braz Skate",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Braz Skate — Campeonato de Skate de Brazlândia",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
