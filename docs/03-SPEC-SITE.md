@@ -44,7 +44,7 @@ de um evento físico.
 | Pix                         | Chave + QR estático (imagem no repo)                                                             | Zero infra                                                                      |
 | Mapa                        | Embed do Google Maps (iframe) apontando para a pista                                             | Sem API key paga                                                                |
 | Analytics (opcional)        | Vercel Analytics ou similar leve                                                                 | Só se não adicionar fricção                                                     |
-| Domínio                     | `braz-skate.vercel.app` no MVP; `.com.br` quando houver data                                     | Registro.br                                                                     |
+| Domínio                     | `brazskate.vercel.app` no MVP; `.com.br` quando houver data                                      | Registro.br                                                                     |
 
 
 **Explicitamente fora de escopo:** Spring Boot, banco de dados, autenticação,

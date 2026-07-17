@@ -19,7 +19,7 @@ const archivo = Archivo({
 
 // Domínio do MVP (D11, docs/02-DECISOES.md): *.vercel.app até o evento
 // ter data confirmada.
-const SITE_URL = "https://braz-skate.vercel.app";
+const SITE_URL = "https://brazskate.vercel.app";
 const TITLE = "Braz Skate — Campeonato de Skate de Brazlândia";
 const DESCRIPTION =
   "Campeonato de skate em Brazlândia-DF, organizado pela ASB — Associação Skate Brazlândia. Data a confirmar.";
