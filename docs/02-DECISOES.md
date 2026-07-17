@@ -10,6 +10,8 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D14 | Direção de design travada: estética street com acabamento institucional — texturas de spray/grão, sticker badges (placeholders viram stickers), registros duplos (asfalto escuro / concreto claro); tipografia **Anton (display) + Archivo (texto)**; **sem WebGL no MVP** — GSAP core + ScrollTrigger apenas (plano completo em `05-DESIGN.md`, roadmap em `04-ROADMAP-MVP.md`) | Identidade própria com custo de performance controlado; three.js rejeitado, shader OGL fica como candidato de v1 | 16/07/2026 |
+| D13 | Organização de componentes: separação primária é **conteúdo (MDX/JSON em `content/` e `data/`) × apresentação (componentes)**, com Server Components estáticos como padrão. Componentes com interatividade de cliente (ex.: menu mobile, copiar Pix) aplicam Container/Presenter: estado e eventos extraídos para um Custom Hook (`useX`) quando a lógica crescer, mantendo a visão pura | Preserva organização e manutenibilidade sem forçar `"use client"` num site SSG (`output: 'export'`) nem afetar requisitos | 16/07/2026 |
 | D12 | Estrutura e premiação do evento ficam sob responsabilidade do instituto/ONG parceiro **UIEMAPV** ([@uiemapvsocial](https://www.instagram.com/uiemapvsocial)) | Parceria institucional viabiliza infraestrutura e premiação sem depender só de captação da ASB | 16/07/2026 |
 | D1 | Inscrição em **modelo híbrido**: pré-inscrição online + cota presencial no dia | Base de planejamento (nº por categoria) + coleta antecipada de termo/autorização de menores, mantendo inclusão de quem só aparece no dia | 07/07/2026 |
 | D2 | Pré-inscrição via **formulário-serviço externo → planilha** (Tally ou Google Forms); **nenhum backend próprio** | <40 competidores, sem taxa; backend seria over-engineering e criaria carga de manutenção no período mais atarefado da organização | 07/07/2026 |
@@ -59,7 +61,8 @@
 | I3 | Texto do termo de responsabilidade + autorização de menor | Rascunhar e validar com alguém de confiança jurídica antes de abrir a pré-inscrição |
 | I4 | Chave Pix oficial da ASB | Definir titularidade (idealmente CNPJ/conta da associação, se existir) e gerar QR |
 | I5 | Identidade visual mínima (logo ASB/evento, paleta) | Necessária para o MVP ter cara própria |
-| I6 | Mini media-kit de patrocínio | Conteúdo da página "seja um patrocinador" (ver spec do site) |
+| I6 | Mini media-kit de patrocínio | ~~Conteúdo da página "seja um patrocinador"~~ Conteúdo-base pronto em `docs/media-kit-braz-skate.md` (16/07/2026); falta só adaptar para a página `/patrocinio` |
+| I7 | Confirmação pública da parceria UIEMAPV | O site **não menciona o instituto** até o ok formal dele; quando confirmado, incluir na página de patrocínio |
 
 ## Decisões revisadas
 
