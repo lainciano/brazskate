@@ -13,7 +13,7 @@ import { SectionHeader } from "@/components/section-header";
 // contato pelos canais oficiais do evento.
 
 export const metadata: Metadata = {
-  title: "Seja um patrocinador — Braz Skate",
+  title: "Seja um patrocinador",
   description:
     "Apoie o Braz Skate, campeonato de skate de Brazlândia-DF: formas de apoio para marcas e parceiros, do Pix à estrutura do evento.",
 };

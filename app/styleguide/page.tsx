@@ -17,7 +17,7 @@ import { DemoMotion } from "./demo-motion";
 // Styleguide (roadmap PR 1): página não linkada, noindex — é onde o padrão
 // vivo do design system é revisado e consultado. Não entra no sitemap.
 export const metadata: Metadata = {
-  title: "Styleguide — Braz Skate",
+  title: "Styleguide",
   robots: { index: false, follow: false },
 };
 
