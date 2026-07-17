@@ -22,7 +22,7 @@ export function Footer() {
               src="/logo.png"
               alt="Braz Skate"
               width={48}
-              height={48}
+              height={34}
               className="rounded-full"
             />
             <p className="mt-4 text-sm leading-[1.6] text-(--fg-secundario)">

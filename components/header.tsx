@@ -36,7 +36,7 @@ export function Header() {
               src="/logo.png"
               alt=""
               width={40}
-              height={40}
+              height={28}
               className="rounded-full"
             />
           </Link>

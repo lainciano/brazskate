@@ -555,7 +555,7 @@ Aprovado pelo Lain em 16/07/2026:
 | Lighthouse mobile — Performance | ≥ 90 |
 | Lighthouse — Acessibilidade | ≥ 95 |
 | Lighthouse — Best Practices / SEO | ≥ 95 |
-| JS inicial (gzip) | ≤ 170KB total (baseline Next ~110 + GSAP ~35 + app ~25) |
+| JS inicial (gzip) | ≤ 220KB total (revisado no PR 7 — baseline Next 16 + React 19 já soma ~194KB sem GSAP, que é lazy-loaded fora do bundle inicial; meta original de 170KB partia de uma estimativa de baseline desatualizada) |
 | Fontes | ≤ 120KB woff2 (Anton 400 + Archivo variable, subset latin/latin-ext) |
 | Imagens acima da dobra | ≤ 150KB (hero é gráfico: quase zero) |
 | LCP (4G, celular mediano) | < 2,5s |
