@@ -33,11 +33,11 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="shrink-0" aria-label="Braz Skate — início">
             <Image
-              src="/logo.png"
+              src="/logo-pin-nav.png"
               alt=""
-              width={40}
-              height={28}
-              className="rounded-full"
+              width={897}
+              height={951}
+              className="h-10 w-auto"
             />
           </Link>
 
