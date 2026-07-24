@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback } from "react";
+import { evento } from "@/data/evento";
 import { useMotion, type Gsap } from "@/lib/motion";
 import { Botao } from "./botao";
 import { Grao } from "./grao";
@@ -109,7 +110,12 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         </span>
 
         <div data-hero-sticker className="mt-4 w-fit sm:mt-8">
-          <StickerBadge variante="data">Data a confirmar</StickerBadge>
+          <StickerBadge
+            variante="data"
+            className="animate-sticker-pulse motion-reduce:animate-none"
+          >
+            Previsão: {evento.dataPrevistaCurta}
+          </StickerBadge>
         </div>
 
         <p
@@ -131,7 +137,12 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           <Botao href="#apoie" variante="terciario">
             Apoie via Pix
           </Botao>
-          <StickerBadge variante="breve">Pré-inscrição em breve</StickerBadge>
+          <StickerBadge
+            variante="breve"
+            className="animate-sticker-pulse motion-reduce:animate-none"
+          >
+            Inscrição: previsão {evento.inscricaoAbrePrevistaCurta}
+          </StickerBadge>
         </div>
       </div>
     </section>
