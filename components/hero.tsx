@@ -76,7 +76,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
             className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
             style={{ maskImage: "url(/logo-pin.png)" }}
           />
-          <div className="absolute -left-[8vw] top-[14%] h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80" />
+          <div className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80 sm:block" />
         </div>
       )}
       <Grao />
@@ -100,7 +100,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
             width={1224}
             height={902}
             priority
-            className="h-auto w-[clamp(12rem,38vw,14rem)]"
+            className="h-auto w-[clamp(10rem,38vw,14rem)]"
           />
         </h1>
 
