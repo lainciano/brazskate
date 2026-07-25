@@ -214,9 +214,11 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.7 · Slots de foto — preparar a troca sem foto real
 
-- **Estado:** **construível agora**, com uma ressalva importante de escopo.
-  Decisão do Lain (25/07/2026): tratar foto como slot/template no padrão do
-  hero (§4.2), fácil de trocar depois.
+- **Estado:** ✅ **concluída** (25/07/2026). O slot `fotoSrc` do hero já
+  estava implementado (`components/hero.tsx`, duotone + `mix-blend-multiply`
+  + scrim, exatamente como o §4.2 descreve) — esta sub-etapa **verificou** o
+  caminho de troca e fechou o schema da galeria, sem acender nenhuma foto
+  real (I1/I2 seguem abertas).
 - **O que "slot" significa aqui (e o que NÃO significa):** no §4.2 o slot é
   uma **afordância de código** — o componente recebe `fotoSrc?` e, sem foto,
   renderiza um desenho **completo** (o hero gráfico), não uma lacuna. O §4.3
@@ -224,14 +226,17 @@ terceiros. É de propósito uma leva pequena.
   vazia, seção "esperando imagem" ou página de galeria sem fotos. Slot é
   contrato de prop, não placeholder visível.
 - **Entrega:**
-  1. Confirmar e documentar o slot `fotoSrc` do hero já existente, incluindo
-     o tratamento duotone + scrim descrito no §4.2, para que a troca futura
-     seja "1 arquivo + 1 prop".
-  2. Definir o **schema** de `data/gallery.json` com os campos de portão de
-     direito de imagem (`credito`, `permissao`) obrigatórios por foto, e o
-     contrato do componente de moldura/colagem (§4.3) — pronto para ativar.
-  3. **Não publicar** página ou seção de galeria enquanto não houver foto com
-     permissão (I1/I2 + portão de imagem).
+  1. **Verificado** — build local com uma foto sintética de teste (não
+     commitada) confirmou que passar `fotoSrc` renderiza a camada de foto
+     com `grayscale` e que as formas geométricas somem, sem erro de build.
+     A troca é de fato "1 arquivo + 1 prop". Contraste AA com foto real
+     fica para conferência visual humana quando a foto de verdade existir.
+  2. `data/gallery.ts` (novo, vazio) — tipo `FotoGaleria` com `credito`
+     obrigatório e `permissao: true` como literal (recusa foto sem permissão
+     **no typecheck**, não em runtime). Contrato do componente de colagem
+     documentado no §4.3.
+  3. **Nenhuma página ou seção de galeria criada** — array vazio, sem
+     casca vazia (I1/I2 seguem abertas).
 - **Consome do design:** §4.2 (slot do hero, duotone, scrim), §4.3 (colagem,
   regra de não deixar moldura vazia), §2 (tokens).
 - **Pronto quando:** existe um caminho documentado e testado para acender a
