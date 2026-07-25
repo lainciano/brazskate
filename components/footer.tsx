@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Grao } from "./grao";
+import { evento } from "@/data/evento";
 
 // Footer (docs/05-DESIGN.md §3.8): registro asfalto com grão, fechando o
 // cartaz com o mesmo clima do hero. Canais reais — sem e-mail (não existe).
@@ -63,6 +64,14 @@ export function Footer() {
                 className="py-1 font-semibold text-(--link) underline-offset-4 hover:underline"
               >
                 WhatsApp da organização
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${evento.email}`}
+                className="py-1 font-semibold text-(--link) underline-offset-4 hover:underline"
+              >
+                E-mail da organização
               </a>
             </li>
           </ul>
