@@ -16,6 +16,61 @@ import { StickerBadge } from "./sticker-badge";
 // geométricas saem e tipografia/sticker/CTAs não mudam.
 export function Hero({ fotoSrc }: { fotoSrc?: string }) {
   const montar = useCallback((gsap: Gsap, escopo: HTMLElement) => {
+    // Formas geométricas do fundo (§4.1): entram antes do texto, como quem
+    // cola o cartaz e só depois escreve por cima. São decorativas
+    // (aria-hidden), então não há risco de acessibilidade em animá-las.
+    // Só existem quando NÃO há foto (o slot de foto as substitui, §4.2) —
+    // por isso a consulta é guardada.
+    const selo = escopo.querySelector("[data-hero-selo]");
+    const faixa = escopo.querySelector("[data-hero-faixa]");
+
+    if (selo) {
+      gsap.from(selo, {
+        scale: 0.82,
+        rotate: -12,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+      // deriva no scroll: o selo sobe mais devagar que a página, dando
+      // profundidade ao cartaz (scrub leve, só transform — §6.2)
+      gsap.to(selo, {
+        y: -60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: escopo,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
+
+    if (faixa) {
+      // A faixa rosa é pincelada da esquerda para a direita.
+      // A origem do transform NÃO entra aqui: ela vive no CSS (origin-left
+      // no className). Setar transformOrigin só durante o tween fazia o
+      // GSAP devolver a origem ao centro ao terminar — e como a faixa é
+      // rotacionada (-rotate-6), trocar o pivô move a barra visualmente,
+      // produzindo um "pulo" para baixo no fim da animação.
+      gsap.from(faixa, {
+        scaleX: 0,
+        duration: 0.7,
+        delay: 0.15,
+        ease: "power3.out",
+      });
+      gsap.to(faixa, {
+        y: -28,
+        ease: "none",
+        scrollTrigger: {
+          trigger: escopo,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
+
     // linguagem "tinta fresca seca rápido" (§6.1): stencil, carimbo, stagger
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     tl.from(escopo.querySelector("[data-hero-titulo]"), {
@@ -73,12 +128,19 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
       ) : (
         // abstração de rampa/transição (§4.1): selo da logo (pin) em
         // vermelho-500 — recorte via mask, não PNG colorido
-        <div aria-hidden="true" className="absolute inset-0">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          {/* z-10 põe o selo ACIMA do conteúdo do hero (pedido do Lain,
+              25/07/2026). pointer-events-none no pai é obrigatório: sem
+              isso o selo cobriria os CTAs e engoliria os cliques. */}
           <div
-            className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+            data-hero-selo
+            className="absolute -bottom-[34vw] -right-[16vw] z-10 h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
             style={{ maskImage: "url(/logo-pin.png)" }}
           />
-          <div className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80 sm:block" />
+          <div
+            data-hero-faixa
+            className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] origin-left -rotate-6 bg-rosa/80 sm:block"
+          />
         </div>
       )}
       <Grao />
