@@ -350,6 +350,30 @@ Variantes: `data` ("DATA A CONFIRMAR" — vermelho), `breve`
 Acessibilidade: texto real no DOM (nada de imagem); se for puramente
 redundante com o texto ao lado, `aria-hidden` para não repetir.
 
+### 3.6-bis Disclosure — FAQ, regulamento (nasce na V1.3)
+
+Padrão para conteúdo de pergunta/resposta que precisa de
+esconder/mostrar (FAQ hoje; regulamento no futuro). Elemento nativo
+`<details>`/`<summary>` — **sem componente de accordion customizado e sem
+animação de abrir/fechar** (guardrail §6.2: motion novo fica restrito ao
+escopo GSAP já aprovado; abrir/fechar via `<details>` é instantâneo por
+design).
+
+Anatomia: card `rounded-card` + `--surface` + `shadow-card` (mesmo par
+usado no card de categoria, §3.4), vira `shadow-card-hover` quando aberto
+(`open:shadow-card-hover`). `<summary>` remove o marcador nativo
+(`list-none` + `[&::-webkit-details-marker]:hidden`) e usa um chevron SVG
+próprio que rotaciona 180° no estado aberto (`group-open:rotate-180`,
+`motion-reduce:transition-none`).
+
+Pendência sem resposta ainda (ex.: aguardando regulamento, P6): corpo do
+`<details>` mostra `StickerBadge` variante `breve` no lugar do texto —
+nunca resposta inventada (política de placeholder, `AGENT.md`).
+
+Acessibilidade: `<details>`/`<summary>` são focáveis e operáveis por
+teclado (Enter/Espaço) e anunciam o estado aberto/fechado nativamente em
+leitores de tela — sem `aria-expanded` manual necessário.
+
 ### 3.7 Bloco Pix
 
 Anatomia: card de colagem com QR (`public/pix-qr.png`, ~180px, com borda

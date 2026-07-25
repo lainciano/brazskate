@@ -1,5 +1,6 @@
 import { Categorias } from "@/components/categorias";
 import { Contato } from "@/components/contato";
+import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
@@ -21,6 +22,7 @@ export default function Home() {
         <Sobre />
         <Localizacao />
         <Categorias />
+        <Faq />
         <PatrocinioResumo />
         <div className="registro-asfalto relative overflow-hidden">
           <Rasgo cor="creme" />

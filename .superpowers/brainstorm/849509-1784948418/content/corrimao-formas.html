@@ -1,0 +1,54 @@
+<h2>Qual direção de forma para o corrimão?</h2>
+<p class="subtitle">Fundo escuro simula o registro "asfalto" do hero (tinta). A forma fica no canto superior-esquerdo, rotacionada, no mesmo lugar da faixa rosa atual.</p>
+
+<div class="options" data-multiselect="false">
+  <div class="option" data-choice="rail-2-apoios" onclick="toggleSelect(this)" style="padding:0;overflow:hidden;">
+    <div style="background:#191314;padding:24px;position:relative;height:180px;overflow:hidden;">
+      <svg viewBox="0 0 400 160" width="100%" height="100%" style="position:absolute;top:0;left:0;">
+        <g transform="rotate(-6 200 80)">
+          <rect x="40" y="50" width="320" height="20" rx="10" fill="#f0d9ce" opacity="0.8"/>
+          <polygon points="55,70 85,70 70,120 40,120" fill="#f0d9ce" opacity="0.8"/>
+          <polygon points="315,70 345,70 360,120 330,120" fill="#f0d9ce" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+    <div class="content" style="padding:12px 16px;">
+      <h3>A · Rail com 2 apoios</h3>
+      <p>Barra + duas pernas diagonais nas pontas — mais literal, sugere estrutura de grind rail.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="rail-1-apoio" onclick="toggleSelect(this)" style="padding:0;overflow:hidden;">
+    <div style="background:#191314;padding:24px;position:relative;height:180px;overflow:hidden;">
+      <svg viewBox="0 0 400 160" width="100%" height="100%" style="position:absolute;top:0;left:0;">
+        <g transform="rotate(-6 200 80)">
+          <rect x="40" y="50" width="320" height="20" rx="10" fill="#f0d9ce" opacity="0.8"/>
+          <polygon points="280,70 360,70 340,130 300,130" fill="#f0d9ce" opacity="0.8"/>
+        </g>
+      </svg>
+    </div>
+    <div class="content" style="padding:12px 16px;">
+      <h3>B · Rail com 1 apoio (assimétrico)</h3>
+      <p>Barra + uma cunha de apoio só de um lado — mais gráfico, ecoa a assimetria que a faixa atual já tem.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="camadas" onclick="toggleSelect(this)" style="padding:0;overflow:hidden;">
+    <div style="background:#191314;padding:24px;position:relative;height:180px;overflow:hidden;">
+      <svg viewBox="0 0 400 160" width="100%" height="100%" style="position:absolute;top:0;left:0;">
+        <g transform="rotate(-9 200 90)">
+          <rect x="60" y="90" width="300" height="18" rx="9" fill="#a84b4b" opacity="0.5"/>
+        </g>
+        <g transform="rotate(-6 200 70)">
+          <rect x="40" y="50" width="320" height="20" rx="10" fill="#f0d9ce" opacity="0.85"/>
+        </g>
+      </svg>
+    </div>
+    <div class="content" style="padding:12px 16px;">
+      <h3>C · Barras em camadas</h3>
+      <p>A barra atual + uma segunda barra deslocada atrás, em vermelho translúcido — mais abstrato, sem "pernas" literais, o mais próximo do visual de hoje.</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Proporções e posição exatas ainda vão ser ajustadas — isso é só pra escolher a direção da forma. Clique numa opção, ou me diga em texto o que achou.</p>
