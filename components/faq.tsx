@@ -58,7 +58,9 @@ export function Faq() {
                         {item.resposta}
                       </p>
                     ) : (
-                      <StickerBadge variante="breve">Em breve</StickerBadge>
+                      <StickerBadge variante="breve" data-carimbo>
+                        Em breve
+                      </StickerBadge>
                     )}
                   </div>
                 </details>

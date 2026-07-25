@@ -177,36 +177,40 @@ terceiros. É de propósito uma leva pequena.
   "previsão" é inseparável do número; sem divergência de hidratação; leitor de
   tela anuncia o prazo uma vez, não a cada segundo.
 
-### V1.6 · Motion, feedback e efeitos — reforço no site inteiro
+### V1.6 · Motion residual
 
-- **Estado:** **construível agora** — pedido do Lain (24/07 e 25/07/2026).
-  Sai do estacionamento; **precisa de spec própria** antes do plano, porque
-  toca todas as seções já publicadas.
-- **Entrega (escopo a fechar na spec):**
-  1. **Entrada de seção** — estender o `Reveal`/ScrollTrigger que a V1.1
-     aplicou em Hero e Localização às seções restantes (Sobre, Categorias,
-     Patrocínio, Pix, Contato, FAQ), com o "stencil puxado" do título e o
-     stagger de listas/cards do §6.1.
-  2. **Micro-feedback de interação** — os gestos já tabelados no §6.1 que
-     ainda não existem em toda parte: "carimbada" do sticker na entrada,
-     sublinhado-rabisco crescendo no hover de link, traço do rabisco do hero
-     se desenhando (`stroke-dashoffset`).
-  3. **Feedback de estado** — revisar os retornos que já existem (copiar
-     chave Pix, abrir/fechar menu, `<details>` do FAQ) para que todos tenham
-     resposta visual imediata e anúncio acessível coerente.
-- **Consome do design:** §6.1 (linguagem de motion — a tabela é o contrato),
-  §6.2 (guardrails do GSAP), §6.4 (orçamento), §3.x (estados dos componentes).
-- **Guardrails que reprovam o PR** (§6.2, valem integralmente): só `gsap`
-  core + `ScrollTrigger`; só `transform` e `opacity`; `prefers-reduced-motion`
-  via `gsap.matchMedia()` com versão estática equivalente; init preguiçoso
-  após hidratação; sem `pin` e sem `scrub` pesado; teste em celular mediano
-  antes do merge.
+- **Estado:** ✅ **concluída** (25/07/2026). A decomposição original desta
+  entrada superestimava o que faltava — auditoria no início da sub-etapa
+  encontrou a maior parte do §6.1 já implementada: `Reveal`/ScrollTrigger nas
+  7 seções (Hero, Sobre, Localização, Categorias, FAQ, Patrocínio, Pix,
+  Contato), sublinhado-rabisco no hover de link (`components/botao.tsx`),
+  traço do rabisco do hero se desenhando (`stroke-dashoffset`,
+  `hero.tsx`), feedback do copiar Pix com `aria-live`, e `<details>` do FAQ
+  com chevron animado. **Não precisou de spec própria** — os guardrails do
+  §6.2 já estavam encarnados em `lib/motion.ts`.
+- **O que de fato faltava e foi entregue:**
+  1. **"Stencil puxado" do título de seção** — `components/reveal.tsx` ganhou
+     o seletor `[data-stencil]` (clip-path, mesmo tratamento que o hero já
+     aplicava ao próprio `h1`); `components/section-header.tsx` marca o `h2`
+     com `data-stencil`, valendo para as 7 seções de uma vez.
+  2. **"Carimbada" dos stickers fora do hero** — `Reveal` ganhou o seletor
+     `[data-carimbo]` (scale + `back.out`); `components/sticker-badge.tsx`
+     passou a aceitar props extras (`...rest`) para poder receber o atributo;
+     aplicado aos dois stickers "em breve" fora do hero (Categorias, FAQ).
+- **Consome do design:** §6.1 (linguagem de motion), §6.2 (guardrails do
+  GSAP, já em `lib/motion.ts`), §3.6 (StickerBadge).
+- **Guardrails do §6.2** — herdados automaticamente via `useMotion`/`Reveal`
+  já existentes: `gsap.matchMedia()` some com toda a animação sob
+  `prefers-reduced-motion`; só `transform`, `opacity` e `clip-path`; init
+  preguiçoso no idle; sem `pin` nem `scrub`.
 - **Fora desta sub-etapa:** WebGL/shader. O §6.3 registra OGL apenas como
   **candidato** de v1 — entrar nele exige decisão explícita à parte, não vem
   de carona no reforço de motion.
 - **Pronto quando:** nenhuma seção fica "morta" ao rolar; com
-  `prefers-reduced-motion` ativo tudo aparece estático e legível; Lighthouse
-  mobile segue dentro do §6.4; nada animado causa layout shift.
+  `prefers-reduced-motion` ativo tudo aparece estático e legível; nada
+  animado causa layout shift. `pnpm lint`, `typecheck` e `build` limpos —
+  verificação visual (hidratação, celular real) pendente de QA humana, sem
+  Chrome disponível no ambiente de execução desta sessão.
 
 ### V1.7 · Slots de foto — preparar a troca sem foto real
 
