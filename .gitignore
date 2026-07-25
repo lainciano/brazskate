@@ -39,3 +39,6 @@ next-env.d.ts
 
 # git worktrees (agent-driven development)
 .worktrees
+
+# superpowers (artefatos de sessão: pid, log, token — nunca versionar)
+.superpowers

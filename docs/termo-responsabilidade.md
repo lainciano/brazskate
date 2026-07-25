@@ -4,12 +4,14 @@
 > O mantenedor confirmou que o termo foi **revisado com advogado**. Ver **D19**
 > em `02-DECISOES.md` para a política de aceite.
 >
-> ⚠️ **PENDÊNCIA DE PROVENIÊNCIA DO TEXTO — LER ANTES DE PUBLICAR.**
+> ⚠️ **PENDÊNCIA DE PROVENIÊNCIA DO TEXTO — LER ANTES DE COLETAR ACEITE REAL.**
 > O texto abaixo é o que foi **redigido neste repositório** em 25/07/2026 e
-> levado à revisão. Se o advogado alterou qualquer redação, **este arquivo
-> ainda não reflete essas alterações** — quem tem o retorno da revisão deve
-> substituir as cláusulas por elas antes de qualquer publicação. Não tratar
-> este texto como "o que o advogado aprovou" sem essa conferência.
+> levado à revisão. Segundo o mantenedor, o advogado deu um **OK informal**
+> sobre esse texto — **não apresentou parecer formal**, e a análise **segue
+> em curso**. Este arquivo é o texto vigente para construir a V1.4 (página +
+> PDF), mas **não é ainda um parecer jurídico fechado**: se qualquer redação
+> mudar quando a análise formal chegar, este arquivo precisa ser atualizado
+> antes de o termo coletar aceite real de um competidor.
 >
 > **Escopo de equipamento (D20):** o evento é **exclusivamente de skate**.
 > Nenhuma cláusula deve citar patins, bicicleta, patinete ou outro
