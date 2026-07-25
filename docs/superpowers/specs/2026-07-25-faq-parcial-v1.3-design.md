@@ -22,8 +22,10 @@ documentada em nenhum lugar do repositório: "o que levar" e
 (`AGENT.md`), essas respostas foram confirmadas com o Lain durante o
 brainstorming desta sessão e registradas como **D16** em `02-DECISOES.md`:
 
-- **O que levar:** skate/patins, equipamento de segurança e documento de
-  identificação para credenciamento.
+- **O que levar:** skate, equipamento de segurança (capacete e proteções) e
+  documento de identificação para credenciamento. *(Corrigido em 25/07/2026
+  por D20 — a versão original desta spec dizia "skate/patins"; o evento é
+  exclusivamente de skate.)*
 - **Acompanhantes/público:** entrada livre, evento aberto à comunidade.
 - **Perguntas que dependem do regulamento** (faixas etárias, cota
   presencial, chuva/adiamento): entram na lista com sticker **"em breve"**

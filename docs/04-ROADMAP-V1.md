@@ -5,7 +5,9 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 25/07/2026.
+> Última atualização: 25/07/2026 — V1.3 concluída; V1.4–V1.7 decompostas
+> (termo, countdown, motion/efeitos, slots de foto); mapa de completude dos
+> 11 itens da spec adicionado.
 
 ## O que é o V1
 
@@ -96,18 +98,18 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.3 · FAQ parcial
 
-- **Estado:** **em implementação** (25/07/2026), branch `feat/faq-parcial-v1.3`.
-  V1.2 foi rejeitada (ver acima) e não fica na fila; V1.3 é a sub-etapa
-  atual. Só as perguntas com **resposta certa hoje** têm texto; as que
-  dependem do regulamento (P6) entram na lista marcadas **"em breve"**
-  (decisão D16 em `02-DECISOES.md`: manter visíveis com sticker, não
-  esconder).
+- **Estado:** ✅ **concluída e publicada** (25/07/2026, PR #33). Só as
+  perguntas com **resposta certa hoje** têm texto; as que dependem do
+  regulamento (P6) entram na lista marcadas **"em breve"** (decisão D16 em
+  `02-DECISOES.md`: manter visíveis com sticker, não esconder). V1.2 foi
+  rejeitada (ver acima) e não fica na fila.
 - **Entrega:** seção de FAQ com padrão de disclosure `<details>`/`<summary>`
   nativo (novo padrão do projeto, documentado em `05-DESIGN.md`), conteúdo
   em fonte única `data/faq.ts` (MDX descartado — projeto não tem infra MDX
   hoje, ver D13/D7). Perguntas com resposta hoje (conteúdo confirmado em
   D16): taxa (não tem), categorias (iniciante/amador/feminino), o que levar
-  (skate/patins + equipamento de segurança + documento), acompanhantes/
+  (skate + equipamento de segurança + documento — **corrigido por D20**, a
+  versão original dizia "skate/patins"), acompanhantes/
   público (entrada livre). Perguntas que aguardam regulamento (faixas
   etárias, tamanho da cota presencial, política de chuva/adiamento): sticker
   "em breve", não ficam fora da lista.
@@ -116,6 +118,147 @@ terceiros. É de propósito uma leva pequena.
 - **Pronto quando:** FAQ lê bem no celular; nenhuma resposta pendente
   aparece inventada; acrescentar/editar pergunta é mexer só na fonte de
   dados.
+
+### V1.4 · Termo de responsabilidade — página, PDF e política de aceite
+
+- **Estado:** **construível agora** — destravada por **I3 resolvida** e
+  **D19** (25/07/2026). É a próxima sub-etapa da fila.
+- **Entrega:**
+  1. Fonte única `data/termo.ts` — versão, data de validação jurídica e as
+     cláusulas como array estruturado (`{ titulo, texto }`), com os dois
+     blocos: maior de idade e autorização de responsável por menor. A página
+     e o PDF renderizam do **mesmo** array; editar o texto é mexer num lugar.
+  2. Rota estática `/termo` no vocabulário do site (registro concreto para
+     leitura longa, `SectionHeader`, tokens do §2).
+  3. Botão "Baixar PDF" — componente cliente com **import dinâmico no
+     clique** (`await import(...)`), mantendo a lib fora do bundle inicial
+     (D19; orçamento §6.4).
+  4. Política de aceite documentada na página: checkbox eletrônico no
+     formulário externo + papel idêntico no credenciamento (D19).
+- **Consome do design:** §3.3 (SectionHeader), §3.1 (botões), §2 (tokens),
+  §1.5 (tom), §6.4 (orçamento de JS).
+- **A decidir na spec (não assumir):** como a identidade visual entra no
+  PDF. Embutir **Anton** no jsPDF exige carregar a fonte em base64 (payload
+  considerável, mesmo com import dinâmico); a alternativa é usar as fontes
+  padrão do jsPDF com as **cores da marca** + o **logo PNG** no cabeçalho.
+  Decidir isso explicitamente antes de implementar.
+- **Pronto quando:** editar uma cláusula é mexer só em `data/termo.ts` e
+  reflete na página **e** no PDF; o PDF sai legível em A4 e imprimível em
+  preto e branco; o bundle inicial não cresce (medido no `pnpm build`);
+  `/termo` navegável por teclado e com hierarquia real de headings.
+
+### V1.5 · Countdown com a data prevista
+
+- **Estado:** **construível agora** — decisão do Lain (25/07/2026): usar a
+  **data prevista** como valor atual, em vez de esperar P1. O que era
+  bloqueio ("countdown só com data oficial") passa a ser um **rótulo
+  honesto**.
+- **Entrega:**
+  1. `data/evento.ts` ganha uma forma legível por máquina (ex.:
+     `dataPrevistaISO: "2026-08-22"`) ao lado das strings de exibição que já
+     existem — **uma fonte, várias formas**; trocar pela data oficial é
+     editar esse arquivo e nada mais.
+  2. `components/countdown.tsx` (cliente — depende de relógio) com
+     `StickerBadge` variante `data` deixando explícito que é **previsão**,
+     nunca data confirmada (disciplina de placeholder do `AGENT.md`).
+  3. Tratamento de SSG: com `output: 'export'` o HTML é gerado no build, então
+     o valor inicial é calculado **na montagem** no cliente, com um estado
+     inicial estável, para não haver divergência de hidratação nem CLS.
+- **Consome do design:** §3.6 (sticker), §2 (tokens), §1.5 (tom do hero),
+  §6.4 (CLS < 0,1).
+- **Cuidado de acessibilidade (definir na spec):** dígitos que mudam a cada
+  segundo dentro de `aria-live` **inundam** leitor de tela. O padrão previsto
+  é: dígitos visuais com `aria-hidden` + um resumo textual legível ("faltam
+  cerca de 28 dias para 22 de agosto de 2026 — data prevista") que só muda de
+  forma relevante.
+- **Pronto quando:** trocar a data é editar `data/evento.ts`; a palavra
+  "previsão" é inseparável do número; sem divergência de hidratação; leitor de
+  tela anuncia o prazo uma vez, não a cada segundo.
+
+### V1.6 · Motion, feedback e efeitos — reforço no site inteiro
+
+- **Estado:** **construível agora** — pedido do Lain (24/07 e 25/07/2026).
+  Sai do estacionamento; **precisa de spec própria** antes do plano, porque
+  toca todas as seções já publicadas.
+- **Entrega (escopo a fechar na spec):**
+  1. **Entrada de seção** — estender o `Reveal`/ScrollTrigger que a V1.1
+     aplicou em Hero e Localização às seções restantes (Sobre, Categorias,
+     Patrocínio, Pix, Contato, FAQ), com o "stencil puxado" do título e o
+     stagger de listas/cards do §6.1.
+  2. **Micro-feedback de interação** — os gestos já tabelados no §6.1 que
+     ainda não existem em toda parte: "carimbada" do sticker na entrada,
+     sublinhado-rabisco crescendo no hover de link, traço do rabisco do hero
+     se desenhando (`stroke-dashoffset`).
+  3. **Feedback de estado** — revisar os retornos que já existem (copiar
+     chave Pix, abrir/fechar menu, `<details>` do FAQ) para que todos tenham
+     resposta visual imediata e anúncio acessível coerente.
+- **Consome do design:** §6.1 (linguagem de motion — a tabela é o contrato),
+  §6.2 (guardrails do GSAP), §6.4 (orçamento), §3.x (estados dos componentes).
+- **Guardrails que reprovam o PR** (§6.2, valem integralmente): só `gsap`
+  core + `ScrollTrigger`; só `transform` e `opacity`; `prefers-reduced-motion`
+  via `gsap.matchMedia()` com versão estática equivalente; init preguiçoso
+  após hidratação; sem `pin` e sem `scrub` pesado; teste em celular mediano
+  antes do merge.
+- **Fora desta sub-etapa:** WebGL/shader. O §6.3 registra OGL apenas como
+  **candidato** de v1 — entrar nele exige decisão explícita à parte, não vem
+  de carona no reforço de motion.
+- **Pronto quando:** nenhuma seção fica "morta" ao rolar; com
+  `prefers-reduced-motion` ativo tudo aparece estático e legível; Lighthouse
+  mobile segue dentro do §6.4; nada animado causa layout shift.
+
+### V1.7 · Slots de foto — preparar a troca sem foto real
+
+- **Estado:** **construível agora**, com uma ressalva importante de escopo.
+  Decisão do Lain (25/07/2026): tratar foto como slot/template no padrão do
+  hero (§4.2), fácil de trocar depois.
+- **O que "slot" significa aqui (e o que NÃO significa):** no §4.2 o slot é
+  uma **afordância de código** — o componente recebe `fotoSrc?` e, sem foto,
+  renderiza um desenho **completo** (o hero gráfico), não uma lacuna. O §4.3
+  e a regra deste roadmap proíbem **casca vazia**: nada de moldura de foto
+  vazia, seção "esperando imagem" ou página de galeria sem fotos. Slot é
+  contrato de prop, não placeholder visível.
+- **Entrega:**
+  1. Confirmar e documentar o slot `fotoSrc` do hero já existente, incluindo
+     o tratamento duotone + scrim descrito no §4.2, para que a troca futura
+     seja "1 arquivo + 1 prop".
+  2. Definir o **schema** de `data/gallery.json` com os campos de portão de
+     direito de imagem (`credito`, `permissao`) obrigatórios por foto, e o
+     contrato do componente de moldura/colagem (§4.3) — pronto para ativar.
+  3. **Não publicar** página ou seção de galeria enquanto não houver foto com
+     permissão (I1/I2 + portão de imagem).
+- **Consome do design:** §4.2 (slot do hero, duotone, scrim), §4.3 (colagem,
+  regra de não deixar moldura vazia), §2 (tokens).
+- **Pronto quando:** existe um caminho documentado e testado para acender a
+  foto do hero com 1 arquivo + 1 prop; o schema da galeria recusa foto sem
+  crédito/permissão; o site publicado continua **sem** nenhuma moldura vazia.
+
+---
+
+## Mapa de completude do V1 (os 11 itens de `03-SPEC-SITE.md` §3.2)
+
+O que falta para o site estar completo antes do campeonato:
+
+| # | Item da spec | Status | O que falta / trava |
+|---|---|---|---|
+| 1 | Countdown | 🟢 construível | **V1.5** — usa data prevista (P1 só troca o valor) |
+| 2 | Regulamento completo | 🔴 travado | **P6** — sem texto real não nasce página (sem casca) |
+| 3 | Data, local e como chegar | 🟡 parcial | Mapa/endereço/e-mail entregues na V1.1; faltam **transporte e estacionamento** (conteúdo a levantar) |
+| 4 | Pré-inscrição + modelo híbrido | 🟡 parcial | Termo destravado (I3/D19); falta **criar o formulário** no Tally/Forms (tarefa da ASB) e o **tamanho da cota** presencial (P6) |
+| 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
+| 6 | Patrocinadores confirmados | 🔴 travado | Nenhum patrocinador fechado (P4, captação é da ASB) + **I7** para a UIEMAPV |
+| 7 | Galeria (2021 + pista) | 🔴 travado | **I1/I2** + permissão de imagem. **V1.7** só prepara o schema, não publica página |
+| 8 | FAQ | 🟡 parcial | 4 respostas no ar (V1.3); as 3 restantes aguardam **P6** |
+| 9 | Programação do dia | 🔴 travado | **P6** + logística (horários de bateria/credenciamento/final) |
+| 10 | Avisos/atualizações | 🟡 parcial | Infra é trivial; falta aviso real publicável — a parceria confirmada **não** serve enquanto I7 estiver aberta |
+| 11 | Imprensa/contato ampliado | 🟡 parcial | E-mail entregou na V1.1; resto quando houver assessoria/canais |
+
+Transversal (não está na lista dos 11, mas o Lain pediu):
+
+| Tema | Status | Observação |
+|---|---|---|
+| Motion / feedback / efeitos | 🟢 construível | **V1.6** — spec própria, guardrails do §6.2 |
+| Slots de foto | 🟢 construível | **V1.7** — afordância de código, sem casca vazia |
+| Recursos "gameficados" | ⚪ sem escopo | Continua exigindo brainstorming + spec; avaliar contra o anti-escopo |
 
 ---
 
@@ -126,39 +269,70 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 
 | Sub-etapa | Destrava com | Observação |
 |---|---|---|
-| Countdown para a data | **P1** — data travar oficialmente | Por ora, previsão em texto (V1.1). Countdown lê de `data/evento.ts`. |
-| Regulamento completo (página) | **P6** — regulamento/faixas etárias/pontuação | Página nasce só quando houver texto real; sem casca. |
-| Pré-inscrição real (formulário + termo) | **I3** (texto jurídico) + **P6** (cota presencial) | Formulário externo (Tally/Forms) com condicional de menor por data de nascimento (`AGENT.md`). |
-| Termo de responsabilidade + autorização de menor | **I3** — validação jurídica | Insumo da pré-inscrição; mesmo texto para o papel no dia. |
+| Regulamento completo (página) | **P6** — regulamento/faixas etárias/pontuação | Página nasce só quando houver texto real; sem casca. Reaproveita o padrão de disclosure do §3.6-bis. |
+| Formulário de pré-inscrição (Tally/Forms) | **Criar o formulário** (tarefa da ASB) + **P6** (tamanho da cota) | O termo deixou de travar (I3 resolvida / D19). Condicional de menor **por data de nascimento**, nunca por categoria (`AGENT.md`). Aceite eletrônico do termo por checkbox. |
 | Programação do dia | **P6** + logística do evento | Horários de baterias/credenciamento/final. |
-| Patrocinadores confirmados (grade de logos) | Patrocinador fechado + **I7** (confirmação UIEMAPV) | `data/sponsors.json`; site não menciona UIEMAPV até o ok do instituto. |
-| Galeria (2021 + pista atual) | **I1** / **I2** + **permissão de imagem** | Cada foto com `credito` e `permissao`; portão de direito de imagem. |
-| Foto real no hero | Foto final + **permissão de imagem** | Slot `fotoSrc` já existe (`05-DESIGN.md` §4.2); troca é 1 arquivo + 1 prop quando destravar. |
-| Avisos/atualizações (lista MDX) | Ter aviso real para publicar | Infra é trivial; sem conteúdo, não construir casca. |
-| Motion/efeitos — reforço no site inteiro | Spec própria de motion (brainstorming) | Pedido do Lain em 24/07/2026. V1.1 aplicou um recorte pontual só onde já tocava (hero, Localização — `05-DESIGN.md` §6.1); o resto das seções existentes (Sobre, Categorias, Patrocínio etc.) fica para uma spec dedicada, respeitando os guardrails de §6.2 e o orçamento de §6.4. |
+| Patrocinadores confirmados (grade de logos) | Patrocinador fechado (P4) + **I7** (logo/links da UIEMAPV) | `data/sponsors.json`. Parceria já confirmada (D18), mas o site **não menciona** a UIEMAPV até chegarem logo e link oficiais. |
+| Galeria (2021 + pista atual) | **I1** / **I2** + **permissão de imagem** | Cada foto com `credito` e `permissao`; portão de direito de imagem. **V1.7** define o schema; a página só nasce com foto real. |
+| Foto real no hero | Foto final + **permissão de imagem** | Slot `fotoSrc` (`05-DESIGN.md` §4.2); **V1.7** garante que a troca seja 1 arquivo + 1 prop. |
+| Avisos/atualizações (lista MDX) | Ter aviso real para publicar | Infra é trivial; sem conteúdo, não construir casca. A parceria confirmada não serve como aviso enquanto I7 estiver aberta. |
+| Transporte e estacionamento ("como chegar") | Conteúdo a levantar com a organização | Item 3 e item 8 (FAQ) da spec §3.2. Ficou fora da V1.3 de propósito; entra quando a informação existir — não inferir. |
 | Recursos "gameficados" / interatividade | Spec própria (brainstorming) | Pedido do Lain em 24/07/2026. Sem escopo definido — precisa de brainstorming + spec antes de virar plano; avaliar contra o anti-escopo de `AGENT.md` (ex.: nada que implique conta de usuário/login/backend, hoje fora de escopo do site). |
-| Imprensa/contato ampliado | Assessoria/canais adicionais | E-mail já entra na V1.1; resto quando houver. |
+| Imprensa/contato ampliado | Assessoria/canais adicionais | E-mail entregue na V1.1; resto quando houver. |
+| Shader/WebGL no hero (OGL) | Decisão explícita do Lain | §6.3 registra OGL (~10KB) apenas como **candidato** de v1. Não entra de carona na V1.6. |
+
+> **Saíram do estacionamento em 25/07/2026:** countdown (→ **V1.5**, passa a
+> usar a data prevista), termo de responsabilidade (→ **V1.4**, I3 resolvida)
+> e motion/efeitos (→ **V1.6**, pedido do Lain).
 
 ---
 
 ## Ordem sugerida e o que vem depois
 
-1. **V1.1 · Info básica** — concluída, mergeada em `dev` (PR #30, 24/07/2026).
-2. ~~V1.2 · Polish do hero~~ — **rejeitada em 25/07/2026**, sai da fila.
-3. **V1.3 · FAQ parcial** — sub-etapa atual (em implementação, 25/07/2026).
+Concluídas:
 
-Assim que a reunião com a Administração acontecer (data + regulamento), o
-estacionamento começa a destravar — provavelmente na ordem: **regulamento
-→ countdown → pré-inscrição/termo → programação**. Conteúdo de terceiros
-(fotos, patrocinadores) entra quando existir, independente da reunião.
+1. **V1.1 · Info básica** — ✅ PR #30 (24/07/2026).
+2. ~~V1.2 · Polish do hero~~ — ❌ **rejeitada em 25/07/2026**, fora da fila.
+3. **V1.3 · FAQ parcial** — ✅ PR #33 (25/07/2026).
+
+Fila proposta (cada uma ganha **spec → plano → PR** própria, no fluxo da
+V1.1 — este roadmap decompõe, não substitui as specs):
+
+4. **V1.4 · Termo de responsabilidade** — primeira da fila: destravada por
+   I3/D19, entrega valor imediato (é insumo da pré-inscrição) e não depende
+   de mais ninguém. Tem uma decisão de fonte no PDF a fechar na spec.
+5. **V1.5 · Countdown** — pequena e independente; muda o hero de "data em
+   texto" para contagem, sem esperar P1.
+6. **V1.6 · Motion, feedback e efeitos** — maior e transversal (toca todas as
+   seções publicadas), por isso vem depois das duas pequenas; exige spec
+   dedicada por causa dos guardrails do §6.2.
+7. **V1.7 · Slots de foto** — preparatória e de baixo risco; pode entrar em
+   qualquer ponto, inclusive junto de outra sub-etapa.
+
+**Por que nesta ordem:** V1.4 e V1.5 são recortes pequenos e fechados que
+destravam conteúdo real; V1.6 é a de maior superfície de regressão e se
+beneficia de um site já estável; V1.7 não entrega nada visível hoje (é
+preparação), então não disputa prioridade com as outras.
+
+Quando a reunião formal com a Administração acontecer (data oficial + P6), o
+estacionamento destrava — provavelmente na ordem **regulamento → cota da
+pré-inscrição → programação do dia**, e o countdown da V1.5 só troca de
+valor. Conteúdo de terceiros (fotos com permissão, logo da UIEMAPV,
+patrocinadores) entra quando existir, independente da reunião.
 
 ## Pendências que este roadmap observa
 
 Fonte da verdade é `02-DECISOES.md`. Resumo do que mais pesa no V1:
 
-- **P1** data · **P6** regulamento/cota — destravam o grosso do V1.
-- **I1** fotos 2021 · **I2** foto da pista · **I3** termo jurídico ·
-  **I7** confirmação UIEMAPV — cada um trava uma sub-etapa específica acima.
+- **P1** data oficial · **P6** regulamento/cota — destravam o grosso do V1.
+  (P1 deixou de travar o countdown: a V1.5 usa a previsão.)
+- **P3** banheiros/área de público · **P4** itens da premiação e captação —
+  parcialmente resolvidas por D17; o que sobrou está nomeado em
+  `02-DECISOES.md`.
+- **I1** fotos 2021 · **I2** foto da pista · **I7** logo/links da UIEMAPV —
+  cada um trava uma sub-etapa específica acima.
+- **I3 (termo jurídico): resolvida** em 25/07/2026 — destravou a V1.4 e
+  removeu o bloqueio jurídico da pré-inscrição.
 - Datas e fotos atuais são **provisórias** por decisão do Lain (24/07/2026)
   — o site as trata como tal (fonte única + placeholder), nunca como
   definitivas.

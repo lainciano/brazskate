@@ -1,10 +1,12 @@
 # Braz Skate — Contexto do Projeto
 
 > **STATUS: DOCUMENTO PRELIMINAR — SUJEITO A REVISÃO.**
-> A reunião com a Administração Regional de Brazlândia ainda não aconteceu.
-> Data do evento, valores de premiação, infraestrutura e apoios institucionais
-> estão em aberto e podem alterar qualquer ponto deste documento.
-> Última atualização: 16/07/2026.
+> Houve uma **conversa** (não reunião formal) entre ASB, Administração
+> Regional e instituto parceiro em 24/07/2026, que garantiu o espaço e
+> produziu **datas previstas** — mas **não** um compromisso formal. Data
+> oficial, valores/itens de premiação e parte da infraestrutura seguem em
+> aberto e podem alterar qualquer ponto deste documento.
+> Última atualização: 25/07/2026.
 
 ## O que é
 
@@ -33,7 +35,14 @@ de todo o Distrito Federal e entorno.
   (composição da equipe em formação; será detalhada após reunião presencial).
 - Organização núcleo: 3 skatistas + 1 administrador regional apoiador.
 - **UIEMAPV** (instituto/ONG parceiro, [@uiemapvsocial](https://www.instagram.com/uiemapvsocial)):
-  responsável pela estrutura e premiação do evento.
+  responsável pela estrutura e premiação do evento. Escopo confirmado a
+  princípio (D17): **água, tenda, som, fechamento da rua, mesa de frios e
+  frutas, premiação, medalhas e troféu**. Parceria formalmente confirmada
+  pelo instituto (D18), mas **o site ainda não o menciona** — falta o logo e
+  os links oficiais (I7).
+- **Divisão de responsabilidades** (D17): a **ASB** fica com regulamento,
+  formulário de inscrição, programação do dia, captação de patrocínio e
+  divulgação; a UIEMAPV com o escopo de fornecimento acima.
 - Não há equipe de TI. O site é mantido por **uma única pessoa**
   (desenvolvedor full stack: Java/Spring Boot, React/Next.js/TypeScript,
   Linux Fedora/KDE, fluxo de trabalho com Claude Code).
@@ -70,6 +79,11 @@ responsabilidade. Por isso o formulário de inscrição coleta **data de
 nascimento** e condiciona os campos de responsável a partir dela — nunca a
 partir da categoria escolhida.
 
+O texto do termo já está **validado juridicamente** (I3 resolvida em
+25/07/2026) — ver `termo-responsabilidade.md`. O aceite se dá por checkbox
+eletrônico no formulário externo, com versão em papel idêntica no
+credenciamento presencial (D19).
+
 ## O que já foi decidido
 
 - Inscrição: **modelo híbrido** — pré-inscrição online (formulário externo →
@@ -81,13 +95,21 @@ partir da categoria escolhida.
 
 ## O que está em aberto (depende da reunião com a Administração)
 
-- Data do evento.
-- Autorização de uso do espaço + possível fechamento da rua até a quadra de vôlei.
-- Infraestrutura (banheiros, água/carro-pipa, som, área de público).
-- Verba / patrocínio institucional / indicação de apoiadores.
-- Reparos na pista (iluminação, rachaduras) antes do evento.
-- Valores e itens da premiação.
-- Regulamento completo (faixas etárias, critérios de pontuação, formato de baterias).
+- **Data oficial do evento** — há previsão (22/08/2026), tratada como tal em
+  todo o site; a data só trava com confirmação formal (P1).
+- **Infraestrutura ainda não coberta:** banheiros e organização da área de
+  público — água, tenda e som já entraram no escopo da UIEMAPV (D17), mas
+  banheiros **não** constam do que foi confirmado (P3).
+- **Itens e valores da premiação** — a UIEMAPV fornece premiação, medalhas e
+  troféu (D17), mas a lista de itens segue não confirmada (P4).
+- **Captação de patrocínio** — responsabilidade da ASB (D17), sem
+  patrocinador fechado até agora (P4).
+- Reparos na pista (iluminação, rachaduras) antes do evento (P5).
+- Regulamento completo (faixas etárias, critérios de pontuação, formato de
+  baterias, tamanho da cota presencial) (P6).
+
+> Uso do espaço e fechamento da rua **deixaram de ser pendência** em
+> 24/07/2026 (P2 resolvida — ver D15 em `02-DECISOES.md`).
 
 ## Documentos relacionados
 
