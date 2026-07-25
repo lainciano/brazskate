@@ -35,11 +35,14 @@ de todo o Distrito Federal e entorno.
   (composição da equipe em formação; será detalhada após reunião presencial).
 - Organização núcleo: 3 skatistas + 1 administrador regional apoiador.
 - **UIEMAPV** (instituto/ONG parceiro, [@uiemapvsocial](https://www.instagram.com/uiemapvsocial)):
-  responsável pela estrutura e premiação do evento. Escopo confirmado a
-  princípio (D17): **água, tenda, som, fechamento da rua, mesa de frios e
-  frutas, premiação, medalhas e troféu**. Parceria formalmente confirmada
-  pelo instituto (D18), mas **o site ainda não o menciona** — falta o logo e
-  os links oficiais (I7).
+  responsável pela estrutura e premiação do evento. Escopo **comprometido**
+  a princípio (D17) — ainda não entregue: **água, tenda, som, fechamento da
+  rua, mesa de frios e frutas, premiação, medalhas e troféu**. Parceria
+  formalmente confirmada pelo instituto (D18), mas **o site ainda não o
+  menciona** — falta o logo e os links oficiais (I7).
+- **Administração Regional:** confirmou banheiros e organização da área de
+  público, fechando o restante da infraestrutura ao lado do compromisso da
+  UIEMAPV (P3 resolvida em 25/07/2026).
 - **Divisão de responsabilidades** (D17): a **ASB** fica com regulamento,
   formulário de inscrição, programação do dia, captação de patrocínio e
   divulgação; a UIEMAPV com o escopo de fornecimento acima.
@@ -97,19 +100,18 @@ credenciamento presencial (D19).
 
 - **Data oficial do evento** — há previsão (22/08/2026), tratada como tal em
   todo o site; a data só trava com confirmação formal (P1).
-- **Infraestrutura ainda não coberta:** banheiros e organização da área de
-  público — água, tenda e som já entraram no escopo da UIEMAPV (D17), mas
-  banheiros **não** constam do que foi confirmado (P3).
-- **Itens e valores da premiação** — a UIEMAPV fornece premiação, medalhas e
-  troféu (D17), mas a lista de itens segue não confirmada (P4).
-- **Captação de patrocínio** — responsabilidade da ASB (D17), sem
-  patrocinador fechado até agora (P4).
+- **Itens e valores da premiação** — a UIEMAPV **se comprometeu** a fornecer
+  premiação, medalhas e troféu (D17), mas **nada está em mãos** e a lista de
+  itens segue não confirmada (P4).
+- **Captação de patrocínio** — responsabilidade da ASB (D17), **ainda não
+  iniciada** — nenhum patrocinador fechado até agora (P4).
 - Reparos na pista (iluminação, rachaduras) antes do evento (P5).
 - Regulamento completo (faixas etárias, critérios de pontuação, formato de
   baterias, tamanho da cota presencial) (P6).
 
-> Uso do espaço e fechamento da rua **deixaram de ser pendência** em
-> 24/07/2026 (P2 resolvida — ver D15 em `02-DECISOES.md`).
+> **Deixaram de ser pendência:** uso do espaço e fechamento da rua, em
+> 24/07/2026 (P2 — ver D15); banheiros e área de público, em 25/07/2026
+> (P3). Ambas resolvidas em `02-DECISOES.md`.
 
 ## Documentos relacionados
 
