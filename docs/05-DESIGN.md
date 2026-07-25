@@ -554,13 +554,13 @@ puxar um stencil, descolar um papel).
 
 ### 6.2 GSAP — ferramenta aprovada e seus guardrails
 
-**Escopo permitido no MVP: `gsap` core + `ScrollTrigger`. Nada além.**
+**Escopo permitido no MVP:** `gsap` core + `ScrollTrigger` + **plugins aprovados por D23** (SplitText, DrawSVG, MorphSVG, CustomEase, CustomWiggle, CustomBounce, ScrambleText). ScrollSmoother requer decisão à parte — ver D23.1. **Nada além desta lista sem aprovação explícita.**
 
 Guardrails obrigatórios (quebrar qualquer um = PR reprovado):
 
 1. **`prefers-reduced-motion`:** via `gsap.matchMedia()` — versão
    estática equivalente (tudo visível, opacidade 1, sem transform).
-   Testar com a preferência ativa.
+   Testar com a preferência ativa. **Nota especial para ScrollSmoother (D23.1):** scroll suavizado é justamente o tipo de coisa que causa desconforto vestibular — se ScrollSmoother entrar, deve ser **completamente desligado** quando `prefers-reduced-motion: reduce`.
 2. **Só `transform` e `opacity`** — nunca animar propriedades de layout
    (width/height/top). Zero layout shift causado por animação (elementos
    nascem no lugar; animação é revelação, não reposicionamento).
@@ -608,7 +608,8 @@ força a conversa, não o dogma.
 | Item | Status | Impacto no design |
 |---|---|---|
 | Tipografia Anton + Archivo | Aprovado 16/07/2026 | §2.2 |
-| Sem WebGL no MVP; GSAP aprovado | Aprovado 16/07/2026 | §6 |
+| Sem WebGL no MVP; GSAP core + ScrollTrigger apenas | Aprovado 16/07/2026 (D14) | §6.2–6.3 |
+| **EMENDA: GSAP — plugins ampliados + ScrollSmoother em separado (D23)** | **Aprovado 25/07/2026** | **§6.2** |
 | Logo só em PNG (sem vetor) | Confirmado 16/07/2026 | Logo entra como selo; formas do hero são abstratas, não redesenho da ilustração (§4.1) |
 | UIEMAPV no site | **Aguardando confirmação com o instituto** (I7) | Site NÃO menciona UIEMAPV até o ok; quando vier, entra como parceiro institucional na seção de patrocínio |
 | Foto própria da pista (I2) | Pendente | Hero gráfico com slot (§4) |

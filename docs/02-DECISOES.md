@@ -10,6 +10,7 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D23 | **GSAP — emenda ampla ao §6.2 de `05-DESIGN.md`:** plugins permitidos expandem de "gsap core + ScrollTrigger apenas" para a **lista completa aprovada no spec** (`2026-07-25-gsap-avancado-design.md` §3): SplitText, DrawSVG, MorphSVG, CustomEase, CustomWiggle, CustomBounce, ScrambleText. ScrollSmoother recebe **decisão própria (ver item 1 abaixo).** Todos os guardrails do §6.2 continuam integralmente em vigor — a emenda amplia os plugins, **não afrouxa** `prefers-reduced-motion`, lazy-init, performance ou teste em celular. **Grão animado entra**, sujeito a medição de perf em celular real antes do merge (guardrail §6.4). **SplitText no h2:** duas opções viáveis (stencil puro, ou stencil + split em paralelo) — revisor escolherá durante implementação conforme ficar melhor visualmente | A spec `2026-07-25-gsap-avancado-design.md` mapeou o que existe no pacote, o custo de performance (lazy-loaded fora do bundle inicial) e as aplicações concretas. A emenda formaliza o que antes era apenas "sim, vale avaliar" | 25/07/2026 |
 | D22 | Categoria **feminino não é exclusiva** — competidora escolhe livremente entre iniciante, amador ou feminino. Formulário não pergunta gênero como campo isolado; a condicional de menor (D10) não depende da categoria escolhida | D8 fixou as três categorias mas não dizia se feminino segregava a competidora das demais; lacuna identificada ao detalhar o blueprint do formulário (`docs/blueprint-formulario-pre-inscricao.md`) | 25/07/2026 |
 | D21 | Formulário de pré-inscrição: ferramenta fechada em **Tally** (encerra o "testar os dois" de `03-SPEC-SITE.md` §5.2 — a lógica condicional de menor é nativa no Tally, mais frágil no Google Forms). Menor **preenche sozinho** online; o checkbox de aceite vale como declaração de ciência, e o **aceite que vale juridicamente é o papel assinado pelo responsável no credenciamento** (a ASB confirma por WhatsApp antes do evento). **Sem CPF/RG no formulário online** (minimização de dado pessoal — documento é conferido só presencialmente). Bloco do responsável exigido pela **idade na data do evento**, não na data de preenchimento — se a data prevista mudar (P1), casos de fronteira precisam ser reconferidos manualmente | Fecha quatro lacunas que `03-SPEC-SITE.md` §5.2 e `docs/termo-responsabilidade.md` deixavam em aberto. Detalhado no blueprint (`docs/blueprint-formulario-pre-inscricao.md`) e na spec `docs/superpowers/specs/2026-07-25-blueprint-formulario-pre-inscricao-design.md` | 25/07/2026 |
 | D20 | Evento é **exclusivamente de skate** — nenhuma peça do site menciona patins ou outro equipamento não-skate. Revisa D16, que registrava "skate/patins" na resposta de "o que levar" | Confirmado pelo mantenedor em 25/07/2026; o FAQ publicado (`data/faq.ts`) e a spec da V1.3 foram corrigidos, e a versão anterior de D16 foi para "Decisões revisadas" | 25/07/2026 |
@@ -32,6 +33,19 @@
 | D9 | Premiação: **feminino = medalha + premiação para todas**; demais categorias = medalha para todos + premiação adicional ao top 3 | Valorização da participação feminina e da participação em geral | 07/07/2026 |
 | D10 | Formulário coleta **data de nascimento** e exige responsável/autorização para menores em **qualquer categoria** | Menores não estão restritos a uma categoria específica; a obrigação legal segue a idade, não a categoria | 07/07/2026 |
 | D11 | Domínio: `*.vercel.app` no MVP; avaliar compra de `.com.br` quando a data for confirmada | Não gastar antes de o evento ter data | 07/07/2026 |
+
+## Decisões sobre ScrollSmoother (D23 — 4 sub-itens)
+
+Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md` §6 como decisões que não deveriam ser assumidas. Agora fechadas:
+
+| # | Decisão | Status | Data |
+|---|---------|--------|------|
+| D23.1 | **ScrollSmoother: (a) header fora do wrapper, (b) header `fixed`, ou (c) não usar?** Decisão: **(a) Header fora do wrapper** — mantém o sticky, o resto rola suave. Exige reestruturar `app/layout.tsx` para separar header do conteúdo, mas preserva a navegação e resolve o conflito. ScrollSmoother fica como **item 8 do plano** (risco alto, revisto depois que 1–7 estiverem estáveis) | Decidido 25/07/2026 | 25/07/2026 |
+| D23.2 | **SplitText no `h2`: substitui o "stencil puxado" da V1.6 ou soma a ele?** Decisão: **deixar a escolha visual para o revisor** — as duas opções são viáveis (stencil puro mantém a V1.6; stencil + split em paralelo é mais chamativo). Implementação testa ambas, merge carrega a que ficar melhor | Decidido 25/07/2026 | 25/07/2026 |
+| D23.3 | **Grão animado entra?** Decisão: **sim, entra** — é identidade do site e performance-friendly se a base é SVG. Deve ser medido em celular real antes do merge (guardrail §6.4). Se Performance cair abaixo de 90, sai | Decidido 25/07/2026 | 25/07/2026 |
+| D23.4 | **A emenda ao §6.2 é ampla (todos os plugins liberados) ou restrita à lista aprovada?** Decisão: **ampla** — a lista no spec é tudo o que existe relevante no pacote e de custo aceitável. Futuras ampliações exigem nova decisão explícita | Decidido 25/07/2026 | 25/07/2026 |
+
+---
 
 ## Pendências (bloqueadas pela reunião com a Administração)
 
