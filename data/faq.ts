@@ -18,7 +18,7 @@ export const faq = [
     id: "o-que-levar",
     pergunta: "O que preciso levar no dia?",
     resposta:
-      "Seu skate/patins, equipamento de segurança e um documento de identificação para o credenciamento.",
+      "Seu skate, equipamento de segurança (capacete e proteções) e um documento de identificação para o credenciamento.",
   },
   {
     id: "publico",
