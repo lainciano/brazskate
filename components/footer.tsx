@@ -3,7 +3,7 @@ import { Grao } from "./grao";
 import { evento } from "@/data/evento";
 
 // Footer (docs/05-DESIGN.md §3.8): registro asfalto com grão, fechando o
-// cartaz com o mesmo clima do hero. Canais reais — sem e-mail (não existe).
+// cartaz com o mesmo clima do hero. Canais reais — WhatsApp + Instagram + e-mail (V1.1).
 
 const linksAncora = [
   { href: "#sobre", rotulo: "Sobre" },
