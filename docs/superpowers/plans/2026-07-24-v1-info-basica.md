@@ -17,6 +17,7 @@
 - **Design:** reusar tokens e componentes de `05-DESIGN.md` — `SectionHeader` (§3.3), `Botao` (§3.1), `Reveal` (§6.1), registros `registro-concreto`/`registro-asfalto` (§2.1). Não inventar padrão novo.
 - **Orçamento de performance** (`05-DESIGN.md` §6.4) segue valendo: o `iframe` do mapa é `loading="lazy"` e não fica acima da dobra — não deve mexer no LCP da home.
 - **Acessibilidade:** `iframe` com `title` descritivo; botão de fallback do mapa navegável por teclado; foco visível (herdado dos componentes).
+- **Reforço de motion/feedback (decisão do Lain, 24/07/2026):** escopo ampliado *só* para as peças que esta sub-etapa já toca (stickers do hero, seção de Localização) — nada em seções não tocadas por este plano (isso fica anotado para um plano futuro, ver Task 5 Step 7). Usa exclusivamente ferramental já aprovado — GSAP/`useMotion`/`Reveal` existentes ou CSS puro seguindo o padrão de `--animate-marquee` em `app/globals.css` — **sem novas dependências**. Todos os guardrails de `05-DESIGN.md` §6.2 continuam valendo (só `transform`/`opacity`, `prefers-reduced-motion` via `matchMedia`/`motion-reduce:`, lazy-init, sem `pin`/`scrub`).
 - **Commits:** Conventional Commits, descrição em português (`CONTRIBUTING.md`).
 
 ## Prerequisites (base branch)
@@ -37,7 +38,9 @@ com esses merges.
 - **Modify** `components/contato.tsx` — terceiro botão: e-mail (`mailto`).
 - **Modify** `components/footer.tsx` — novo `<li>` de e-mail na lista de contato.
 - **Modify** `app/page.tsx` — inserir `<Localizacao />` entre `<Sobre />` e `<Categorias />`.
+- **Modify** `app/globals.css` — token `--animate-sticker-pulse` (pulso sutil de previsão nos stickers do hero).
 - **Modify** `docs/02-DECISOES.md`, `docs/05-DESIGN.md`, `docs/contatos.md` — refletir o estado real (D15, P2 resolvida, nota em P1, linha de e-mail, canal novo).
+- **Modify** `docs/04-ROADMAP-V1.md` — anota no "Estacionamento" o pedido do Lain (24/07/2026) de reforço de motion/efeitos site inteiro e de recursos "gameficados"/interatividade, para nascerem como spec própria num plano futuro (fora do escopo desta sub-etapa).
 
 ---
 
@@ -100,6 +103,7 @@ git commit -m "feat(dados): adiciona data/evento.ts como fonte única do evento"
 
 **Files:**
 - Modify: `components/hero.tsx`
+- Modify: `app/globals.css`
 
 **Interfaces:**
 - Consumes: `evento` de `@/data/evento` (Task 1).
@@ -142,21 +146,71 @@ Substituir por:
 </StickerBadge>
 ```
 
-- [ ] **Step 4: Verificar tipos e lint**
+- [ ] **Step 4: Pulso sutil de "previsão" nos dois stickers**
+
+Reforço de feedback pedido pelo Lain (24/07/2026), escopo limitado a este
+componente (ver Global Constraints). Em `app/globals.css`, dentro do bloco
+`@theme`, junto ao token `--animate-marquee` já existente, adicionar:
+
+```css
+--animate-sticker-pulse: sticker-pulse 2.4s ease-in-out infinite;
+
+@keyframes sticker-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.015);
+    opacity: 0.92;
+  }
+}
+```
+
+Só `transform`/`opacity` (guardrail `05-DESIGN.md` §6.2.2), CSS puro — sem
+JS/GSAP extra. Reforça semanticamente que o dado é provisório, no mesmo
+espírito do StickerBadge (`05-DESIGN.md` §3.6: "informação pendente vira
+adesivo, não site incompleto").
+
+Em `components/hero.tsx`, adicionar `animate-sticker-pulse
+motion-reduce:animate-none` ao `className` dos dois `<StickerBadge>` —
+mesma convenção de `motion-reduce:` já usada no marquee
+(`components/marquee.tsx`) e no `Botao`:
+
+```tsx
+<StickerBadge
+  variante="data"
+  className="animate-sticker-pulse motion-reduce:animate-none"
+>
+  Previsão: {evento.dataPrevistaCurta}
+</StickerBadge>
+```
+
+```tsx
+<StickerBadge
+  variante="breve"
+  className="animate-sticker-pulse motion-reduce:animate-none"
+>
+  Inscrição: previsão {evento.inscricaoAbrePrevistaCurta}
+</StickerBadge>
+```
+
+- [ ] **Step 5: Verificar tipos e lint**
 
 Run: `pnpm typecheck && pnpm lint`
 Expected: PASS.
 
-- [ ] **Step 5: Verificar no browser**
+- [ ] **Step 6: Verificar no browser**
 
 Run: `pnpm dev` e abrir `http://localhost:3000` (ou screenshot headless — neste ambiente há Chrome em `/home/lain/BurpSuiteCommunity/burpbrowser/143.0.7499.146/chrome`, usar `--headless=new --disable-gpu --no-sandbox --screenshot=...`).
-Expected: hero mostra o sticker vermelho "PREVISÃO: 22 DE AGOSTO" e o sticker creme "INSCRIÇÃO: PREVISÃO 01/08"; ambos cabem no pill sem estourar a largura no mobile (360px) e no desktop.
+Expected: hero mostra o sticker vermelho "PREVISÃO: 22 DE AGOSTO" e o sticker creme "INSCRIÇÃO: PREVISÃO 01/08"; ambos cabem no pill sem estourar a largura no mobile (360px) e no desktop; os dois pulsam suavemente (sem estourar o pill, sem tremor perceptível); com `prefers-reduced-motion: reduce` ativo no DevTools, o pulso some e o sticker fica estático.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add components/hero.tsx
-git commit -m "feat(home): hero mostra data/inscrição previstas de data/evento.ts"
+git add components/hero.tsx app/globals.css
+git commit -m "feat(home): hero mostra data/inscrição previstas de data/evento.ts, com pulso sutil de previsão"
 ```
 
 ---
@@ -199,7 +253,7 @@ export function Localizacao() {
 
           <div
             data-reveal
-            className="mt-10 overflow-hidden rounded-card shadow-card"
+            className="mt-10 overflow-hidden rounded-card shadow-card transition-[transform,box-shadow] duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-card-hover motion-reduce:transition-none"
           >
             <iframe
               src={mapaEmbedUrl(evento.local.coordenadas)}
@@ -226,6 +280,15 @@ export function Localizacao() {
 }
 ```
 
+O `hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-card-hover
+motion-reduce:transition-none` no card do mapa reforça feedback (pedido do
+Lain, 24/07/2026) reusando **exatamente** a mesma dupla
+transform+sombra/token `shadow-card-hover` e a mesma convenção
+`motion-reduce:` que `components/botao.tsx` já usa para "descolar da
+parede" (`05-DESIGN.md` §6.1) — nenhum padrão novo, só a aplicação do que
+já existe a mais um elemento. É CSS puro (`:hover`), sem JS: funciona sem
+depender de hidratação e não arrisca esconder o mapa se o JS falhar.
+
 - [ ] **Step 2: Inserir na home entre Sobre e Categorias**
 
 Em `app/page.tsx`, adicionar o import (mantendo a ordem alfabética dos imports existentes):
@@ -250,7 +313,7 @@ Expected: PASS; build estático gera a home sem erro.
 - [ ] **Step 4: Verificar no browser**
 
 Run: `pnpm dev` e abrir `http://localhost:3000` (ou screenshot headless, mobile 360px e desktop).
-Expected: seção "Onde acontece" aparece depois de "Sobre" e antes de "Categorias"; o mapa do Google carrega apontando para o Skate Park Brazlândia; o botão "Abrir no Google Maps" abre `evento.local.mapsUrl`; a seção lê bem no mobile (mapa em `aspect-video`, sem overflow horizontal).
+Expected: seção "Onde acontece" aparece depois de "Sobre" e antes de "Categorias"; o mapa do Google carrega apontando para o Skate Park Brazlândia; o botão "Abrir no Google Maps" abre `evento.local.mapsUrl`; a seção lê bem no mobile (mapa em `aspect-video`, sem overflow horizontal); no desktop, passar o mouse sobre o card do mapa "descola" (translate + sombra maior), igual ao hover dos botões — sem layout shift.
 
 - [ ] **Step 5: Commit**
 
@@ -335,6 +398,7 @@ git commit -m "feat(contato): adiciona e-mail da ASB no Contato e no Footer"
 - Modify: `docs/02-DECISOES.md`
 - Modify: `docs/05-DESIGN.md`
 - Modify: `docs/contatos.md`
+- Modify: `docs/04-ROADMAP-V1.md`
 
 **Interfaces:**
 - Consumes: nada (documentação).
@@ -405,15 +469,30 @@ Adicionar uma linha ao arquivo:
 email: associacaoskatebrazlandia@gmail.com
 ```
 
-- [ ] **Step 7: Revisar as edições**
+- [ ] **Step 7: `docs/04-ROADMAP-V1.md` — anotar pedidos do Lain para um plano futuro**
 
-Reler os três arquivos e confirmar: D15 presente e coerente; P2 fora da tabela de pendências e registrada como resolvida; P1 com a nota de previsão; §7 do design com o e-mail; `contatos.md` com o e-mail. Nenhum outro texto alterado.
+Pedido feito durante a execução desta sub-etapa (24/07/2026): reforço de
+motion/efeitos para o **site inteiro** (V1.1 só cobre hero + Localização,
+ver Global Constraints) e recursos **"gameficados"/interatividade** — sem
+escopo definido ainda (não inventar: pontos, badges, easter eggs são só
+exemplos do que uma spec futura precisa decidir). Registrar como itens
+novos na tabela "Estacionamento" (seção `## Estacionamento`), seguindo o
+formato `| Sub-etapa | Destrava com | Observação |` das linhas existentes:
 
-- [ ] **Step 8: Commit**
+```markdown
+| Motion/efeitos — reforço no site inteiro | Spec própria de motion (brainstorming) | Pedido do Lain em 24/07/2026. V1.1 aplicou um recorte pontual só onde já tocava (hero, Localização — `05-DESIGN.md` §6.1); o resto das seções existentes (Sobre, Categorias, Patrocínio etc.) fica para uma spec dedicada, respeitando os guardrails de §6.2 e o orçamento de §6.4. |
+| Recursos "gameficados" / interatividade | Spec própria (brainstorming) | Pedido do Lain em 24/07/2026. Sem escopo definido — precisa de brainstorming + spec antes de virar plano; avaliar contra o anti-escopo de `AGENT.md` (ex.: nada que implique conta de usuário/login/backend, hoje fora de escopo do site). |
+```
+
+- [ ] **Step 8: Revisar as edições**
+
+Reler os quatro arquivos e confirmar: D15 presente e coerente; P2 fora da tabela de pendências e registrada como resolvida; P1 com a nota de previsão; §7 do design com o e-mail; `contatos.md` com o e-mail; as duas linhas novas em "Estacionamento" do roadmap. Nenhum outro texto alterado.
+
+- [ ] **Step 9: Commit**
 
 ```bash
-git add docs/02-DECISOES.md docs/05-DESIGN.md docs/contatos.md
-git commit -m "docs: registra D15, resolve P2 e adiciona e-mail de contato (V1.1)"
+git add docs/02-DECISOES.md docs/05-DESIGN.md docs/contatos.md docs/04-ROADMAP-V1.md
+git commit -m "docs: registra D15, resolve P2, adiciona e-mail de contato e anota pedidos de motion/gamificação para plano futuro (V1.1)"
 ```
 
 ---
@@ -424,3 +503,4 @@ git commit -m "docs: registra D15, resolve P2 e adiciona e-mail de contato (V1.1
 - [ ] Lighthouse mobile local na home dentro do orçamento (`05-DESIGN.md` §6.4) — conferir que o `iframe` lazy não derrubou Performance/LCP (medir com servidor com compressão + cache, não `python -m http.server` cru).
 - [ ] Conferência visual mobile (360px) e desktop: hero com previsões, seção de localização com mapa, e-mail no Contato e Footer.
 - [ ] Trocar um valor em `data/evento.ts` (ex.: `dataPrevistaCurta`) e confirmar que reflete no hero sem tocar em componente — prova da fonte única.
+- [ ] Reforço de motion (24/07/2026): stickers do hero pulsam sutilmente (e ficam estáticos com `prefers-reduced-motion: reduce`); card do mapa "descola" no hover do desktop. `docs/04-ROADMAP-V1.md` tem as duas linhas novas em "Estacionamento" (motion site inteiro; gameficação/interatividade) para virarem spec própria num plano futuro.

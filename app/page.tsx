@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
+import { Localizacao } from "@/components/localizacao";
 import { PatrocinioResumo } from "@/components/patrocinio-resumo";
 import { Pix } from "@/components/pix";
 import { Rasgo } from "@/components/rasgo";
@@ -18,6 +19,7 @@ export default function Home() {
       <main id="conteudo" className="flex-1">
         <Hero />
         <Sobre />
+        <Localizacao />
         <Categorias />
         <PatrocinioResumo />
         <div className="registro-asfalto relative overflow-hidden">
