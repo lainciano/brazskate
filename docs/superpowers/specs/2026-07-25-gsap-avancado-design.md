@@ -227,9 +227,38 @@ spec própria → plano → PR, no fluxo padrão do projeto.
 | 6 | **MorphSVG** (chevron do FAQ e/ou rasgo) | Ganho estético menor; verificar caixa do rasgo | Médio |
 | 7 | **ScrambleText** (marquee ou sticker) | Chamativo, envelhece rápido — avaliar se combina | Médio |
 | 8 | **ScrollSmoother** | Conflito estrutural com o header sticky (§3.2) | **Alto** |
+| 9 | **Camadas do hero — selo sobreposto** (§5.1) | Empilhamento a resolver com composição, não com `z-index` solto | Médio |
 
 Itens 1–3 podem ir num PR só (são pequenos e do mesmo domínio: easing e
 SVG). Itens 4, 5 e 8 merecem PR próprio cada.
+
+### 5.1 Camadas do hero — o selo sobrepondo o conteúdo (item 9)
+
+**Estado:** tentativa parcial no PR #44 (`z-10` + `pointer-events-none` no
+selo). O Lain verificou em 25/07/2026 e **não resolveu** — o selo continua
+sem sobrepor o conteúdo como esperado. Parado aqui de propósito, para virar
+trabalho de composição em vez de tentativa e erro de `z-index`.
+
+**Por que não é só `z-index`:** o hero empilha hoje, na ordem de pintura,
+(1) formas geométricas `absolute inset-0`, (2) `<Grao />`, (3) conteúdo
+`relative`. Subir o selo com `z-10` o coloca acima do conteúdo, mas o
+resultado visual não é o desejado — e o motivo provável é que "sobrepor"
+aqui não significa simplesmente "ficar na frente": um selo sólido em
+`vermelho-500` na frente do texto **destrói o contraste AA** do CTA
+"Apoie via Pix" (verificado por screenshot no PR #44).
+
+**O que a sub-etapa precisa resolver (e por isso merece spec própria):**
+- **Qual é a intenção visual?** Selo por cima com o texto vazado nele
+  (recorte/`mask`), selo por cima com `mix-blend-mode`, ou selo por cima só
+  onde não há texto? São composições diferentes, não ajustes de `z-index`.
+- **Contraste é inegociável** (`05-DESIGN.md` §2.1 e guardrail §8 deste
+  doc): nenhuma solução pode deixar o CTA ilegível.
+- **Encaixe com o motion já existente:** o selo tem entrada (`scale` +
+  `rotate`) e deriva de scroll (`y`, scrub leve) desde o PR #44 — a
+  composição nova precisa conviver com as duas.
+- **Candidatos de plugin:** este é o item onde `MorphSVG` (§3.4) e o
+  tratamento de máscara do §4.2 podem render mais que `z-index` — avaliar
+  na spec.
 
 ## 6. Decisões que faltam (não assumir)
 

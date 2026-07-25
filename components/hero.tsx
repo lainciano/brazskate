@@ -47,10 +47,14 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
     }
 
     if (faixa) {
-      // a faixa rosa é pincelada da esquerda para a direita
+      // A faixa rosa é pincelada da esquerda para a direita.
+      // A origem do transform NÃO entra aqui: ela vive no CSS (origin-left
+      // no className). Setar transformOrigin só durante o tween fazia o
+      // GSAP devolver a origem ao centro ao terminar — e como a faixa é
+      // rotacionada (-rotate-6), trocar o pivô move a barra visualmente,
+      // produzindo um "pulo" para baixo no fim da animação.
       gsap.from(faixa, {
         scaleX: 0,
-        transformOrigin: "left center",
         duration: 0.7,
         delay: 0.15,
         ease: "power3.out",
@@ -135,7 +139,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           />
           <div
             data-hero-faixa
-            className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80 sm:block"
+            className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] origin-left -rotate-6 bg-rosa/80 sm:block"
           />
         </div>
       )}
