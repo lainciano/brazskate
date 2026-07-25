@@ -10,6 +10,10 @@ export const evento = {
   // forma curta (mesmo dado, formatado para caber no sticker do hero)
   dataPrevistaCurta: "22 de agosto",
   inscricaoAbrePrevistaCurta: "01/08",
+  // forma legível por máquina (V1.5, countdown) — mesmo dado de
+  // dataPrevista acima; não é derivada nem deriva as strings de exibição,
+  // trocar a data é editar os dois tipos de campo aqui
+  dataPrevistaISO: "2026-08-22",
   local: {
     nome: "Skate Park Brazlândia",
     coordenadas: { lat: -15.6824327, lng: -48.1982567 },

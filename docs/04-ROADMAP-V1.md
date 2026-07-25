@@ -5,9 +5,11 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 25/07/2026 — V1.3 concluída; V1.4–V1.7 decompostas
-> (termo, countdown, motion/efeitos, slots de foto); mapa de completude dos
-> 11 itens da spec adicionado.
+> Última atualização: 25/07/2026 — V1.4 publicada em produção (PR #38);
+> blueprint do formulário de pré-inscrição concluído (destrava a linha do
+> estacionamento); V1.6 corrigida para refletir o que já estava implementado
+> (era muito menor do que a decomposição original sugeria); V1.8 (`/inscricao`)
+> mapeada, travada até a URL do formulário existir.
 
 ## O que é o V1
 
@@ -175,42 +177,48 @@ terceiros. É de propósito uma leva pequena.
   "previsão" é inseparável do número; sem divergência de hidratação; leitor de
   tela anuncia o prazo uma vez, não a cada segundo.
 
-### V1.6 · Motion, feedback e efeitos — reforço no site inteiro
+### V1.6 · Motion residual
 
-- **Estado:** **construível agora** — pedido do Lain (24/07 e 25/07/2026).
-  Sai do estacionamento; **precisa de spec própria** antes do plano, porque
-  toca todas as seções já publicadas.
-- **Entrega (escopo a fechar na spec):**
-  1. **Entrada de seção** — estender o `Reveal`/ScrollTrigger que a V1.1
-     aplicou em Hero e Localização às seções restantes (Sobre, Categorias,
-     Patrocínio, Pix, Contato, FAQ), com o "stencil puxado" do título e o
-     stagger de listas/cards do §6.1.
-  2. **Micro-feedback de interação** — os gestos já tabelados no §6.1 que
-     ainda não existem em toda parte: "carimbada" do sticker na entrada,
-     sublinhado-rabisco crescendo no hover de link, traço do rabisco do hero
-     se desenhando (`stroke-dashoffset`).
-  3. **Feedback de estado** — revisar os retornos que já existem (copiar
-     chave Pix, abrir/fechar menu, `<details>` do FAQ) para que todos tenham
-     resposta visual imediata e anúncio acessível coerente.
-- **Consome do design:** §6.1 (linguagem de motion — a tabela é o contrato),
-  §6.2 (guardrails do GSAP), §6.4 (orçamento), §3.x (estados dos componentes).
-- **Guardrails que reprovam o PR** (§6.2, valem integralmente): só `gsap`
-  core + `ScrollTrigger`; só `transform` e `opacity`; `prefers-reduced-motion`
-  via `gsap.matchMedia()` com versão estática equivalente; init preguiçoso
-  após hidratação; sem `pin` e sem `scrub` pesado; teste em celular mediano
-  antes do merge.
+- **Estado:** ✅ **concluída** (25/07/2026). A decomposição original desta
+  entrada superestimava o que faltava — auditoria no início da sub-etapa
+  encontrou a maior parte do §6.1 já implementada: `Reveal`/ScrollTrigger nas
+  7 seções (Hero, Sobre, Localização, Categorias, FAQ, Patrocínio, Pix,
+  Contato), sublinhado-rabisco no hover de link (`components/botao.tsx`),
+  traço do rabisco do hero se desenhando (`stroke-dashoffset`,
+  `hero.tsx`), feedback do copiar Pix com `aria-live`, e `<details>` do FAQ
+  com chevron animado. **Não precisou de spec própria** — os guardrails do
+  §6.2 já estavam encarnados em `lib/motion.ts`.
+- **O que de fato faltava e foi entregue:**
+  1. **"Stencil puxado" do título de seção** — `components/reveal.tsx` ganhou
+     o seletor `[data-stencil]` (clip-path, mesmo tratamento que o hero já
+     aplicava ao próprio `h1`); `components/section-header.tsx` marca o `h2`
+     com `data-stencil`, valendo para as 7 seções de uma vez.
+  2. **"Carimbada" dos stickers fora do hero** — `Reveal` ganhou o seletor
+     `[data-carimbo]` (scale + `back.out`); `components/sticker-badge.tsx`
+     passou a aceitar props extras (`...rest`) para poder receber o atributo;
+     aplicado aos dois stickers "em breve" fora do hero (Categorias, FAQ).
+- **Consome do design:** §6.1 (linguagem de motion), §6.2 (guardrails do
+  GSAP, já em `lib/motion.ts`), §3.6 (StickerBadge).
+- **Guardrails do §6.2** — herdados automaticamente via `useMotion`/`Reveal`
+  já existentes: `gsap.matchMedia()` some com toda a animação sob
+  `prefers-reduced-motion`; só `transform`, `opacity` e `clip-path`; init
+  preguiçoso no idle; sem `pin` nem `scrub`.
 - **Fora desta sub-etapa:** WebGL/shader. O §6.3 registra OGL apenas como
   **candidato** de v1 — entrar nele exige decisão explícita à parte, não vem
   de carona no reforço de motion.
 - **Pronto quando:** nenhuma seção fica "morta" ao rolar; com
-  `prefers-reduced-motion` ativo tudo aparece estático e legível; Lighthouse
-  mobile segue dentro do §6.4; nada animado causa layout shift.
+  `prefers-reduced-motion` ativo tudo aparece estático e legível; nada
+  animado causa layout shift. `pnpm lint`, `typecheck` e `build` limpos —
+  verificação visual (hidratação, celular real) pendente de QA humana, sem
+  Chrome disponível no ambiente de execução desta sessão.
 
 ### V1.7 · Slots de foto — preparar a troca sem foto real
 
-- **Estado:** **construível agora**, com uma ressalva importante de escopo.
-  Decisão do Lain (25/07/2026): tratar foto como slot/template no padrão do
-  hero (§4.2), fácil de trocar depois.
+- **Estado:** ✅ **concluída** (25/07/2026). O slot `fotoSrc` do hero já
+  estava implementado (`components/hero.tsx`, duotone + `mix-blend-multiply`
+  + scrim, exatamente como o §4.2 descreve) — esta sub-etapa **verificou** o
+  caminho de troca e fechou o schema da galeria, sem acender nenhuma foto
+  real (I1/I2 seguem abertas).
 - **O que "slot" significa aqui (e o que NÃO significa):** no §4.2 o slot é
   uma **afordância de código** — o componente recebe `fotoSrc?` e, sem foto,
   renderiza um desenho **completo** (o hero gráfico), não uma lacuna. O §4.3
@@ -218,19 +226,36 @@ terceiros. É de propósito uma leva pequena.
   vazia, seção "esperando imagem" ou página de galeria sem fotos. Slot é
   contrato de prop, não placeholder visível.
 - **Entrega:**
-  1. Confirmar e documentar o slot `fotoSrc` do hero já existente, incluindo
-     o tratamento duotone + scrim descrito no §4.2, para que a troca futura
-     seja "1 arquivo + 1 prop".
-  2. Definir o **schema** de `data/gallery.json` com os campos de portão de
-     direito de imagem (`credito`, `permissao`) obrigatórios por foto, e o
-     contrato do componente de moldura/colagem (§4.3) — pronto para ativar.
-  3. **Não publicar** página ou seção de galeria enquanto não houver foto com
-     permissão (I1/I2 + portão de imagem).
+  1. **Verificado** — build local com uma foto sintética de teste (não
+     commitada) confirmou que passar `fotoSrc` renderiza a camada de foto
+     com `grayscale` e que as formas geométricas somem, sem erro de build.
+     A troca é de fato "1 arquivo + 1 prop". Contraste AA com foto real
+     fica para conferência visual humana quando a foto de verdade existir.
+  2. `data/gallery.ts` (novo, vazio) — tipo `FotoGaleria` com `credito`
+     obrigatório e `permissao: true` como literal (recusa foto sem permissão
+     **no typecheck**, não em runtime). Contrato do componente de colagem
+     documentado no §4.3.
+  3. **Nenhuma página ou seção de galeria criada** — array vazio, sem
+     casca vazia (I1/I2 seguem abertas).
 - **Consome do design:** §4.2 (slot do hero, duotone, scrim), §4.3 (colagem,
   regra de não deixar moldura vazia), §2 (tokens).
 - **Pronto quando:** existe um caminho documentado e testado para acender a
   foto do hero com 1 arquivo + 1 prop; o schema da galeria recusa foto sem
   crédito/permissão; o site publicado continua **sem** nenhuma moldura vazia.
+
+### V1.8 · Página `/inscricao`
+
+- **Estado:** **travada** — depende de o formulário real existir e ter URL
+  (blueprint pronto em `docs/blueprint-formulario-pre-inscricao.md`; falta a
+  ASB montar de fato no Tally, D21). A V1.4 já havia deixado essa página
+  fora de escopo pelo mesmo motivo.
+- **Entrega (quando destravar):** rota `/inscricao` no vocabulário do site,
+  explicação do modelo híbrido (D1), link para `/termo`, e religar o CTA
+  "Quero competir" do hero (hoje aponta para `#categorias`).
+- **Não antecipar com URL placeholder** — seria casca vazia (`05-DESIGN.md`
+  §4.3, regra geral do roadmap).
+- **Pronto quando:** a URL do Tally existir e for publicada; ganha spec →
+  plano → PR próprios, no fluxo padrão.
 
 ---
 
@@ -243,7 +268,7 @@ O que falta para o site estar completo antes do campeonato:
 | 1 | Countdown | 🟢 construível | **V1.5** — usa data prevista (P1 só troca o valor) |
 | 2 | Regulamento completo | 🔴 travado | **P6** — sem texto real não nasce página (sem casca) |
 | 3 | Data, local e como chegar | 🟡 parcial | Mapa/endereço/e-mail entregues na V1.1; faltam **transporte e estacionamento** (conteúdo a levantar) |
-| 4 | Pré-inscrição + modelo híbrido | 🟡 parcial | Termo destravado (I3/D19); falta **criar o formulário** no Tally/Forms (tarefa da ASB) e o **tamanho da cota** presencial (P6) |
+| 4 | Pré-inscrição + modelo híbrido | 🟡 parcial | Termo destravado (I3/D19); blueprint do formulário pronto (`docs/blueprint-formulario-pre-inscricao.md`); falta **criar o formulário** no Tally (tarefa da ASB, D21) e o **tamanho da cota** presencial (P6). Página `/inscricao` mapeada como **V1.8**, só nasce com URL real |
 | 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
 | 6 | Patrocinadores confirmados | 🔴 travado | Nenhum patrocinador fechado (P4, captação é da ASB) + **I7** para a UIEMAPV |
 | 7 | Galeria (2021 + pista) | 🔴 travado | **I1/I2** + permissão de imagem. **V1.7** só prepara o schema, não publica página |
@@ -270,7 +295,7 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 | Sub-etapa | Destrava com | Observação |
 |---|---|---|
 | Regulamento completo (página) | **P6** — regulamento/faixas etárias/pontuação | Página nasce só quando houver texto real; sem casca. Reaproveita o padrão de disclosure do §3.6-bis. |
-| Formulário de pré-inscrição (Tally/Forms) | **Criar o formulário** (tarefa da ASB) + **P6** (tamanho da cota) | O termo deixou de travar (I3 resolvida / D19). Condicional de menor **por data de nascimento**, nunca por categoria (`AGENT.md`). Aceite eletrônico do termo por checkbox. |
+| Formulário de pré-inscrição (Tally/Forms) | **Criar o formulário** (tarefa da ASB) + **P6** (tamanho da cota) | Blueprint pronto em `docs/blueprint-formulario-pre-inscricao.md` (25/07/2026) — handoff operacional completo (telas, campos, lógica, textos). Só falta a ASB montar de fato no Tally (D21) e P6 fechar cota/faixas etárias. Condicional de menor **por data de nascimento**, nunca por categoria (`AGENT.md`). Aceite eletrônico do termo por checkbox (D19), papel no credenciamento. |
 | Programação do dia | **P6** + logística do evento | Horários de baterias/credenciamento/final. |
 | Patrocinadores confirmados (grade de logos) | Patrocinador fechado (P4) + **I7** (logo/links da UIEMAPV) | `data/sponsors.json`. Parceria já confirmada (D18), mas o site **não menciona** a UIEMAPV até chegarem logo e link oficiais. |
 | Galeria (2021 + pista atual) | **I1** / **I2** + **permissão de imagem** | Cada foto com `credito` e `permissao`; portão de direito de imagem. **V1.7** define o schema; a página só nasce com foto real. |
@@ -294,25 +319,33 @@ Concluídas:
 1. **V1.1 · Info básica** — ✅ PR #30 (24/07/2026).
 2. ~~V1.2 · Polish do hero~~ — ❌ **rejeitada em 25/07/2026**, fora da fila.
 3. **V1.3 · FAQ parcial** — ✅ PR #33 (25/07/2026).
+4. **V1.4 · Termo de responsabilidade** — ✅ PR #37, publicada em produção
+   via PR #38 (25/07/2026).
 
-Fila proposta (cada uma ganha **spec → plano → PR** própria, no fluxo da
-V1.1 — este roadmap decompõe, não substitui as specs):
+Fila atual (cada uma ganha **spec → plano → PR** própria, no fluxo da V1.1 —
+este roadmap decompõe, não substitui as specs):
 
-4. **V1.4 · Termo de responsabilidade** — primeira da fila: destravada por
-   I3/D19, entrega valor imediato (é insumo da pré-inscrição) e não depende
-   de mais ninguém. Tem uma decisão de fonte no PDF a fechar na spec.
-5. **V1.5 · Countdown** — pequena e independente; muda o hero de "data em
+5. **Blueprint do formulário de pré-inscrição** — ✅ concluído em
+   25/07/2026, doc puro (`docs/blueprint-formulario-pre-inscricao.md`). Não é
+   uma V-numerada porque não é código do site; destrava a linha do
+   estacionamento para a ASB montar o formulário de fato (D21).
+6. **V1.5 · Countdown** — pequena e independente; muda o hero de "data em
    texto" para contagem, sem esperar P1.
-6. **V1.6 · Motion, feedback e efeitos** — maior e transversal (toca todas as
-   seções publicadas), por isso vem depois das duas pequenas; exige spec
-   dedicada por causa dos guardrails do §6.2.
-7. **V1.7 · Slots de foto** — preparatória e de baixo risco; pode entrar em
-   qualquer ponto, inclusive junto de outra sub-etapa.
+7. **V1.6 · Motion residual** — **muito menor do que a versão original desta
+   entrada.** Auditoria em 25/07/2026 encontrou a maior parte do §6.1 já
+   implementada (Reveal nas 7 seções, hover de link, rabisco do hero,
+   feedback do Pix, disclosure do FAQ). Falta só o "stencil puxado" do
+   `SectionHeader` e a "carimbada" dos stickers fora do hero — não precisa
+   mais de spec dedicada.
+8. **V1.7 · Slots de foto** — o slot `fotoSrc` do hero (duotone + scrim) já
+   está implementado; falta verificar o caminho de troca e definir o schema
+   de `data/gallery.ts`.
+9. **V1.8 · Página `/inscricao`** — travada até a ASB publicar a URL real do
+   formulário (item 5). Não antecipar com URL placeholder.
 
-**Por que nesta ordem:** V1.4 e V1.5 são recortes pequenos e fechados que
-destravam conteúdo real; V1.6 é a de maior superfície de regressão e se
-beneficia de um site já estável; V1.7 não entrega nada visível hoje (é
-preparação), então não disputa prioridade com as outras.
+**Por que nesta ordem:** V1.5 e V1.6/V1.7 são recortes pequenos e
+independentes que fecham o que resta do V1 construível agora; V1.8 fecha o
+ciclo da pré-inscrição mas só quando o formulário existir de fato.
 
 Quando a reunião formal com a Administração acontecer (data oficial + P6), o
 estacionamento destrava — provavelmente na ordem **regulamento → cota da

@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { evento } from "@/data/evento";
 import { useMotion, type Gsap } from "@/lib/motion";
 import { Botao } from "./botao";
+import { Countdown } from "./countdown";
 import { Grao } from "./grao";
 import { RabiscoSublinhado } from "./rabiscos";
 import { StickerBadge } from "./sticker-badge";
@@ -109,13 +110,17 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           <RabiscoSublinhado className="h-4 w-full" />
         </span>
 
-        <div data-hero-sticker className="mt-4 w-fit sm:mt-8">
+        <div
+          data-hero-sticker
+          className="mt-4 flex flex-wrap items-center gap-4 sm:mt-8"
+        >
           <StickerBadge
             variante="data"
             className="animate-sticker-pulse motion-reduce:animate-none"
           >
             Previsão: {evento.dataPrevistaCurta}
           </StickerBadge>
+          <Countdown />
         </div>
 
         <p

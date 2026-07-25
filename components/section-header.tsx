@@ -24,7 +24,11 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <h2 className="mt-2 font-display text-[clamp(2rem,6vw,3.25rem)] uppercase leading-none">
+      <h2
+        data-stencil
+        style={{ clipPath: "inset(0% 0 0 0)" }}
+        className="mt-2 font-display text-[clamp(2rem,6vw,3.25rem)] uppercase leading-none"
+      >
         {titulo}
       </h2>
       <RabiscoSublinhado
