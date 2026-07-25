@@ -5,7 +5,7 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 24/07/2026.
+> Última atualização: 25/07/2026.
 
 ## O que é o V1
 
@@ -73,8 +73,14 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.2 · Polish do hero — corrimão no desktop
 
-- **Estado:** construível. Nasce de um ajuste pedido pelo Lain em
-  24/07/2026.
+- **Estado:** **rejeitado em 25/07/2026.** O SVG do corrimão sobrepunha o
+  texto do hero em telas menores (1366×768), piorando a leitura em vez de
+  melhorá-la. Artefatos removidos (`components/corrimao.tsx`, spec e plano
+  da tentativa); não reagendado — sai da fila de sub-etapas construíveis
+  agora. Se retomado no futuro, precisa de uma nova spec que resolva a
+  colisão com o wordmark em larguras médias, não só desktop largo.
+- Descrição original da entrega, mantida como referência caso a ideia seja
+  retomada:
 - **Entrega:** a faixa rosa decorativa do hero (`bg-rosa/80`, hoje escondida
   no mobile porque atrapalhava a palavra "Skate") vira uma **silhueta de
   corrimão** (rail de skate) no desktop — novo SVG gráfico, no vocabulário
@@ -90,15 +96,21 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.3 · FAQ parcial
 
-- **Estado:** parcialmente construível. Só as perguntas com **resposta
-  certa hoje** entram; as que dependem do regulamento (P6) ficam de fora ou
-  marcadas "em breve" — nunca resposta inventada.
-- **Entrega:** seção de FAQ (padrão de disclosure a definir na spec da
-  sub-etapa), conteúdo em fonte única (`data/faq.ts` ou MDX em `content/`).
-  Perguntas com resposta hoje: taxa (não tem), categorias
-  (iniciante/amador/feminino), o que levar, acompanhantes/público.
-  Perguntas que aguardam regulamento (faixas etárias, tamanho da cota
-  presencial, política de chuva/adiamento): **fora** desta leva.
+- **Estado:** **em implementação** (25/07/2026), branch `feat/faq-parcial-v1.3`.
+  V1.2 foi rejeitada (ver acima) e não fica na fila; V1.3 é a sub-etapa
+  atual. Só as perguntas com **resposta certa hoje** têm texto; as que
+  dependem do regulamento (P6) entram na lista marcadas **"em breve"**
+  (decisão D16 em `02-DECISOES.md`: manter visíveis com sticker, não
+  esconder).
+- **Entrega:** seção de FAQ com padrão de disclosure `<details>`/`<summary>`
+  nativo (novo padrão do projeto, documentado em `05-DESIGN.md`), conteúdo
+  em fonte única `data/faq.ts` (MDX descartado — projeto não tem infra MDX
+  hoje, ver D13/D7). Perguntas com resposta hoje (conteúdo confirmado em
+  D16): taxa (não tem), categorias (iniciante/amador/feminino), o que levar
+  (skate/patins + equipamento de segurança + documento), acompanhantes/
+  público (entrada livre). Perguntas que aguardam regulamento (faixas
+  etárias, tamanho da cota presencial, política de chuva/adiamento): sticker
+  "em breve", não ficam fora da lista.
 - **Consome do design:** §3.3 (SectionHeader), §3.6 (sticker "em breve"),
   §1.5 (tom), §6.1 (motion de entrada via `Reveal`), §2 (tokens).
 - **Pronto quando:** FAQ lê bem no celular; nenhuma resposta pendente
@@ -131,12 +143,9 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 
 ## Ordem sugerida e o que vem depois
 
-1. **V1.1 · Info básica** — já tem spec; é a próxima a implementar (basta
-   ir do brainstorming aprovado para o plano). Mergear a branch da spec em
-   `dev` faz parte.
-2. **V1.2 · Polish do hero** — pequena, independente; pode vir junto ou logo
-   após a V1.1.
-3. **V1.3 · FAQ parcial** — depois das duas acima.
+1. **V1.1 · Info básica** — concluída, mergeada em `dev` (PR #30, 24/07/2026).
+2. ~~V1.2 · Polish do hero~~ — **rejeitada em 25/07/2026**, sai da fila.
+3. **V1.3 · FAQ parcial** — sub-etapa atual (em implementação, 25/07/2026).
 
 Assim que a reunião com a Administração acontecer (data + regulamento), o
 estacionamento começa a destravar — provavelmente na ordem: **regulamento
