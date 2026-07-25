@@ -10,6 +10,7 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D16 | UIEMAPV confirmou o escopo que vai fornecer, a princípio: **água, tenda, som, fechamento da rua, mesa de frios e frutas, e premiação (medalhas e troféu)**. Fica sob responsabilidade da ASB: regulamento completo, formulário de inscrição + termo de responsabilidade/autorização de menor, programação do dia, captação de patrocínio (complementar) e estratégia de divulgação | Elabora D12 (responsabilidade geral de estrutura/premiação) com o escopo concreto confirmado pelo instituto; avança P3 e P4, mas não os fecha — quantidades/valores específicos ainda a alinhar | 24/07/2026 |
 | D15 | Conversa (não reunião formal) entre ASB, Administração Regional e instituto parceiro definiu: **divisão de responsabilidades** (Administração + instituto: estrutura, premiação; ASB: site, artes, divulgação, patrocínios), **espaço do evento garantido** (inclui fechamento de rua) e **datas previstas** — evento 22/08, inscrição 01/08 — **sujeitas a mudança** (não são compromisso formal) | Destrava P2 e dá base de conteúdo à sub-etapa V1.1, sem travar a data | 24/07/2026 |
 | D14 | Direção de design travada: estética street com acabamento institucional — texturas de spray/grão, sticker badges (placeholders viram stickers), registros duplos (asfalto escuro / concreto claro); tipografia **Anton (display) + Archivo (texto)**; **sem WebGL no MVP** — GSAP core + ScrollTrigger apenas (plano completo em `05-DESIGN.md`, roadmap em `04-ROADMAP-MVP.md`) | Identidade própria com custo de performance controlado; three.js rejeitado, shader OGL fica como candidato de v1 | 16/07/2026 |
 | D13 | Organização de componentes: separação primária é **conteúdo (MDX/JSON em `content/` e `data/`) × apresentação (componentes)**, com Server Components estáticos como padrão. Componentes com interatividade de cliente (ex.: menu mobile, copiar Pix) aplicam Container/Presenter: estado e eventos extraídos para um Custom Hook (`useX`) quando a lógica crescer, mantendo a visão pura | Preserva organização e manutenibilidade sem forçar `"use client"` num site SSG (`output: 'export'`) nem afetar requisitos | 16/07/2026 |
@@ -31,17 +32,20 @@
 | # | Pendência | Bloqueia o quê no site |
 |---|-----------|------------------------|
 | P1 | Data do evento | Countdown, página de inscrição aberta, compra de domínio. Há **previsão** (22/08) exibida como tal no site (V1.1), mas a pendência só fecha com data oficial |
-| P3 | Infraestrutura (banheiros, água, som, público) — responsável definido: **UIEMAPV** (ver D12); detalhes ainda a alinhar | FAQ, seção de estrutura do evento |
-| P4 | Verba / patrocínio institucional — responsável definido: **UIEMAPV** (ver D12); valores ainda a alinhar. Estrutura de itens cogitada, ver seção "Premiação — estrutura cogitada" abaixo | Valores da premiação no regulamento; lista de patrocinadores |
+| P3 | Infraestrutura — **UIEMAPV confirmou água, tenda, som e mesa de frios e frutas** (ver D16); banheiros e estimativa de público ainda a alinhar | FAQ, seção de estrutura do evento |
+| P4 | Verba / patrocínio institucional — **UIEMAPV confirmou que vai entregar premiação, medalhas e troféu** (ver D16), mas os itens específicos (quantidade, o que exatamente) seguem não confirmados. Estrutura de itens cogitada, ver seção "Premiação — estrutura cogitada" abaixo | Valores da premiação no regulamento; lista de patrocinadores |
 | P5 | Reparos na pista (iluminação, rachaduras) | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo (faixas etárias, pontuação, formato de baterias, tamanho da cota presencial) | Página de regulamento; campos/validações finais do formulário |
 | P7 | Composição da equipe ASB (funções/responsáveis) | Seção "quem somos" completa |
 
 ## Premiação — estrutura cogitada (NÃO confirmada)
 
-> A princípio seria essa a premiação, mas nada está confirmado — depende de
-> patrocínio/verba (ver P4 e D12). Não usar estes itens como definitivos em
-> nenhuma peça do site; tratar como placeholder até confirmação.
+> A princípio seria essa a premiação, mas os itens abaixo não estão
+> confirmados — depende de patrocínio/verba (ver P4 e D12). A UIEMAPV
+> confirmou que vai entregar premiação, medalhas e troféu em algum formato
+> (D16, 24/07/2026), mas não esta lista específica. Não usar estes itens
+> como definitivos em nenhuma peça do site; tratar como placeholder até
+> confirmação.
 
 - **1º lugar:** 2 shapes, calçado de skate, jogo de rolamento, lixa, blusa.
 - **2º lugar:** 1 shape, calçado de skate, lixa, blusa.

@@ -126,6 +126,7 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 | Motion/efeitos — reforço no site inteiro | Spec própria de motion (brainstorming) | Pedido do Lain em 24/07/2026. V1.1 aplicou um recorte pontual só onde já tocava (hero, Localização — `05-DESIGN.md` §6.1); o resto das seções existentes (Sobre, Categorias, Patrocínio etc.) fica para uma spec dedicada, respeitando os guardrails de §6.2 e o orçamento de §6.4. |
 | Recursos "gameficados" / interatividade | Spec própria (brainstorming) | Pedido do Lain em 24/07/2026. Sem escopo definido — precisa de brainstorming + spec antes de virar plano; avaliar contra o anti-escopo de `AGENT.md` (ex.: nada que implique conta de usuário/login/backend, hoje fora de escopo do site). |
 | Imprensa/contato ampliado | Assessoria/canais adicionais | E-mail já entra na V1.1; resto quando houver. |
+| Estratégia de divulgação | Spec própria (brainstorming) | Responsabilidade da ASB (ver D16, `02-DECISOES.md`), pedido do Lain em 24/07/2026 — "preciso de ajuda para pensar isso do zero" (canais, formato, timing). Sem escopo definido; precisa de brainstorming antes de virar plano. |
 
 ---
 
