@@ -579,5 +579,5 @@ força a conversa, não o dogma.
 | UIEMAPV no site | **Aguardando confirmação com o instituto** (I7) | Site NÃO menciona UIEMAPV até o ok; quando vier, entra como parceiro institucional na seção de patrocínio |
 | Foto própria da pista (I2) | Pendente | Hero gráfico com slot (§4) |
 | Fotos de 2021 (I1) | Pendente | Seção sobre sem slots vazios (§4.3) |
-| E-mail de contato | Não existe | Contato = Instagram + WhatsApp; e-mail entra se/quando o Lain fornecer |
+| E-mail de contato | Existe (`associacaoskatebrazlandia@gmail.com`) | Contato = Instagram + WhatsApp + e-mail (adicionado na V1.1) |
 | Chave Pix (payload em `docs/pix.md`) | Existe | QR gerado como asset estático no PR das seções finais |

@@ -1,9 +1,10 @@
 import { Botao } from "./botao";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
+import { evento } from "@/data/evento";
 
-// Contato (roadmap PR 4): canais reais — Instagram + WhatsApp. Sem e-mail
-// (não existe — não inventar, ver 05-DESIGN.md §7).
+// Contato (roadmap PR 4): canais reais — WhatsApp + Instagram. E-mail adicionado em V1.1
+// (ver 05-DESIGN.md §7).
 export function Contato() {
   return (
     <section id="contato" className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
@@ -26,6 +27,12 @@ export function Contato() {
             variante="secundario"
           >
             @brazskate no Instagram
+          </Botao>
+          <Botao
+            href={`mailto:${evento.email}`}
+            variante="secundario"
+          >
+            Falar por e-mail
           </Botao>
         </div>
       </Reveal>

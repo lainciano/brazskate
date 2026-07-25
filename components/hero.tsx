@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback } from "react";
+import { evento } from "@/data/evento";
 import { useMotion, type Gsap } from "@/lib/motion";
 import { Botao } from "./botao";
 import { Grao } from "./grao";
@@ -69,29 +70,22 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           <div className="absolute inset-0 bg-gradient-to-t from-tinta/80 via-tinta/50 to-tinta/30" />
         </div>
       ) : (
-        // abstração de rampa/transição (§4.1): formas grandes recortadas nas
-        // bordas — não é ilustração literal nem redesenho do logo
+        // abstração de rampa/transição (§4.1): selo da logo (pin) em
+        // vermelho-500 — recorte via mask, não PNG colorido
         <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] rounded-full bg-vermelho-500" />
-          <div className="absolute -left-[8vw] top-[14%] h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80" />
+          <div
+            className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+            style={{ maskImage: "url(/logo-pin.png)" }}
+          />
+          <div className="absolute -left-[8vw] top-[14%] hidden h-[max(3vw,1rem)] w-[52vw] -rotate-6 bg-rosa/80 sm:block" />
         </div>
       )}
       <Grao />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
-        <Image
-          data-hero-item
-          src="/logo.png"
-          alt=""
-          width={88}
-          height={62}
-          priority
-          className="rotate-3 rounded-full shadow-sticker"
-        />
-
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-20">
         <p
           data-hero-item
-          className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-rosa"
+          className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-rosa"
         >
           Campeonato de skate · Brazlândia-DF
         </p>
@@ -99,41 +93,56 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         <h1
           data-hero-titulo
           style={{ clipPath: "inset(0% 0 0 0)" }}
-          className="mt-3 font-display text-[clamp(3rem,11vw,6.5rem)] uppercase leading-[0.95]"
+          className="mt-3"
         >
-          Braz
-          <br />
-          Skate
+          <Image
+            src="/logo-completa.png"
+            alt="Braz Skate"
+            width={1224}
+            height={902}
+            priority
+            className="h-auto w-[clamp(10rem,38vw,14rem)]"
+          />
         </h1>
 
         <span data-hero-rabisco className="mt-2 block w-56 max-w-[60vw] text-vermelho-500">
           <RabiscoSublinhado className="h-4 w-full" />
         </span>
 
-        <div data-hero-sticker className="mt-8 w-fit">
-          <StickerBadge variante="data">Data a confirmar</StickerBadge>
+        <div data-hero-sticker className="mt-4 w-fit sm:mt-8">
+          <StickerBadge
+            variante="data"
+            className="animate-sticker-pulse motion-reduce:animate-none"
+          >
+            Previsão: {evento.dataPrevistaCurta}
+          </StickerBadge>
         </div>
 
         <p
           data-hero-item
-          className="mt-6 max-w-[34ch] text-lg leading-[1.55] text-(--fg-secundario)"
+          className="mt-3 max-w-[34ch] text-base leading-[1.5] text-(--fg-secundario) sm:mt-6 sm:text-lg sm:leading-[1.55]"
         >
           Na pista de Brazlândia, à beira do lago — a cena de volta ao
           campeonato.
         </p>
 
-        <div data-hero-item className="mt-10 flex flex-wrap items-center gap-4">
+        <div data-hero-item className="mt-4 flex flex-wrap items-center gap-2 sm:mt-10 sm:gap-4">
           <Botao href="#categorias">Quero competir</Botao>
           <Botao href="#patrocinio" variante="secundario">
             Seja um patrocinador
           </Botao>
         </div>
 
-        <div data-hero-item className="mt-5 flex flex-wrap items-center gap-4">
+        <div data-hero-item className="mt-3 flex flex-col items-start gap-2 sm:mt-5 sm:flex-row sm:items-center sm:gap-4">
           <Botao href="#apoie" variante="terciario">
             Apoie via Pix
           </Botao>
-          <StickerBadge variante="breve">Pré-inscrição em breve</StickerBadge>
+          <StickerBadge
+            variante="breve"
+            className="animate-sticker-pulse motion-reduce:animate-none"
+          >
+            Inscrição: previsão {evento.inscricaoAbrePrevistaCurta}
+          </StickerBadge>
         </div>
       </div>
     </section>
