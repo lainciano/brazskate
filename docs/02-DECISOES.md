@@ -13,7 +13,7 @@
 | D20 | Evento é **exclusivamente de skate** — nenhuma peça do site menciona patins ou outro equipamento não-skate. Revisa D16, que registrava "skate/patins" na resposta de "o que levar" | Confirmado pelo mantenedor em 25/07/2026; o FAQ publicado (`data/faq.ts`) e a spec da V1.3 foram corrigidos, e a versão anterior de D16 foi para "Decisões revisadas" | 25/07/2026 |
 | D19 | Termo de responsabilidade **validado juridicamente** (revisado com advogado). O aceite se dá por **checkbox de aceite eletrônico no formulário externo** (Tally/Forms), **não** por assinatura certificada — mantém o anti-escopo do `AGENT.md` (sem backend, sem autenticação, sem hospedagem própria de formulário). Versão em papel idêntica no credenciamento presencial. Exportação em PDF pelo próprio site, com identidade visual, via biblioteca client-side carregada por **import dinâmico no clique** | Fecha I3 e destrava a pré-inscrição. Aceite eletrônico é suficiente para a escala do evento (<40 competidores, sem taxa) e evita criar conta/custo em serviço de assinatura. O import dinâmico mantém a lib fora do bundle inicial, preservando o orçamento de `05-DESIGN.md` §6.4 | 25/07/2026 |
 | D18 | Parceria com a UIEMAPV **formalmente confirmada** pelo instituto. A publicação no site segue condicionada ao recebimento de **logo(s) e links oficiais** — até lá o site continua sem mencionar o instituto (I7 permanece parcialmente aberta) | Consentimento obtido, mas publicar marca de terceiro sem o arquivo e o link oficiais produziria menção incompleta ou incorreta | 25/07/2026 |
-| D17 | Escopo de fornecimento da UIEMAPV confirmado (a princípio): **água, tenda, som, fechamento da rua, mesa de frios e frutas, premiação, medalhas e troféu**. Divisão de responsabilidades: a **ASB** fica com regulamento, formulário de inscrição, programação do dia, captação de patrocínio e divulgação | Detalha D12/D15 com escopo concreto, destrava parcialmente P3 e P4 e delimita o que continua sendo trabalho da ASB | 25/07/2026 |
+| D17 | Escopo de fornecimento da UIEMAPV **comprometido** (a princípio) — ainda não entregue: **água, tenda, som, fechamento da rua, mesa de frios e frutas, premiação, medalhas e troféu**. Banheiros e área de público confirmados separadamente pela Administração (ver P3 em "Pendências resolvidas"). Divisão de responsabilidades: a **ASB** fica com regulamento, formulário de inscrição, programação do dia, captação de patrocínio e divulgação — **captação ainda não iniciada** | Detalha D12/D15 com escopo concreto e delimita o que continua sendo trabalho da ASB. "Comprometido" ≠ "em mãos": o site não pode tratar a premiação como garantida (política de placeholder, `AGENT.md`) | 25/07/2026 |
 | D16 | Conteúdo do FAQ parcial (V1.3) confirmado pelo mantenedor: "o que levar" = skate + equipamento de segurança + documento de identificação (**revisado por D20** em 25/07/2026 — a versão original dizia "skate/patins"); "acompanhantes/público" = entrada livre, evento aberto à comunidade. Perguntas que dependem do regulamento (faixas etárias, cota presencial, chuva/adiamento) entram na lista com sticker "em breve" em vez de ficarem ocultas | Segue a regra "perguntar em vez de inferir" do `AGENT.md` — conteúdo real fornecido pelo mantenedor, não inventado; manter a pergunta visível com sticker segue a assinatura de placeholder do site (`05-DESIGN.md` §3.6) | 25/07/2026 |
 | D15 | Conversa (não reunião formal) entre ASB, Administração Regional e instituto parceiro definiu: **divisão de responsabilidades** (Administração + instituto: estrutura, premiação; ASB: site, artes, divulgação, patrocínios), **espaço do evento garantido** (inclui fechamento de rua) e **datas previstas** — evento 22/08, inscrição 01/08 — **sujeitas a mudança** (não são compromisso formal) | Destrava P2 e dá base de conteúdo à sub-etapa V1.1, sem travar a data | 24/07/2026 |
 | D14 | Direção de design travada: estética street com acabamento institucional — texturas de spray/grão, sticker badges (placeholders viram stickers), registros duplos (asfalto escuro / concreto claro); tipografia **Anton (display) + Archivo (texto)**; **sem WebGL no MVP** — GSAP core + ScrollTrigger apenas (plano completo em `05-DESIGN.md`, roadmap em `04-ROADMAP-MVP.md`) | Identidade própria com custo de performance controlado; three.js rejeitado, shader OGL fica como candidato de v1 | 16/07/2026 |
@@ -36,8 +36,7 @@
 | # | Pendência | Bloqueia o quê no site |
 |---|-----------|------------------------|
 | P1 | Data do evento | Countdown, página de inscrição aberta, compra de domínio. Há **previsão** (22/08) exibida como tal no site (V1.1), mas a pendência só fecha com data oficial |
-| P3 | Infraestrutura — **parcialmente resolvida** por D17: **água, tenda, som e mesa de frios/frutas** confirmados como fornecimento da UIEMAPV. **Continua aberto:** banheiros e organização da área de público — não constam do escopo confirmado, não assumir que estão cobertos | FAQ (estrutura/banheiros), seção de estrutura do evento |
-| P4 | Verba / patrocínio — **parcialmente resolvida** por D17: **premiação, medalhas e troféu** entram como fornecimento da UIEMAPV. **Continua aberto:** os itens/valores específicos da premiação (a lista em "Premiação — estrutura cogitada" segue NÃO confirmada) e a **captação de patrocínio**, que é responsabilidade da ASB | Valores da premiação no regulamento; grade de patrocinadores |
+| P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB ainda não começou**. Itens/valores específicos da premiação (ver "Premiação — estrutura cogitada" abaixo) seguem NÃO confirmados | Valores da premiação no regulamento; grade de patrocinadores; o site não pode afirmar premiação garantida (política de placeholder, `AGENT.md`) |
 | P5 | Reparos na pista (iluminação, rachaduras) | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo (faixas etárias, pontuação, formato de baterias, tamanho da cota presencial) | Página de regulamento; campos/validações finais do formulário |
 | P7 | Composição da equipe ASB (funções/responsáveis) | Seção "quem somos" completa |
@@ -48,9 +47,10 @@
 > patrocínio/verba (ver P4 e D12). Não usar estes itens como definitivos em
 > nenhuma peça do site; tratar como placeholder até confirmação.
 >
-> **Atualização 25/07/2026 (D17):** a UIEMAPV confirmou que **fornece** a
-> premiação, as medalhas e o troféu — mas os **itens específicos abaixo
-> seguem NÃO confirmados**. Ter o fornecedor definido não confirma a lista.
+> **Atualização 25/07/2026 (D17):** a UIEMAPV **se comprometeu** a fornecer a
+> premiação, as medalhas e o troféu — **compromisso, não entrega**: nada
+> disso está em mãos ainda. Os **itens específicos abaixo seguem NÃO
+> confirmados** mesmo depois desse compromisso.
 
 - **1º lugar:** 2 shapes, calçado de skate, jogo de rolamento, lixa, blusa.
 - **2º lugar:** 1 shape, calçado de skate, lixa, blusa.
@@ -96,3 +96,7 @@
   **D19** para a política de aceite (checkbox eletrônico no formulário
   externo, papel no credenciamento presencial) e `docs/termo-responsabilidade.md`
   para o texto vigente.
+- **P3 (infraestrutura — banheiros e área de público)** — resolvida em
+  25/07/2026: confirmados pela Administração, completando o escopo de
+  infraestrutura ao lado do que a UIEMAPV já havia se comprometido a
+  fornecer (água, tenda, som — ver D17).
