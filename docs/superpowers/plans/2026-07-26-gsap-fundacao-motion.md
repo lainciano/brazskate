@@ -60,24 +60,30 @@ usar `git worktree` para não corromper o cache de HMR dele.
 
 ## Tarefas
 
-- [ ] 1. Criar branch `feat/gsap-fundacao-motion` a partir de `dev` (via
+- [x] 1. Criar branch `feat/gsap-fundacao-motion` a partir de `dev` (via
       worktree, dev server ativo).
-- [ ] 2. `lib/motion.ts`: importar/registrar `CustomEase`, `DrawSVGPlugin`,
+- [x] 2. `lib/motion.ts`: importar/registrar `CustomEase`, `DrawSVGPlugin`,
       `CustomWiggle`; criar eases `tintaSeca` (`"0.16, 1, 0.3, 1"`) e
       `carimbada` (`{ type: "easeOut", wiggles: 3 }`); atualizar comentário
       de escopo.
-- [ ] 3. `components/hero.tsx`: trocar eases (`tintaSeca`/`carimbada`) e
+- [x] 3. `components/hero.tsx`: trocar eases (`tintaSeca`/`carimbada`) e
       substituir cálculo manual de stroke por `drawSVG`.
-- [ ] 4. `components/reveal.tsx`: trocar eases e adicionar bloco
+- [x] 4. `components/reveal.tsx`: trocar eases e adicionar bloco
       `data-rabisco` com `drawSVG`.
-- [ ] 5. `components/section-header.tsx`: adicionar `data-rabisco` no span
+- [x] 5. `components/section-header.tsx`: adicionar `data-rabisco` no span
       do rabisco.
-- [ ] 6. Atualizar `docs/05-DESIGN.md` §6.2 com os nomes das eases.
-- [ ] 7. Atualizar `docs/04-ROADMAP-V1.md` (V1.9, ordem sugerida, tabela
+- [x] 6. Atualizar `docs/05-DESIGN.md` §6.2 com os nomes das eases.
+- [x] 7. Atualizar `docs/04-ROADMAP-V1.md` (V1.9, ordem sugerida, tabela
       transversal).
-- [ ] 8. Rodar `pnpm lint` + `pnpm typecheck` + `pnpm build`; corrigir o
-      que quebrar; anotar tamanho do chunk de motion.
-- [ ] 9. Verificação estática: grep confirma zero `power3.out`/
+- [x] 8. Rodar `pnpm lint` + `pnpm typecheck` + `pnpm build`; corrigir o
+      que quebrar; anotar tamanho do chunk de motion. **Resultado:** lint
+      limpo, typecheck limpo, build OK (Turbopack). Plugins novos ficam num
+      chunk lazy de ~72KB não-gzipado, fora do bundle inicial. `pnpm run`
+      não funcionou no worktree isolado (deps-status-check do pnpm tentava
+      mexer no `node_modules`); rodado via `./node_modules/.bin/{eslint,tsc,next}`
+      diretamente, com uma cópia real de `node_modules` (Turbopack rejeita
+      symlink externo à raiz do projeto).
+- [x] 9. Verificação estática: grep confirma zero `power3.out`/
       `back.out(1.7)` residual nos arquivos tocados; grep confirma zero
       `getTotalLength` residual em `hero.tsx`.
 - [ ] 10. Abrir PR `feat/gsap-fundacao-motion` → `dev`, com resultado de
