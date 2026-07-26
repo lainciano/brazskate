@@ -14,7 +14,7 @@ export function DemoMotion() {
         scale: 1.15,
         opacity: 0,
         duration: 0.35,
-        ease: "back.out(1.7)",
+        ease: "carimbada",
         scrollTrigger: { trigger: escopo, start: "top 85%", once: true },
       });
       gsap.from(escopo.querySelectorAll("[data-demo-card]"), {
@@ -22,7 +22,7 @@ export function DemoMotion() {
         opacity: 0,
         duration: 0.45,
         stagger: 0.08,
-        ease: "power3.out",
+        ease: "tintaSeca",
         scrollTrigger: { trigger: escopo, start: "top 85%", once: true },
       });
     },

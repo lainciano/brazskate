@@ -10,8 +10,9 @@ import { useMotion, type Gsap } from "@/lib/motion";
 // Marcadores disponíveis (todos opcionais e independentes):
 // - data-reveal:   fade + y, com stagger (entrada padrão)
 // - data-stencil:  "stencil puxado" (clip-path), para títulos de seção
-// - data-carimbo:  "carimbada" (scale + back.out), para stickers
+// - data-carimbo:  "carimbada" (scale + ease "carimbada"), para stickers
 // - data-parallax: deriva lenta no scroll (scrub leve, só transform)
+// - data-rabisco:  traço se desenha (DrawSVGPlugin), para rabiscos SVG
 //
 // O §6.2 proíbe `pin` e `scrub` PESADO — a deriva abaixo é o caso leve:
 // distância curta, só `y`, `ease: none`, sem travar o scroll em momento
@@ -48,7 +49,7 @@ export function Reveal({
         opacity: 0,
         duration: 0.45,
         stagger: 0.08,
-        ease: "power3.out",
+        ease: "tintaSeca",
         scrollTrigger: entrada(),
       });
     }
@@ -58,7 +59,7 @@ export function Reveal({
       gsap.from(stencil, {
         clipPath: "inset(100% 0 0 0)",
         duration: 0.5,
-        ease: "power3.out",
+        ease: "tintaSeca",
         scrollTrigger: entrada(),
       });
     }
@@ -69,9 +70,20 @@ export function Reveal({
         scale: 1.15,
         opacity: 0,
         duration: 0.35,
-        ease: "back.out(1.7)",
+        ease: "carimbada",
         scrollTrigger: entrada(),
       });
+    }
+
+    // traço se desenha ao entrar (DrawSVGPlugin) — mesma marca de "traço à
+    // mão" do rabisco do hero, aplicada ao sublinhado do SectionHeader
+    const rabisco = alvos("[data-rabisco] path");
+    if (rabisco) {
+      gsap.fromTo(
+        rabisco,
+        { drawSVG: "0%" },
+        { drawSVG: "100%", duration: 0.5, ease: "power2.out", scrollTrigger: entrada() },
+      );
     }
 
     const parallax = alvos("[data-parallax]");
