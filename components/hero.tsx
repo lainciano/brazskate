@@ -30,7 +30,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         rotate: -12,
         opacity: 0,
         duration: 0.9,
-        ease: "power3.out",
+        ease: "tintaSeca",
       });
       // deriva no scroll: o selo sobe mais devagar que a página, dando
       // profundidade ao cartaz (scrub leve, só transform — §6.2)
@@ -57,7 +57,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         scaleX: 0,
         duration: 0.7,
         delay: 0.15,
-        ease: "power3.out",
+        ease: "tintaSeca",
       });
       gsap.to(faixa, {
         y: -28,
@@ -72,14 +72,14 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
     }
 
     // linguagem "tinta fresca seca rápido" (§6.1): stencil, carimbo, stagger
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({ defaults: { ease: "tintaSeca" } });
     tl.from(escopo.querySelector("[data-hero-titulo]"), {
       clipPath: "inset(100% 0 0 0)",
       duration: 0.5,
     })
       .from(
         escopo.querySelector("[data-hero-sticker]"),
-        { scale: 1.15, opacity: 0, duration: 0.35, ease: "back.out(1.7)" },
+        { scale: 1.15, opacity: 0, duration: 0.35, ease: "elastic.out(1, 0.6)" },
         "-=0.1",
       )
       .from(
@@ -88,22 +88,14 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         "-=0.15",
       );
 
-    // o rabisco se desenha (§6.1): stroke-dashoffset após o load
-    escopo
-      .querySelectorAll<SVGPathElement>("[data-hero-rabisco] path")
-      .forEach((traco) => {
-        const comprimento = traco.getTotalLength();
-        gsap.fromTo(
-          traco,
-          { strokeDasharray: comprimento, strokeDashoffset: comprimento },
-          {
-            strokeDashoffset: 0,
-            duration: 0.6,
-            delay: 0.3,
-            ease: "power2.out",
-          },
-        );
-      });
+    // o rabisco se desenha (§6.1) via DrawSVGPlugin — substitui o cálculo
+    // manual de getTotalLength()/strokeDashoffset (docs/superpowers/specs/
+    // 2026-07-26-gsap-fundacao-motion-design.md §4)
+    gsap.fromTo(
+      escopo.querySelectorAll("[data-hero-rabisco] path"),
+      { drawSVG: "0%" },
+      { drawSVG: "100%", duration: 0.6, delay: 0.3, ease: "power2.out" },
+    );
   }, []);
 
   const escopoRef = useMotion<HTMLElement>(montar);
