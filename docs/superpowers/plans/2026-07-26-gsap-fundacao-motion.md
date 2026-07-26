@@ -86,9 +86,16 @@ usar `git worktree` para não corromper o cache de HMR dele.
 - [x] 9. Verificação estática: grep confirma zero `power3.out`/
       `back.out(1.7)` residual nos arquivos tocados; grep confirma zero
       `getTotalLength` residual em `hero.tsx`.
-- [ ] 10. Abrir PR `feat/gsap-fundacao-motion` → `dev`, com resultado de
+- [x] 10. Abrir PR `feat/gsap-fundacao-motion` → `dev`, com resultado de
       lint/typecheck/build na descrição e nota de que o teste visual em
       celular real fica pendente (sem Chrome no ambiente de execução).
+      **PR #46, mergeado em `dev` e promovido a `main` via PR #48
+      (26/07/2026).**
+- [x] 11. **Fix pós-merge (não previsto no plano original):** `CustomWiggle`
+      testado com Playwright/Firefox após o Lain reportar ausência de
+      animação — quebrava em runtime (`window.gsap` indisponível),
+      travando o sticker em `opacity:0`. Substituído por
+      `elastic.out(1, 0.6)`. Ver D23.5 em `02-DECISOES.md`.
 
 ## Verificação final da sub-etapa
 

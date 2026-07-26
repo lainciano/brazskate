@@ -5,11 +5,13 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 25/07/2026 — V1.4 publicada em produção (PR #38);
-> blueprint do formulário de pré-inscrição concluído (destrava a linha do
-> estacionamento); V1.6 corrigida para refletir o que já estava implementado
-> (era muito menor do que a decomposição original sugeria); V1.8 (`/inscricao`)
-> mapeada, travada até a URL do formulário existir.
+> Última atualização: 26/07/2026 — V1.9 (GSAP avançado — fundação de motion
+> + fix do z-index do selo) concluída e publicada em produção (PR #46, #47,
+> #48). 25/07/2026: V1.4 publicada em produção (PR #38); blueprint do
+> formulário de pré-inscrição concluído (destrava a linha do estacionamento);
+> V1.6 corrigida para refletir o que já estava implementado (era muito menor
+> do que a decomposição original sugeria); V1.8 (`/inscricao`) mapeada,
+> travada até a URL do formulário existir.
 
 ## O que é o V1
 
@@ -243,29 +245,42 @@ terceiros. É de propósito uma leva pequena.
   foto do hero com 1 arquivo + 1 prop; o schema da galeria recusa foto sem
   crédito/permissão; o site publicado continua **sem** nenhuma moldura vazia.
 
-### V1.9 · GSAP avançado — fundação de motion (CustomEase, DrawSVG, CustomWiggle)
+### V1.9 · GSAP avançado — fundação de motion (CustomEase, DrawSVG)
 
-- **Estado:** **construível agora** — destravada pela emenda **D23**
-  (`02-DECISOES.md`), que amplia o escopo de plugins do §6.2 além de
-  `ScrollTrigger`. Primeiro recorte (itens 1–3 de
-  `docs/superpowers/specs/2026-07-25-gsap-avancado-design.md` §5), com spec
-  própria em `docs/superpowers/specs/2026-07-26-gsap-fundacao-motion-design.md`.
-- **Entrega:** duas eases próprias do projeto registradas em `lib/motion.ts`
-  — `tintaSeca` (CustomEase, substitui `power3.out` genérico) e `carimbada`
-  (CustomWiggle, substitui `back.out(1.7)` genérico na "carimbada" dos
-  stickers); `DrawSVGPlugin` substituindo o cálculo manual de
-  `strokeDashoffset` no rabisco do hero, e o mesmo tratamento estendido ao
-  sublinhado do `SectionHeader` (novo seletor `data-rabisco` em
-  `components/reveal.tsx`), que hoje só derivava no scroll sem se desenhar.
+- **Estado:** ✅ **concluída e publicada** (26/07/2026, PR #46 + PR #47,
+  promovidas a `main` via PR #48). Primeiro recorte (itens 1–3 de
+  `docs/superpowers/specs/2026-07-25-gsap-avancado-design.md` §5), com specs
+  próprias em `docs/superpowers/specs/2026-07-26-gsap-fundacao-motion-design.md`
+  e `docs/superpowers/specs/2026-07-26-hero-selo-sobreposicao-design.md`.
+- **Entrega:** ease própria do projeto registrada em `lib/motion.ts` —
+  `tintaSeca` (CustomEase, substitui `power3.out` genérico); `DrawSVGPlugin`
+  substituindo o cálculo manual de `strokeDashoffset` no rabisco do hero, e
+  o mesmo tratamento estendido ao sublinhado do `SectionHeader` (novo
+  seletor `data-rabisco` em `components/reveal.tsx`), que antes só derivava
+  no scroll sem se desenhar. Além disso (item 9, §5.1, resolvido nesta
+  sub-etapa): fix do `z-index` do selo do hero — o `z-10` vivia só no filho
+  `[data-hero-selo]`, nunca comparava contra o `<div>` de conteúdo; corrigido
+  com `z-10` no wrapper e `z-20` no conteúdo.
+- **`CustomWiggle` testado e descartado (D23.5):** quebra em runtime neste
+  bundle ESM (`CustomWiggle.create()` depende de `window.gsap`, que este app
+  nunca define) — travava o "carimbada" do sticker em `opacity:0`
+  permanentemente, **sem erro visível no console**. Substituído por
+  `elastic.out(1, 0.6)` (ease nativa do GSAP, sem plugin). Achado só via
+  reprodução isolada em Node + Playwright/Firefox, já que os previews da
+  Vercel exigem login (Deployment Protection) e bloqueiam QA automatizado.
 - **Consome do design:** §6.1 (linguagem de motion), §6.2 (guardrails do
   GSAP, nomes das eases documentados), §3.3/§3.9 (SectionHeader, rabiscos).
-- **Fora desta sub-etapa:** os itens 4–9 da spec ampla (SplitText, Flip,
-  MorphSVG, ScrambleText, ScrollSmoother, selo sobreposto do hero) — cada
-  um entra como sub-etapa própria, na ordem sugerida pela spec.
-- **Pronto quando:** zero `power3.out`/`back.out(1.7)` residual no escopo
-  tocado; zero `getTotalLength` manual em `hero.tsx`; `pnpm lint`/
-  `typecheck`/`build` limpos; nenhuma mudança de comportamento sob
-  `prefers-reduced-motion`.
+- **Fora desta sub-etapa:** os itens 4–9 restantes da spec ampla (SplitText,
+  Flip, MorphSVG, ScrambleText, ScrollSmoother) — cada um entra como
+  sub-etapa própria, na ordem sugerida pela spec. O grau exato de
+  sobreposição visual do selo (posição/tamanho) segue pendente de QA
+  humana — o bug de stacking foi corrigido, mas quanto o selo cruza o
+  título/sticker/CTA em diferentes larguras não foi ajustado nesta sessão.
+- **Pronto quando:** ✅ zero `power3.out`/`back.out(1.7)`/`CustomWiggle`
+  residual no escopo tocado; zero `getTotalLength` manual em `hero.tsx`;
+  `pnpm lint`/`typecheck`/`build` limpos; nenhuma mudança de comportamento
+  sob `prefers-reduced-motion` (confirmado via Playwright/Firefox, local e
+  no dev server real).
 
 ### V1.8 · Página `/inscricao`
 
@@ -305,7 +320,7 @@ Transversal (não está na lista dos 11, mas o Lain pediu):
 
 | Tema | Status | Observação |
 |---|---|---|
-| Motion / feedback / efeitos | 🟢 construível | **V1.6** (concluída) + **V1.9** (GSAP avançado, em andamento) — guardrails do §6.2 |
+| Motion / feedback / efeitos | 🟢 construível | **V1.6** e **V1.9** (GSAP avançado — sub-etapa 1) concluídas — guardrails do §6.2. Itens 4–9 da spec ampla seguem como sub-etapas futuras |
 | Slots de foto | 🟢 construível | **V1.7** — afordância de código, sem casca vazia |
 | Recursos "gameficados" | ⚪ sem escopo | Continua exigindo brainstorming + spec; avaliar contra o anti-escopo |
 
@@ -345,6 +360,8 @@ Concluídas:
 3. **V1.3 · FAQ parcial** — ✅ PR #33 (25/07/2026).
 4. **V1.4 · Termo de responsabilidade** — ✅ PR #37, publicada em produção
    via PR #38 (25/07/2026).
+5. **V1.9 · GSAP avançado (sub-etapa 1)** — ✅ PR #46 + PR #47, publicada em
+   produção via PR #48 (26/07/2026).
 
 Fila atual (cada uma ganha **spec → plano → PR** própria, no fluxo da V1.1 —
 este roadmap decompõe, não substitui as specs):
@@ -366,10 +383,11 @@ este roadmap decompõe, não substitui as specs):
    de `data/gallery.ts`.
 9. **V1.8 · Página `/inscricao`** — travada até a ASB publicar a URL real do
    formulário (item 5). Não antecipar com URL placeholder.
-10. **V1.9 · GSAP avançado** — destravada pela emenda D23 (25/07/2026); em
-    andamento, primeiro recorte (itens 1–3 da spec ampla). Itens 4–9
-    (SplitText, Flip, MorphSVG, ScrambleText, ScrollSmoother, selo do hero)
-    seguem como sub-etapas futuras, cada uma com spec própria.
+10. **V1.9 · GSAP avançado** — ✅ concluída (26/07/2026, PR #46/#47/#48):
+    primeiro recorte (itens 1–3 da spec ampla) + fix do z-index do selo
+    (item 9). Itens 4–9 restantes (SplitText, Flip, MorphSVG, ScrambleText,
+    ScrollSmoother) seguem como sub-etapas futuras, cada uma com spec
+    própria.
 
 **Por que nesta ordem:** V1.5 e V1.6/V1.7 são recortes pequenos e
 independentes que fecham o que resta do V1 construível agora; V1.8 fecha o
