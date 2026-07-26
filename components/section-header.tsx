@@ -31,11 +31,16 @@ export function SectionHeader({
       >
         {titulo}
       </h2>
-      <RabiscoSublinhado
-        className={`mt-3 h-3 w-44 max-w-full ${
-          corRabisco === "vermelho" ? "text-vermelho-500" : "text-rosa"
-        }`}
-      />
+      {/* o rabisco deriva no scroll (data-parallax) e se desenha ao entrar
+          (data-rabisco, DrawSVGPlugin) — ver components/reveal.tsx;
+          decorativo e aria-hidden, então mover/desenhar não afeta leitura */}
+      <span data-parallax data-rabisco className="block">
+        <RabiscoSublinhado
+          className={`mt-3 h-3 w-44 max-w-full ${
+            corRabisco === "vermelho" ? "text-vermelho-500" : "text-rosa"
+          }`}
+        />
+      </span>
       {lead && (
         <p className="mt-6 max-w-[65ch] text-lg leading-[1.55] text-(--fg-secundario)">
           {lead}

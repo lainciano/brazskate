@@ -554,14 +554,28 @@ puxar um stencil, descolar um papel).
 
 ### 6.2 GSAP — ferramenta aprovada e seus guardrails
 
-**Escopo permitido no MVP: `gsap` core + `ScrollTrigger`. Nada além.**
+**Escopo permitido no MVP:** `gsap` core + `ScrollTrigger` + **plugins aprovados por D23** (SplitText, DrawSVG, MorphSVG, CustomEase, CustomBounce, ScrambleText). **CustomWiggle testado e descartado** (ver nota abaixo) — não usar. ScrollSmoother requer decisão à parte — ver D23.1. **Nada além desta lista sem aprovação explícita.**
+
+**Eases próprias do projeto** (registradas em `lib/motion.ts`, ver
+`docs/superpowers/specs/2026-07-26-gsap-fundacao-motion-design.md`) —
+reusar estes nomes/valores em vez de reinventar `power3.out`/`back.out` em
+código novo:
+- `"tintaSeca"` (CustomEase, `cubic-bezier(0.16, 1, 0.3, 1)`) — entrada
+  padrão de conteúdo (fade+y, stencil, formas do hero).
+- `"elastic.out(1, 0.6)"` (ease **nativa** do GSAP, usada direto como string
+  — sem plugin) — "carimbada" de sticker (scale de entrada). **Não usar
+  `CustomWiggle`**: `CustomWiggle.create()` quebra em runtime neste bundle
+  ESM (sem `window.gsap`), travando o tween em `opacity:0` permanentemente
+  e sem erro visível no console — confirmado com reprodução isolada
+  (Node + Playwright/Firefox) em 26/07/2026.
 
 Guardrails obrigatórios (quebrar qualquer um = PR reprovado):
 
 1. **`prefers-reduced-motion`:** via `gsap.matchMedia()` — versão
    estática equivalente (tudo visível, opacidade 1, sem transform).
-   Testar com a preferência ativa.
-2. **Só `transform` e `opacity`** — nunca animar propriedades de layout
+   Testar com a preferência ativa. **Nota especial para ScrollSmoother (D23.1):** scroll suavizado é justamente o tipo de coisa que causa desconforto vestibular — se ScrollSmoother entrar, deve ser **completamente desligado** quando `prefers-reduced-motion: reduce`.
+2. **Só `transform`, `opacity`, `clip-path` e propriedades de SVG stroke**
+   (ex.: `drawSVG` do DrawSVGPlugin) — nunca animar propriedades de layout
    (width/height/top). Zero layout shift causado por animação (elementos
    nascem no lugar; animação é revelação, não reposicionamento).
 3. **Lazy-init:** ScrollTrigger inicializa após hidratação/idle, nunca
@@ -608,7 +622,8 @@ força a conversa, não o dogma.
 | Item | Status | Impacto no design |
 |---|---|---|
 | Tipografia Anton + Archivo | Aprovado 16/07/2026 | §2.2 |
-| Sem WebGL no MVP; GSAP aprovado | Aprovado 16/07/2026 | §6 |
+| Sem WebGL no MVP; GSAP core + ScrollTrigger apenas | Aprovado 16/07/2026 (D14) | §6.2–6.3 |
+| **EMENDA: GSAP — plugins ampliados + ScrollSmoother em separado (D23)** | **Aprovado 25/07/2026** | **§6.2** |
 | Logo só em PNG (sem vetor) | Confirmado 16/07/2026 | Logo entra como selo; formas do hero são abstratas, não redesenho da ilustração (§4.1) |
 | UIEMAPV no site | **Aguardando confirmação com o instituto** (I7) | Site NÃO menciona UIEMAPV até o ok; quando vier, entra como parceiro institucional na seção de patrocínio |
 | Foto própria da pista (I2) | Pendente | Hero gráfico com slot (§4) |
