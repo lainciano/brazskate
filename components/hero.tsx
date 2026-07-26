@@ -79,7 +79,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
     })
       .from(
         escopo.querySelector("[data-hero-sticker]"),
-        { scale: 1.15, opacity: 0, duration: 0.35, ease: "carimbada" },
+        { scale: 1.15, opacity: 0, duration: 0.35, ease: "elastic.out(1, 0.6)" },
         "-=0.1",
       )
       .from(

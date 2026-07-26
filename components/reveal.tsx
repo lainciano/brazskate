@@ -10,7 +10,7 @@ import { useMotion, type Gsap } from "@/lib/motion";
 // Marcadores disponíveis (todos opcionais e independentes):
 // - data-reveal:   fade + y, com stagger (entrada padrão)
 // - data-stencil:  "stencil puxado" (clip-path), para títulos de seção
-// - data-carimbo:  "carimbada" (scale + ease "carimbada"), para stickers
+// - data-carimbo:  "carimbada" (scale + elastic.out), para stickers
 // - data-parallax: deriva lenta no scroll (scrub leve, só transform)
 // - data-rabisco:  traço se desenha (DrawSVGPlugin), para rabiscos SVG
 //
@@ -70,7 +70,7 @@ export function Reveal({
         scale: 1.15,
         opacity: 0,
         duration: 0.35,
-        ease: "carimbada",
+        ease: "elastic.out(1, 0.6)",
         scrollTrigger: entrada(),
       });
     }

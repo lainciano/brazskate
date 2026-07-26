@@ -20,8 +20,13 @@ export type Gsap = typeof import("gsap")["gsap"];
 //
 // Eases próprias do projeto (docs/superpowers/specs/2026-07-26-gsap-fundacao-motion-design.md):
 // - "tintaSeca": entrada padrão de conteúdo — substitui power3.out genérico.
-// - "carimbada": "carimbada" de sticker — substitui back.out(1.7) genérico.
-// Registradas uma vez por montagem; recriar é idempotente (GSAP sobrescreve).
+// A "carimbada" de sticker usa a ease NATIVA "elastic.out(1, 0.6)" (sem
+// plugin, usada direto como string nos tweens) — CustomWiggle.create() foi
+// tentado e DESCARTADO: quebra em runtime neste bundle ESM (sem
+// window.gsap), travando o tween que a usa em opacity:0 permanentemente,
+// sem erro visível no console. Confirmado com reprodução isolada
+// (Node + Playwright/Firefox) nesta sessão.
+// Eases registradas uma vez por montagem; recriar é idempotente (GSAP sobrescreve).
 export function useMotion<T extends HTMLElement = HTMLDivElement>(
   montar: (gsap: Gsap, escopo: T) => void,
 ) {
@@ -38,19 +43,17 @@ export function useMotion<T extends HTMLElement = HTMLDivElement>(
       window.cancelIdleCallback?.bind(window) ?? window.clearTimeout.bind(window);
 
     const agendado = idle(async () => {
-      const [{ gsap }, { ScrollTrigger }, { CustomEase }, { DrawSVGPlugin }, { CustomWiggle }] =
+      const [{ gsap }, { ScrollTrigger }, { CustomEase }, { DrawSVGPlugin }] =
         await Promise.all([
           import("gsap"),
           import("gsap/ScrollTrigger"),
           import("gsap/CustomEase"),
           import("gsap/DrawSVGPlugin"),
-          import("gsap/CustomWiggle"),
         ]);
       if (cancelado || !escopoRef.current) return;
 
-      gsap.registerPlugin(ScrollTrigger, CustomEase, DrawSVGPlugin, CustomWiggle);
+      gsap.registerPlugin(ScrollTrigger, CustomEase, DrawSVGPlugin);
       CustomEase.create("tintaSeca", "0.16, 1, 0.3, 1");
-      CustomWiggle.create("carimbada", { type: "easeOut", wiggles: 3 });
 
       const mm = gsap.matchMedia(escopoRef.current);
       mm.add("(prefers-reduced-motion: no-preference)", () => {
