@@ -120,13 +120,20 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
       ) : (
         // abstração de rampa/transição (§4.1): selo da logo (pin) em
         // vermelho-500 — recorte via mask, não PNG colorido
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          {/* z-10 põe o selo ACIMA do conteúdo do hero (pedido do Lain,
-              25/07/2026). pointer-events-none no pai é obrigatório: sem
-              isso o selo cobriria os CTAs e engoliria os cliques. */}
+        //
+        // z-10 AQUI no wrapper (não só no filho) é o que de fato compara
+        // contra o z-20 do <div> de conteúdo abaixo — os dois são filhos
+        // diretos da <section>, mesmo contexto de empilhamento. Um z-index
+        // só no filho interno (data-hero-selo) NÃO tem efeito nenhum contra
+        // elementos fora deste wrapper (docs/superpowers/specs/
+        // 2026-07-26-hero-selo-sobreposicao-design.md §1) — era exatamente
+        // o bug que fazia o selo nunca sobrepor nada.
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10">
+          {/* pointer-events-none no pai é obrigatório: sem isso o selo
+              cobriria os CTAs e engoliria os cliques. */}
           <div
             data-hero-selo
-            className="absolute -bottom-[34vw] -right-[16vw] z-10 h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+            className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
             style={{ maskImage: "url(/logo-pin.png)" }}
           />
           <div
@@ -137,7 +144,9 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
       )}
       <Grao />
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-20">
+      {/* z-20: sempre acima do selo (z-10) — texto/CTA nunca perdem
+          contraste, não importa quanto o selo cruze visualmente esta área */}
+      <div className="relative z-20 mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-20">
         <p
           data-hero-item
           className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-rosa"
