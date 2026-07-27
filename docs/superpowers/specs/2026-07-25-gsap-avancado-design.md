@@ -1,15 +1,18 @@
 # GSAP avançado — SplitText, ScrollSmoother, Flip, SVG e efeitos
 
-> **STATUS: PLANEJAMENTO — AGUARDANDO APROVAÇÃO.**
-> Pedido do Lain em 25/07/2026. Nenhum código foi escrito; este documento
-> existe para decidir **o que entra, onde, e sob quais guardrails** antes de
-> qualquer implementação.
+> **STATUS: ✅ IMPLEMENTADO POR COMPLETO (26/07/2026).**
+> Emenda registrada como **D23** (`02-DECISOES.md`). Sub-etapa 1 (itens 1–3
+> + fix do z-index do selo, item 9): specs
+> `2026-07-26-gsap-fundacao-motion-design.md` e
+> `2026-07-26-hero-selo-sobreposicao-design.md`, PR #46/#47, publicadas via
+> PR #48. Sub-etapa 2 (itens 4–9 restantes, incluindo ScrollSmoother):
+> spec `2026-07-26-gsap-avancado-parte2-design.md`, PR #49, publicada via
+> PR #50. `CustomWiggle` foi testado e **descartado** (D23.5) — quebra em
+> runtime neste bundle ESM; substituído por `elastic.out` nativo. Ver
+> `docs/04-ROADMAP-V1.md` V1.9 para o resumo final.
 >
-> ⚠️ **Este plano contraria `05-DESIGN.md` §6.2** ("Escopo permitido no MVP:
-> `gsap` core + `ScrollTrigger`. **Nada além.**"). Pelo `AGENT.md`, nada que
-> contrarie os documentos vigentes se implementa sem decisão do mantenedor —
-> então a **primeira tarefa** de qualquer implementação é registrar a emenda
-> como decisão (proposta: **D23**), não começar pelo código.
+> Texto original do planejamento (25/07/2026) preservado abaixo como
+> referência histórica das decisões técnicas discutidas.
 
 ## 1. Licenciamento — resolvido, nada a pagar
 
