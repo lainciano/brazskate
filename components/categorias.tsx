@@ -41,7 +41,7 @@ export function Categorias() {
                   {descricaoPremiacao[categoria.premiacao]}
                 </p>
                 <div className="mt-auto w-fit pt-2">
-                  <StickerBadge variante="breve" data-carimbo>
+                  <StickerBadge variante="breve" data-carimbo data-scramble>
                     Detalhes em breve
                   </StickerBadge>
                 </div>

@@ -133,7 +133,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
               cobriria os CTAs e engoliria os cliques. */}
           <div
             data-hero-selo
-            className="absolute -bottom-[34vw] -right-[16vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+            className="absolute -bottom-[24vw] -right-[6vw] h-[72vw] w-[72vw] bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
             style={{ maskImage: "url(/logo-pin.png)" }}
           />
           <div

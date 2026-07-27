@@ -6,11 +6,15 @@ import { StickerBadge } from "./sticker-badge";
 // Seção de FAQ (roadmap V1.3, docs/04-ROADMAP-V1.md): perguntas lidas
 // SEMPRE de data/faq.ts — nunca hardcode. `<details>` nativo é o padrão de
 // disclosure escolhido (docs/05-DESIGN.md §3.6-bis): zero JS extra, teclado
-// e leitor de tela funcionam de fábrica. Abrir/fechar não anima — só a
-// entrada da lista (Reveal/data-reveal), respeitando o guardrail de motion
-// (§6.2) e o orçamento de JS (§6.4). Perguntas com `resposta: null`
-// dependem do regulamento (P6) e mostram o sticker "em breve" em vez de
-// texto — nunca resposta inventada.
+// e leitor de tela funcionam de fábrica. Abrir/fechar não anima o conteúdo —
+// só o chevron morfa "+"/"−" via MorphSVG (Reveal ouve o evento `toggle`
+// nativo, docs/superpowers/specs/2026-07-26-gsap-avancado-parte2-design.md
+// §3), respeitando o guardrail de motion (§6.2) e o orçamento de JS (§6.4).
+// Sob prefers-reduced-motion o chevron fica parado em "+" (cosmético, não
+// afeta a leitura do estado: o texto da resposta aparecer/sumir e o
+// anúncio nativo de aberto/fechado do leitor de tela continuam intactos).
+// Perguntas com `resposta: null` dependem do regulamento (P6) e mostram o
+// sticker "em breve" em vez de texto — nunca resposta inventada.
 
 function IconeChevron() {
   return (
@@ -18,15 +22,10 @@ function IconeChevron() {
       viewBox="0 0 16 16"
       fill="none"
       aria-hidden="true"
-      className="size-4 shrink-0 transition-transform duration-150 group-open:rotate-180 motion-reduce:transition-none"
+      data-morph-chevron
+      className="size-4 shrink-0"
     >
-      <path
-        d="M3 6l5 5 5-5"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -58,7 +57,7 @@ export function Faq() {
                         {item.resposta}
                       </p>
                     ) : (
-                      <StickerBadge variante="breve" data-carimbo>
+                      <StickerBadge variante="breve" data-carimbo data-scramble>
                         Em breve
                       </StickerBadge>
                     )}
