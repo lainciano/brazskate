@@ -26,27 +26,41 @@ Branch `feat/gsap-avancado-parte2` a partir de `dev` (worktree separado,
 ## Tarefas
 
 - [x] 1. Criar branch + spec.
-- [ ] 2. `lib/motion.ts`: registrar `SplitText`, `Flip`, `MorphSVGPlugin`,
+- [x] 2. `lib/motion.ts`: registrar `SplitText`, `MorphSVGPlugin`,
       `ScrambleTextPlugin` no lazy-init; exportar `carregarFlip()` para
       import sob demanda (menu não usa `useMotion` diretamente).
-- [ ] 3. `components/section-header.tsx` + `components/reveal.tsx`:
+- [x] 3. `components/section-header.tsx` + `components/reveal.tsx`:
       `data-split-lead` no `<p>` do lead; SplitText por palavra após
-      `document.fonts.ready`.
-- [ ] 4. `hooks/use-menu-overlay.ts` + `components/header.tsx`: Flip do
-      hambúrguer para o overlay ao abrir.
-- [ ] 5. `components/faq.tsx`: chevron com MorphSVG (`+`/`−`) no evento
-      `toggle` do `<details>`.
-- [ ] 6. `components/sticker-badge.tsx` (ou `reveal.tsx`, `data-carimbo`
+      `document.fonts.ready`. **Verificado:** `aria-label` com o texto
+      completo no `<p>`, `aria-hidden` nas palavras — a11y automática do
+      SplitText confirmada via Playwright.
+- [x] 4. `hooks/use-menu-overlay.ts` + `components/header.tsx`: Flip do
+      hambúrguer para o overlay ao abrir. **Verificado:** overlay abre em
+      tela cheia, `opacity: 1`, zero erro no console (viewport mobile).
+- [x] 5. `components/faq.tsx`: chevron com MorphSVG (`+`/`−`) no evento
+      `toggle` do `<details>`. **Verificado:** `d` do path muda de
+      `"M8 3v10M3 8h10"` (fechado) para `"M3 8h10"` (aberto) no clique.
+- [x] 6. `components/sticker-badge.tsx` (ou `reveal.tsx`, `data-carimbo`
       já existente): ScrambleText no texto do sticker `breve` ao entrar.
-- [ ] 7. `components/smooth-scroll.tsx` (novo) + `app/page.tsx`:
-      ScrollSmoother com header fora do wrapper (D23.1).
-- [ ] 8. `components/hero.tsx`: ajustar posição do selo
+      **Verificado:** texto assenta corretamente ("Detalhes em breve",
+      "Em breve") depois do reveal.
+- [x] 7. `components/smooth-scroll.tsx` (novo) + `app/page.tsx`:
+      ScrollSmoother com header fora do wrapper (D23.1). **Verificado:**
+      header continua `sticky`/fixo no topo depois de scroll; navegação
+      por âncora (`href="#categorias"`) chega exatamente na seção.
+- [x] 8. `components/hero.tsx`: ajustar posição do selo
       (`-right-[16vw]`→`-right-[6vw]`, `-bottom-[34vw]`→`-bottom-[24vw]`).
-- [ ] 9. `pnpm lint` + `typecheck` + `build`.
-- [ ] 10. Verificação com Playwright/Firefox: menu abre com Flip, header
-       continua sticky com ScrollSmoother ativo, reduced-motion desliga
-       tudo, sem erro no console.
-- [ ] 11. Abrir PR `feat/gsap-avancado-parte2` → `dev`.
+      **Verificado:** bounding box do selo agora cruza ~795×592px da
+      coluna de conteúdo (era quase zero antes do ajuste).
+- [x] 9. `pnpm lint` + `typecheck` + `build`. Todos limpos.
+- [x] 10. Verificação com Playwright/Firefox: menu abre com Flip, header
+       continua sticky com ScrollSmoother ativo, chevron morfa, scramble
+       assenta, SplitText acessível, sem erro no console. Duas checagens
+       iniciais deram falso positivo (ScrambleText "travado", chevron sem
+       morph) por causa do `scrollIntoView()` do próprio script de teste
+       brigando com o ScrollSmoother — reproduzido isoladamente e
+       confirmado que era o teste, não o site.
+- [x] 11. Abrir PR `feat/gsap-avancado-parte2` → `dev`.
 
 ## Pronto quando
 

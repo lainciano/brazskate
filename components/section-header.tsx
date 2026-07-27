@@ -42,7 +42,10 @@ export function SectionHeader({
         />
       </span>
       {lead && (
-        <p className="mt-6 max-w-[65ch] text-lg leading-[1.55] text-(--fg-secundario)">
+        <p
+          data-split-lead
+          className="mt-6 max-w-[65ch] text-lg leading-[1.55] text-(--fg-secundario)"
+        >
           {lead}
         </p>
       )}
