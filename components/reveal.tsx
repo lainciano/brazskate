@@ -13,6 +13,8 @@ import { useMotion, type Gsap } from "@/lib/motion";
 // - data-carimbo:  "carimbada" (scale + elastic.out), para stickers
 // - data-parallax: deriva lenta no scroll (scrub leve, só transform)
 // - data-rabisco:  traço se desenha (DrawSVGPlugin), para rabiscos SVG
+// - data-split-lead: reveal por palavra (SplitText), para o lead do SectionHeader
+// - data-scramble: embaralha até assentar no texto original (ScrambleTextPlugin)
 //
 // O §6.2 proíbe `pin` e `scrub` PESADO — a deriva abaixo é o caso leve:
 // distância curta, só `y`, `ease: none`, sem travar o scroll em momento
@@ -85,6 +87,55 @@ export function Reveal({
         { drawSVG: "100%", duration: 0.5, ease: "power2.out", scrollTrigger: entrada() },
       );
     }
+
+    // lead splita por palavra (SplitText) e revela com stagger sutil — só
+    // depois que a fonte carregou de verdade, senão a métrica do split
+    // fica errada e reflui na troca (docs/superpowers/specs/
+    // 2026-07-26-gsap-avancado-parte2-design.md §1)
+    const splitLead = alvos("[data-split-lead]");
+    if (splitLead) {
+      document.fonts.ready.then(async () => {
+        if (!escopo.isConnected) return;
+        const { SplitText } = await import("gsap/SplitText");
+        splitLead.forEach((no) => {
+          const split = new SplitText(no as HTMLElement, { type: "words" });
+          gsap.from(split.words, {
+            opacity: 0,
+            y: 8,
+            duration: 0.4,
+            stagger: 0.03,
+            ease: "tintaSeca",
+            scrollTrigger: entrada(),
+          });
+        });
+      });
+    }
+
+    // sticker "em breve" embaralha até assentar no texto original —
+    // "{original}" evita capturar/reescrever o textContent na mão
+    const scramble = alvos("[data-scramble]");
+    if (scramble) {
+      gsap.to(scramble, {
+        duration: 0.8,
+        scrambleText: "{original}",
+        scrollTrigger: entrada(),
+      });
+    }
+
+    // chevron do FAQ morfa "+" (fechado) ⇄ "−" (aberto) no toggle nativo do
+    // <details> — MorphSVGPlugin já registrado no idle (lib/motion.ts)
+    const detalhes = escopo.querySelectorAll("details");
+    detalhes.forEach((detEl) => {
+      const path = detEl.querySelector<SVGPathElement>("[data-morph-chevron] path");
+      if (!path) return;
+      detEl.addEventListener("toggle", () => {
+        gsap.to(path, {
+          duration: 0.3,
+          morphSVG: detEl.open ? "M3 8h10" : "M8 3v10M3 8h10",
+          ease: "power2.inOut",
+        });
+      });
+    });
 
     const parallax = alvos("[data-parallax]");
     if (parallax) {

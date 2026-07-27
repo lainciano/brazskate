@@ -43,9 +43,12 @@ PR #46, que só mexeu em eases/motion, não em stacking).
       `z-20` no `<div>` de conteúdo.
 - [x] 4. Rodar `pnpm lint` + `pnpm typecheck` + `pnpm build`. **Resultado:**
       todos limpos.
-- [ ] 5. Abrir PR `feat/hero-selo-sobreposicao` → `dev`, com nota explícita
+- [x] 5. Abrir PR `feat/hero-selo-sobreposicao` → `dev`, com nota explícita
       de que a conferência visual (o quanto o selo cruza o texto, se o
       grau de sobreposição está bom) fica pendente de QA humana.
+      **PR #47, mergeado em `dev` e promovido a `main` via PR #48
+      (26/07/2026).** Ajuste fino de posição/tamanho do selo continua na
+      sub-etapa 2 (itens 4-9 da spec ampla).
 
 ## Verificação final
 

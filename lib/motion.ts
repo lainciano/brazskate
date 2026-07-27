@@ -6,8 +6,9 @@ export type Gsap = typeof import("gsap")["gsap"];
 
 // Setup de motion aprovado (docs/05-DESIGN.md §6.2): gsap core +
 // ScrollTrigger + os plugins liberados pela emenda D23 (docs/02-DECISOES.md)
-// — nesta sub-etapa, CustomEase, DrawSVGPlugin e CustomWiggle. Guardrails
-// embutidos:
+// — CustomEase, DrawSVGPlugin, SplitText, MorphSVGPlugin, ScrambleTextPlugin
+// (conteúdo, no idle) e Flip (interação do menu, sob demanda via
+// `carregarFlip()`). Guardrails embutidos:
 // - lazy-init no idle, depois da hidratação — nunca bloqueia o primeiro paint;
 // - reduced-motion via gsap.matchMedia — com a preferência ativa nada roda,
 //   e o DOM já nasce no estado final (animação é revelação, só transform/opacity);
@@ -43,16 +44,33 @@ export function useMotion<T extends HTMLElement = HTMLDivElement>(
       window.cancelIdleCallback?.bind(window) ?? window.clearTimeout.bind(window);
 
     const agendado = idle(async () => {
-      const [{ gsap }, { ScrollTrigger }, { CustomEase }, { DrawSVGPlugin }] =
-        await Promise.all([
-          import("gsap"),
-          import("gsap/ScrollTrigger"),
-          import("gsap/CustomEase"),
-          import("gsap/DrawSVGPlugin"),
-        ]);
+      const [
+        { gsap },
+        { ScrollTrigger },
+        { CustomEase },
+        { DrawSVGPlugin },
+        { SplitText },
+        { MorphSVGPlugin },
+        { ScrambleTextPlugin },
+      ] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+        import("gsap/CustomEase"),
+        import("gsap/DrawSVGPlugin"),
+        import("gsap/SplitText"),
+        import("gsap/MorphSVGPlugin"),
+        import("gsap/ScrambleTextPlugin"),
+      ]);
       if (cancelado || !escopoRef.current) return;
 
-      gsap.registerPlugin(ScrollTrigger, CustomEase, DrawSVGPlugin);
+      gsap.registerPlugin(
+        ScrollTrigger,
+        CustomEase,
+        DrawSVGPlugin,
+        SplitText,
+        MorphSVGPlugin,
+        ScrambleTextPlugin,
+      );
       CustomEase.create("tintaSeca", "0.16, 1, 0.3, 1");
 
       const mm = gsap.matchMedia(escopoRef.current);
@@ -70,4 +88,19 @@ export function useMotion<T extends HTMLElement = HTMLDivElement>(
   }, [montar]);
 
   return escopoRef;
+}
+
+// Flip é carregado sob demanda (não no idle da página) porque só é usado
+// numa interação — o menu mobile (docs/superpowers/specs/
+// 2026-07-26-gsap-avancado-parte2-design.md §2), não em conteúdo que
+// precisa animar ao carregar. `gsap` core já deve estar carregado antes
+// (via alguma instância de `useMotion` na página), mas o import é
+// idempotente — reimportar um módulo já resolvido só devolve o cache.
+export async function carregarFlip() {
+  const [{ gsap }, { Flip }] = await Promise.all([
+    import("gsap"),
+    import("gsap/Flip"),
+  ]);
+  gsap.registerPlugin(Flip);
+  return { gsap, Flip };
 }
