@@ -46,9 +46,14 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
   const escopoRef = useMotion<HTMLElement>(montar);
 
   return (
+    // pt-16 (=altura do header, 4rem): piso de espaço garantido no topo.
+    // Sem isso, em viewports curtos (celular com a barra de endereço do
+    // Chrome visível — confirmado no S21 real, 384×~760px efetivo, não
+    // os 384×854 "cheios") o justify-center deixa o conteúdo do hero
+    // quase colado no header transparente, sem folga nenhuma.
     <section
       ref={escopoRef}
-      className="registro-asfalto relative flex h-hero flex-col justify-center overflow-hidden"
+      className="registro-asfalto relative flex h-hero flex-col justify-center overflow-hidden pt-16"
     >
       {fotoSrc && (
         // camada de foto com tratamento de marca (§4.2): duotone + grão + scrim
