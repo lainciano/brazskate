@@ -128,7 +128,7 @@ export async function gerarTermoPdf(dados: typeof TermoData): Promise<Blob> {
 
 async function carregarLogoBase64(): Promise<string | null> {
   try {
-    const resposta = await fetch("/logo-completa.png");
+    const resposta = await fetch("/logo-pin.png");
     if (!resposta.ok) return null;
     const blob = await resposta.blob();
     return await new Promise<string>((resolve, reject) => {
