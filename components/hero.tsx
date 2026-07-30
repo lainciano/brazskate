@@ -177,11 +177,8 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           data-hero-sticker
           className="mt-4 flex flex-wrap items-center gap-4 sm:mt-8"
         >
-          <StickerBadge
-            variante="data"
-            className="animate-sticker-pulse motion-reduce:animate-none"
-          >
-            Previsão: {evento.dataPrevistaCurta}
+          <StickerBadge variante="data">
+            Data: {evento.dataPrevistaCurta}
           </StickerBadge>
           <Countdown />
         </div>
