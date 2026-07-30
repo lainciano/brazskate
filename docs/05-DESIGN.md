@@ -429,7 +429,7 @@ com nome acessível ("Instagram do Braz Skate").
 
 ### 4.1 Hero 100% gráfico (o cartaz)
 
-> **Atualização 30/07/2026 (D24, `02-DECISOES.md`):** o slot de foto
+> **Atualização 30/07/2026 (D25, `02-DECISOES.md`):** o slot de foto
 > (§4.2) foi ativado em produção com uma foto de manobra — o hero **não
 > é mais 100% gráfico** na prática. O Selo também foi **removido por
 > completo** (decisão da sessão de polish pós-GSAP), diferente do que o
