@@ -11,38 +11,11 @@ import { RabiscoSublinhado } from "./rabiscos";
 import { StickerBadge } from "./sticker-badge";
 
 // Hero cartaz (docs/05-DESIGN.md §4.1/§4.2): com foto própria de manobra
-// (fotoSrc) tratada em duotone + grão + scrim; o Selo (carimbo do logo)
-// fica como selo pequeno e contido sobreposto — não é mais o fundo, e não
-// depende de fotoSrc (decisão da sessão de polish pós-GSAP, mantém o Selo
-// mesmo com a foto ativa, diferente do "formas saem" original do §4.2).
+// (fotoSrc) tratada em duotone + grão + scrim. O Selo (carimbo do logo)
+// foi removido da composição (decisão da sessão de polish pós-GSAP,
+// revisando a decisão anterior de mantê-lo sobre a foto).
 export function Hero({ fotoSrc }: { fotoSrc?: string }) {
   const montar = useCallback((gsap: Gsap, escopo: HTMLElement) => {
-    // Selo: "carimbada" com giro — entra da esquerda, rotacionando até
-    // assentar na posição final (canto inferior direito), como quem carimba
-    // o cartaz. back.out(1.7) é ease nativa do GSAP (sem plugin, diferente
-    // do CustomWiggle descartado em D23.5).
-    const selo = escopo.querySelector("[data-hero-selo]");
-    gsap.from(selo, {
-      x: "-40vw",
-      rotate: -180,
-      scale: 1.15,
-      opacity: 0,
-      duration: 0.6,
-      ease: "back.out(1.7)",
-    });
-    // deriva no scroll: o selo sobe mais devagar que a página, dando
-    // profundidade ao cartaz (scrub leve, só transform — §6.2)
-    gsap.to(selo, {
-      y: -60,
-      ease: "none",
-      scrollTrigger: {
-        trigger: escopo,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-
     // linguagem "tinta fresca seca rápido" (§6.1): stencil, carimbo, stagger
     const tl = gsap.timeline({ defaults: { ease: "tintaSeca" } });
     tl.from(escopo.querySelector("[data-hero-titulo]"), {
@@ -91,25 +64,8 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         </div>
       )}
 
-      {/* Selo: carimbo do logo, contido (não é mais o fundo, §4.1) — sempre
-          visível, com ou sem foto. z-10 no wrapper (não só no filho) é o
-          que de fato compara contra o z-20 do <div> de conteúdo abaixo —
-          os dois são filhos diretos da <section>, mesmo contexto de
-          empilhamento (docs/superpowers/specs/
-          2026-07-26-hero-selo-sobreposicao-design.md §1). */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10">
-        {/* pointer-events-none no pai é obrigatório: sem isso o selo
-            cobriria os CTAs e engoliria os cliques. */}
-        <div
-          data-hero-selo
-          className="absolute bottom-4 right-4 h-32 w-32 bg-vermelho-500 [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] sm:bottom-6 sm:right-6 sm:h-40 sm:w-40 lg:h-48 lg:w-48"
-          style={{ maskImage: "url(/logo-pin.png)" }}
-        />
-      </div>
       <Grao />
 
-      {/* z-20: sempre acima do selo (z-10) — texto/CTA nunca perdem
-          contraste, não importa quanto o selo cruze visualmente esta área */}
       <div className="relative z-20 mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-20">
         <p
           data-hero-item

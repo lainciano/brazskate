@@ -2,11 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
 import { Grao } from "./grao";
 
-// Header / nav por âncoras (docs/05-DESIGN.md §3.2): barra sticky em tinta
-// translúcida; no mobile o menu abre um overlay full-screen estilo cartaz.
+// Header / nav por âncoras (docs/05-DESIGN.md §3.2): barra sticky, transparente
+// sobre o hero e com fundo tinta translúcido assim que a página rola — todas
+// as páginas que usam este Header abrem com uma seção `registro-asfalto`
+// (escura) logo abaixo, então o texto creme continua legível no estado
+// transparente. No mobile o menu abre um overlay full-screen estilo cartaz.
 
 const links = [
   { href: "#sobre", rotulo: "Sobre" },
@@ -19,6 +23,14 @@ const links = [
 export function Header() {
   const { aberto, abrir, fechar, overlayRef, botaoFecharRef, botaoAbrirRef } =
     useMenuOverlay();
+  const [rolado, setRolado] = useState(false);
+
+  useEffect(() => {
+    const aoRolar = () => setRolado(window.scrollY > 8);
+    aoRolar();
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    return () => window.removeEventListener("scroll", aoRolar);
+  }, []);
 
   return (
     <>
@@ -29,7 +41,11 @@ export function Header() {
         Pular para o conteúdo
       </a>
 
-      <header className="sticky top-0 z-40 bg-tinta/95 text-creme backdrop-blur-sm">
+      <header
+        className={`fixed inset-x-0 top-0 z-40 text-creme transition-colors duration-200 ${
+          rolado ? "bg-tinta/95 backdrop-blur-sm" : "bg-transparent"
+        }`}
+      >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="shrink-0" aria-label="Braz Skate — início">
             <Image

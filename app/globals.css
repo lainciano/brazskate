@@ -110,29 +110,22 @@
   }
 }
 
-/* ScrollSmoother (D23.1, docs/02-DECISOES.md) põe o header FORA de
-   #smooth-wrapper pra manter o sticky — mas o GSAP aplica
-   `inset: 0px; position: fixed` via inline style no wrapper sem saber que
-   o header (h-16 = 4rem) já ocupa espaço acima dele. Resultado: todo o
-   conteúdo (a começar pelo Hero) renderiza colado no topo real da página
-   (y=0), 4rem "por baixo" do header sticky — exatamente os 4rem que
-   faltavam no fim da viewport, empurrando o Rasgo/Marquee da seção
-   seguinte pra dentro da primeira tela. `!important` é necessário aqui
-   porque o inline style do GSAP tem prioridade sobre uma regra normal;
-   não há opção na API do ScrollSmoother pra configurar esse offset.
-   Confirmado via medição real (Playwright + Chromium local) — não é o
-   unit `vh`/`dvh` do Hero, que já estava correto. */
-#smooth-wrapper {
-  top: 4rem !important;
-  height: calc(100% - 4rem) !important;
-}
+/* O header agora é `fixed` (não `sticky`) e sobrepõe o Hero de propósito
+   (nav transparente até o scroll, revela a foto por trás) — não reserva
+   espaço no fluxo, então o #smooth-wrapper do ScrollSmoother não precisa
+   de nenhum ajuste de offset: o padrão do GSAP (inset:0, começando em
+   y=0) já é o que queremos, tanto no modo `position: fixed` (desktop)
+   quanto `position: relative` (touch/mobile). Um ajuste de offset chegou
+   a ser necessário aqui numa versão anterior (header `sticky`,
+   reservando 4rem) — removido junto com essa mudança de arquitetura. */
 
 @layer utilities {
-  /* Hero cobre a tela cheia abaixo do header (h-16 = 4rem, sem padding
-     extra). dvh acompanha a UI do navegador (barra de endereço no
-     mobile); vh é o fallback para navegadores sem suporte a dvh. */
+  /* Hero cobre a tela cheia inteira — o header é `fixed` e sobrepõe o
+     topo do Hero (nav transparente até o scroll), não reserva espaço.
+     dvh acompanha a UI do navegador (barra de endereço no mobile); vh é
+     o fallback para navegadores sem suporte a dvh. */
   .h-hero {
-    min-height: calc(100vh - 4rem);
-    min-height: calc(100dvh - 4rem);
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 }
