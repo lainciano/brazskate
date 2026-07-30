@@ -130,6 +130,14 @@ senão:
   condição compara a data informada contra a constante de corte e direciona
   para a Tela 4b ou pula direto para a Tela 5.
 
+**Corte de idade da categoria Iniciante (D26, 30/07/2026):** iniciante é só
+até 25 anos na data do evento — regra nova, independente da condicional de
+menor/maior de idade acima. Implementação sugerida no Tally: lógica
+condicional própria (mesma constante de corte de data do evento) que oculta
+ou desabilita a opção "Iniciante" no campo Categoria (Tela 2) quando a idade
+calculada pela data de nascimento (Tela 1) for maior que 25. Amador e
+Feminino não têm corte de idade.
+
 ---
 
 ## 5. Tabela de campos
@@ -163,8 +171,8 @@ acolhedor com quem nunca competiu.
 
 **Abertura (Tela 0):**
 > Preencha em menos de 3 minutos. Sua vaga fica garantida assim que você
-> enviar — ainda vai ter cota de inscrição presencial no dia, então quem se
-> inscrever antes joga com folga.
+> enviar — são até 60 vagas no total, entre pré-inscrição e inscrição
+> presencial no dia, então quem se inscrever antes joga com folga.
 
 **Aviso no bloco do responsável (Tela 4b), acima dos campos:**
 > Você tem menos de 18 anos, então precisamos do nome e WhatsApp do seu
@@ -253,9 +261,9 @@ validação de campo.
 - **Abertura prevista:** `evento.inscricaoAbrePrevista` (hoje "1º de agosto
   de 2026") — o formulário deve estar pronto e testado antes dessa data, não
   necessariamente aberto exatamente nela (a data é previsão, P1).
-- **Cota presencial:** tamanho pendente de P6. Quando definida, entra como
-  informação na Tela 0 ("ainda há N vagas para quem se inscrever no dia") —
-  **não inventar um número agora**.
+- **Cota presencial:** até **60 competidores** no total, entre pré-inscritos
+  online e quem se inscreve no dia (D26, 30/07/2026). Entra como informação
+  na Tela 0 — ver texto atualizado na §6.
 - **Via papel:** quem se inscreve só no dia usa o mesmo termo impresso
   (`/termo`, exportação em PDF já publicada) no credenciamento. Este
   blueprint não cobre a logística do credenciamento em si — isso é
@@ -267,10 +275,10 @@ validação de campo.
 
 | # | Pendência | Trava | Quem resolve |
 |---|---|---|---|
-| 1 | Tamanho da cota presencial | P6 | Regulamento / organização |
-| 2 | Faixas etárias por categoria | P6 | Regulamento / organização |
-| 3 | Data oficial (afeta a constante de corte de idade em §4) | P1 | Reunião com a Administração |
-| 4 | Criar a conta Tally e montar o formulário de fato | — | ASB (execução, usando este documento) |
+| 1 | ~~Tamanho da cota presencial~~ — **resolvida (D26)**: até 60 competidores | — | — |
+| 2 | ~~Faixas etárias por categoria~~ — **resolvida (D26)**: iniciante até 25 anos; amador e feminino sem limite | — | — |
+| 3 | ~~Data oficial~~ — **resolvida (D24)**: 12 de setembro de 2026, confirmada. Constante de corte de idade em §4 usa essa data | — | — |
+| 4 | Criar a conta Tally e montar o formulário de fato | — | Em andamento via API do Tally |
 | 5 | Quem da ASB acessa a planilha de respostas | — | ASB, antes de abrir o formulário |
 | 6 | Política de retenção de dados definitiva | — | ASB, ver sugestão em §9 |
 
