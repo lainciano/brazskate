@@ -311,13 +311,13 @@ O que falta para o site estar completo antes do campeonato:
 | # | Item da spec | Status | O que falta / trava |
 |---|---|---|---|
 | 1 | Countdown | 🟢 construível | **V1.5** — usa data prevista (P1 só troca o valor) |
-| 2 | Regulamento completo | 🔴 travado | **P6** — sem texto real não nasce página (sem casca) |
+| 2 | Regulamento completo | 🟢 construída | **P6 resolvida (D26)** — página `/regulamento` publicada com categorias/faixas etárias, cota, formato, pontuação, premiação (estrutura) e política de chuva |
 | 3 | Data, local e como chegar | 🟡 parcial | Mapa/endereço/e-mail entregues na V1.1; faltam **transporte e estacionamento** (conteúdo a levantar) |
 | 4 | Pré-inscrição + modelo híbrido | 🟡 parcial | Termo destravado (I3/D19); blueprint do formulário pronto (`docs/blueprint-formulario-pre-inscricao.md`); falta **criar o formulário** no Tally (tarefa da ASB, D21) e o **tamanho da cota** presencial (P6). Página `/inscricao` mapeada como **V1.8**, só nasce com URL real |
 | 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
 | 6 | Patrocinadores confirmados | 🔴 travado | Nenhum patrocinador fechado (P4, captação é da ASB) + **I7** para a UIEMAPV |
 | 7 | Galeria (2021 + pista) | 🔴 travado | **I1/I2** + permissão de imagem. **V1.7** só prepara o schema, não publica página |
-| 8 | FAQ | 🟡 parcial | 4 respostas no ar (V1.3); as 3 restantes aguardam **P6** |
+| 8 | FAQ | 🟢 construída | 8 respostas no ar — as 3 que aguardavam P6 (faixas etárias, cota, chuva) resolvidas por D26; nova pergunta sobre a pista (D27) |
 | 9 | Programação do dia | 🔴 travado | **P6** + logística (horários de bateria/credenciamento/final) |
 | 10 | Avisos/atualizações | 🟡 parcial | Infra é trivial; falta aviso real publicável — a parceria confirmada **não** serve enquanto I7 estiver aberta |
 | 11 | Imprensa/contato ampliado | 🟡 parcial | E-mail entregou na V1.1; resto quando houver assessoria/canais |

@@ -12,6 +12,7 @@ const linksAncora = [
   { href: "#categorias", rotulo: "Categorias" },
   { href: "#patrocinio", rotulo: "Patrocínio" },
   { href: "#apoie", rotulo: "Apoie" },
+  { href: "/regulamento", rotulo: "Regulamento" },
   { href: "/termo", rotulo: "Termo de responsabilidade" },
 ];
 
