@@ -41,6 +41,26 @@ export function Localizacao() {
               Abrir no Google Maps
             </Botao>
           </div>
+
+          <div data-reveal className="mt-10">
+            <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+              Como chegar de ônibus
+            </h3>
+            <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
+              Linhas do DFTrans que atendem Brazlândia, conectando com a
+              Rodoviária do Plano Piloto, Taguatinga, Ceilândia e a W3
+              Norte/Sul: 400, 401, 402, 403, 404, 405, 411, 413, 420, 421,
+              423 e 450.
+            </p>
+            <a
+              href="https://dfnoponto.com/cidades/brazlandia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block font-semibold underline-offset-4 hover:underline"
+            >
+              Ver horários em tempo real no DF no Ponto →
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>

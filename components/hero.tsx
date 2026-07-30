@@ -117,7 +117,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         </p>
 
         <div data-hero-item className="mt-4 flex flex-wrap items-center gap-2 sm:mt-10 sm:gap-4">
-          <Botao href="#categorias">Quero competir</Botao>
+          <Botao href="/inscricao">Quero competir</Botao>
           <Botao href="#patrocinio" variante="secundario">
             Seja um patrocinador
           </Botao>
