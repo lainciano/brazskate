@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Anton, Archivo } from "next/font/google";
 import "./globals.css";
 
@@ -53,6 +53,14 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: ["/og.png"],
   },
+};
+
+// theme-color (D2, §2 tokens): pinta a barra de endereço/abas do navegador
+// mobile com o vermelho da marca. A barra de navegação do sistema Android
+// (voltar/home/apps) é chrome do SO, fora do alcance de uma página web comum
+// — não incluída aqui.
+export const viewport: Viewport = {
+  themeColor: "#a84b4b",
 };
 
 export default function RootLayout({

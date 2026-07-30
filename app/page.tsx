@@ -23,7 +23,7 @@ export default function Home() {
       <Header />
       <SmoothScroll>
         <main id="conteudo" className="flex-1">
-          <Hero />
+          <Hero fotoSrc="/hero-manobra.webp" />
           <Sobre />
           <Localizacao />
           <Categorias />

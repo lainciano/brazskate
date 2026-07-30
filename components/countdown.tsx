@@ -78,8 +78,8 @@ export function Countdown({ className = "" }: { className?: string }) {
   const restante = useCountdown(evento.dataPrevistaISO);
 
   const resumo = restante
-    ? `Faltam cerca de ${restante.dias} dias para ${evento.dataPrevista} — data prevista`
-    : `Data prevista: ${evento.dataPrevista}`;
+    ? `Faltam cerca de ${restante.dias} dias para ${evento.dataPrevista}`
+    : `Data: ${evento.dataPrevista}`;
 
   return (
     <div className={className}>
