@@ -287,9 +287,14 @@ age (copiar Pix). Ícone decorativo com `aria-hidden`.
 
 ### 3.2 Header / nav por âncoras
 
-Anatomia: barra sticky no topo, fundo `tinta` com leve translucidez
-(`/95`), logo (PNG, ~40px) à esquerda, links âncora à direita
-(Sobre · Categorias · Patrocínio · Apoie · Contato).
+Anatomia: barra `fixed` no topo (overlay, não reserva espaço no
+fluxo — decisão da sessão de polish pós-GSAP, 30/07/2026), **transparente
+sobre o Hero** e com fundo `tinta` translúcido (`/95`) + blur assim que a
+página rola (scroll > 8px). Logo (PNG, ~40px) à esquerda, links âncora à
+direita (Sobre · Categorias · Patrocínio · Apoie · Contato). Toda página
+que usa este Header precisa abrir com uma seção `registro-asfalto`
+(escura) logo abaixo, pra o texto `creme` continuar legível no estado
+transparente.
 
 Mobile: hambúrguer (44×44) abre **overlay full-screen estilo cartaz** —
 fundo `tinta` com grão, links em Anton gigante empilhados. Fecha por X,
@@ -424,6 +429,15 @@ com nome acessível ("Instagram do Braz Skate").
 
 ### 4.1 Hero 100% gráfico (o cartaz)
 
+> **Atualização 30/07/2026 (D25, `02-DECISOES.md`):** o slot de foto
+> (§4.2) foi ativado em produção com uma foto de manobra — o hero **não
+> é mais 100% gráfico** na prática. O Selo também foi **removido por
+> completo** (decisão da sessão de polish pós-GSAP), diferente do que o
+> diagrama abaixo ainda mostra. Esta seção continua descrevendo o
+> comportamento de **fallback** do componente quando `fotoSrc` não é
+> passado (contrato ainda suportado pelo `Hero`), não o estado atual da
+> home.
+
 A ausência da foto é oportunidade: o hero do MVP é um **cartaz
 tipográfico** — já acabado, não "à espera de foto":
 
@@ -455,8 +469,9 @@ tipográfico** — já acabado, não "à espera de foto":
 Fundo: `tinta` com grão (§3.9) + 1–2 formas geométricas grandes em
 `vermelho-500`/`rosa` com recorte diagonal — abstração de transição/rampa,
 não ilustração literal (só temos o logo em PNG; não tentar redecalcar a
-ilustração dele). O logo entra como **selo** (o círculo inteiro, PNG),
-tamanho contido — não é o fundo.
+ilustração dele). **O Selo (o logo como carimbo circular sobreposto) foi
+removido do componente por completo em 30/07/2026** — não existe mais em
+nenhum dos dois ramos (`fotoSrc` presente ou ausente).
 
 ### 4.2 O slot da foto (troca trivial no futuro)
 

@@ -15,10 +15,24 @@ export function Grao({
 
   return (
     <svg
-      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+      // will-change-transform: promove pra layer de composição própria.
+      // Medido com Playwright + CPU 4x (perfil da sessão de polish
+      // pós-GSAP): sem isso, o navegador re-rasterizava o feTurbulence a
+      // cada frame que o ScrollSmoother move o conteúdo — frames de
+      // 50-80ms exatamente na transição Patrocínio→Apoia. Com a layer
+      // própria, o ruído é rasterizado uma vez e só composta (barato) no
+      // scroll seguinte.
+      className={`pointer-events-none absolute inset-0 h-full w-full will-change-transform ${className}`}
       aria-hidden="true"
     >
-      <filter id={id}>
+      {/* filterRes trava o buffer de rasterização em 180×180px,
+          independente do tamanho final do elemento (que pode ser uma
+          seção inteira de ~100dvh) — sem isso o feTurbulence recalcula
+          ruído por pixel real da seção a cada frame que o ScrollSmoother
+          transforma o conteúdo, custo alto de repaint (suspeito de
+          performance da sessão de polish pós-GSAP). Navegadores sem
+          suporte a filterRes só voltam ao comportamento anterior. */}
+      <filter id={id} filterRes="180 180">
         <feTurbulence
           type="fractalNoise"
           baseFrequency="0.8"

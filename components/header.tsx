@@ -2,11 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
 import { Grao } from "./grao";
 
-// Header / nav por âncoras (docs/05-DESIGN.md §3.2): barra sticky em tinta
-// translúcida; no mobile o menu abre um overlay full-screen estilo cartaz.
+// Header / nav por âncoras (docs/05-DESIGN.md §3.2): barra sticky, transparente
+// sobre o hero e com fundo tinta translúcido assim que a página rola — todas
+// as páginas que usam este Header abrem com uma seção `registro-asfalto`
+// (escura) logo abaixo, então o texto creme continua legível no estado
+// transparente. No mobile o menu abre um overlay full-screen estilo cartaz.
+// A troca acompanha o scroll (opacidade proporcional, não um snap binário):
+// a cor de fundo vive numa camada própria por trás do conteúdo para não sair
+// do vocabulário de motion do projeto (só transform/opacity, `lib/motion.ts`).
+
+const DISTANCIA_TRANSICAO_PX = 96;
 
 const links = [
   { href: "#sobre", rotulo: "Sobre" },
@@ -19,6 +28,25 @@ const links = [
 export function Header() {
   const { aberto, abrir, fechar, overlayRef, botaoFecharRef, botaoAbrirRef } =
     useMenuOverlay();
+  const [progressoRolagem, setProgressoRolagem] = useState(0);
+
+  useEffect(() => {
+    let quadro = 0;
+    const aoRolar = () => {
+      cancelAnimationFrame(quadro);
+      quadro = requestAnimationFrame(() => {
+        setProgressoRolagem(
+          Math.min(1, window.scrollY / DISTANCIA_TRANSICAO_PX),
+        );
+      });
+    };
+    aoRolar();
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", aoRolar);
+      cancelAnimationFrame(quadro);
+    };
+  }, []);
 
   return (
     <>
@@ -29,7 +57,13 @@ export function Header() {
         Pular para o conteúdo
       </a>
 
-      <header className="sticky top-0 z-40 bg-tinta/95 text-creme backdrop-blur-sm">
+      <header className="fixed inset-x-0 top-0 z-40 text-creme">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-tinta/95 backdrop-blur-sm transition-opacity duration-100 ease-out"
+          style={{ opacity: progressoRolagem }}
+        />
+
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="shrink-0" aria-label="Braz Skate — início">
             <Image

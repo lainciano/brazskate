@@ -109,3 +109,23 @@
     outline-offset: 2px;
   }
 }
+
+/* O header agora é `fixed` (não `sticky`) e sobrepõe o Hero de propósito
+   (nav transparente até o scroll, revela a foto por trás) — não reserva
+   espaço no fluxo, então o #smooth-wrapper do ScrollSmoother não precisa
+   de nenhum ajuste de offset: o padrão do GSAP (inset:0, começando em
+   y=0) já é o que queremos, tanto no modo `position: fixed` (desktop)
+   quanto `position: relative` (touch/mobile). Um ajuste de offset chegou
+   a ser necessário aqui numa versão anterior (header `sticky`,
+   reservando 4rem) — removido junto com essa mudança de arquitetura. */
+
+@layer utilities {
+  /* Hero cobre a tela cheia inteira — o header é `fixed` e sobrepõe o
+     topo do Hero (nav transparente até o scroll), não reserva espaço.
+     dvh acompanha a UI do navegador (barra de endereço no mobile); vh é
+     o fallback para navegadores sem suporte a dvh. */
+  .h-hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
