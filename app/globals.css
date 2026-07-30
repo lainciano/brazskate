@@ -109,3 +109,13 @@
     outline-offset: 2px;
   }
 }
+
+@layer utilities {
+  /* Hero cobre a tela cheia abaixo do header (h-16 = 4rem, sem padding
+     extra). dvh acompanha a UI do navegador (barra de endereço no
+     mobile); vh é o fallback para navegadores sem suporte a dvh. */
+  .h-hero {
+    min-height: calc(100vh - 4rem);
+    min-height: calc(100dvh - 4rem);
+  }
+}
