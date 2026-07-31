@@ -10,6 +10,7 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D31 | **I1 e I2 fechadas.** I2: confirmado pelo Lain que todas as fotos de `docs/assets/fotos-manobras/` (não só `IMG_0137.jpg`) são na pista de Brazlândia — a pendência de foto própria do local estava efetivamente resolvida sem registro. Hero **mantém** `IMG_0137.jpg` por escolha explícita; as outras 3 fotos do lote (crédito **Cauet**) entram como colagem na seção Localização. I1: as 9 artes de premiação de 2021 (`docs/assets/camp2021/`, ex-`fotos-camp2021/`) traziam barra de patrocinadores/apoiadores de 2021, logo do GDF e nome de deputado distrital — publicar como estavam exibiria marcas que não patrocinam 2026 e criaria associação político-partidária (contra D6). Recortadas para manter só a foto do pódio (crédito **Acervo ASB**), com legenda de categoria + colocação — nome completo do competidor não republicado. As 10 marcas lidas na barra removida viraram lista de leads internos (`docs/leads-patrocinio-2021.md`, D30), não publicadas como patrocinadoras de 2026. Componente `Colagem` (`components/colagem.tsx`) implementado conforme o contrato do §4.3 | Pedido do Lain (31/07/2026): "todas essas fotos sao na pista de brazlandia" (I2) e "recortar só a área da foto" para 2021 (I1) — fecha as duas pendências internas que travavam a galeria (V1.7) | 31/07/2026 |
 | D30 | **Contrapartidas de patrocínio em dois níveis**, sem valor em R$: **Patrocínio** (financeiro/Pix ou premiação) recebe menção no som, espaço para faixa da marca na pista (material da própria marca), logo/link no site e menção nas redes; **Apoio** (infraestrutura ou divulgação/mídia) recebe menção no som, nome no site e menção nas redes. Nova seção em `/patrocinio` (`data/contrapartidas.ts`), entre "Formas de apoio" e "Parceiros institucionais". `data/sponsors.ts` criado como contrato vazio (grade de logos só nasce com patrocinador real, P4). Ícone do Pix (`IconePix`, SVG em `currentColor`) substitui a seta-rabisco no botão terciário. Marquee da home passa a intercalar identidade e venda ("Braz Skate · Sua marca aqui · Brazlândia-DF · Seja um patrocinador"), linkando para `/patrocinio` | Pedido do Lain (31/07/2026): P4 é o gargalo real do evento e a página hoje adiava toda contrapartida para negociação caso a caso, o que trava a captação. Os níveis derivam do precedente do próprio campeonato de 2021 (a ASB já separava "Patrocínio" de "Apoio" nas artes de premiação daquela edição — ver D31) | 31/07/2026 |
 | D29 | **Formulário de pré-inscrição publicado**: https://tally.so/r/J9bY7z, montado via API do Tally seguindo `docs/blueprint-formulario-pre-inscricao.md` (cota=60, corte de idade iniciante ≤25 — ambos testados em preview pelo Lain). Página `/inscricao` (V1.8) publicada, explicando o modelo híbrido (D1) e linkando `/termo`; CTA "Quero competir" do hero religado de `#categorias` para `/inscricao`. Pendência #5 do blueprint (acesso à planilha): só o Lain acessa por enquanto. Pendência #6 (retenção de dados) segue em aberto | Destrava V1.8 e fecha o item 4 (pré-inscrição) da spec de 11 itens | 30/07/2026 |
 | D28 | **I7 fechada — UIEMAPV publicada como parceiro institucional**: logo recebida (`public/logo-uiemapv.jpg`) e link oficial (@uiemapvsocial) confirmados. Nova seção "Parceiros institucionais" em `/patrocinio` (`data/partners.ts`, `components/parceiros-institucionais.tsx`), depois de "Formas de apoio" | Fecha I7 conforme o plano em `docs/estrategia-confirmacao-uiemapv.md` — material de marca chegou, então a menção deixa de estar incompleta | 30/07/2026 |
@@ -89,8 +90,6 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 | # | Pendência | Ação |
 |---|-----------|------|
-| I1 | Fotos do campeonato de 2021 | Garimpar com a comunidade (celulares, grupos de WhatsApp) ANTES que se percam. Registrar autoria/permissão de uso |
-| I2 | Fotos próprias da pista para o hero | A foto de referência disponível tem marca d'água de terceiro ("Nossos Roteiros") e NÃO pode ser usada no site. Produzir fotos próprias ou obter permissão expressa. **Parcialmente atendida por D25** (30/07/2026): o hero usa uma foto de manobra com permissão confirmada, mas não é uma foto *da pista* de Brazlândia — a pendência de foto própria do local segue aberta |
 | I4 | Chave Pix oficial da ASB | Definir titularidade (idealmente CNPJ/conta da associação, se existir) e gerar QR |
 | I5 | Identidade visual mínima (logo ASB/evento, paleta) | Necessária para o MVP ter cara própria |
 | I6 | Mini media-kit de patrocínio | ~~Conteúdo da página "seja um patrocinador"~~ Conteúdo-base pronto em `docs/media-kit-braz-skate.md` (16/07/2026); falta só adaptar para a página `/patrocinio` |
@@ -112,6 +111,10 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 ## Pendências resolvidas
 
+- **I1 (fotos do campeonato de 2021)** e **I2 (fotos próprias da pista)** —
+  resolvidas em 31/07/2026 (D31): recorte das artes de premiação de 2021 e
+  confirmação de que as fotos de manobra já disponíveis são na pista de
+  Brazlândia. Ver `data/gallery.ts` e `components/colagem.tsx`.
 - **P2 (autorização de espaço / fechamento de rua)** — resolvida em
   24/07/2026: espaço do evento garantido, incluindo fechamento de rua, via
   conversa com a Administração e o instituto parceiro (ver D15).

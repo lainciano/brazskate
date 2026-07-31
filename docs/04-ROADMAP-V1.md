@@ -219,11 +219,12 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.7 · Slots de foto — preparar a troca sem foto real
 
-- **Estado:** ✅ **concluída** (25/07/2026). O slot `fotoSrc` do hero já
+- **Estado:** ✅ **concluída** (25/07/2026, schema; 31/07/2026 as fotos
+  reais entraram — I1/I2 fechadas por D31). O slot `fotoSrc` do hero já
   estava implementado (`components/hero.tsx`, duotone + `mix-blend-multiply`
   + scrim, exatamente como o §4.2 descreve) — esta sub-etapa **verificou** o
-  caminho de troca e fechou o schema da galeria, sem acender nenhuma foto
-  real (I1/I2 seguem abertas).
+  caminho de troca e fechou o schema da galeria; a colagem com fotos reais
+  (2021 e pista) entrou depois, fora desta sub-etapa numerada.
 - **O que "slot" significa aqui (e o que NÃO significa):** no §4.2 o slot é
   uma **afordância de código** — o componente recebe `fotoSrc?` e, sem foto,
   renderiza um desenho **completo** (o hero gráfico), não uma lacuna. O §4.3
@@ -240,8 +241,8 @@ terceiros. É de propósito uma leva pequena.
      obrigatório e `permissao: true` como literal (recusa foto sem permissão
      **no typecheck**, não em runtime). Contrato do componente de colagem
      documentado no §4.3.
-  3. **Nenhuma página ou seção de galeria criada** — array vazio, sem
-     casca vazia (I1/I2 seguem abertas).
+  3. **Nenhuma página ou seção de galeria criada nesta sub-etapa** — array
+     vazio, sem casca vazia. A colagem com fotos reais entrou depois (D31).
 - **Consome do design:** §4.2 (slot do hero, duotone, scrim), §4.3 (colagem,
   regra de não deixar moldura vazia), §2 (tokens).
 - **Pronto quando:** existe um caminho documentado e testado para acender a
@@ -318,7 +319,7 @@ O que falta para o site estar completo antes do campeonato:
 | 4 | Pré-inscrição + modelo híbrido | 🟢 construída | **D29** — formulário publicado no Tally (https://tally.so/r/J9bY7z), página `/inscricao` no ar, CTA do hero religado |
 | 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
 | 6 | Patrocinadores confirmados | 🟡 parcial | **I7 resolvida (D28)** — UIEMAPV publicada como parceiro institucional em `/patrocinio`. Segue faltando **P4** — nenhum patrocinador comercial fechado, captação da ASB não começou |
-| 7 | Galeria (2021 + pista) | 🔴 travado | **I1/I2** + permissão de imagem. **V1.7** só prepara o schema, não publica página |
+| 7 | Galeria (2021 + pista) | 🟢 construída | **I1/I2 fechadas (D31)** — colagem publicada em Sobre (2021) e Localização (pista atual), `components/colagem.tsx` |
 | 8 | FAQ | 🟢 construída | 8 respostas no ar — as 3 que aguardavam P6 (faixas etárias, cota, chuva) resolvidas por D26; nova pergunta sobre a pista (D27) |
 | 9 | Programação do dia | 🔴 travado | **P6** + logística (horários de bateria/credenciamento/final) |
 | 10 | Avisos/atualizações | 🟡 parcial | Infra é trivial; falta aviso real publicável — a parceria confirmada **não** serve enquanto I7 estiver aberta |
@@ -345,8 +346,7 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 | Formulário de pré-inscrição (Tally/Forms) | **Criar o formulário** (tarefa da ASB) + **P6** (tamanho da cota) | Blueprint pronto em `docs/blueprint-formulario-pre-inscricao.md` (25/07/2026) — handoff operacional completo (telas, campos, lógica, textos). Só falta a ASB montar de fato no Tally (D21) e P6 fechar cota/faixas etárias. Condicional de menor **por data de nascimento**, nunca por categoria (`AGENT.md`). Aceite eletrônico do termo por checkbox (D19), papel no credenciamento. |
 | Programação do dia | **P6** + logística do evento | Horários de baterias/credenciamento/final. |
 | Patrocinadores confirmados (grade de logos) | Patrocinador fechado (P4) + **I7** (logo/links da UIEMAPV) | `data/sponsors.json`. Parceria já confirmada (D18), mas o site **não menciona** a UIEMAPV até chegarem logo e link oficiais. |
-| Galeria (2021 + pista atual) | **I1** / **I2** + **permissão de imagem** | Cada foto com `credito` e `permissao`; portão de direito de imagem. **V1.7** define o schema; a página só nasce com foto real. |
-| Foto real no hero | Foto final + **permissão de imagem** | Slot `fotoSrc` (`05-DESIGN.md` §4.2); **V1.7** garante que a troca seja 1 arquivo + 1 prop. |
+| Foto real no hero | Foto final + **permissão de imagem** | Slot `fotoSrc` (`05-DESIGN.md` §4.2); **V1.7** garante que a troca seja 1 arquivo + 1 prop. Hero mantém `IMG_0137.jpg` por escolha do Lain mesmo após I2 fechar (D31) — as demais fotos da pista foram para a colagem em Localização, não para o hero. |
 | Avisos/atualizações (lista MDX) | Ter aviso real para publicar | Infra é trivial; sem conteúdo, não construir casca. A parceria confirmada não serve como aviso enquanto I7 estiver aberta. |
 | Transporte e estacionamento ("como chegar") | Conteúdo a levantar com a organização | Item 3 e item 8 (FAQ) da spec §3.2. Ficou fora da V1.3 de propósito; entra quando a informação existir — não inferir. |
 | Recursos "gameficados" / interatividade | Spec própria (brainstorming) | Pedido do Lain em 24/07/2026. Sem escopo definido — precisa de brainstorming + spec antes de virar plano; avaliar contra o anti-escopo de `AGENT.md` (ex.: nada que implique conta de usuário/login/backend, hoje fora de escopo do site). |
@@ -355,7 +355,8 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 
 > **Saíram do estacionamento em 25/07/2026:** countdown (→ **V1.5**, passa a
 > usar a data prevista), termo de responsabilidade (→ **V1.4**, I3 resolvida)
-> e motion/efeitos (→ **V1.6**, pedido do Lain).
+> e motion/efeitos (→ **V1.6**, pedido do Lain). **Em 31/07/2026:** galeria
+> (2021 + pista atual), I1/I2 fechadas por D31.
 
 ---
 

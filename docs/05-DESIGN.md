@@ -429,7 +429,15 @@ com nome acessível ("Instagram do Braz Skate").
 
 ---
 
-## 4. Estratégia visual sem a foto da pista (pendência I2)
+## 4. Estratégia visual da foto da pista
+
+> **Atualização 31/07/2026 (D31, `02-DECISOES.md`):** I1 e I2 fecharam — as
+> fotos de `docs/assets/fotos-manobras/` são todas na pista de Brazlândia
+> (confirmado pelo Lain), e as artes de premiação de 2021 entraram como
+> colagem depois de recortadas (sponsor bar de terceiros removida). O hero
+> permanece com `IMG_0137.jpg` por escolha explícita — a estratégia de
+> "hero 100% gráfico" abaixo segue documentando só o **fallback** do
+> componente.
 
 ### 4.1 Hero 100% gráfico (o cartaz)
 
@@ -495,25 +503,23 @@ marca — não dependemos de foto profissional.
 
 ### 4.3 Outras seções que pediriam imagem
 
-- **Sobre (fotos de 2021, pendência I1):** enquanto não existem, a seção
-  vive de texto bem tratado + rabiscos. Quando chegarem, entram como
-  **colagem**: molduras claras estilo foto impressa, levemente
-  rotacionadas, com legenda e crédito (obrigatório — `data/gallery.ts` com
-  `credito` e `permissao`, schema definido na V1.7). NÃO deixar molduras
-  vazias "esperando" — seção sem foto não mostra slot nenhum.
+- **Sobre (fotos de 2021, I1 fechada por D31):** colagem abaixo de "Quem
+  organiza" — molduras claras estilo foto impressa, levemente rotacionadas,
+  com legenda (categoria + colocação, sem nome completo do competidor) e
+  crédito "Acervo ASB".
+- **Localização (pista atual, I2 fechada por D31):** colagem abaixo do
+  mapa, crédito "Cauet".
 - **Patrocinadores:** sem logos confirmados, a seção da home é só CTA
-  (texto + botão para `/patrocinio`). Grade de logos nasce na v1 com
-  `sponsors.json`.
+  (texto + botão para `/patrocinio`). Grade de logos nasce quando houver
+  patrocinador real (`data/sponsors.ts`, P4 segue aberta).
 
-**Contrato do componente de colagem (V1.7 — pronto para ativar, não
-implementado ainda):** quando `data/gallery.ts` deixar de estar vazio, um
-componente `Colagem` (nome provisório) recebe `fotos: readonly FotoGaleria[]`
-e renderiza uma moldura por item — fundo `creme`, borda fina, rotação leve
+**Contrato do componente de colagem — implementado (`components/colagem.tsx`,
+D31):** recebe `fotos: readonly FotoGaleria[]` de `data/gallery.ts` e
+renderiza uma moldura por item — fundo `creme`, borda fina, rotação leve
 alternada (mesmo princípio de "nunca aleatória em runtime" do `StickerBadge`,
 §3.6: rotação fixa por índice, não `Math.random()`), `credito` como legenda
 visível (não só `alt`) e `legenda` opcional abaixo. **Array vazio não
-renderiza o componente** — a seção correspondente (Sobre) mantém o texto
-atual até a primeira foto entrar; não há estado "0 fotos" visível.
+renderiza o componente** — usado hoje pelas seções Sobre e Localização.
 
 ---
 
