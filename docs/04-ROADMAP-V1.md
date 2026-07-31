@@ -5,15 +5,16 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 30/07/2026 — **V1.8 (`/inscricao`) destravada e
-> publicada** (D29, commit `92a0920`): formulário no Tally no ar, página
-> `/inscricao` publicada, CTA do hero religado. 26/07/2026: V1.9 (GSAP
-> avançado, os 9 itens da spec ampla) concluída por completo e publicada em
-> produção (PR #46, #47, #48, #49, #50). 25/07/2026: V1.4 publicada em
-> produção (PR #38); blueprint do formulário de pré-inscrição concluído
-> (destrava a linha do estacionamento); V1.6 corrigida para refletir o que
-> já estava implementado (era muito menor do que a decomposição original
-> sugeria).
+> Última atualização: 31/07/2026 — **fechamento do conteúdo restante da V1**
+> (D30/D31/D32, PRs #58/#59/#60): contrapartidas de patrocínio e ícone Pix;
+> galeria com fotos reais (I1/I2 fechadas); programação do dia,
+> estacionamento e avisos publicados. Não sobra fila de sub-etapa
+> construível agora — o que resta do V1 depende só de dado externo (P4,
+> horários exatos da programação, ver "Ordem sugerida" abaixo). 30/07/2026:
+> V1.8 (`/inscricao`) destravada e publicada (D29, commit `92a0920`).
+> 26/07/2026: V1.9 (GSAP avançado, os 9 itens da spec ampla) concluída por
+> completo (PR #46, #47, #48, #49, #50). 25/07/2026: V1.4 publicada (PR
+> #38); blueprint do formulário de pré-inscrição concluído; V1.6 corrigida.
 
 ## O que é o V1
 
