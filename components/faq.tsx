@@ -67,12 +67,18 @@ export function Faq() {
             ))}
           </ul>
 
-          <p className="mt-8" data-reveal>
+          <p className="mt-8 flex flex-col gap-2" data-reveal>
             <a
               href="/regulamento"
               className="font-semibold underline-offset-4 hover:underline"
             >
               Ver o regulamento completo →
+            </a>
+            <a
+              href="/programacao"
+              className="font-semibold underline-offset-4 hover:underline"
+            >
+              Ver a programação do dia →
             </a>
           </p>
         </Reveal>

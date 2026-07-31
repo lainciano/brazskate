@@ -49,6 +49,12 @@ export const faq = [
     resposta:
       "A pista do Skate Park de Brazlândia está em processo de manutenção e melhorias — o campeonato acontece normalmente, e a organização trabalha para deixar a estrutura em boas condições até o dia do evento.",
   },
+  {
+    id: "estacionamento",
+    pergunta: "Onde estacionar?",
+    resposta:
+      "Tem estacionamento ao lado da pista, com mais espaço do que a via pública do entorno. Um trecho da rua em frente ao parque pode ficar fechado no dia do evento — o formato exato ainda está sendo definido com a Administração.",
+  },
 ] as const;
 
 export type FaqItem = (typeof faq)[number];

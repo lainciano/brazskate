@@ -75,6 +75,16 @@ export default function Inscricao() {
                   — o checkbox de aceite no formulário confirma que você
                   leu e está ciente das condições.
                 </p>
+                <p data-reveal>
+                  Depois de inscrito, confira a{" "}
+                  <a
+                    href="/programacao"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    programação do dia
+                  </a>{" "}
+                  — credenciamento, baterias, apuração e premiação.
+                </p>
               </div>
             </Reveal>
           </section>

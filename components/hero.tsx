@@ -127,11 +127,8 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           <Botao href="#apoie" variante="terciario">
             Apoie via Pix
           </Botao>
-          <StickerBadge
-            variante="breve"
-            className="animate-sticker-pulse motion-reduce:animate-none"
-          >
-            Inscrição: previsão {evento.inscricaoAbrePrevistaCurta}
+          <StickerBadge variante="breve" data-carimbo>
+            Inscrições abertas
           </StickerBadge>
         </div>
       </div>
