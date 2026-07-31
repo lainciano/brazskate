@@ -155,10 +155,11 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.5 · Countdown com a data prevista
 
-- **Estado:** **construível agora** — decisão do Lain (25/07/2026): usar a
-  **data prevista** como valor atual, em vez de esperar P1. O que era
-  bloqueio ("countdown só com data oficial") passa a ser um **rótulo
-  honesto**.
+- **Estado:** ✅ **concluído e publicado** (`components/countdown.tsx`,
+  usado em `components/hero.tsx`). Decisão original do Lain (25/07/2026):
+  usar a **data prevista** como valor atual, em vez de esperar P1. Com a
+  **D24** (30/07/2026, data confirmada), o sticker ao lado do countdown
+  perdeu a palavra "previsão" — hoje mostra só "Data: {data}".
 - **Entrega:**
   1. `data/evento.ts` ganha uma forma legível por máquina (ex.:
      `dataPrevistaISO: "2026-08-22"`) ao lado das strings de exibição que já
@@ -311,7 +312,7 @@ O que falta para o site estar completo antes do campeonato:
 
 | # | Item da spec | Status | O que falta / trava |
 |---|---|---|---|
-| 1 | Countdown | 🟢 construível | **V1.5** — usa data prevista (P1 só troca o valor) |
+| 1 | Countdown | 🟢 construída | **V1.5** — publicado no hero, data confirmada por D24 |
 | 2 | Regulamento completo | 🟢 construída | **P6 resolvida (D26)** — página `/regulamento` publicada com categorias/faixas etárias, cota, formato, pontuação, premiação (estrutura) e política de chuva |
 | 3 | Data, local e como chegar | 🟡 parcial | Mapa/endereço/e-mail entregues na V1.1; faltam **transporte e estacionamento** (conteúdo a levantar) |
 | 4 | Pré-inscrição + modelo híbrido | 🟢 construída | **D29** — formulário publicado no Tally (https://tally.so/r/J9bY7z), página `/inscricao` no ar, CTA do hero religado |
@@ -360,6 +361,13 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 
 ## Ordem sugerida e o que vem depois
 
+**Todas as sub-etapas construíveis agora (V1.1–V1.9, exceto a V1.2
+rejeitada) estão concluídas e publicadas.** Não sobra fila de sub-etapa
+numerada — o que resta do V1 mora inteiramente na tabela de
+**estacionamento** acima, bloqueado por pendências de conteúdo/decisão da
+Administração ou de terceiros (P4, I1, I2, programação do dia, transporte/
+estacionamento).
+
 Concluídas:
 
 1. **V1.1 · Info básica** — ✅ PR #30 (24/07/2026).
@@ -367,43 +375,30 @@ Concluídas:
 3. **V1.3 · FAQ parcial** — ✅ PR #33 (25/07/2026).
 4. **V1.4 · Termo de responsabilidade** — ✅ PR #37, publicada em produção
    via PR #38 (25/07/2026).
-5. **V1.9 · GSAP avançado (completa, 9 itens)** — ✅ sub-etapa 1: PR #46 +
-   PR #47, publicada via PR #48; sub-etapa 2: PR #49, publicada via PR #50
-   (26/07/2026).
-
-Fila atual (cada uma ganha **spec → plano → PR** própria, no fluxo da V1.1 —
-este roadmap decompõe, não substitui as specs):
-
 5. **Blueprint do formulário de pré-inscrição** — ✅ concluído em
-   25/07/2026, doc puro (`docs/blueprint-formulario-pre-inscricao.md`). Não é
-   uma V-numerada porque não é código do site; destrava a linha do
-   estacionamento para a ASB montar o formulário de fato (D21).
-6. **V1.5 · Countdown** — pequena e independente; muda o hero de "data em
-   texto" para contagem, sem esperar P1.
-7. **V1.6 · Motion residual** — **muito menor do que a versão original desta
-   entrada.** Auditoria em 25/07/2026 encontrou a maior parte do §6.1 já
-   implementada (Reveal nas 7 seções, hover de link, rabisco do hero,
-   feedback do Pix, disclosure do FAQ). Falta só o "stencil puxado" do
-   `SectionHeader` e a "carimbada" dos stickers fora do hero — não precisa
-   mais de spec dedicada.
-8. **V1.7 · Slots de foto** — o slot `fotoSrc` do hero (duotone + scrim) já
-   está implementado; falta verificar o caminho de troca e definir o schema
-   de `data/gallery.ts`.
+   25/07/2026, doc puro (`docs/blueprint-formulario-pre-inscricao.md`); não
+   é uma V-numerada porque não é código do site.
+6. **V1.5 · Countdown** — ✅ concluído (`components/countdown.tsx`, usado em
+   `hero.tsx`) — hero mostra contagem real a partir da data prevista, sticker
+   "Data:" ao lado (ajustado por D24), a11y com resumo `sr-only` sem inundar
+   leitor de tela a cada segundo.
+7. **V1.6 · Motion residual** — ✅ concluído (25/07/2026) — "stencil puxado"
+   do `SectionHeader` e "carimbada" dos stickers fora do hero.
+8. **V1.7 · Slots de foto** — ✅ concluído (25/07/2026) — caminho de troca
+   verificado, schema de `data/gallery.ts` definido (array vazio até haver
+   foto real, I1/I2).
 9. **V1.8 · Página `/inscricao`** — ✅ concluída e publicada (30/07/2026,
    commit `92a0920`, D29): formulário no Tally no ar, CTA do hero religado.
-10. **V1.9 · GSAP avançado** — ✅ concluída por completo (26/07/2026,
-    PR #46/#47/#48/#49/#50): os 9 itens da spec ampla, incluindo
-    ScrollSmoother (D23.1) e o ajuste de posição do selo.
+10. **V1.9 · GSAP avançado (completa, 9 itens)** — ✅ sub-etapa 1: PR #46 +
+    PR #47, publicada via PR #48; sub-etapa 2: PR #49, publicada via PR #50
+    (26/07/2026), incluindo ScrollSmoother (D23.1).
 
-**Por que nesta ordem:** V1.5 e V1.6/V1.7 são recortes pequenos e
-independentes que fecham o que resta do V1 construível agora; V1.8 fechou o
-ciclo da pré-inscrição assim que o formulário existiu de fato.
-
-Quando a reunião formal com a Administração acontecer (data oficial + P6), o
-estacionamento destrava — provavelmente na ordem **regulamento → cota da
-pré-inscrição → programação do dia**, e o countdown da V1.5 só troca de
-valor. Conteúdo de terceiros (fotos com permissão, logo da UIEMAPV,
-patrocinadores) entra quando existir, independente da reunião.
+Quando a reunião formal com a Administração acontecer (data oficial + P6 —
+**P6 já resolvida por D26**), o estacionamento que resta destrava —
+provavelmente na ordem **cota/regulamento (✅ já fechados) → programação do
+dia → transporte/estacionamento**. Conteúdo de terceiros (fotos com
+permissão, patrocinadores comerciais) entra quando existir, independente de
+reunião.
 
 ## Pendências que este roadmap observa
 
