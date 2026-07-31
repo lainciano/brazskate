@@ -315,14 +315,14 @@ O que falta para o site estar completo antes do campeonato:
 |---|---|---|---|
 | 1 | Countdown | 🟢 construída | **V1.5** — publicado no hero, data confirmada por D24 |
 | 2 | Regulamento completo | 🟢 construída | **P6 resolvida (D26)** — página `/regulamento` publicada com categorias/faixas etárias, cota, formato, pontuação, premiação (estrutura) e política de chuva |
-| 3 | Data, local e como chegar | 🟡 parcial | Mapa/endereço/e-mail entregues na V1.1; faltam **transporte e estacionamento** (conteúdo a levantar) |
+| 3 | Data, local e como chegar | 🟢 construída | Mapa/endereço/e-mail (V1.1), ônibus e estacionamento (D32) — todos publicados em Localização |
 | 4 | Pré-inscrição + modelo híbrido | 🟢 construída | **D29** — formulário publicado no Tally (https://tally.so/r/J9bY7z), página `/inscricao` no ar, CTA do hero religado |
 | 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
 | 6 | Patrocinadores confirmados | 🟡 parcial | **I7 resolvida (D28)** — UIEMAPV publicada como parceiro institucional em `/patrocinio`. Segue faltando **P4** — nenhum patrocinador comercial fechado, captação da ASB não começou |
 | 7 | Galeria (2021 + pista) | 🟢 construída | **I1/I2 fechadas (D31)** — colagem publicada em Sobre (2021) e Localização (pista atual), `components/colagem.tsx` |
 | 8 | FAQ | 🟢 construída | 8 respostas no ar — as 3 que aguardavam P6 (faixas etárias, cota, chuva) resolvidas por D26; nova pergunta sobre a pista (D27) |
-| 9 | Programação do dia | 🔴 travado | **P6** + logística (horários de bateria/credenciamento/final) |
-| 10 | Avisos/atualizações | 🟡 parcial | Infra é trivial; falta aviso real publicável — a parceria confirmada **não** serve enquanto I7 estiver aberta |
+| 9 | Programação do dia | 🟡 parcial | **D32** — página `/programacao` publicada com a sequência (credenciamento → baterias → apuração → premiação); faltam só os **horários exatos** (sticker "em breve") |
+| 10 | Avisos/atualizações | 🟢 construída | **D32** — `data/avisos.ts` com 3 avisos reais, seção na home entre FAQ e Patrocínio |
 | 11 | Imprensa/contato ampliado | 🟡 parcial | E-mail entregou na V1.1; resto quando houver assessoria/canais |
 
 Transversal (não está na lista dos 11, mas o Lain pediu):
@@ -344,11 +344,9 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 |---|---|---|
 | Regulamento completo (página) | **P6** — regulamento/faixas etárias/pontuação | Página nasce só quando houver texto real; sem casca. Reaproveita o padrão de disclosure do §3.6-bis. |
 | Formulário de pré-inscrição (Tally/Forms) | **Criar o formulário** (tarefa da ASB) + **P6** (tamanho da cota) | Blueprint pronto em `docs/blueprint-formulario-pre-inscricao.md` (25/07/2026) — handoff operacional completo (telas, campos, lógica, textos). Só falta a ASB montar de fato no Tally (D21) e P6 fechar cota/faixas etárias. Condicional de menor **por data de nascimento**, nunca por categoria (`AGENT.md`). Aceite eletrônico do termo por checkbox (D19), papel no credenciamento. |
-| Programação do dia | **P6** + logística do evento | Horários de baterias/credenciamento/final. |
-| Patrocinadores confirmados (grade de logos) | Patrocinador fechado (P4) + **I7** (logo/links da UIEMAPV) | `data/sponsors.json`. Parceria já confirmada (D18), mas o site **não menciona** a UIEMAPV até chegarem logo e link oficiais. |
+| Patrocinadores confirmados (grade de logos) | Patrocinador fechado (P4) | `data/sponsors.ts` (contrato pronto, D30). UIEMAPV já publicada como parceira institucional (I7/D28) — o que falta aqui é patrocinador comercial, não a UIEMAPV. |
 | Foto real no hero | Foto final + **permissão de imagem** | Slot `fotoSrc` (`05-DESIGN.md` §4.2); **V1.7** garante que a troca seja 1 arquivo + 1 prop. Hero mantém `IMG_0137.jpg` por escolha do Lain mesmo após I2 fechar (D31) — as demais fotos da pista foram para a colagem em Localização, não para o hero. |
-| Avisos/atualizações (lista MDX) | Ter aviso real para publicar | Infra é trivial; sem conteúdo, não construir casca. A parceria confirmada não serve como aviso enquanto I7 estiver aberta. |
-| Transporte e estacionamento ("como chegar") | Conteúdo a levantar com a organização | Item 3 e item 8 (FAQ) da spec §3.2. Ficou fora da V1.3 de propósito; entra quando a informação existir — não inferir. |
+| Horários da programação do dia | **P6** (cota/formato — ✅ já fechado) + logística do evento | A sequência já está publicada (`/programacao`, D32); falta só a ASB definir os horários exatos de cada etapa. |
 | Recursos "gameficados" / interatividade | Spec própria (brainstorming) | Pedido do Lain em 24/07/2026. Sem escopo definido — precisa de brainstorming + spec antes de virar plano; avaliar contra o anti-escopo de `AGENT.md` (ex.: nada que implique conta de usuário/login/backend, hoje fora de escopo do site). |
 | Imprensa/contato ampliado | Assessoria/canais adicionais | E-mail entregue na V1.1; resto quando houver. |
 | Shader/WebGL no hero (OGL) | Decisão explícita do Lain | §6.3 registra OGL (~10KB) apenas como **candidato** de v1. Não entra de carona na V1.6. |
@@ -356,7 +354,9 @@ pendência que a trava for resolvida (códigos P/I de `02-DECISOES.md`).
 > **Saíram do estacionamento em 25/07/2026:** countdown (→ **V1.5**, passa a
 > usar a data prevista), termo de responsabilidade (→ **V1.4**, I3 resolvida)
 > e motion/efeitos (→ **V1.6**, pedido do Lain). **Em 31/07/2026:** galeria
-> (2021 + pista atual), I1/I2 fechadas por D31.
+> (2021 + pista atual), I1/I2 fechadas por D31; programação do dia,
+> estacionamento e avisos/atualizações, por D32 (só os horários exatos da
+> programação seguem como sub-etapa parqueada, renomeada acima).
 
 ---
 

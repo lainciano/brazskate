@@ -48,21 +48,6 @@
     }
   }
 
-  /* pulso sutil dos stickers de previsão (hero): reforça que o dado é
-     provisório, não travado — só transform/opacity (§6.2.2) */
-  --animate-sticker-pulse: sticker-pulse 2.4s ease-in-out infinite;
-
-  @keyframes sticker-pulse {
-    0%,
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.015);
-      opacity: 0.92;
-    }
-  }
 }
 
 /*
