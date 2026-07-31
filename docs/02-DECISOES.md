@@ -62,7 +62,7 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 | P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB ainda não começou**. Itens/valores específicos da premiação (ver "Premiação — estrutura cogitada" abaixo) seguem NÃO confirmados | Valores da premiação no regulamento; grade de patrocinadores; o site não pode afirmar premiação garantida (política de placeholder, `AGENT.md`) |
 | P5 | Reparos na pista (iluminação, rachaduras) — **segue sem reparo**, mas o site agora trata a situação com um texto neutro (D27), em vez de silêncio total | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo | **Resolvida em 30/07/2026 (D26)** — faixas etárias, cota presencial, formato de bateria, pontuação e política de chuva definidos. Página `/regulamento` e as 3 perguntas pendentes do FAQ liberadas |
-| P7 | Composição da equipe ASB (funções/responsáveis) | Seção "quem somos" completa |
+| P7 | Composição da equipe ASB (funções/responsáveis) — **parcialmente resolvida em 30/07/2026**: seção "Quem organiza" publicada em `components/sobre.tsx` (commit `92a0920`) com os nomes do time (Luciano, Gustavo, Cauet, Samuel) em `StickerBadge`, sem cargo formal ainda | Seção "quem somos" completa — falta só atribuir função/responsável a cada nome |
 
 ## Premiação — estrutura cogitada (NÃO confirmada)
 

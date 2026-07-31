@@ -5,13 +5,15 @@
 > após a publicação do MVP e a spec da primeira sub-etapa de info básica.
 > Este documento sequencia o V1; cada sub-etapa ganha sua própria spec →
 > plano → PR quando for implementada.
-> Última atualização: 26/07/2026 — V1.9 (GSAP avançado, os 9 itens da spec
-> ampla) concluída por completo e publicada em produção (PR #46, #47, #48,
-> #49, #50). 25/07/2026: V1.4 publicada em produção (PR #38); blueprint do
-> formulário de pré-inscrição concluído (destrava a linha do estacionamento);
-> V1.6 corrigida para refletir o que já estava implementado (era muito menor
-> do que a decomposição original sugeria); V1.8 (`/inscricao`) mapeada,
-> travada até a URL do formulário existir.
+> Última atualização: 30/07/2026 — **V1.8 (`/inscricao`) destravada e
+> publicada** (D29, commit `92a0920`): formulário no Tally no ar, página
+> `/inscricao` publicada, CTA do hero religado. 26/07/2026: V1.9 (GSAP
+> avançado, os 9 itens da spec ampla) concluída por completo e publicada em
+> produção (PR #46, #47, #48, #49, #50). 25/07/2026: V1.4 publicada em
+> produção (PR #38); blueprint do formulário de pré-inscrição concluído
+> (destrava a linha do estacionamento); V1.6 corrigida para refletir o que
+> já estava implementado (era muito menor do que a decomposição original
+> sugeria).
 
 ## O que é o V1
 
@@ -290,17 +292,16 @@ terceiros. É de propósito uma leva pequena.
 
 ### V1.8 · Página `/inscricao`
 
-- **Estado:** **travada** — depende de o formulário real existir e ter URL
-  (blueprint pronto em `docs/blueprint-formulario-pre-inscricao.md`; falta a
-  ASB montar de fato no Tally, D21). A V1.4 já havia deixado essa página
-  fora de escopo pelo mesmo motivo.
-- **Entrega (quando destravar):** rota `/inscricao` no vocabulário do site,
-  explicação do modelo híbrido (D1), link para `/termo`, e religar o CTA
-  "Quero competir" do hero (hoje aponta para `#categorias`).
-- **Não antecipar com URL placeholder** — seria casca vazia (`05-DESIGN.md`
-  §4.3, regra geral do roadmap).
-- **Pronto quando:** a URL do Tally existir e for publicada; ganha spec →
-  plano → PR próprios, no fluxo padrão.
+- **Estado:** ✅ **concluída e publicada** (30/07/2026, commit `92a0920`,
+  D29) — o formulário foi montado de fato no Tally
+  (https://tally.so/r/J9bY7z, cota=60, corte de idade iniciante ≤25).
+- **Entrega:** rota `/inscricao` (`app/inscricao/page.tsx`) explicando o
+  modelo híbrido (D1) e linkando `/termo`; CTA "Quero competir" do hero
+  religado de `#categorias` para `/inscricao`.
+- **Pronto quando:** ✅ URL do Tally publicada; página no ar; CTA religado.
+  Seguem em aberto, fora do escopo desta sub-etapa: acesso à planilha de
+  respostas restrito só ao Lain (pendência #5 do blueprint) e política de
+  retenção de dados (pendência #6 do blueprint).
 
 ---
 
@@ -388,15 +389,15 @@ este roadmap decompõe, não substitui as specs):
 8. **V1.7 · Slots de foto** — o slot `fotoSrc` do hero (duotone + scrim) já
    está implementado; falta verificar o caminho de troca e definir o schema
    de `data/gallery.ts`.
-9. **V1.8 · Página `/inscricao`** — travada até a ASB publicar a URL real do
-   formulário (item 5). Não antecipar com URL placeholder.
+9. **V1.8 · Página `/inscricao`** — ✅ concluída e publicada (30/07/2026,
+   commit `92a0920`, D29): formulário no Tally no ar, CTA do hero religado.
 10. **V1.9 · GSAP avançado** — ✅ concluída por completo (26/07/2026,
     PR #46/#47/#48/#49/#50): os 9 itens da spec ampla, incluindo
     ScrollSmoother (D23.1) e o ajuste de posição do selo.
 
 **Por que nesta ordem:** V1.5 e V1.6/V1.7 são recortes pequenos e
-independentes que fecham o que resta do V1 construível agora; V1.8 fecha o
-ciclo da pré-inscrição mas só quando o formulário existir de fato.
+independentes que fecham o que resta do V1 construível agora; V1.8 fechou o
+ciclo da pré-inscrição assim que o formulário existiu de fato.
 
 Quando a reunião formal com a Administração acontecer (data oficial + P6), o
 estacionamento destrava — provavelmente na ordem **regulamento → cota da
