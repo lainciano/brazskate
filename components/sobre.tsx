@@ -1,13 +1,16 @@
+import { Colagem } from "./colagem";
 import { Marquee } from "./marquee";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
+import { galeriaCamp2021 } from "@/data/gallery";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
-// celebratório, só texto bem tratado — sem slots de foto vazios (as fotos de
-// 2021, pendência I1, entram como colagem na v1). Conteúdo baseado em
-// docs/ASB.md e docs/01-CONTEXTO.md.
+// celebratório. Fotos do camp 2021 entram como colagem (I1 fechada, D31) —
+// array vazio não renderiza nada, então a seção nunca fica com moldura
+// vazia esperando conteúdo. Conteúdo baseado em docs/ASB.md e
+// docs/01-CONTEXTO.md.
 
 // P7 (docs/02-DECISOES.md): funções ainda não fechadas pra todo mundo — só
 // os nomes por enquanto, sem inventar cargo formal.
@@ -78,6 +81,21 @@ export function Sobre() {
               </ul>
             </div>
           </div>
+
+          {galeriaCamp2021.length > 0 && (
+            <div data-reveal className="mt-12">
+              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                O campeonato de 2021
+              </h3>
+              <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
+                Registro da primeira edição, organizada pelos próprios
+                skatistas — a inspiração direta do Braz Skate.
+              </p>
+              <div className="mt-6">
+                <Colagem fotos={galeriaCamp2021} />
+              </div>
+            </div>
+          )}
         </Reveal>
       </section>
     </div>

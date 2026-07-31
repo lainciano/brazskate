@@ -1,7 +1,9 @@
 import { evento, mapaEmbedUrl } from "@/data/evento";
 import { Botao } from "./botao";
+import { Colagem } from "./colagem";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
+import { galeriaPista } from "@/data/gallery";
 
 // Seção "onde acontece" (roadmap V1.1): registro concreto, entre Sobre e
 // Categorias (sem novo rasgo — ambas concreto). Mapa embutido derivado das
@@ -61,6 +63,17 @@ export function Localizacao() {
               Abrir no Google Maps
             </Botao>
           </div>
+
+          {galeriaPista.length > 0 && (
+            <div data-reveal className="mt-10">
+              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                A pista hoje
+              </h3>
+              <div className="mt-6">
+                <Colagem fotos={galeriaPista} />
+              </div>
+            </div>
+          )}
 
           <div data-reveal className="mt-10">
             <h3 className="text-[1.375rem] font-bold leading-[1.2]">
