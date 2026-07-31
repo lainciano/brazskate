@@ -22,3 +22,9 @@ Outros comandos: `pnpm build`, `pnpm lint`, `pnpm typecheck`.
 Antes de abrir uma branch ou PR, leia `docs/CONTRIBUTING.md` (estrutura de
 branches, padrão de commit, fluxo de PR) e `AGENT.md` (regras para
 desenvolvimento assistido por IA neste repositório).
+
+## Licença
+
+Repositório público para fins de transparência e portfólio — todos os
+direitos reservados (ver `LICENSE`). Não é software livre: reuso, cópia ou
+redistribuição do código ou do conteúdo exigem autorização da ASB.
