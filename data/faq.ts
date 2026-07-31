@@ -1,7 +1,7 @@
-// Fonte única do FAQ — ver docs/02-DECISOES.md (D16) e docs/04-ROADMAP-V1.md
-// (V1.3). Perguntas com `resposta: null` dependem do regulamento completo
-// (P6 em docs/02-DECISOES.md) e aparecem na seção com sticker "em breve" —
-// nunca com resposta inventada (política de placeholder, AGENT.md).
+// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27) e
+// docs/04-ROADMAP-V1.md (V1.3). Perguntas com `resposta: null` dependem de
+// conteúdo ainda pendente e aparecem na seção com sticker "em breve" — nunca
+// com resposta inventada (política de placeholder, AGENT.md).
 
 export const faq = [
   {
@@ -28,17 +28,32 @@ export const faq = [
   {
     id: "faixas-etarias",
     pergunta: "Quais as faixas etárias por categoria?",
-    resposta: null,
+    resposta:
+      "Iniciante: até 25 anos. Amador e Feminino: sem limite de idade.",
   },
   {
     id: "cota-presencial",
     pergunta: "Dá pra se inscrever no dia?",
-    resposta: null,
+    resposta:
+      "Sim — o modelo é híbrido: pré-inscrição online + cota de inscrição presencial no dia, até um limite de 60 competidores no total. Quem se inscreve antes garante a vaga com folga.",
   },
   {
     id: "chuva",
     pergunta: "E se chover?",
-    resposta: null,
+    resposta:
+      "O evento é reagendado para uma data alternativa, anunciada nos canais oficiais (Instagram e WhatsApp).",
+  },
+  {
+    id: "pista",
+    pergunta: "A pista está em boas condições?",
+    resposta:
+      "A pista do Skate Park de Brazlândia está em processo de manutenção e melhorias — o campeonato acontece normalmente, e a organização trabalha para deixar a estrutura em boas condições até o dia do evento.",
+  },
+  {
+    id: "estacionamento",
+    pergunta: "Onde estacionar?",
+    resposta:
+      "Tem estacionamento ao lado da pista, com mais espaço do que a via pública do entorno. Um trecho da rua em frente ao parque pode ficar fechado no dia do evento — o formato exato ainda está sendo definido com a Administração.",
   },
 ] as const;
 

@@ -1,18 +1,33 @@
+import { GaleriaCamp2021 } from "./galeria-2021";
 import { Marquee } from "./marquee";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
+import { StickerBadge } from "./sticker-badge";
+import { galeriaCamp2021 } from "@/data/gallery";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
-// celebratório, só texto bem tratado — sem slots de foto vazios (as fotos de
-// 2021, pendência I1, entram como colagem na v1). Conteúdo baseado em
-// docs/ASB.md e docs/01-CONTEXTO.md.
+// celebratório. Fotos do camp 2021 entram como colagem (I1 fechada, D31) —
+// array vazio não renderiza nada, então a seção nunca fica com moldura
+// vazia esperando conteúdo. Conteúdo baseado em docs/ASB.md e
+// docs/01-CONTEXTO.md.
+
+// P7 (docs/02-DECISOES.md): funções ainda não fechadas pra todo mundo — só
+// os nomes por enquanto, sem inventar cargo formal.
+const quemOrganiza = ["Luciano", "Gustavo", "Cauet", "Samuel"];
+
+// galeriaCamp2021 é um Record por categoria (D33) — a regra anti-casca-vazia
+// precisa checar as 3 chaves, não só "array.length", senão o título "O
+// campeonato de 2021" renderiza sem nenhuma foto embaixo.
+const temGaleria2021 = Object.values(galeriaCamp2021).some((fotos) => fotos.length > 0);
+
 export function Sobre() {
   return (
     <div className="registro-concreto">
       <Rasgo cor="tinta" />
       <Marquee
-        texto="Braz Skate · Brazlândia-DF"
+        texto="Braz Skate · Sua marca aqui · Brazlândia-DF · Seja um patrocinador"
+        href="/patrocinio"
         className="border-b-2 border-tinta py-3"
       />
 
@@ -52,7 +67,40 @@ export function Sobre() {
                 associação coloca Brazlândia no mapa do skate do DF.
               </p>
             </div>
+
+            <div data-reveal className="md:col-span-2">
+              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                Quem organiza
+              </h3>
+              <ul className="mt-4 flex max-w-[65ch] flex-wrap gap-3">
+                {quemOrganiza.map((nome, indice) => (
+                  <li key={nome}>
+                    <StickerBadge
+                      variante={indice % 2 === 0 ? "info" : "breve"}
+                      data-carimbo
+                    >
+                      {nome}
+                    </StickerBadge>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
+
+          {temGaleria2021 && (
+            <div data-reveal className="mt-12">
+              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                O campeonato de 2021
+              </h3>
+              <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
+                Registro da primeira edição, organizada pelos próprios
+                skatistas — a inspiração direta do Braz Skate.
+              </p>
+              <div className="mt-6">
+                <GaleriaCamp2021 porCategoria={galeriaCamp2021} />
+              </div>
+            </div>
+          )}
         </Reveal>
       </section>
     </div>

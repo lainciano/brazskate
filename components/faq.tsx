@@ -39,7 +39,7 @@ export function Faq() {
             <SectionHeader
               eyebrow="Dúvidas"
               titulo="Perguntas frequentes"
-              lead="O que já sabemos hoje — o resto chega junto com o regulamento."
+              lead="O que já sabemos hoje. Regulamento completo na página dedicada."
             />
           </div>
 
@@ -66,6 +66,21 @@ export function Faq() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 flex flex-col gap-2" data-reveal>
+            <a
+              href="/regulamento"
+              className="font-semibold underline-offset-4 hover:underline"
+            >
+              Ver o regulamento completo →
+            </a>
+            <a
+              href="/programacao"
+              className="font-semibold underline-offset-4 hover:underline"
+            >
+              Ver a programação do dia →
+            </a>
+          </p>
         </Reveal>
       </div>
     </section>

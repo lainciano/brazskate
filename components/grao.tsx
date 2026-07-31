@@ -32,7 +32,13 @@ export function Grao({
           transforma o conteúdo, custo alto de repaint (suspeito de
           performance da sessão de polish pós-GSAP). Navegadores sem
           suporte a filterRes só voltam ao comportamento anterior. */}
-      <filter id={id} filterRes="180 180">
+      {/* suppressHydrationWarning: filterRes não é uma prop SVG que o React
+          reconhece nativamente — o servidor e o cliente serializam o mesmo
+          valor "180 180" de formas que o diff de hidratação do React 19
+          enxerga como diferentes (falso positivo, confirmado comparando o
+          HTML de SSR com o atributo pós-hidratação; nenhum comportamento
+          muda). Sem isso, o warning aparece em toda página que usa <Grao />. */}
+      <filter id={id} filterRes="180 180" suppressHydrationWarning>
         <feTurbulence
           type="fractalNoise"
           baseFrequency="0.8"

@@ -275,7 +275,7 @@ Anatomia: label em Archivo 700 caixa alta; padding `px-6 py-3` (garante
 |---|---|---|
 | Primário | "Quero competir" | bg `vermelho-600`, texto `creme`, `--shadow-card` |
 | Secundário | "Seja um patrocinador" | borda 2px `tinta` (ou `creme` no asfalto), texto na cor da borda, bg transparente, `--shadow-sticker` |
-| Terciário | "Apoie via Pix" | sem caixa: link com seta-rabisco SVG ao lado, sublinhado no hover |
+| Terciário | "Apoie via Pix" | sem caixa: link com ícone do Pix (SVG, `IconePix`) ao lado, sublinhado no hover |
 
 Estados: hover = `translate(-2px,-2px)` + sombra cresce (o botão "descola
 da parede"); active = translate volta a 0 + sombra `2px 2px` (pressiona);
@@ -419,13 +419,25 @@ com nome acessível ("Instagram do Braz Skate").
   borda irregular, preenchido com a cor da seção vizinha. Decorativo
   (`aria-hidden`); não cria altura de layout inesperada (altura fixa).
 - **Marquee** (`components/marquee.tsx`): faixa de texto repetido
-  ("BRAZ SKATE · BRAZLÂNDIA-DF ·") rolando via CSS puro, largura total.
-  Pausa no hover; estática com `prefers-reduced-motion`. O texto existe
-  UMA vez para leitores de tela; as repetições são `aria-hidden`.
+  ("BRAZ SKATE · SUA MARCA AQUI · BRAZLÂNDIA-DF · SEJA UM PATROCINADOR ·")
+  rolando via CSS puro, largura total, linkando para `/patrocinio` (prop
+  `href` opcional). Pausa no hover **e no foco** (`focus-within`, essencial
+  quando a faixa é um link — sem isso vira alvo em movimento pro teclado);
+  estática com `prefers-reduced-motion`. O texto existe UMA vez para
+  leitores de tela (como texto do link, quando `href` está presente); as
+  repetições visuais são `aria-hidden`.
 
 ---
 
-## 4. Estratégia visual sem a foto da pista (pendência I2)
+## 4. Estratégia visual da foto da pista
+
+> **Atualização 31/07/2026 (D31, `02-DECISOES.md`):** I1 e I2 fecharam — as
+> fotos de `docs/assets/fotos-manobras/` são todas na pista de Brazlândia
+> (confirmado pelo Lain), e as artes de premiação de 2021 entraram como
+> colagem depois de recortadas (sponsor bar de terceiros removida). O hero
+> permanece com `IMG_0137.jpg` por escolha explícita — a estratégia de
+> "hero 100% gráfico" abaixo segue documentando só o **fallback** do
+> componente.
 
 ### 4.1 Hero 100% gráfico (o cartaz)
 
@@ -491,25 +503,23 @@ marca — não dependemos de foto profissional.
 
 ### 4.3 Outras seções que pediriam imagem
 
-- **Sobre (fotos de 2021, pendência I1):** enquanto não existem, a seção
-  vive de texto bem tratado + rabiscos. Quando chegarem, entram como
-  **colagem**: molduras claras estilo foto impressa, levemente
-  rotacionadas, com legenda e crédito (obrigatório — `data/gallery.ts` com
-  `credito` e `permissao`, schema definido na V1.7). NÃO deixar molduras
-  vazias "esperando" — seção sem foto não mostra slot nenhum.
+- **Sobre (fotos de 2021, I1 fechada por D31):** colagem abaixo de "Quem
+  organiza" — molduras claras estilo foto impressa, levemente rotacionadas,
+  com legenda (categoria + colocação, sem nome completo do competidor) e
+  crédito "Acervo ASB".
+- **Localização (pista atual, I2 fechada por D31):** colagem abaixo do
+  mapa, crédito "Cauet".
 - **Patrocinadores:** sem logos confirmados, a seção da home é só CTA
-  (texto + botão para `/patrocinio`). Grade de logos nasce na v1 com
-  `sponsors.json`.
+  (texto + botão para `/patrocinio`). Grade de logos nasce quando houver
+  patrocinador real (`data/sponsors.ts`, P4 segue aberta).
 
-**Contrato do componente de colagem (V1.7 — pronto para ativar, não
-implementado ainda):** quando `data/gallery.ts` deixar de estar vazio, um
-componente `Colagem` (nome provisório) recebe `fotos: readonly FotoGaleria[]`
-e renderiza uma moldura por item — fundo `creme`, borda fina, rotação leve
+**Contrato do componente de colagem — implementado (`components/colagem.tsx`,
+D31):** recebe `fotos: readonly FotoGaleria[]` de `data/gallery.ts` e
+renderiza uma moldura por item — fundo `creme`, borda fina, rotação leve
 alternada (mesmo princípio de "nunca aleatória em runtime" do `StickerBadge`,
 §3.6: rotação fixa por índice, não `Math.random()`), `credito` como legenda
 visível (não só `alt`) e `legenda` opcional abaixo. **Array vazio não
-renderiza o componente** — a seção correspondente (Sobre) mantém o texto
-atual até a primeira foto entrar; não há estado "0 fotos" visível.
+renderiza o componente** — usado hoje pelas seções Sobre e Localização.
 
 ---
 

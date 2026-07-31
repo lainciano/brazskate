@@ -1,3 +1,4 @@
+import { Avisos } from "@/components/avisos";
 import { Categorias } from "@/components/categorias";
 import { Contato } from "@/components/contato";
 import { Faq } from "@/components/faq";
@@ -28,6 +29,7 @@ export default function Home() {
           <Localizacao />
           <Categorias />
           <Faq />
+          <Avisos />
           <PatrocinioResumo />
           <div className="registro-asfalto relative overflow-hidden">
             <Rasgo cor="creme" />

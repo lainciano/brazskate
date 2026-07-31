@@ -3,14 +3,16 @@ import { Botao } from "@/components/botao";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
+import { ParceirosInstitucionais } from "@/components/parceiros-institucionais";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
+import { contrapartidas } from "@/data/contrapartidas";
 
 // Página /patrocinio (roadmap PR 5): copy adaptado de
 // docs/media-kit-braz-skate.md no tom institucional (§1.5 — "proposta
-// séria, retorno real"). SEM menção ao UIEMAPV até a confirmação (I7);
-// contato pelos canais oficiais do evento.
+// séria, retorno real"). Parceiros institucionais (I7, D18) entram depois de
+// "Formas de apoio"; contato pelos canais oficiais do evento.
 
 export const metadata: Metadata = {
   title: "Seja um patrocinador",
@@ -154,6 +156,44 @@ export default function Patrocinio() {
               </ul>
             </Reveal>
           </section>
+
+          <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+            <Reveal>
+              <div data-reveal>
+                <SectionHeader
+                  eyebrow="Contrapartidas"
+                  titulo="O que sua marca recebe"
+                  lead="Dois níveis, conforme a forma de apoio — a contrapartida final é sempre acertada com a organização."
+                />
+              </div>
+              <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {contrapartidas.map((item) => (
+                  <li
+                    key={item.nivel}
+                    data-reveal
+                    className="rounded-card bg-(--surface) p-6 shadow-card"
+                  >
+                    <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                      {item.nivel}
+                    </h3>
+                    <p className="mt-2 text-sm leading-[1.5] text-(--fg-secundario)">
+                      {item.quemEntra}
+                    </p>
+                    <ul className="mt-4 flex flex-col gap-2 leading-[1.5]">
+                      {item.recebe.map((beneficio) => (
+                        <li key={beneficio} className="flex gap-2">
+                          <span aria-hidden="true">·</span>
+                          {beneficio}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </section>
+
+          <ParceirosInstitucionais />
         </div>
 
         <div className="registro-asfalto relative overflow-hidden">
