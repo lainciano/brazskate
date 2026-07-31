@@ -6,6 +6,26 @@ import { SectionHeader } from "./section-header";
 // Seção "onde acontece" (roadmap V1.1): registro concreto, entre Sobre e
 // Categorias (sem novo rasgo — ambas concreto). Mapa embutido derivado das
 // coordenadas de data/evento.ts; botão de fallback sempre visível.
+//
+// Linhas do ônibus em chip próprio (não StickerBadge — esse componente é a
+// assinatura de placeholder/pendência do site, docs/05-DESIGN.md §3.6, e
+// aqui o dado já é confirmado); cantos firmes (--radius-btn), não pílula.
+
+const LINHAS_ONIBUS = [
+  "400",
+  "401",
+  "402",
+  "403",
+  "404",
+  "405",
+  "411",
+  "413",
+  "420",
+  "421",
+  "423",
+  "450",
+];
+
 export function Localizacao() {
   return (
     <section id="local" className="registro-concreto">
@@ -40,6 +60,35 @@ export function Localizacao() {
             >
               Abrir no Google Maps
             </Botao>
+          </div>
+
+          <div data-reveal className="mt-10">
+            <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+              Como chegar de ônibus
+            </h3>
+            <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
+              Linhas do DFTrans que atendem Brazlândia, conectando com a
+              Rodoviária do Plano Piloto, Taguatinga, Ceilândia e a W3
+              Norte/Sul:
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {LINHAS_ONIBUS.map((linha) => (
+                <li
+                  key={linha}
+                  className="rounded-btn border border-tinta/20 bg-(--surface) px-2.5 py-1 text-sm font-semibold"
+                >
+                  {linha}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://dfnoponto.com/cidades/brazlandia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block font-semibold underline-offset-4 hover:underline"
+            >
+              Ver horários em tempo real no DF no Ponto →
+            </a>
           </div>
         </Reveal>
       </div>

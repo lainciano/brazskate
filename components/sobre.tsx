@@ -2,11 +2,17 @@ import { Marquee } from "./marquee";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
+import { StickerBadge } from "./sticker-badge";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
 // celebratório, só texto bem tratado — sem slots de foto vazios (as fotos de
 // 2021, pendência I1, entram como colagem na v1). Conteúdo baseado em
 // docs/ASB.md e docs/01-CONTEXTO.md.
+
+// P7 (docs/02-DECISOES.md): funções ainda não fechadas pra todo mundo — só
+// os nomes por enquanto, sem inventar cargo formal.
+const quemOrganiza = ["Luciano", "Gustavo", "Cauet", "Samuel"];
+
 export function Sobre() {
   return (
     <div className="registro-concreto">
@@ -51,6 +57,24 @@ export function Sobre() {
                 para melhorar a estrutura de quem anda — é assim que a
                 associação coloca Brazlândia no mapa do skate do DF.
               </p>
+            </div>
+
+            <div data-reveal className="md:col-span-2">
+              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
+                Quem organiza
+              </h3>
+              <ul className="mt-4 flex max-w-[65ch] flex-wrap gap-3">
+                {quemOrganiza.map((nome, indice) => (
+                  <li key={nome}>
+                    <StickerBadge
+                      variante={indice % 2 === 0 ? "info" : "breve"}
+                      data-carimbo
+                    >
+                      {nome}
+                    </StickerBadge>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Reveal>

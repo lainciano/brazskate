@@ -3,14 +3,15 @@ import { Botao } from "@/components/botao";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
+import { ParceirosInstitucionais } from "@/components/parceiros-institucionais";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
 
 // Página /patrocinio (roadmap PR 5): copy adaptado de
 // docs/media-kit-braz-skate.md no tom institucional (§1.5 — "proposta
-// séria, retorno real"). SEM menção ao UIEMAPV até a confirmação (I7);
-// contato pelos canais oficiais do evento.
+// séria, retorno real"). Parceiros institucionais (I7, D18) entram depois de
+// "Formas de apoio"; contato pelos canais oficiais do evento.
 
 export const metadata: Metadata = {
   title: "Seja um patrocinador",
@@ -154,6 +155,8 @@ export default function Patrocinio() {
               </ul>
             </Reveal>
           </section>
+
+          <ParceirosInstitucionais />
         </div>
 
         <div className="registro-asfalto relative overflow-hidden">
