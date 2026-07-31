@@ -320,7 +320,7 @@ O que falta para o site estar completo antes do campeonato:
 | 4 | Pré-inscrição + modelo híbrido | 🟢 construída | **D29** — formulário publicado no Tally (https://tally.so/r/J9bY7z), página `/inscricao` no ar, CTA do hero religado |
 | 5 | Termo + autorização de menor | 🟢 construível | **V1.4** — texto validado (I3 resolvida) |
 | 6 | Patrocinadores confirmados | 🟡 parcial | **I7 resolvida (D28)** — UIEMAPV publicada como parceiro institucional em `/patrocinio`. Segue faltando **P4** — nenhum patrocinador comercial fechado, captação da ASB não começou |
-| 7 | Galeria (2021 + pista) | 🟢 construída | **I1/I2 fechadas (D31)** — colagem publicada em Sobre (2021) e Localização (pista atual), `components/colagem.tsx` |
+| 7 | Galeria (2021 + pista) | 🟢 construída | **I1/I2 fechadas (D31)**. 2021 agrupada por categoria (Mirim/Iniciante/Amador) com slide, `components/galeria-2021.tsx` (**D33**); pista atual em grid, `components/colagem.tsx` |
 | 8 | FAQ | 🟢 construída | 8 respostas no ar — as 3 que aguardavam P6 (faixas etárias, cota, chuva) resolvidas por D26; nova pergunta sobre a pista (D27) |
 | 9 | Programação do dia | 🟡 parcial | **D32** — página `/programacao` publicada com a sequência (credenciamento → baterias → apuração → premiação); faltam só os **horários exatos** (sticker "em breve") |
 | 10 | Avisos/atualizações | 🟢 construída | **D32** — `data/avisos.ts` com 3 avisos reais, seção na home entre FAQ e Patrocínio |
