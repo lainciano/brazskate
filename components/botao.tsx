@@ -3,7 +3,7 @@ import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from "react";
-import { RabiscoSeta } from "./rabiscos";
+import { IconePix } from "./rabiscos";
 
 // Botão/CTA (docs/05-DESIGN.md §3.1). É <a> quando navega, <button> quando
 // age. As variantes usam as variáveis do registro (--fg) para funcionarem
@@ -23,7 +23,7 @@ const caixa =
 const variantes: Record<Variante, string> = {
   primario: `${caixa} bg-vermelho-600 text-creme shadow-card hover:shadow-card-hover`,
   secundario: `${caixa} border-2 border-(--fg) bg-transparent text-(--fg) shadow-sticker hover:shadow-card`,
-  // terciário não tem caixa: link com seta-rabisco e sublinhado que cresce
+  // terciário não tem caixa: link "Apoie via Pix" com ícone do Pix e sublinhado que cresce
   terciario:
     "group relative inline-flex min-h-11 items-center gap-2 py-3 font-bold uppercase tracking-[0.02em] text-(--fg)",
 };
@@ -50,7 +50,7 @@ export function Botao(props: PropsLink | PropsBotao) {
           {children}
           <RabiscoSublinhadoHover />
         </span>
-        <RabiscoSeta className="w-6 shrink-0" />
+        <IconePix className="w-5 shrink-0" />
       </>
     ) : (
       children
