@@ -3,8 +3,9 @@ import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 
 // Resumo de patrocínio na home (roadmap PR 4): texto curto + CTA para a
-// página /patrocinio. Sem grade de logos (v1) e SEM menção ao UIEMAPV até a
-// confirmação do instituto (pendência I7 em docs/02-DECISOES.md).
+// página /patrocinio. Sem grade de logos de patrocinador comercial — P4
+// segue aberta (docs/02-DECISOES.md); parceiros institucionais (UIEMAPV,
+// I7 fechada por D28) vivem só em /patrocinio.
 export function PatrocinioResumo() {
   return (
     <section id="patrocinio" className="registro-concreto border-t-2 border-(--borda)">

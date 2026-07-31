@@ -275,7 +275,7 @@ Anatomia: label em Archivo 700 caixa alta; padding `px-6 py-3` (garante
 |---|---|---|
 | Primário | "Quero competir" | bg `vermelho-600`, texto `creme`, `--shadow-card` |
 | Secundário | "Seja um patrocinador" | borda 2px `tinta` (ou `creme` no asfalto), texto na cor da borda, bg transparente, `--shadow-sticker` |
-| Terciário | "Apoie via Pix" | sem caixa: link com seta-rabisco SVG ao lado, sublinhado no hover |
+| Terciário | "Apoie via Pix" | sem caixa: link com ícone do Pix (SVG, `IconePix`) ao lado, sublinhado no hover |
 
 Estados: hover = `translate(-2px,-2px)` + sombra cresce (o botão "descola
 da parede"); active = translate volta a 0 + sombra `2px 2px` (pressiona);
@@ -419,9 +419,13 @@ com nome acessível ("Instagram do Braz Skate").
   borda irregular, preenchido com a cor da seção vizinha. Decorativo
   (`aria-hidden`); não cria altura de layout inesperada (altura fixa).
 - **Marquee** (`components/marquee.tsx`): faixa de texto repetido
-  ("BRAZ SKATE · BRAZLÂNDIA-DF ·") rolando via CSS puro, largura total.
-  Pausa no hover; estática com `prefers-reduced-motion`. O texto existe
-  UMA vez para leitores de tela; as repetições são `aria-hidden`.
+  ("BRAZ SKATE · SUA MARCA AQUI · BRAZLÂNDIA-DF · SEJA UM PATROCINADOR ·")
+  rolando via CSS puro, largura total, linkando para `/patrocinio` (prop
+  `href` opcional). Pausa no hover **e no foco** (`focus-within`, essencial
+  quando a faixa é um link — sem isso vira alvo em movimento pro teclado);
+  estática com `prefers-reduced-motion`. O texto existe UMA vez para
+  leitores de tela (como texto do link, quando `href` está presente); as
+  repetições visuais são `aria-hidden`.
 
 ---
 

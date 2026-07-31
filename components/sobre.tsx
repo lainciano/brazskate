@@ -18,7 +18,8 @@ export function Sobre() {
     <div className="registro-concreto">
       <Rasgo cor="tinta" />
       <Marquee
-        texto="Braz Skate · Brazlândia-DF"
+        texto="Braz Skate · Sua marca aqui · Brazlândia-DF · Seja um patrocinador"
+        href="/patrocinio"
         className="border-b-2 border-tinta py-3"
       />
 

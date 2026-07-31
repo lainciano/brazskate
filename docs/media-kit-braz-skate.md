@@ -34,7 +34,17 @@ O apoio pode acontecer de diferentes maneiras, combinadas ou isoladas:
 | **Divulgação / Mídia** | Espaço de mídia, produção de conteúdo, ou divulgação cruzada com a base de público da marca. |
 | **Institucional** | Apoio com validação pública da marca à causa (parceria de nome/selo, sem contrapartida financeira direta). |
 
-## 5. Contato
+## 5. O que sua marca recebe
+
+Dois níveis de contrapartida, conforme a forma de apoio — sem valor fixo em
+R$, ajustado com a organização caso a caso:
+
+| Nível | Quem entra | O que recebe |
+|---|---|---|
+| **Patrocínio** | Financeiro (Pix) ou Premiação | Menção no som do evento · espaço para faixa da marca na pista (material fornecido pela marca) · logo e link no site · menção nas redes (@brazskate) |
+| **Apoio** | Infraestrutura ou Divulgação/Mídia | Menção no som do evento · nome no site · menção nas redes (@brazskate) |
+
+## 6. Contato
 
 Cauet / 61 9614-6765
 
