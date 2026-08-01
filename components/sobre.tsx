@@ -31,7 +31,7 @@ export function Sobre() {
         className="border-b-2 border-tinta py-3"
       />
 
-      <section id="sobre" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <section id="sobre" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-16 sm:px-6 md:py-24">
         <Reveal>
           <div data-reveal>
             <SectionHeader

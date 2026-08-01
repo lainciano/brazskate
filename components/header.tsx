@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
+import { irParaAncora } from "@/lib/motion";
 import { Grao } from "./grao";
 
 // Header / nav por âncoras (docs/05-DESIGN.md §3.2): barra sticky, transparente
@@ -16,6 +17,7 @@ import { Grao } from "./grao";
 // do vocabulário de motion do projeto (só transform/opacity, `lib/motion.ts`).
 
 const DISTANCIA_TRANSICAO_PX = 96;
+const ALTURA_HEADER_PX = 64; // h-16
 
 const links = [
   { href: "#sobre", rotulo: "Sobre" },
@@ -29,6 +31,20 @@ export function Header() {
   const { aberto, abrir, fechar, overlayRef, botaoFecharRef, botaoAbrirRef } =
     useMenuOverlay();
   const [progressoRolagem, setProgressoRolagem] = useState(0);
+
+  // Navega por âncora via ScrollSmoother (ver lib/motion.ts) — o salto
+  // nativo do navegador não sincroniza com o smoother e deixa este próprio
+  // Header preso no estado "topo da página" (fundo transparente) mesmo
+  // depois do scroll visual ir pra uma seção clara.
+  const aoClicarLink = useCallback(
+    (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      const alvo = document.querySelector(href);
+      if (!alvo) return;
+      evento.preventDefault();
+      irParaAncora(alvo, ALTURA_HEADER_PX);
+    },
+    [],
+  );
 
   useEffect(() => {
     let quadro = 0;
@@ -81,6 +97,7 @@ export function Header() {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(evento) => aoClicarLink(evento, link.href)}
                     className="py-2 font-semibold underline-offset-4 hover:underline"
                   >
                     {link.rotulo}
@@ -144,7 +161,10 @@ export function Header() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      onClick={fechar}
+                      onClick={(evento) => {
+                        aoClicarLink(evento, link.href);
+                        fechar();
+                      }}
                       className="block py-2 font-display text-[clamp(2.5rem,10vw,4rem)] uppercase leading-none"
                     >
                       {link.rotulo}

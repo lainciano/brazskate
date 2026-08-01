@@ -16,7 +16,7 @@ const descricaoPremiacao: Record<Category["premiacao"], string> = {
 
 export function Categorias() {
   return (
-    <section id="categorias" className="registro-concreto">
+    <section id="categorias" className="registro-concreto scroll-mt-16">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <Reveal>
           <div data-reveal>
