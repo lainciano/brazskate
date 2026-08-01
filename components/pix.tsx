@@ -13,7 +13,7 @@ const CHAVE_PIX = "f36357b8-050c-487d-a909-feb2f66f2cae";
 
 export function Pix() {
   return (
-    <section id="apoie" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+    <section id="apoie" className="relative mx-auto max-w-6xl scroll-mt-16 px-4 py-16 sm:px-6 md:py-24">
       <Reveal>
         <div data-reveal>
           <SectionHeader

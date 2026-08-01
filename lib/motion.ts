@@ -90,6 +90,27 @@ export function useMotion<T extends HTMLElement = HTMLDivElement>(
   return escopoRef;
 }
 
+// Salto de âncora ciente do ScrollSmoother (D23.1): um <a href="#id">
+// nativo não passa pelo rastreamento interno de posição do ScrollSmoother —
+// a página pula visualmente até a seção, mas window.scrollY nunca é
+// atualizado, então qualquer lógica que dependa dele (ex.: a opacidade do
+// fundo do Header em scroll) fica presa no estado de topo de página, mesmo
+// depois do salto. `smoother.scrollTo()` resolve os dois problemas de uma
+// vez, porque passa pelo mesmo pipeline que o scroll de mouse/touch usa
+// (por isso ESSE sim sincroniza window.scrollY corretamente). Sem
+// ScrollSmoother ativo (reduced-motion, ou clique antes do idle-init que
+// monta o smoother), cai no scrollIntoView nativo — sem offset de header
+// fixo aí, então os alvos precisam de `scroll-margin-top` em CSS.
+export async function irParaAncora(alvo: Element, offsetPx = 0) {
+  const { ScrollSmoother } = await import("gsap/ScrollSmoother");
+  const smoother = ScrollSmoother.get();
+  if (smoother) {
+    smoother.scrollTo(smoother.offset(alvo, "top top") - offsetPx, true);
+    return;
+  }
+  alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 // Flip é carregado sob demanda (não no idle da página) porque só é usado
 // numa interação — o menu mobile (docs/superpowers/specs/
 // 2026-07-26-gsap-avancado-parte2-design.md §2), não em conteúdo que

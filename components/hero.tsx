@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback } from "react";
 import { evento } from "@/data/evento";
-import { useMotion, type Gsap } from "@/lib/motion";
+import { irParaAncora, useMotion, type Gsap } from "@/lib/motion";
 import { Botao } from "./botao";
 import { Countdown } from "./countdown";
 import { Grao } from "./grao";
@@ -14,7 +14,21 @@ import { StickerBadge } from "./sticker-badge";
 // (fotoSrc) tratada em duotone + grão + scrim. O Selo (carimbo do logo)
 // foi removido da composição (decisão da sessão de polish pós-GSAP,
 // revisando a decisão anterior de mantê-lo sobre a foto).
+// mesma altura do header (h-16, ver components/header.tsx) — usada pra
+// compensar o header fixo ao saltar pra âncora (lib/motion.ts).
+const ALTURA_HEADER_PX = 64;
+
 export function Hero({ fotoSrc }: { fotoSrc?: string }) {
+  const aoClicarAncora = useCallback(
+    (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      const alvo = document.querySelector(href);
+      if (!alvo) return;
+      evento.preventDefault();
+      irParaAncora(alvo, ALTURA_HEADER_PX);
+    },
+    [],
+  );
+
   const montar = useCallback((gsap: Gsap, escopo: HTMLElement) => {
     // linguagem "tinta fresca seca rápido" (§6.1): stencil, carimbo, stagger
     const tl = gsap.timeline({ defaults: { ease: "tintaSeca" } });
@@ -118,13 +132,21 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
 
         <div data-hero-item className="mt-4 flex flex-wrap items-center gap-2 sm:mt-10 sm:gap-4">
           <Botao href="/inscricao">Quero competir</Botao>
-          <Botao href="#patrocinio" variante="secundario">
+          <Botao
+            href="#patrocinio"
+            variante="secundario"
+            onClick={(evento) => aoClicarAncora(evento, "#patrocinio")}
+          >
             Seja um patrocinador
           </Botao>
         </div>
 
         <div data-hero-item className="mt-3 flex flex-col items-start gap-2 sm:mt-5 sm:flex-row sm:items-center sm:gap-4">
-          <Botao href="#apoie" variante="terciario">
+          <Botao
+            href="#apoie"
+            variante="terciario"
+            onClick={(evento) => aoClicarAncora(evento, "#apoie")}
+          >
             Apoie via Pix
           </Botao>
           <StickerBadge variante="breve" data-carimbo>

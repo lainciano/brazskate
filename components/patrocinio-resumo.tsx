@@ -8,7 +8,7 @@ import { SectionHeader } from "./section-header";
 // I7 fechada por D28) vivem só em /patrocinio.
 export function PatrocinioResumo() {
   return (
-    <section id="patrocinio" className="registro-concreto border-t-2 border-(--borda)">
+    <section id="patrocinio" className="registro-concreto scroll-mt-16 border-t-2 border-(--borda)">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
         <Reveal>
           <div data-reveal>
