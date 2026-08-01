@@ -7,7 +7,7 @@ import { evento } from "@/data/evento";
 // (ver 05-DESIGN.md §7).
 export function Contato() {
   return (
-    <section id="contato" className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+    <section id="contato" className="relative mx-auto max-w-6xl scroll-mt-16 px-4 pb-16 sm:px-6 md:pb-24">
       <Reveal>
         <div data-reveal>
           <SectionHeader
