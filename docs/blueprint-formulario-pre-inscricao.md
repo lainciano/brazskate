@@ -277,7 +277,7 @@ validação de campo.
 |---|---|---|---|
 | 1 | ~~Tamanho da cota presencial~~ — **resolvida (D26)**: até 60 competidores | — | — |
 | 2 | ~~Faixas etárias por categoria~~ — **resolvida (D26)**: iniciante até 25 anos; amador e feminino sem limite | — | — |
-| 3 | ~~Data oficial~~ — **resolvida (D24)**: 12 de setembro de 2026, confirmada. Constante de corte de idade em §4 usa essa data | — | — |
+| 3 | ~~Data oficial~~ — **resolvida (D24)**: 13 de setembro de 2026, confirmada. Constante de corte de idade em §4 usa essa data | — | — |
 | 4 | Criar a conta Tally e montar o formulário de fato | — | Em andamento via API do Tally |
 | 5 | Quem da ASB acessa a planilha de respostas | — | ASB, antes de abrir o formulário |
 | 6 | Política de retenção de dados definitiva | — | ASB, ver sugestão em §9 |

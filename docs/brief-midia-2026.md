@@ -99,7 +99,7 @@ Fonte: `data/evento.ts`, `data/categories.ts`, `data/regulamento.ts`,
 
 - **Evento:** Braz Skate — campeonato de skate de Brazlândia-DF
 - **Organização:** ASB — Associação Skate Brazlândia
-- **Data:** 12 de setembro de 2026 (confirmada)
+- **Data:** 13 de setembro de 2026 (confirmada)
 - **Local:** Skate Park Brazlândia (pista à beira do lago)
 - **Categorias:** Iniciante, Amador, Feminino — **sem categoria mirim em
   2026** (a de 2021 tinha; as fotos históricas de mirim são de 2021)
@@ -180,7 +180,7 @@ vem com o tratamento de marca; componha por cima, não refaça.
 
 **Composição:** logo completa em creme, "BRAZ SKATE" em Anton caixa alta,
 eyebrow "CAMPEONATO DE SKATE · BRAZLÂNDIA-DF", sticker com a data
-(12 de setembro de 2026), rabisco de sublinhado em `vermelho-500`.
+(13 de setembro de 2026), rabisco de sublinhado em `vermelho-500`.
 A área inferior-esquerda da foto é a mais escura (scrim) — é onde o texto
 respira melhor. Evite encher o quadro: é cartaz, não flyer poluído.
 

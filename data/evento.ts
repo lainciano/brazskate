@@ -8,13 +8,13 @@
 
 export const evento = {
   // data canônica (textos longos: seção de local, futura página cheia)
-  dataPrevista: "12 de setembro de 2026",
+  dataPrevista: "13 de setembro de 2026",
   // forma curta (mesmo dado, formatado para caber no sticker do hero)
-  dataPrevistaCurta: "12 de setembro",
+  dataPrevistaCurta: "13 de setembro",
   // forma legível por máquina (V1.5, countdown) — mesmo dado de
   // dataPrevista acima; não é derivada nem deriva as strings de exibição,
   // trocar a data é editar os dois tipos de campo aqui
-  dataPrevistaISO: "2026-09-12",
+  dataPrevistaISO: "2026-09-13",
   local: {
     nome: "Skate Park Brazlândia",
     coordenadas: { lat: -15.6824327, lng: -48.1982567 },

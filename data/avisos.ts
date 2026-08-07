@@ -16,9 +16,9 @@ export const avisos = [
     id: "data-confirmada",
     dataISO: "2026-07-30",
     data: "30/07/2026",
-    titulo: "Data confirmada: 12 de setembro",
+    titulo: "Data confirmada: 13 de setembro",
     texto:
-      "O Braz Skate tem data fechada com a Administração Regional — 12 de setembro de 2026, no Skate Park de Brazlândia.",
+      "O Braz Skate tem data fechada com a Administração Regional — 13 de setembro de 2026, no Skate Park de Brazlândia.",
   },
   {
     id: "parceria-uiemapv",
