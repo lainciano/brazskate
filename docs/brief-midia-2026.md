@@ -99,15 +99,19 @@ Fonte: `data/evento.ts`, `data/categories.ts`, `data/regulamento.ts`,
 
 - **Evento:** Braz Skate — campeonato de skate de Brazlândia-DF
 - **Organização:** ASB — Associação Skate Brazlândia
-- **Data:** 12 de setembro de 2026 (confirmada)
+- **Data:** 13 de setembro de 2026 (confirmada)
 - **Local:** Skate Park Brazlândia (pista à beira do lago)
 - **Categorias:** Iniciante, Amador, Feminino — **sem categoria mirim em
   2026** (a de 2021 tinha; as fotos históricas de mirim são de 2021)
-- **Inscrição:** gratuita, online (Tally) + cota presencial no dia,
-  limite total de 60 competidores
-- **Formato:** fase única, 2 passagens de 1 minuto, conta a melhor
-- **Premiação:** medalha para quem compete + premiação ao top 3
-  (Feminino: medalha e premiação para todas)
+- **Inscrição:** gratuita, só online (Tally), até 30 de agosto de 2026 —
+  sem inscrição presencial no dia
+- **Formato:** Braz Skate — 2 voltas de 45s por competidor (cada volta com
+  2 bomb tricks), depois rodada final de 3 manobras para todos
+- **Vai ter no dia:** best trick à parte (pista aberta a qualquer pessoa
+  presente), fotógrafo oficial, presença confirmada de Galego (Street Loyal)
+- **Premiação:** camiseta oficial para todos + dinheiro pro top 3 (1º R$350,
+  2º R$250, 3º R$150) + itens de skate (shapes de maple, trucks, rolamentos,
+  rodas) para todas as categorias (Feminino: camiseta e premiação para todas)
 - **Parceiro institucional:** UIEMAPV
 - **Site:** https://brazskate.vercel.app
 - **Instagram:** @brazskate
@@ -142,14 +146,15 @@ a marcas). Precisa ficar legível em tela de celular.
 2. Sobre o Braz Skate e a ASB
 3. Parceria institucional (UIEMAPV)
 4. Por que apoiar — 5 argumentos
-5. Formas de apoio — 5 tipos (financeiro, premiação, infraestrutura,
-   divulgação/mídia, institucional)
+5. Formas de apoio — 3 tipos (financeiro, premiação, divulgação/mídia)
 6. **Contrapartidas em dois níveis** (`data/contrapartidas.ts`):
-   **Patrocínio** (financeiro/premiação) → menção no som, faixa da marca
-   na pista, logo e link no site, menção nas redes.
-   **Apoio** (infraestrutura/divulgação) → menção no som, nome no site,
-   menção nas redes. **Sem valores em R$** — a contrapartida final é
-   acertada com a organização.
+   **Patrocínio** (financeiro/premiação) → menção no som, faixa/banner da
+   marca na pista, logo na camiseta oficial, citação pelo narrador com
+   apresentação dos produtos da marca, logo e link no site, menção nas
+   redes.
+   **Apoio** (divulgação/mídia) → menção no som, nome no site, menção nas
+   redes. **Sem valores em R$** — a contrapartida final é acertada com a
+   organização.
 7. Contato + QR do Pix (`public/pix-qr.png`)
 
 Use as fotos de 2021 como prova social do precedente ("a edição de 2021
@@ -161,13 +166,18 @@ aconteceu e deu certo") e as da pista atual para mostrar o local.
 scroll; último precisa ter CTA claro.
 
 Sugestão de roteiro (ajuste se enxergar melhor):
-1. **Capa** — foto tratada + "BRAZ SKATE" em Anton + sticker "12 DE SETEMBRO"
+1. **Capa** — foto tratada + "BRAZ SKATE" em Anton + sticker "13 DE SETEMBRO"
 2. **O que é** — campeonato de skate de Brazlândia, feito pela cena
 3. **Categorias** — Iniciante, Amador, Feminino (cards estilo colagem)
-4. **Como funciona** — 2 passagens de 1 min, conta a melhor, fase única
-5. **Premiação** — medalha pra quem compete + top 3
-6. **Inscrição** — gratuita, online ou no dia (limite de 60)
+4. **Como funciona** — formato Braz Skate: 2 voltas de 45s com 2 bomb
+   tricks cada, depois rodada final de 3 manobras pra todos
+5. **Premiação** — camiseta pra todos + dinheiro pro top 3 + itens de skate
+6. **Inscrição** — gratuita, só online, até 30 de agosto
 7. **CTA** — link na bio, @brazskate, sticker "INSCRIÇÕES ABERTAS"
+
+Se sobrar espaço (slide bônus), vale puxar hype de "vai ter no dia": best
+trick à parte com pista aberta a qualquer pessoa presente, fotógrafo
+oficial e presença confirmada de Galego (Street Loyal).
 
 Alterne registro asfalto/concreto entre slides (usando o rasgo como
 transição de linguagem), pra o carrossel ter ritmo visual.
@@ -180,7 +190,7 @@ vem com o tratamento de marca; componha por cima, não refaça.
 
 **Composição:** logo completa em creme, "BRAZ SKATE" em Anton caixa alta,
 eyebrow "CAMPEONATO DE SKATE · BRAZLÂNDIA-DF", sticker com a data
-(12 de setembro de 2026), rabisco de sublinhado em `vermelho-500`.
+(13 de setembro de 2026), rabisco de sublinhado em `vermelho-500`.
 A área inferior-esquerda da foto é a mais escura (scrim) — é onde o texto
 respira melhor. Evite encher o quadro: é cartaz, não flyer poluído.
 

@@ -1,11 +1,14 @@
-// Fonte única do regulamento — ver docs/02-DECISOES.md (D8, D9, D26) e
-// docs/04-ROADMAP-V1.md (item 2 da spec). Página /regulamento renderiza
-// SEMPRE deste array — nunca hardcode em outro lugar. Itens de premiação
-// (valores/marcas específicas) seguem em aberto (P4) e não entram aqui —
-// só a estrutura já decidida em D9.
+// Fonte única do regulamento — ver docs/02-DECISOES.md (D8, D9, D26, D41,
+// D42, D43) e docs/04-ROADMAP-V1.md (item 2 da spec). Página /regulamento
+// renderiza SEMPRE deste array — nunca hardcode em outro lugar. Formato das
+// baterias corrigido para o modelo "Braz Skate" em 07/08/2026 (D41, revisa
+// D35 — a versão anterior tinha um erro de transcrição do formato SLS
+// dividido em eliminatória/final que o Lain nunca pediu). Inscrição virou
+// só-online com prazo em 07/08/2026 (D42, revisa D1/D26/D36). Premiação
+// (valores e itens) confirmada em 07/08/2026 (D43, revisa D9).
 
 export const regulamento = {
-  versaoTexto: "30/07/2026",
+  versaoTexto: "07/08/2026",
   secoes: [
     {
       id: "categorias",
@@ -15,27 +18,27 @@ export const regulamento = {
     },
     {
       id: "inscricao",
-      titulo: "Inscrição e cota presencial",
+      titulo: "Inscrição",
       texto:
-        "Modelo híbrido: pré-inscrição online (gratuita) + cota de inscrição presencial no dia do evento, até um limite total de 60 competidores. Quem se inscreve antes garante a vaga com folga.",
+        "Inscrição 100% online e gratuita, até 30 de agosto de 2026. Não há inscrição presencial no dia do evento.",
     },
     {
       id: "formato",
       titulo: "Formato das baterias",
       texto:
-        "Bateria cronometrada individual: cada competidor tem 2 passagens de 1 minuto dentro de sua categoria.",
+        "Formato Braz Skate: cada competidor faz 2 voltas de 45 segundos dentro de sua categoria, cada volta seguida de 2 bomb tricks. Depois que todos os competidores da bateria completarem suas voltas, cada um faz uma rodada final de 3 manobras.",
     },
     {
       id: "pontuacao",
       titulo: "Pontuação",
       texto:
-        "Cada juiz dá uma nota de 0 a 10 por passagem. Conta a melhor passagem entre as notas dos juízes.",
+        "Cada juiz dá uma nota de 0 a 10 por volta (incluindo os bomb tricks) e por manobra da rodada final. Conta a melhor nota entre as tentativas em cada etapa.",
     },
     {
       id: "premiacao",
       titulo: "Premiação",
       texto:
-        "Feminino: medalha e premiação para todas as participantes. Iniciante e Amador: medalha para todos os competidores, com premiação extra para o top 3 de cada categoria. Itens e valores específicos da premiação ainda estão em definição e serão anunciados assim que confirmados.",
+        "Camiseta oficial do Braz Skate para todos os competidores. Top 3 de cada categoria recebe premiação em dinheiro — 1º lugar R$ 350, 2º lugar R$ 250, 3º lugar R$ 150 — além de itens de skate (shapes de maple, trucks, rolamentos e rodas). Na categoria Feminino, camiseta e premiação para todas as participantes.",
     },
     {
       id: "chuva",

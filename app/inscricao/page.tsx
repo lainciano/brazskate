@@ -6,17 +6,20 @@ import { Header } from "@/components/header";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
+import { evento } from "@/data/evento";
 
 // Página /inscricao (V1.8, docs/04-ROADMAP-V1.md): só nasce com a URL real
 // do formulário (D2/D21) — travada até então (regra de placeholder,
 // AGENT.md). Formulário publicado em 30/07/2026: https://tally.so/r/J9bY7z.
+// Inscrição virou só-online com prazo (D42, 07/08/2026, docs/02-DECISOES.md)
+// — a cota de inscrição presencial no dia foi descontinuada.
 
 const URL_FORMULARIO = "https://tally.so/r/J9bY7z";
 
 export const metadata: Metadata = {
   title: "Inscrição",
   description:
-    "Inscreva-se no Braz Skate — pré-inscrição online gratuita, com cota de inscrição presencial no dia do evento.",
+    "Inscreva-se no Braz Skate — pré-inscrição online gratuita, até 30 de agosto de 2026.",
 };
 
 export default function Inscricao() {
@@ -34,8 +37,9 @@ export default function Inscricao() {
               Inscrição
             </h1>
             <p className="mt-6 max-w-[60ch] text-lg leading-[1.55] text-(--fg-secundario)">
-              Pré-inscrição online gratuita, em menos de 3 minutos. Sua vaga
-              fica garantida assim que você enviar.
+              Inscrição 100% online, gratuita, em menos de 3 minutos. Sua
+              vaga fica garantida assim que você enviar — prazo final{" "}
+              {evento.dataFechamentoInscricoesCurta}.
             </p>
             <div className="mt-8">
               <Botao href={URL_FORMULARIO} rel="noopener">
@@ -53,8 +57,8 @@ export default function Inscricao() {
               <div data-reveal>
                 <SectionHeader
                   eyebrow="Como funciona"
-                  titulo="Modelo híbrido: online + presencial"
-                  lead="São até 60 vagas no total. Você pode garantir a sua antes, pela pré-inscrição, ou se inscrever no dia — enquanto durar a cota presencial."
+                  titulo="Inscrição só online"
+                  lead={`Preencha o formulário até ${evento.dataFechamentoInscricoesCurta}. Não há inscrição presencial no dia do evento — quem não se inscrever online até o prazo não compete.`}
                 />
               </div>
               <div className="mt-10 grid max-w-[65ch] gap-6 leading-[1.6] md:max-w-none md:grid-cols-2 md:gap-x-12">

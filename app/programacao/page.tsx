@@ -10,8 +10,8 @@ import { programacao } from "@/data/programacao";
 
 // Página /programacao (item 9 de docs/03-SPEC-SITE.md §3.2; D32,
 // docs/02-DECISOES.md): renderiza SEMPRE de data/programacao.ts. Sequência
-// e formato já fechados (D26); horários específicos ainda não — cada etapa
-// mostra StickerBadge "em breve" no lugar do horário até a ASB definir.
+// e formato já fechados (D26/D35); horários gerais confirmados em D37 —
+// etapa sem `horario` mostra StickerBadge "em breve" até a ASB definir.
 
 export const metadata: Metadata = {
   title: "Programação",
@@ -35,7 +35,8 @@ export default function Programacao() {
             </h1>
             <p className="mt-6 max-w-[65ch] text-lg leading-[1.55] text-(--fg-secundario)">
               Como o dia funciona, do credenciamento à premiação. Horários
-              exatos ainda em definição — a sequência abaixo já está fechada.
+              gerais já confirmados — os de cada etapa restante ainda estão
+              em definição.
             </p>
           </div>
         </section>
@@ -53,9 +54,15 @@ export default function Programacao() {
                       titulo={etapa.titulo}
                     />
                     <div className="mt-3">
-                      <StickerBadge variante="breve" data-carimbo>
-                        Horário em breve
-                      </StickerBadge>
+                      {etapa.horario ? (
+                        <StickerBadge variante="data" data-carimbo>
+                          {etapa.horario}
+                        </StickerBadge>
+                      ) : (
+                        <StickerBadge variante="breve" data-carimbo>
+                          Horário em breve
+                        </StickerBadge>
+                      )}
                     </div>
                     <p className="mt-4 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
                       {etapa.texto}
