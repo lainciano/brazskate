@@ -12,7 +12,10 @@ import { contrapartidas } from "@/data/contrapartidas";
 // Página /patrocinio (roadmap PR 5): copy adaptado de
 // docs/media-kit-braz-skate.md no tom institucional (§1.5 — "proposta
 // séria, retorno real"). Parceiros institucionais (I7, D18) entram depois de
-// "Formas de apoio"; contato pelos canais oficiais do evento.
+// "Formas de apoio"; contato pelos canais oficiais do evento. Tópicos
+// "Infraestrutura" e "Institucional" removidos das formas de apoio em D39
+// (docs/02-DECISOES.md) — a UIEMAPV já cobre infraestrutura (D17) e o
+// selo institucional isolado deixou de fazer sentido como forma própria.
 
 export const metadata: Metadata = {
   title: "Seja um patrocinador",
@@ -46,6 +49,11 @@ const porQueApoiar = [
     texto:
       "Sua marca junto de um movimento genuíno de revitalização esportiva e cultural — com visibilidade no som do evento, nas faixas, no site e nas redes.",
   },
+  {
+    titulo: "Retorno concreto no dia",
+    texto:
+      "Banner da marca exposto na pista, logo na camiseta oficial do Braz Skate e citação pelo narrador durante o evento, com destaque para os produtos da marca.",
+  },
 ];
 
 const formasDeApoio = [
@@ -60,19 +68,9 @@ const formasDeApoio = [
       "Doação de produtos, vouchers ou troféus para as categorias do campeonato.",
   },
   {
-    titulo: "Infraestrutura",
-    texto:
-      "Apoio com estrutura de evento: som, hidratação, banheiros químicos, tendas, sinalização.",
-  },
-  {
     titulo: "Divulgação e mídia",
     texto:
       "Espaço de mídia, produção de conteúdo ou divulgação cruzada com a base de público da marca.",
-  },
-  {
-    titulo: "Institucional",
-    texto:
-      "Validação pública da marca à causa — parceria de nome e selo, sem contrapartida financeira direta.",
   },
 ];
 

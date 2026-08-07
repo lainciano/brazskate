@@ -151,6 +151,7 @@ Feminino não têm corte de idade.
 | Cidade/RA | Texto curto | Sim | "De onde você vem — ajuda a mostrar o alcance do evento" | `cidade_ra` |
 | WhatsApp | Telefone | Sim | "Canal principal de confirmação e avisos" | `whatsapp` |
 | Instagram | Texto curto | Não | "@ do seu perfil, se quiser" | `instagram` |
+| Tamanho de camiseta | Múltipla escolha (1) | Sim | PP / P / M / G / GG / XG | `tamanho_camiseta` |
 | Nome do responsável legal | Texto curto | Sim, se menor (Tela 4b) | — | `responsavel_nome` |
 | WhatsApp do responsável | Telefone | Sim, se menor (Tela 4b) | "A ASB vai confirmar por aqui antes do evento" | `responsavel_whatsapp` |
 | Aceite do termo | Checkbox | Sim (todos) | Ver texto exato em §6 | `aceite_termo` + `versao_termo` |
@@ -171,8 +172,12 @@ acolhedor com quem nunca competiu.
 
 **Abertura (Tela 0):**
 > Preencha em menos de 3 minutos. Sua vaga fica garantida assim que você
-> enviar — são até 60 vagas no total, entre pré-inscrição e inscrição
-> presencial no dia, então quem se inscrever antes joga com folga.
+> enviar — a inscrição é só online, até 30 de agosto de 2026. Não há
+> inscrição presencial no dia do evento.
+>
+> (Texto revisado em 07/08/2026, D42 — cota presencial descontinuada, prazo
+> final adicionado. Requer atualização manual na Tela 0 do Tally, fora deste
+> repositório.)
 
 **Aviso no bloco do responsável (Tela 4b), acima dos campos:**
 > Você tem menos de 18 anos, então precisamos do nome e WhatsApp do seu
@@ -256,18 +261,20 @@ validação de campo.
 
 ---
 
-## 10. Modelo híbrido
+## 10. Inscrição só online (revisado 07/08/2026, D42)
 
-- **Abertura prevista:** `evento.inscricaoAbrePrevista` (hoje "1º de agosto
-  de 2026") — o formulário deve estar pronto e testado antes dessa data, não
-  necessariamente aberto exatamente nela (a data é previsão, P1).
-- **Cota presencial:** até **60 competidores** no total, entre pré-inscritos
-  online e quem se inscreve no dia (D26, 30/07/2026). Entra como informação
-  na Tela 0 — ver texto atualizado na §6.
-- **Via papel:** quem se inscreve só no dia usa o mesmo termo impresso
-  (`/termo`, exportação em PDF já publicada) no credenciamento. Este
-  blueprint não cobre a logística do credenciamento em si — isso é
-  "Programação do dia", travado por P6 (`04-ROADMAP-V1.md`).
+- **Aberta desde 31/07/2026** (D29/D32), **fecha em 30 de agosto de 2026**
+  (`evento.dataFechamentoInscricoes*`) — sem exceção, sem inscrição
+  presencial no credenciamento.
+- **Cota presencial descontinuada:** o modelo híbrido de D1 e o limite de 60
+  competidores de D26 não valem mais — quem não se inscrever online até o
+  prazo não compete. Ver texto atualizado na §6.
+- **Requer atualização manual no Tally** (fora deste repositório): configurar
+  o fechamento automático em 30/08/2026, ou pelo menos remover a resposta
+  depois dessa data manualmente.
+- **Pendente (I9, `02-DECISOES.md`):** campo de tamanho de camiseta no
+  formulário — este ambiente não tem credencial de API do Tally configurada
+  para adicionar via automação.
 
 ---
 
@@ -281,6 +288,9 @@ validação de campo.
 | 4 | Criar a conta Tally e montar o formulário de fato | — | Em andamento via API do Tally |
 | 5 | Quem da ASB acessa a planilha de respostas | — | ASB, antes de abrir o formulário |
 | 6 | Política de retenção de dados definitiva | — | ASB, ver sugestão em §9 |
+| 7 | **Data revisada para 13 de setembro (D34, 06/08/2026)** — a constante de corte de idade do formulário (mencionada acima) foi configurada com base em 12 de setembro. Precisa de **atualização manual na configuração do Tally** (fora deste repositório) para refletir a nova data | Formulário já está no ar recebendo respostas | Quem administra a conta Tally |
+| 8 | **Inscrição virou só-online, fecha 30/08/2026 (D42, 07/08/2026)** — cota presencial descontinuada. Precisa de fechamento manual (ou configurado) do Tally na data limite | Formulário já está no ar recebendo respostas com a regra antiga (cota presencial) | Quem administra a conta Tally |
+| 9 | ~~Campo de tamanho de camiseta~~ — **resolvida (I9, D44, 07/08/2026)**: adicionado via API do Tally (múltipla escolha, PP/P/M/G/GG/XG, obrigatório), publicado direto no formulário ao vivo | — | — |
 
 ---
 

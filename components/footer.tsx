@@ -132,6 +132,16 @@ export function Footer() {
         <p className="mt-12 text-sm text-(--fg-secundario)">
           © {new Date().getFullYear()} ASB — Associação Skate Brazlândia
         </p>
+        <p className="mt-2 text-sm text-(--fg-secundario)">
+          Desenvolvido por{" "}
+          <a
+            href="https://www.instagram.com/44lain"
+            rel="noopener"
+            className="font-semibold underline-offset-4 hover:underline"
+          >
+            @44lain
+          </a>
+        </p>
       </div>
 
       {/* wordmark gigante fechando a página (§3.8) — decorativo, o nome já

@@ -29,6 +29,6 @@ contatos para a captação de patrocínio (P4), que ainda não começou.
 ## Como usar
 
 Contato direto (WhatsApp/Instagram) puxando o precedente: "vocês apoiaram o
-campeonato em 2021, a edição de 2026 está confirmada para 12 de setembro,
+campeonato em 2021, a edição de 2026 está confirmada para 13 de setembro,
 topam de novo?" — ver `docs/media-kit-braz-skate.md` para o material de
 apresentação e `app/patrocinio/page.tsx` para as contrapartidas atuais.

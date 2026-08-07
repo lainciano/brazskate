@@ -1,4 +1,4 @@
-// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27) e
+// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27, D42) e
 // docs/04-ROADMAP-V1.md (V1.3). Perguntas com `resposta: null` dependem de
 // conteúdo ainda pendente e aparecem na seção com sticker "em breve" — nunca
 // com resposta inventada (política de placeholder, AGENT.md).
@@ -35,7 +35,7 @@ export const faq = [
     id: "cota-presencial",
     pergunta: "Dá pra se inscrever no dia?",
     resposta:
-      "Sim — o modelo é híbrido: pré-inscrição online + cota de inscrição presencial no dia, até um limite de 60 competidores no total. Quem se inscreve antes garante a vaga com folga.",
+      "Não — a inscrição é só online, pelo formulário de pré-inscrição, até 30 de agosto de 2026. Não há inscrição presencial no credenciamento.",
   },
   {
     id: "chuva",
