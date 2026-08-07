@@ -4,12 +4,23 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 31/07/2026.
+> Última atualização: 07/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D44 | **Campo "Tamanho de camiseta" adicionado ao formulário de pré-inscrição** (Tally, https://tally.so/r/J9bY7z): múltipla escolha, opções PP/P/M/G/GG/XG, obrigatório. Aplicado via API do Tally (`TALLY_API_KEY` em `.env.local`, chave nova do Lain) diretamente no formulário publicado — as 4 respostas já recebidas não foram afetadas. Fecha I9 | Necessário pra saber o tamanho da camiseta de premiação (D43) de cada competidor no dia do evento | 07/08/2026 |
+| D43 | **Premiação confirmada:** camiseta oficial do Braz Skate para todos os competidores (substitui a medalha). Top 3 de cada categoria recebe premiação em dinheiro — 1º R$ 350, 2º R$ 250, 3º R$ 150 — mais itens de skate para todas as categorias: shapes de maple, trucks, rolamentos e rodas. Na categoria Feminino, camiseta e premiação para todas as participantes (mantém a estrutura de D9). Substitui a lista da seção "Premiação — estrutura cogitada" abaixo. `data/regulamento.ts` e `data/programacao.ts` atualizados | Pedido do Lain (07/08/2026): valores e itens de premiação agora definidos, incluindo a troca de medalha por camiseta | 07/08/2026 |
+| D42 | **Inscrição vira só-online, com prazo:** a cota de inscrição presencial no dia do evento é descontinuada — quem não se inscrever online até **30 de agosto de 2026** não compete. Revisa D1 (modelo híbrido) e D36 (que só tinha removido o número público, mantendo o conceito de cota presencial). `data/evento.ts` ganha `dataFechamentoInscricoes(Curta/ISO)`; `data/regulamento.ts`, `data/programacao.ts`, `data/faq.ts`, `data/avisos.ts` e `app/inscricao/page.tsx` atualizados | Pedido do Lain (07/08/2026): "Inscricao somente online, que fecha dia 30 de agosto" | 07/08/2026 |
+| D41 | **Formato das baterias corrigido para o modelo "Braz Skate":** cada competidor faz 2 voltas de 45 segundos, cada volta seguida de 2 bomb tricks; depois que todos os competidores da bateria completarem suas voltas, cada um faz uma rodada final de 3 manobras. **Corrige D35**, que registrou por engano um modelo "SLS" com rodada eliminatória de 3 manobras e final de 5 — erro de transcrição de uma instrução que o Lain já tinha dado antes (2 voltas de 45s, 2 bomb trick por volta, 3 manobras finais após a bateria toda), não uma mudança real de decisão da organização. `data/regulamento.ts` e `data/programacao.ts` corrigidos | Pedido do Lain (07/08/2026): "Na verdade o formato agora eh o 'Braz Skate' [...]" — correção de um erro de interpretação da sessão anterior | 07/08/2026 |
+| D40 | **Nova lista de contatos para captação de patrocínio (P4):** categorias de estabelecimento a abordar — casa do hip-hop, Onda Boa, açaiterias, estabelecimentos locais e skateshops. Registrada em `docs/contatos-patrocinio-2026.md`, separada de `docs/leads-patrocinio-2021.md` (que lista marcas nominais de 2021, não categorias novas) | Reunião de organização de 06/08/2026 definiu por onde começar a captação de patrocínio, que ainda não tinha começado (D17) | 06/08/2026 |
+| D39 | **Media kit revisado:** tópicos "Infraestrutura" e "Institucional" saem das formas de apoio (`app/patrocinio/page.tsx`, `docs/media-kit-braz-skate.md` §4) — ficam Financeiro (Pix), Premiação e Divulgação/Mídia. Nível "Apoio" em `data/contrapartidas.ts` passa a cobrir só divulgação/mídia. Seção "Por que apoiar" ganha um argumento novo de retorno concreto, e o nível "Patrocínio" ganha duas contrapartidas novas: **logo na camiseta oficial do Braz Skate** e **citação pelo narrador do evento, com apresentação dos produtos da marca (merchandising)** — a menção no som e a faixa na pista já existiam | Reunião de organização de 06/08/2026: "infraestrutura" já é coberta pela UIEMAPV (D17) e não fazia mais sentido como forma própria de apoio; "institucional" isolado (selo sem contrapartida) foi descontinuado. Pedido explícito de reforçar o "por que apoiar" com retorno mais tangível | 06/08/2026 |
+| D38 | **Novidades do dia do evento confirmadas:** rodada de best trick separada das categorias, com a pista liberada para qualquer pessoa presente tentar (não só competidores inscritos); fotógrafo oficial cobrindo o evento; presença confirmada de Galego (Street Loyal). Publicado em `data/programacao.ts` (etapa `best-trick`) e `data/avisos.ts` | Reunião de organização de 06/08/2026 | 06/08/2026 |
+| D37 | **Horários gerais da programação confirmados:** abertura da pista às 9h, início das atividades às 10h, pausa para o almoço das 12h às 13h30. `data/programacao.ts` ganha campo `horario` opcional por etapa — credenciamento (9h), baterias (10h) e a nova etapa "Pausa para o almoço" (12h às 13h30) mostram o horário real; best trick, apuração e premiação seguem com StickerBadge "em breve" até a ASB definir | Reunião de organização de 06/08/2026 — primeira leva de horários confirmados, ainda incompleta | 06/08/2026 |
+| D36 | **Cota presencial deixa de exibir número público.** O "60" sai de toda a copy do site — regulamento, programação, FAQ, avisos e página de inscrição — mantendo só o conceito de cota presencial limitada. Não muda a config interna do formulário Tally (fora do repositório, não coberta por esta decisão) | Pedido explícito da reunião de 06/08/2026 ("tire o número das vagas"); motivo específico não detalhado pela organização — registrar se surgir | 06/08/2026 |
+| D35 | **Formato das baterias revisado para modelo SLS (Street League):** cada bateria tem 2 voltas de 45 segundos por competidor; ao final da bateria, rodada eliminatória de 3 manobras define quem avança; na final, a rodada de manobras aumenta para 5. Revisa D26 (bateria cronometrada individual, 2 passagens de 1 minuto, nota 0–10 por passagem). Pontuação segue por nota 0–10 dos juízes, agora aplicada a voltas e a manobras — conta a melhor em cada caso. `data/regulamento.ts` e `data/programacao.ts` atualizados | Reunião de organização de 06/08/2026 alinhou o formato ao modelo usado pelo Street League Skateboarding | 06/08/2026 |
+| D34 | **Data do evento revisada para 13 de setembro de 2026** (revisa D24, que tinha 12 de setembro). Segue confirmada, não previsão, ainda que sujeita a alteração de última hora. `data/evento.ts` (`dataPrevista`, `dataPrevistaCurta`, `dataPrevistaISO`) atualizado | Nova reunião com a organização em 06/08/2026 ajustou a data fechada anteriormente por D24 | 06/08/2026 |
 | D33 | **Galeria de 2021 agrupada por categoria, com slide.** `data/gallery.ts`: `galeriaCamp2021` deixa de ser array plano e vira `Record<CategoriaCamp2021, readonly FotoGaleria[]>` (`mirim`, `iniciante`, `amador`). Corrigida também uma troca nas artes originais de 2021: a foto do 1º lugar Amador e do 2º lugar Mirim estavam invertidas entre si (erro da própria organização em 2021, não deste recorte) — `2021-03.webp` é o 1º Amador, `2021-04.webp` é o 2º Mirim. Novo componente `components/galeria-2021.tsx` (`GaleriaCamp2021`) renderiza uma faixa por categoria com scroll-snap horizontal (sem lib de carrossel), reaproveitando a moldura visual do `Colagem`; `Colagem` continua servindo a galeria da pista atual (Localização), que segue em grid | Pedido do Lain (31/07/2026): "separe as fotos do campeonato de 2021 em 3 sessoes (Mirim, Iniciante e Amador), e as fotos podem ser passadas com slide", depois "antes, o samuel estava como amador e 1 lugar, e o bruno em mirim como 2" (correção da troca). Ficou pendente entre sessões: `data/gallery.ts` mudou de tipo mas `components/sobre.tsx` não foi atualizado, quebrando `pnpm typecheck` — fechado nesta sessão | 31/07/2026 |
 | D32 | **Programação, estacionamento e avisos publicados.** Página `/programacao` (`data/programacao.ts`) com a sequência do dia — credenciamento, baterias por categoria, apuração, premiação (formato de fase única, D26, sem "final" separada) — horários específicos com `StickerBadge` "em breve". Bloco de estacionamento em `components/localizacao.tsx` e nova pergunta no FAQ (`id: estacionamento`): estacionamento ao lado da pista, maior que a via pública; ressalva de possível fechamento de trecho da rua no dia (D15/D17 preveem fechamento de rua, trecho ainda não definido). `data/avisos.ts` com 3 avisos reais (inscrições abertas, data confirmada, parceria UIEMAPV) — MDX descartado, mesmo motivo do FAQ (D7/D13). Sticker de inscrição do hero passa de "previsão 01/08" para "Inscrições abertas" (o formulário já aceita resposta desde D29); campos `inscricaoAbrePrevista(Curta)` removidos de `data/evento.ts` por ficarem sem consumidor | Pedido do Lain (31/07/2026): "acredito que da pra avancar sobre a programacao do dia, o transporte e estacionamento e avisos e atualizacoes" — fecha os 3 itens da spec de 11 que ainda dependiam só de organizar conteúdo já decidido, não de dado novo da Administração | 31/07/2026 |
 | D31 | **I1 e I2 fechadas.** I2: confirmado pelo Lain que todas as fotos de `docs/assets/fotos-manobras/` (não só `IMG_0137.jpg`) são na pista de Brazlândia — a pendência de foto própria do local estava efetivamente resolvida sem registro. Hero **mantém** `IMG_0137.jpg` por escolha explícita; as outras 3 fotos do lote (crédito **Cauet**) entram como colagem na seção Localização. I1: as 9 artes de premiação de 2021 (`docs/assets/camp2021/`, ex-`fotos-camp2021/`) traziam barra de patrocinadores/apoiadores de 2021, logo do GDF e nome de deputado distrital — publicar como estavam exibiria marcas que não patrocinam 2026 e criaria associação político-partidária (contra D6). Recortadas para manter só a foto do pódio (crédito **Acervo ASB**), com legenda de categoria + colocação — nome completo do competidor não republicado. As 10 marcas lidas na barra removida viraram lista de leads internos (`docs/leads-patrocinio-2021.md`, D30), não publicadas como patrocinadoras de 2026. Componente `Colagem` (`components/colagem.tsx`) implementado conforme o contrato do §4.3 | Pedido do Lain (31/07/2026): "todas essas fotos sao na pista de brazlandia" (I2) e "recortar só a área da foto" para 2021 (I1) — fecha as duas pendências internas que travavam a galeria (V1.7) | 31/07/2026 |
@@ -62,28 +73,25 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 | # | Pendência | Bloqueia o quê no site |
 |---|-----------|------------------------|
-| P1 | Data do evento | **Resolvida em 30/07/2026 (D24)** — 12 de setembro de 2026, confirmada (não previsão). Segue sujeita a alteração de última hora; se mudar, `data/evento.ts` é o único lugar a editar |
-| P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB ainda não começou**. Itens/valores específicos da premiação (ver "Premiação — estrutura cogitada" abaixo) seguem NÃO confirmados | Valores da premiação no regulamento; grade de patrocinadores; o site não pode afirmar premiação garantida (política de placeholder, `AGENT.md`) |
+| P1 | Data do evento | **Resolvida em 30/07/2026 (D24), revisada em 06/08/2026 (D34)** — 13 de setembro de 2026, confirmada (não previsão). Segue sujeita a alteração de última hora; se mudar, `data/evento.ts` é o único lugar a editar |
+| P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB começa agora** — media kit revisado (D39) e primeira lista de contatos por categoria de estabelecimento definida (D40, `docs/contatos-patrocinio-2026.md`). **Itens/valores de premiação agora CONFIRMADOS (D43, 07/08/2026)** — a origem da verba (UIEMAPV vs. patrocínio captado) segue em aberto | Grade de patrocinadores; o site não pode afirmar patrocínio garantido além do que já está confirmado (política de placeholder, `AGENT.md`) |
 | P5 | Reparos na pista (iluminação, rachaduras) — **segue sem reparo**, mas o site agora trata a situação com um texto neutro (D27), em vez de silêncio total | Não bloqueia o site; afeta a data |
-| P6 | Regulamento completo | **Resolvida em 30/07/2026 (D26)** — faixas etárias, cota presencial, formato de bateria, pontuação e política de chuva definidos. Página `/regulamento` e as 3 perguntas pendentes do FAQ liberadas |
+| P6 | Regulamento completo | **Resolvida em 30/07/2026 (D26), formato corrigido em 07/08/2026 (D41)** — faixas etárias, inscrição só-online com prazo (D42), formato de bateria (modelo Braz Skate), pontuação, premiação (D43) e política de chuva definidos. Página `/regulamento` e as 3 perguntas pendentes do FAQ liberadas |
 | P7 | Composição da equipe ASB (funções/responsáveis) — **parcialmente resolvida em 30/07/2026**: seção "Quem organiza" publicada em `components/sobre.tsx` (commit `92a0920`) com os nomes do time (Luciano, Gustavo, Cauet, Samuel) em `StickerBadge`, sem cargo formal ainda | Seção "quem somos" completa — falta só atribuir função/responsável a cada nome |
 
-## Premiação — estrutura cogitada (NÃO confirmada)
+## Premiação — estrutura confirmada (D43, 07/08/2026)
 
-> A princípio seria essa a premiação, mas nada está confirmado — depende de
-> patrocínio/verba (ver P4 e D12). Não usar estes itens como definitivos em
-> nenhuma peça do site; tratar como placeholder até confirmação.
->
-> **Atualização 25/07/2026 (D17):** a UIEMAPV **se comprometeu** a fornecer a
-> premiação, as medalhas e o troféu — **compromisso, não entrega**: nada
-> disso está em mãos ainda. Os **itens específicos abaixo seguem NÃO
-> confirmados** mesmo depois desse compromisso.
+> Superseded a lista antiga desta seção (mantida abaixo em "Decisões
+> revisadas" por histórico). Valores e itens agora são confirmados — a
+> origem da verba (UIEMAPV vs. captação de patrocínio, P4) segue em aberto,
+> mas o que o site publica sobre premiação não é mais placeholder.
 
-- **1º lugar:** 2 shapes, calçado de skate, jogo de rolamento, lixa, blusa.
-- **2º lugar:** 1 shape, calçado de skate, lixa, blusa.
-- **3º lugar:** 1 shape, 1 calçado de skate.
-- Mesma estrutura para todas as categorias, com mais foco (mais itens) na
-  categoria amador.
+- **Todos os competidores:** camiseta oficial do Braz Skate.
+- **Top 3 de cada categoria:** 1º R$ 350, 2º R$ 250, 3º R$ 150.
+- **Para todas as categorias, também:** shapes de maple, trucks, rolamentos
+  e rodas de skate.
+- **Feminino:** camiseta e premiação para todas as participantes (não só
+  top 3) — estrutura de D9 mantida.
 - **Brincadeiras** (best trick, sorteio etc.): premiação à parte.
 - Pool geral de prêmios avulsos: vários shapes, calçados, blusas,
   rolamentos, rodas, acessórios de skate.
@@ -96,9 +104,37 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 | I5 | Identidade visual mínima (logo ASB/evento, paleta) | Necessária para o MVP ter cara própria |
 | I6 | Mini media-kit de patrocínio | ~~Conteúdo da página "seja um patrocinador"~~ Conteúdo-base pronto em `docs/media-kit-braz-skate.md` (16/07/2026); falta só adaptar para a página `/patrocinio` |
 | I7 | **Logo(s) e links oficiais** da UIEMAPV | Confirmação formal da parceria **já recebida** (ver D18) — falta só o material de marca. O site **continua sem mencionar o instituto** até logo e link chegarem; quando chegarem, entra como parceiro institucional na página de patrocínio. Plano de implementação em `docs/estrategia-confirmacao-uiemapv.md` |
+| I8 | **Planta do local da pista** — pedida na reunião de organização de 06/08/2026, arquivo ainda não enviado | Sem o arquivo, não entra no site (política de placeholder, `AGENT.md`) — quando chegar, avaliar onde encaixa (Localização e/ou Programação) |
+| I9 | ~~Campo de tamanho de camiseta no formulário Tally~~ — **resolvida (D44, 07/08/2026)** | — |
 
 ## Decisões revisadas
 
+- **D9 / "Premiação — estrutura cogitada" (itens de premiação)** — versão
+  anterior (07-16/07/2026): 1º lugar 2 shapes + calçado + rolamento + lixa +
+  blusa; 2º lugar 1 shape + calçado + lixa + blusa; 3º lugar 1 shape +
+  calçado; mesma estrutura pra todas as categorias, mais foco no amador.
+  Revisado em 07/08/2026 por **D43**: camiseta pra todos + dinheiro pro top 3
+  (R$ 350/250/150) + itens de skate (shapes de maple, trucks, rolamentos,
+  rodas) pra todas as categorias.
+- **D26/D35 (formato das baterias)** — D35 (06/08/2026) tinha registrado um
+  modelo "SLS" com rodada eliminatória de 3 manobras e final de 5 — esse
+  registro estava **errado**, fruto de um erro de transcrição de uma
+  instrução que o Lain já tinha dado antes. Corrigido em 07/08/2026 por
+  **D41**: formato "Braz Skate" — 2 voltas de 45s com 2 bomb tricks cada,
+  depois rodada final de 3 manobras para todos após a bateria completa.
+- **D1 (inscrição em modelo híbrido)** — versão original (07/07/2026):
+  pré-inscrição online + cota de inscrição presencial no dia. D36
+  (06/08/2026) já tinha tirado o número público da cota. Revisado por
+  completo em 07/08/2026 por **D42**: inscrição só-online, com prazo final
+  30 de agosto de 2026 — cota presencial descontinuada.
+- **D24 (data do evento)** — versão anterior (30/07/2026): 12 de setembro
+  de 2026. Revisado em 06/08/2026 por **D34**: nova reunião com a
+  organização fechou 13 de setembro de 2026.
+- **D26 (formato das baterias)** — versão anterior (30/07/2026): bateria
+  cronometrada individual, 2 passagens de 1 minuto por competidor, nota
+  0–10 por passagem, conta a melhor. Revisado em 06/08/2026 por **D35**:
+  modelo SLS — 2 voltas de 45 segundos, rodada eliminatória de 3 manobras
+  ao final da bateria, final com 5 manobras.
 - **D8 (categorias)** — versão anterior (07/07/2026): "Categorias: mirim,
   iniciante, amador e feminino (categoria própria)". Revisado em 16/07/2026:
   categoria mirim removida — baixa adesão esperada na faixa infantil não

@@ -21,6 +21,7 @@ A execução da estrutura e da premiação do campeonato será conduzida em parc
 - **Marco para o esporte na cidade.** O Braz Skate busca estabelecer um precedente de parceria entre a comunidade e a Administração Regional, abrindo caminho para investimentos futuros na pista e no esporte.
 - **Público engajado e diverso.** Categorias para diferentes perfis — Iniciante, Amador e Feminino — reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.
 - **Associação a uma causa autêntica.** Marcas que apoiam o Braz Skate se associam a um movimento genuíno de revitalização esportiva e cultural local, não a um evento genérico.
+- **Retorno concreto no dia.** Banner da marca exposto na pista, logo na camiseta oficial do Braz Skate e citação pelo narrador durante o evento, com destaque para os produtos da marca — apoiar aqui não é só um nome numa lista, é presença física e verbal no dia.
 
 ## 4. Formas de apoio
 
@@ -30,9 +31,11 @@ O apoio pode acontecer de diferentes maneiras, combinadas ou isoladas:
 |---|---|
 | **Financeiro (Pix)** | Contribuição direta via QR Code Pix, destinada a premiação, infraestrutura e divulgação. |
 | **Premiação** | Doação de produtos, vouchers ou troféus para as categorias do campeonato. |
-| **Infraestrutura** | Apoio com estrutura de evento: som, hidratação, banheiros químicos, tendas, sinalização. |
 | **Divulgação / Mídia** | Espaço de mídia, produção de conteúdo, ou divulgação cruzada com a base de público da marca. |
-| **Institucional** | Apoio com validação pública da marca à causa (parceria de nome/selo, sem contrapartida financeira direta). |
+
+> Tópicos "Infraestrutura" e "Institucional" saíram da lista (D39,
+> `docs/02-DECISOES.md`) — a UIEMAPV já cobre infraestrutura (D17), e apoio
+> só-institucional deixou de ser oferecido como forma própria.
 
 ## 5. O que sua marca recebe
 
@@ -41,10 +44,27 @@ R$, ajustado com a organização caso a caso:
 
 | Nível | Quem entra | O que recebe |
 |---|---|---|
-| **Patrocínio** | Financeiro (Pix) ou Premiação | Menção no som do evento · espaço para faixa da marca na pista (material fornecido pela marca) · logo e link no site · menção nas redes (@brazskate) |
-| **Apoio** | Infraestrutura ou Divulgação/Mídia | Menção no som do evento · nome no site · menção nas redes (@brazskate) |
+| **Patrocínio** | Financeiro (Pix) ou Premiação | Menção no som do evento · espaço para faixa/banner da marca na pista (material fornecido pela marca) · logo na camiseta oficial do Braz Skate · citação pelo narrador com apresentação dos produtos da marca (merchandising) · logo e link no site · menção nas redes (@brazskate) |
+| **Apoio** | Divulgação/Mídia | Menção no som do evento · nome no site · menção nas redes (@brazskate) |
 
-## 6. Contato
+## 6. Formato do campeonato (Braz Skate)
+
+Cada competidor faz 2 voltas de 45 segundos, cada volta seguida de 2 bomb
+tricks. Depois que todos os competidores da bateria completarem suas
+voltas, cada um faz uma rodada final de 3 manobras. Premiação: camiseta
+oficial para todos os competidores + dinheiro pro top 3 de cada categoria
+(1º R$ 350, 2º R$ 250, 3º R$ 150) + itens de skate (shapes de maple, trucks,
+rolamentos e rodas) para todas as categorias. Ver regulamento completo em
+`data/regulamento.ts` / `/regulamento`.
+
+## 7. Vai ter no dia
+
+- **Best trick à parte** — rodada de melhor manobra separada das
+  categorias, com a pista liberada para qualquer pessoa presente tentar.
+- **Fotógrafo oficial** cobrindo o evento.
+- **Presença confirmada:** Galego (Street Loyal).
+
+## 8. Contato
 
 Cauet / 61 9614-6765
 
