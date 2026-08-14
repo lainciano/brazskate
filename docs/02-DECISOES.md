@@ -10,6 +10,7 @@
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D47 | **Pausa de pré-inscrição revertida — inscrições reabertas.** `evento.inscricoesAbertas` volta a `true`: CTA de `/inscricao` normal com link para o Tally, sticker do hero volta a "Inscrições abertas", seção "Como funciona" volta a aparecer. Aviso `inscricoes-pausadas` removido de `data/avisos.ts` (informação desatualizada, não fica publicada). Revisa D46 | Pedido do Lain (14/08/2026): a pausa não chegou a ser necessária | 14/08/2026 |
 | D46 | **Pré-inscrição pausada temporariamente** via trava manual `evento.inscricoesAbertas = false` (`data/evento.ts`) — o CTA de `/inscricao` fica desabilitado, sem link para o formulário Tally, e o sticker do hero muda de "Inscrições abertas" para "Inscrições em breve". Formulário Tally em si não foi alterado/pausado (fora do repositório). Novo aviso `inscricoes-pausadas` em `data/avisos.ts`. Reabre só quando o Lain pedir explicitamente (flip do booleano) | Pedido do Lain (07/08/2026): "bloqueie as inscricoes ate quando eu permitir" | 07/08/2026 |
 | D45 | **Bloco de grupo do WhatsApp adicionado à seção de Contato**, com QR Code (`public/whatsapp-qr.png`) e link de convite, destacado em card próprio acima dos botões de contato existentes. O botão que antes chamava direto no WhatsApp da organização vira secundário e passa a se chamar "Organização no WhatsApp", para diferenciar do canal de grupo (`components/contato.tsx`) | Contribuição do Gustavo (PR #68, 14/08/2026): dar visibilidade ao grupo oficial do WhatsApp como canal de novidades do campeonato. O restante da PR #68 partia de um ponto do repositório anterior às PRs #66/#67 e revertia D34–D44 se mergeado inteiro — só este bloco foi aproveitado, aplicado manualmente sobre o `main` atual | 14/08/2026 |
 | D44 | **Campo "Tamanho de camiseta" adicionado ao formulário de pré-inscrição** (Tally, https://tally.so/r/J9bY7z): múltipla escolha, opções PP/P/M/G/GG/XG, obrigatório. Aplicado via API do Tally (`TALLY_API_KEY` em `.env.local`, chave nova do Lain) diretamente no formulário publicado — as 4 respostas já recebidas não foram afetadas. Fecha I9 | Necessário pra saber o tamanho da camiseta de premiação (D43) de cada competidor no dia do evento | 07/08/2026 |
@@ -111,6 +112,9 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 ## Decisões revisadas
 
+- **D46 (pausa de pré-inscrição)** — `evento.inscricoesAbertas = false` desde
+  07/08/2026. Revertido em 14/08/2026 por **D47**: a pausa não chegou a ser
+  necessária, inscrições reabertas.
 - **D9 / "Premiação — estrutura cogitada" (itens de premiação)** — versão
   anterior (07-16/07/2026): 1º lugar 2 shapes + calçado + rolamento + lixa +
   blusa; 2º lugar 1 shape + calçado + lixa + blusa; 3º lugar 1 shape +
