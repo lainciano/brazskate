@@ -9,12 +9,12 @@
 // descontinuada, então `dataFechamentoInscricoes*` abaixo é a única data de
 // corte que existe agora.
 // `inscricoesAbertas` (D46, 07/08/2026): trava manual do Lain para pausar
-// pré-inscrição sem mexer no formulário Tally — vira `true` só quando ele
-// pedir explicitamente para reabrir.
+// pré-inscrição sem mexer no formulário Tally. Reaberta em 14/08/2026 (D47)
+// — a pausa não chegou a ser necessária.
 
 export const evento = {
-  // trava manual (D46) — false bloqueia a pré-inscrição no site inteiro
-  inscricoesAbertas: false,
+  // trava manual (D46/D47) — false bloqueia a pré-inscrição no site inteiro
+  inscricoesAbertas: true,
   // data canônica (textos longos: seção de local, futura página cheia)
   dataPrevista: "13 de setembro de 2026",
   // forma curta (mesmo dado, formatado para caber no sticker do hero)
