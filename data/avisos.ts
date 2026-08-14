@@ -1,10 +1,18 @@
 // Fonte única de avisos/atualizações (item 10 de docs/03-SPEC-SITE.md §3.2)
-// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43). MDX descartado
+// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43, D46). MDX descartado
 // (a spec original pedia "lista simples em MDX", mas o projeto não tem
 // infra MDX — mesmo motivo que já descartou MDX no FAQ, D13/D7). Mais
 // recente primeiro.
 
 export const avisos = [
+  {
+    id: "inscricoes-pausadas",
+    dataISO: "2026-08-07",
+    data: "07/08/2026",
+    titulo: "Inscrições temporariamente pausadas",
+    texto:
+      "O formulário de pré-inscrição está pausado por enquanto. Reabrimos em breve — fique de olho aqui e nos canais oficiais do Braz Skate.",
+  },
   {
     id: "vai-ter-no-dia",
     dataISO: "2026-08-06",
