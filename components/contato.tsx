@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Botao } from "./botao";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
@@ -17,9 +18,34 @@ export function Contato() {
             lead="Dúvida sobre o campeonato, proposta de apoio ou vontade de ajudar? É só chamar."
           />
         </div>
+
+        <div
+          data-reveal
+          className="mt-10 flex max-w-2xl flex-col gap-8 rounded-card border-2 border-(--borda) p-6 sm:flex-row sm:items-center"
+        >
+          <Image
+            src="/whatsapp-qr.png"
+            alt="QR Code — Grupo do WhatsApp"
+            width={180}
+            height={180}
+            className="shrink-0 rounded-card border-8 border-creme bg-white"
+          />
+          <div>
+            <h3 className="mb-4 text-xl font-bold uppercase text-(--fg-primario)">
+              Grupo Oficial
+            </h3>
+            <p className="mb-5 max-w-[45ch] text-sm leading-[1.4] text-(--fg-secundario)">
+              Entre no grupo do WhatsApp para ficar por dentro de todas as novidades, horários e resultados do campeonato em primeira mão.
+            </p>
+            <Botao href="https://chat.whatsapp.com/Eu2Tz8qt3Cl5P8gQA03Udo?s=cl&p=i&mlu=4&amv=0" rel="noopener">
+              Entrar no Grupo
+            </Botao>
+          </div>
+        </div>
+
         <div data-reveal className="mt-8 flex flex-wrap items-center gap-4">
-          <Botao href="https://wa.me/5561995099761" rel="noopener">
-            Chamar no WhatsApp
+          <Botao href="https://wa.me/5561995099761" rel="noopener" variante="secundario">
+            Organização no WhatsApp
           </Botao>
           <Botao
             href="https://www.instagram.com/brazskate"
