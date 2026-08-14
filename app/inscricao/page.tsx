@@ -13,6 +13,8 @@ import { evento } from "@/data/evento";
 // AGENT.md). Formulário publicado em 30/07/2026: https://tally.so/r/J9bY7z.
 // Inscrição virou só-online com prazo (D42, 07/08/2026, docs/02-DECISOES.md)
 // — a cota de inscrição presencial no dia foi descontinuada.
+// `evento.inscricoesAbertas` (D46, 07/08/2026): trava manual do Lain —
+// enquanto false, o CTA fica desabilitado e o formulário não é linkado.
 
 const URL_FORMULARIO = "https://tally.so/r/J9bY7z";
 
@@ -37,62 +39,78 @@ export default function Inscricao() {
               Inscrição
             </h1>
             <p className="mt-6 max-w-[60ch] text-lg leading-[1.55] text-(--fg-secundario)">
-              Inscrição 100% online, gratuita, em menos de 3 minutos. Sua
-              vaga fica garantida assim que você enviar — prazo final{" "}
-              {evento.dataFechamentoInscricoesCurta}.
+              {evento.inscricoesAbertas ? (
+                <>
+                  Inscrição 100% online, gratuita, em menos de 3 minutos. Sua
+                  vaga fica garantida assim que você enviar — prazo final{" "}
+                  {evento.dataFechamentoInscricoesCurta}.
+                </>
+              ) : (
+                <>
+                  As inscrições estão temporariamente fechadas. O formulário
+                  volta a ficar disponível em breve — acompanhe os avisos
+                  abaixo.
+                </>
+              )}
             </p>
             <div className="mt-8">
-              <Botao href={URL_FORMULARIO} rel="noopener">
-                Fazer pré-inscrição
-              </Botao>
+              {evento.inscricoesAbertas ? (
+                <Botao href={URL_FORMULARIO} rel="noopener">
+                  Fazer pré-inscrição
+                </Botao>
+              ) : (
+                <Botao disabled>Inscrições fechadas</Botao>
+              )}
             </div>
           </div>
         </section>
 
-        <div className="registro-concreto">
-          <Rasgo cor="tinta" />
+        {evento.inscricoesAbertas && (
+          <div className="registro-concreto">
+            <Rasgo cor="tinta" />
 
-          <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-            <Reveal>
-              <div data-reveal>
-                <SectionHeader
-                  eyebrow="Como funciona"
-                  titulo="Inscrição só online"
-                  lead={`Preencha o formulário até ${evento.dataFechamentoInscricoesCurta}. Não há inscrição presencial no dia do evento — quem não se inscrever online até o prazo não compete.`}
-                />
-              </div>
-              <div className="mt-10 grid max-w-[65ch] gap-6 leading-[1.6] md:max-w-none md:grid-cols-2 md:gap-x-12">
-                <p data-reveal>
-                  Menores de 18 anos podem se inscrever sozinhos online — a
-                  pré-inscrição não substitui a autorização: o responsável
-                  legal assina o termo em papel no credenciamento, no dia do
-                  evento.
-                </p>
-                <p data-reveal>
-                  Antes de se inscrever, leia o{" "}
-                  <a
-                    href="/termo"
-                    className="font-semibold underline-offset-4 hover:underline"
-                  >
-                    termo de responsabilidade
-                  </a>{" "}
-                  — o checkbox de aceite no formulário confirma que você
-                  leu e está ciente das condições.
-                </p>
-                <p data-reveal>
-                  Depois de inscrito, confira a{" "}
-                  <a
-                    href="/programacao"
-                    className="font-semibold underline-offset-4 hover:underline"
-                  >
-                    programação do dia
-                  </a>{" "}
-                  — credenciamento, baterias, apuração e premiação.
-                </p>
-              </div>
-            </Reveal>
-          </section>
-        </div>
+            <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+              <Reveal>
+                <div data-reveal>
+                  <SectionHeader
+                    eyebrow="Como funciona"
+                    titulo="Inscrição só online"
+                    lead={`Preencha o formulário até ${evento.dataFechamentoInscricoesCurta}. Não há inscrição presencial no dia do evento — quem não se inscrever online até o prazo não compete.`}
+                  />
+                </div>
+                <div className="mt-10 grid max-w-[65ch] gap-6 leading-[1.6] md:max-w-none md:grid-cols-2 md:gap-x-12">
+                  <p data-reveal>
+                    Menores de 18 anos podem se inscrever sozinhos online — a
+                    pré-inscrição não substitui a autorização: o responsável
+                    legal assina o termo em papel no credenciamento, no dia do
+                    evento.
+                  </p>
+                  <p data-reveal>
+                    Antes de se inscrever, leia o{" "}
+                    <a
+                      href="/termo"
+                      className="font-semibold underline-offset-4 hover:underline"
+                    >
+                      termo de responsabilidade
+                    </a>{" "}
+                    — o checkbox de aceite no formulário confirma que você
+                    leu e está ciente das condições.
+                  </p>
+                  <p data-reveal>
+                    Depois de inscrito, confira a{" "}
+                    <a
+                      href="/programacao"
+                      className="font-semibold underline-offset-4 hover:underline"
+                    >
+                      programação do dia
+                    </a>{" "}
+                    — credenciamento, baterias, apuração e premiação.
+                  </p>
+                </div>
+              </Reveal>
+            </section>
+          </div>
+        )}
       </main>
       <Footer />
     </>

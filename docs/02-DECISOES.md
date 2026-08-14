@@ -4,12 +4,13 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 07/08/2026.
+> Última atualização: 14/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D46 | **Pré-inscrição pausada temporariamente** via trava manual `evento.inscricoesAbertas = false` (`data/evento.ts`) — o CTA de `/inscricao` fica desabilitado, sem link para o formulário Tally, e o sticker do hero muda de "Inscrições abertas" para "Inscrições em breve". Formulário Tally em si não foi alterado/pausado (fora do repositório). Novo aviso `inscricoes-pausadas` em `data/avisos.ts`. Reabre só quando o Lain pedir explicitamente (flip do booleano) | Pedido do Lain (07/08/2026): "bloqueie as inscricoes ate quando eu permitir" | 07/08/2026 |
 | D45 | **Bloco de grupo do WhatsApp adicionado à seção de Contato**, com QR Code (`public/whatsapp-qr.png`) e link de convite, destacado em card próprio acima dos botões de contato existentes. O botão que antes chamava direto no WhatsApp da organização vira secundário e passa a se chamar "Organização no WhatsApp", para diferenciar do canal de grupo (`components/contato.tsx`) | Contribuição do Gustavo (PR #68, 14/08/2026): dar visibilidade ao grupo oficial do WhatsApp como canal de novidades do campeonato. O restante da PR #68 partia de um ponto do repositório anterior às PRs #66/#67 e revertia D34–D44 se mergeado inteiro — só este bloco foi aproveitado, aplicado manualmente sobre o `main` atual | 14/08/2026 |
 | D44 | **Campo "Tamanho de camiseta" adicionado ao formulário de pré-inscrição** (Tally, https://tally.so/r/J9bY7z): múltipla escolha, opções PP/P/M/G/GG/XG, obrigatório. Aplicado via API do Tally (`TALLY_API_KEY` em `.env.local`, chave nova do Lain) diretamente no formulário publicado — as 4 respostas já recebidas não foram afetadas. Fecha I9 | Necessário pra saber o tamanho da camiseta de premiação (D43) de cada competidor no dia do evento | 07/08/2026 |
 | D43 | **Premiação confirmada:** camiseta oficial do Braz Skate para todos os competidores (substitui a medalha). Top 3 de cada categoria recebe premiação em dinheiro — 1º R$ 350, 2º R$ 250, 3º R$ 150 — mais itens de skate para todas as categorias: shapes de maple, trucks, rolamentos e rodas. Na categoria Feminino, camiseta e premiação para todas as participantes (mantém a estrutura de D9). Substitui a lista da seção "Premiação — estrutura cogitada" abaixo. `data/regulamento.ts` e `data/programacao.ts` atualizados | Pedido do Lain (07/08/2026): valores e itens de premiação agora definidos, incluindo a troca de medalha por camiseta | 07/08/2026 |

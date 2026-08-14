@@ -150,7 +150,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
             Apoie via Pix
           </Botao>
           <StickerBadge variante="breve" data-carimbo>
-            Inscrições abertas
+            {evento.inscricoesAbertas ? "Inscrições abertas" : "Inscrições em breve"}
           </StickerBadge>
         </div>
       </div>
