@@ -5,15 +5,15 @@
 export const categories = [
   { id: "iniciante", nome: "Iniciante", premiacao: "medalha-todos-top3" },
   { id: "amador", nome: "Amador", premiacao: "medalha-todos-top3" },
+  { id: "master", nome: "Master", premiacao: "medalha-todos-top3" },
   {
     id: "feminino",
     nome: "Feminino",
-    premiacao: "medalha-e-premiacao-todas",
+    premiacao: "medalha-todos-top3",
   },
 ] as const;
 
 // medalha-todos-top3: medalha p/ todos; premiação adicional ao top 3
-// medalha-e-premiacao-todas: medalha + premiação para todas as participantes
 // Faixas etárias: PENDENTE (P6 em docs/02-DECISOES.md) — adicionar
 // minAge/maxAge quando definido pela organização.
 

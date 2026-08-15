@@ -10,8 +10,6 @@ import { StickerBadge } from "./sticker-badge";
 const descricaoPremiacao: Record<Category["premiacao"], string> = {
   "medalha-todos-top3":
     "Medalha para todos que competem + premiação adicional para o top 3.",
-  "medalha-e-premiacao-todas":
-    "Medalha e premiação para todas as participantes.",
 };
 
 export function Categorias() {
@@ -23,11 +21,11 @@ export function Categorias() {
             <SectionHeader
               eyebrow="Categorias"
               titulo="Tem lugar pra você"
-              lead="Três categorias, inscrição gratuita e medalha pra quem compete — sem burocracia."
+              lead="Quatro categorias, inscrição gratuita e medalha pra quem compete — sem burocracia."
             />
           </div>
 
-          <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((categoria) => (
               <li
                 key={categoria.id}
