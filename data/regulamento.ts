@@ -1,20 +1,22 @@
 // Fonte única do regulamento — ver docs/02-DECISOES.md (D8, D9, D26, D41,
-// D42, D43) e docs/04-ROADMAP-V1.md (item 2 da spec). Página /regulamento
-// renderiza SEMPRE deste array — nunca hardcode em outro lugar. Formato das
-// baterias corrigido para o modelo "Braz Skate" em 07/08/2026 (D41, revisa
-// D35 — a versão anterior tinha um erro de transcrição do formato SLS
-// dividido em eliminatória/final que o Lain nunca pediu). Inscrição virou
-// só-online com prazo em 07/08/2026 (D42, revisa D1/D26/D36). Premiação
-// (valores e itens) confirmada em 07/08/2026 (D43, revisa D9).
+// D42, D43, D45) e docs/04-ROADMAP-V1.md (item 2 da spec). Página
+// /regulamento renderiza SEMPRE deste array — nunca hardcode em outro
+// lugar. Formato das baterias corrigido para o modelo "Braz Skate" em
+// 07/08/2026 (D41, revisa D35 — a versão anterior tinha um erro de
+// transcrição do formato SLS dividido em eliminatória/final que o Lain
+// nunca pediu). Inscrição virou só-online com prazo em 07/08/2026 (D42,
+// revisa D1/D26/D36). Premiação (valores e itens) confirmada em 07/08/2026
+// (D43, revisa D9). Categoria Master adicionada e premiação do Feminino
+// unificada com as demais em 15/08/2026 (D45, revisa D8/D43).
 
 export const regulamento = {
-  versaoTexto: "07/08/2026",
+  versaoTexto: "15/08/2026",
   secoes: [
     {
       id: "categorias",
       titulo: "Categorias e faixas etárias",
       texto:
-        "Iniciante: até 25 anos. Amador e Feminino: sem limite de idade. Menores de idade podem se inscrever em qualquer categoria — a exigência de autorização do responsável legal segue a data de nascimento, nunca a categoria escolhida.",
+        "Iniciante: até 25 anos. Amador, Feminino e Master: sem limite de idade — a categoria Master é autodeclarada pelo competidor, sem idade mínima exigida. Menores de idade podem se inscrever em qualquer categoria — a exigência de autorização do responsável legal segue a data de nascimento, nunca a categoria escolhida.",
     },
     {
       id: "inscricao",
@@ -38,7 +40,7 @@ export const regulamento = {
       id: "premiacao",
       titulo: "Premiação",
       texto:
-        "Camiseta oficial do Braz Skate para todos os competidores. Top 3 de cada categoria recebe premiação em dinheiro — 1º lugar R$ 350, 2º lugar R$ 250, 3º lugar R$ 150 — além de itens de skate (shapes de maple, trucks, rolamentos e rodas). Na categoria Feminino, camiseta e premiação para todas as participantes.",
+        "Camiseta oficial do Braz Skate para todos os competidores. Top 3 de cada categoria recebe premiação em dinheiro — 1º lugar R$ 350, 2º lugar R$ 250, 3º lugar R$ 150 — além de itens de skate (shapes de maple, trucks, rolamentos e rodas).",
     },
     {
       id: "chuva",

@@ -4,12 +4,13 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 07/08/2026.
+> Última atualização: 15/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D45 | **Categoria Master adicionada** (4ª categoria, junto com Iniciante, Amador e Feminino): sem idade mínima definida — autodeclarada, quem se considera Master marca essa opção. Aproveitado para **unificar a regra de premiação do Feminino** com as demais categorias: era "camiseta e premiação para todas as participantes" (D9/D43), passa a ser a mesma regra das outras — camiseta pra todos, premiação em dinheiro e itens só pro top 3. Revisa D8 (lista de categorias) e D43 (premiação do Feminino). Opção "Master" adicionada ao campo "Categoria" do formulário Tally (https://tally.so/r/J9bY7z) via API — as 40 respostas já recebidas não foram afetadas. `data/categories.ts`, `data/regulamento.ts`, `data/programacao.ts`, `data/faq.ts`, `components/categorias.tsx`, `AGENT.md` e `app/patrocinio/page.tsx` atualizados | Pedido do Lain (15/08/2026): adicionar opção de inscrição em Master, sem idade mínima; e simplificar a premiação do Feminino pra ficar igual às outras categorias | 15/08/2026 |
 | D44 | **Campo "Tamanho de camiseta" adicionado ao formulário de pré-inscrição** (Tally, https://tally.so/r/J9bY7z): múltipla escolha, opções PP/P/M/G/GG/XG, obrigatório. Aplicado via API do Tally (`TALLY_API_KEY` em `.env.local`, chave nova do Lain) diretamente no formulário publicado — as 4 respostas já recebidas não foram afetadas. Fecha I9 | Necessário pra saber o tamanho da camiseta de premiação (D43) de cada competidor no dia do evento | 07/08/2026 |
 | D43 | **Premiação confirmada:** camiseta oficial do Braz Skate para todos os competidores (substitui a medalha). Top 3 de cada categoria recebe premiação em dinheiro — 1º R$ 350, 2º R$ 250, 3º R$ 150 — mais itens de skate para todas as categorias: shapes de maple, trucks, rolamentos e rodas. Na categoria Feminino, camiseta e premiação para todas as participantes (mantém a estrutura de D9). Substitui a lista da seção "Premiação — estrutura cogitada" abaixo. `data/regulamento.ts` e `data/programacao.ts` atualizados | Pedido do Lain (07/08/2026): valores e itens de premiação agora definidos, incluindo a troca de medalha por camiseta | 07/08/2026 |
 | D42 | **Inscrição vira só-online, com prazo:** a cota de inscrição presencial no dia do evento é descontinuada — quem não se inscrever online até **30 de agosto de 2026** não compete. Revisa D1 (modelo híbrido) e D36 (que só tinha removido o número público, mantendo o conceito de cota presencial). `data/evento.ts` ganha `dataFechamentoInscricoes(Curta/ISO)`; `data/regulamento.ts`, `data/programacao.ts`, `data/faq.ts`, `data/avisos.ts` e `app/inscricao/page.tsx` atualizados | Pedido do Lain (07/08/2026): "Inscricao somente online, que fecha dia 30 de agosto" | 07/08/2026 |
@@ -146,6 +147,14 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
   o evento é exclusivamente de skate, e nenhuma peça do site deve citar
   equipamento não-skate. Texto atual: "skate + equipamento de segurança +
   documento de identificação".
+- **D8 (categorias)** — segunda revisão, 15/08/2026 (**D45**): categoria
+  Master adicionada. Categorias atuais: iniciante, amador, feminino,
+  master.
+- **D43 (premiação do Feminino)** — versão anterior (07/08/2026): "camiseta
+  e premiação para todas as participantes" (regra própria, diferente das
+  outras categorias, mantendo a estrutura de D9). Revisado em 15/08/2026 por
+  **D45**: regra unificada com as demais categorias — camiseta pra todos,
+  premiação em dinheiro e itens só pro top 3.
 
 ## Pendências resolvidas
 

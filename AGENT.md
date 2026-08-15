@@ -48,7 +48,7 @@ implementar.
 **A exigência de autorização do responsável legal e do termo de
 responsabilidade segue a *data de nascimento* do inscrito, nunca a
 categoria escolhida.** Menores podem se inscrever em qualquer categoria
-(iniciante, amador ou feminino). Qualquer formulário, validação ou lógica
+(iniciante, amador, feminino ou master). Qualquer formulário, validação ou lógica
 condicional relacionada a isso deve derivar do campo de data de
 nascimento, não de uma lista fixa de "categorias de menor".
 

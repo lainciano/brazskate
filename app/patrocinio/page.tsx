@@ -42,7 +42,7 @@ const porQueApoiar = [
   {
     titulo: "Público engajado e diverso",
     texto:
-      "Categorias iniciante, amador e feminino reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.",
+      "Categorias iniciante, amador, feminino e master reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.",
   },
   {
     titulo: "Associação a uma causa autêntica",
