@@ -1,10 +1,26 @@
 // Fonte única de avisos/atualizações (item 10 de docs/03-SPEC-SITE.md §3.2)
-// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43). MDX descartado
-// (a spec original pedia "lista simples em MDX", mas o projeto não tem
-// infra MDX — mesmo motivo que já descartou MDX no FAQ, D13/D7). Mais
-// recente primeiro.
+// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43, D47, D48). MDX
+// descartado (a spec original pedia "lista simples em MDX", mas o projeto
+// não tem infra MDX — mesmo motivo que já descartou MDX no FAQ, D13/D7).
+// Mais recente primeiro.
 
 export const avisos = [
+  {
+    id: "apoio-casa-do-hip-hop",
+    dataISO: "2026-08-16",
+    data: "16/08/2026",
+    titulo: "Casa do Hip Hop Brazlândia é apoiadora",
+    texto:
+      "A Casa do Hip Hop Brazlândia (@casadohiphopbrazlandia) confirmou apoio ao Braz Skate.",
+  },
+  {
+    id: "patrocinio-censure",
+    dataISO: "2026-08-16",
+    data: "16/08/2026",
+    titulo: "Censure Theory é a primeira patrocinadora",
+    texto:
+      "A Censure Theory (@censuretheory) fechou o primeiro patrocínio comercial do Braz Skate. Mais parcerias estão em captação.",
+  },
   {
     id: "vai-ter-no-dia",
     dataISO: "2026-08-06",

@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
 import { ParceirosInstitucionais } from "@/components/parceiros-institucionais";
+import { Patrocinadores } from "@/components/patrocinadores";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
@@ -16,6 +17,10 @@ import { contrapartidas } from "@/data/contrapartidas";
 // "Infraestrutura" e "Institucional" removidos das formas de apoio em D39
 // (docs/02-DECISOES.md) — a UIEMAPV já cobre infraestrutura (D17) e o
 // selo institucional isolado deixou de fazer sentido como forma própria.
+// Patrocinadores comerciais (data/sponsors.ts, D30/D47) entram entre
+// Contrapartidas e Parceiros institucionais — grade nasce vazia até
+// haver patrocinador real (regra anti-casca-vazia), primeiro fechado em
+// 16/08/2026 (P4 segue aberta, mais patrocinadores ainda virão).
 
 export const metadata: Metadata = {
   title: "Seja um patrocinador",
@@ -190,6 +195,8 @@ export default function Patrocinio() {
               </ul>
             </Reveal>
           </section>
+
+          <Patrocinadores />
 
           <ParceirosInstitucionais />
         </div>

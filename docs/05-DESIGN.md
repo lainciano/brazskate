@@ -418,14 +418,20 @@ com nome acessível ("Instagram do Braz Skate").
   registros — SVG de largura total (`preserveAspectRatio="none"`) com
   borda irregular, preenchido com a cor da seção vizinha. Decorativo
   (`aria-hidden`); não cria altura de layout inesperada (altura fixa).
-- **Marquee** (`components/marquee.tsx`): faixa de texto repetido
-  ("BRAZ SKATE · SUA MARCA AQUI · BRAZLÂNDIA-DF · SEJA UM PATROCINADOR ·")
-  rolando via CSS puro, largura total, linkando para `/patrocinio` (prop
-  `href` opcional). Pausa no hover **e no foco** (`focus-within`, essencial
-  quando a faixa é um link — sem isso vira alvo em movimento pro teclado);
-  estática com `prefers-reduced-motion`. O texto existe UMA vez para
-  leitores de tela (como texto do link, quando `href` está presente); as
-  repetições visuais são `aria-hidden`.
+- **Marquee** (`components/marquee.tsx`): faixa de texto repetido rolando
+  via CSS puro, largura total, linkando opcionalmente por inteiro (prop
+  `href`). Pausa no hover **e no foco** (`focus-within`, essencial quando a
+  faixa é um link — sem isso vira alvo em movimento pro teclado); estática
+  com `prefers-reduced-motion`. O texto existe UMA vez para leitores de
+  tela; as repetições visuais são `aria-hidden`. Ainda usado no styleguide;
+  a faixa abaixo do hero (`components/sobre.tsx`) trocou pra
+  `MarqueePatrocinadores` em D49.
+- **MarqueePatrocinadores** (`components/marquee-patrocinadores.tsx`, D49,
+  docs/02-DECISOES.md): mesma técnica de rolagem, mas com as logos de quem
+  já apoia o Braz Skate (`data/partners.ts` + `data/sponsors.ts`) em vez de
+  texto — cada logo linka pro perfil/site próprio. Só a 1ª metade é
+  interativa (links reais); a 2ª é decorativa (`aria-hidden`, sem `<a>`,
+  pra não duplicar parada de tab). Array vazio não renderiza nada.
 
 ---
 
