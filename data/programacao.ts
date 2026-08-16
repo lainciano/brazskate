@@ -1,5 +1,5 @@
 // Fonte única da programação do dia (item 9 de docs/03-SPEC-SITE.md §3.2) —
-// ver docs/02-DECISOES.md (D26, D32, D37, D38, D41, D42, D45). Sequência derivada
+// ver docs/02-DECISOES.md (D26, D32, D37, D38, D41, D42, D48). Sequência derivada
 // do regulamento (data/regulamento.ts, D41): formato "Braz Skate" — cada
 // competidor faz 2 voltas de 45s (cada volta seguida de 2 bomb tricks) e,
 // depois que todos da bateria completarem as voltas, uma rodada final de 3

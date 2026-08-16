@@ -1,5 +1,5 @@
 // Fonte única do regulamento — ver docs/02-DECISOES.md (D8, D9, D26, D41,
-// D42, D43, D45) e docs/04-ROADMAP-V1.md (item 2 da spec). Página
+// D42, D43, D48) e docs/04-ROADMAP-V1.md (item 2 da spec). Página
 // /regulamento renderiza SEMPRE deste array — nunca hardcode em outro
 // lugar. Formato das baterias corrigido para o modelo "Braz Skate" em
 // 07/08/2026 (D41, revisa D35 — a versão anterior tinha um erro de
@@ -7,7 +7,7 @@
 // nunca pediu). Inscrição virou só-online com prazo em 07/08/2026 (D42,
 // revisa D1/D26/D36). Premiação (valores e itens) confirmada em 07/08/2026
 // (D43, revisa D9). Categoria Master adicionada e premiação do Feminino
-// unificada com as demais em 15/08/2026 (D45, revisa D8/D43).
+// unificada com as demais em 15/08/2026 (D48, revisa D8/D43).
 
 export const regulamento = {
   versaoTexto: "15/08/2026",

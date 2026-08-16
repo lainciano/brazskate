@@ -1,10 +1,10 @@
 // Fonte única da grade de patrocinadores comerciais (item 6 de
 // docs/03-SPEC-SITE.md §3.2) — schema pronto desde D30. Primeiro
-// patrocinador fechado em 16/08/2026 (D47, docs/02-DECISOES.md); primeiro
-// apoiador em seguida (D48) — P4 segue aberta, mais ainda virão. Renderizada
+// patrocinador fechado em 16/08/2026 (D50, docs/02-DECISOES.md); primeiro
+// apoiador em seguida (D51) — P4 segue aberta, mais ainda virão. Renderizada
 // por components/patrocinadores.tsx em /patrocinio.
 // `logoSrc` opcional só como salvaguarda (ex.: apoiador sem arte pronta
-// ainda) — desde D48 os dois níveis recebem "nome e logo no site"
+// ainda) — desde D51 os dois níveis recebem "nome e logo no site"
 // (`data/contrapartidas.ts`), não é mais exclusividade do patrocínio.
 // Ver também docs/leads-patrocinio-2021.md (não linkado no site) para
 // contatos de captação — precedente de 2021, não patrocinador confirmado.

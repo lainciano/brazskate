@@ -1,5 +1,5 @@
 // Fonte única de avisos/atualizações (item 10 de docs/03-SPEC-SITE.md §3.2)
-// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43, D47, D48). MDX
+// — ver docs/02-DECISOES.md (D32, D34, D38, D41, D42, D43, D50, D51). MDX
 // descartado (a spec original pedia "lista simples em MDX", mas o projeto
 // não tem infra MDX — mesmo motivo que já descartou MDX no FAQ, D13/D7).
 // Mais recente primeiro.

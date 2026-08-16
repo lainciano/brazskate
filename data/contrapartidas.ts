@@ -1,4 +1,4 @@
-// Contrapartidas de patrocínio (D30, D39, D48, docs/02-DECISOES.md) — dois
+// Contrapartidas de patrocínio (D30, D39, D51, docs/02-DECISOES.md) — dois
 // níveis derivados do precedente do próprio campeonato de 2021 (a ASB já
 // separava "Patrocínio" de "Apoio" nas artes de premiação daquela edição) e
 // das "formas de apoio" já publicadas nesta página. Sem valor em R$ — a
@@ -6,7 +6,7 @@
 // AGENT.md); o que muda é que agora existe um piso concreto do que cada
 // nível recebe. Tópico "Infraestrutura" saiu das formas de apoio em D39 —
 // nível Apoio passa a cobrir só divulgação/mídia. Nível Apoio ganhou "logo
-// e link no site" em D48 (16/08/2026) — antes só tinha nome em texto.
+// e link no site" em D51 (16/08/2026) — antes só tinha nome em texto.
 
 export type NivelContrapartida = {
   nivel: string;

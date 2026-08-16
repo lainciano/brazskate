@@ -2,7 +2,7 @@ import Image from "next/image";
 import { institutionalPartners } from "@/data/partners";
 import { patrocinadores } from "@/data/sponsors";
 
-// Letreiro de logos abaixo do hero (D49, docs/02-DECISOES.md) — substitui o
+// Letreiro de logos abaixo do hero (D52, docs/02-DECISOES.md) — substitui o
 // texto "Sua marca aqui" da Marquee (components/marquee.tsx, ainda usada em
 // outros lugares) agora que existem apoiadores reais pra mostrar. Mesma
 // técnica de rolagem em CSS puro (§3.9): duas metades idênticas, desloca

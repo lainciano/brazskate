@@ -5,7 +5,7 @@ import { SectionHeader } from "./section-header";
 // Resumo de patrocínio na home (roadmap PR 4): texto curto + CTA para a
 // página /patrocinio. Sem grade de logos aqui — as logos de quem já apoia
 // (institucionais + comerciais) aparecem no letreiro abaixo do hero
-// (components/marquee-patrocinadores.tsx, D49); a grade completa com
+// (components/marquee-patrocinadores.tsx, D52); a grade completa com
 // contrapartidas vive em /patrocinio. P4 segue aberta (docs/02-DECISOES.md).
 export function PatrocinioResumo() {
   return (

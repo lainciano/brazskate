@@ -425,8 +425,8 @@ com nome acessível ("Instagram do Braz Skate").
   com `prefers-reduced-motion`. O texto existe UMA vez para leitores de
   tela; as repetições visuais são `aria-hidden`. Ainda usado no styleguide;
   a faixa abaixo do hero (`components/sobre.tsx`) trocou pra
-  `MarqueePatrocinadores` em D49.
-- **MarqueePatrocinadores** (`components/marquee-patrocinadores.tsx`, D49,
+  `MarqueePatrocinadores` em D52.
+- **MarqueePatrocinadores** (`components/marquee-patrocinadores.tsx`, D52,
   docs/02-DECISOES.md): mesma técnica de rolagem, mas com as logos de quem
   já apoia o Braz Skate (`data/partners.ts` + `data/sponsors.ts`) em vez de
   texto — cada logo linka pro perfil/site próprio. Só a 1ª metade é
@@ -514,7 +514,7 @@ marca — não dependemos de foto profissional.
   com legenda (categoria + colocação, sem nome completo do competidor) e
   crédito "Acervo ASB".
 - **Localização (pista atual, I2 fechada por D31):** carrossel
-  (`components/carrossel-fotos.tsx`, D46) abaixo do mapa, crédito "Cauet" —
+  (`components/carrossel-fotos.tsx`, D49) abaixo do mapa, crédito "Cauet" —
   fotos widescreen do layout da pista, formato original preservado (sem
   recorte pra quadrado como a colagem).
 - **Patrocinadores:** sem logos confirmados, a seção da home é só CTA
@@ -529,7 +529,7 @@ alternada (mesmo princípio de "nunca aleatória em runtime" do `StickerBadge`,
 visível (não só `alt`) e `legenda` opcional abaixo. **Array vazio não
 renderiza o componente** — usado hoje pela seção Sobre (moldura própria em
 `components/galeria-2021.tsx`, mesmo princípio visual). Localização trocou
-pra `carrossel-fotos.tsx` em D46 (fotos widescreen, formato preservado); o
+pra `carrossel-fotos.tsx` em D49 (fotos widescreen, formato preservado); o
 `components/colagem.tsx` original ficou sem nenhum uso e foi removido.
 
 ---

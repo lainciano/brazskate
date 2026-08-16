@@ -5,7 +5,7 @@ import { SectionHeader } from "./section-header";
 // Seção de categorias (roadmap PR 3, docs/05-DESIGN.md §3.4): cards lidos
 // SEMPRE de data/categories.ts — nunca hardcode. Itens cogitados de
 // premiação não aparecem (P4). Faixas etárias e regulamento completo
-// resolvidos em D26/D41/D43/D45 — card linka pra /regulamento em vez do
+// resolvidos em D26/D41/D43/D48 — card linka pra /regulamento em vez do
 // sticker "em breve" que ficou obsoleto (P6 fechada desde 30/07/2026).
 
 const descricaoPremiacao: Record<Category["premiacao"], string> = {

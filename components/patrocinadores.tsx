@@ -3,7 +3,7 @@ import { patrocinadores } from "@/data/sponsors";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 
-// Grade de patrocinadores comerciais (P4, docs/02-DECISOES.md D30/D47).
+// Grade de patrocinadores comerciais (P4, docs/02-DECISOES.md D30/D50).
 // Renderiza SEMPRE de data/sponsors.ts — array vazio não renderiza nada
 // (regra anti-casca-vazia, mesmo princípio da Colagem/CarrosselFotos).
 export function Patrocinadores() {

@@ -17,7 +17,7 @@ import { contrapartidas } from "@/data/contrapartidas";
 // "Infraestrutura" e "Institucional" removidos das formas de apoio em D39
 // (docs/02-DECISOES.md) — a UIEMAPV já cobre infraestrutura (D17) e o
 // selo institucional isolado deixou de fazer sentido como forma própria.
-// Patrocinadores comerciais (data/sponsors.ts, D30/D47) entram entre
+// Patrocinadores comerciais (data/sponsors.ts, D30/D50) entram entre
 // Contrapartidas e Parceiros institucionais — grade nasce vazia até
 // haver patrocinador real (regra anti-casca-vazia), primeiro fechado em
 // 16/08/2026 (P4 segue aberta, mais patrocinadores ainda virão).

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Archivo } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Dupla aprovada (docs/05-DESIGN.md §2.2): Anton só em títulos de cartaz,
@@ -73,7 +74,10 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${anton.variable} ${archivo.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

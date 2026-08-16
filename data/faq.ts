@@ -1,4 +1,4 @@
-// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27, D42, D45) e
+// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27, D42, D48) e
 // docs/04-ROADMAP-V1.md (V1.3). Perguntas com `resposta: null` dependem de
 // conteúdo ainda pendente e aparecem na seção com sticker "em breve" — nunca
 // com resposta inventada (política de placeholder, AGENT.md).
