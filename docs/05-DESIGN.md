@@ -418,14 +418,20 @@ com nome acessível ("Instagram do Braz Skate").
   registros — SVG de largura total (`preserveAspectRatio="none"`) com
   borda irregular, preenchido com a cor da seção vizinha. Decorativo
   (`aria-hidden`); não cria altura de layout inesperada (altura fixa).
-- **Marquee** (`components/marquee.tsx`): faixa de texto repetido
-  ("BRAZ SKATE · SUA MARCA AQUI · BRAZLÂNDIA-DF · SEJA UM PATROCINADOR ·")
-  rolando via CSS puro, largura total, linkando para `/patrocinio` (prop
-  `href` opcional). Pausa no hover **e no foco** (`focus-within`, essencial
-  quando a faixa é um link — sem isso vira alvo em movimento pro teclado);
-  estática com `prefers-reduced-motion`. O texto existe UMA vez para
-  leitores de tela (como texto do link, quando `href` está presente); as
-  repetições visuais são `aria-hidden`.
+- **Marquee** (`components/marquee.tsx`): faixa de texto repetido rolando
+  via CSS puro, largura total, linkando opcionalmente por inteiro (prop
+  `href`). Pausa no hover **e no foco** (`focus-within`, essencial quando a
+  faixa é um link — sem isso vira alvo em movimento pro teclado); estática
+  com `prefers-reduced-motion`. O texto existe UMA vez para leitores de
+  tela; as repetições visuais são `aria-hidden`. Ainda usado no styleguide;
+  a faixa abaixo do hero (`components/sobre.tsx`) trocou pra
+  `MarqueePatrocinadores` em D52.
+- **MarqueePatrocinadores** (`components/marquee-patrocinadores.tsx`, D52,
+  docs/02-DECISOES.md): mesma técnica de rolagem, mas com as logos de quem
+  já apoia o Braz Skate (`data/partners.ts` + `data/sponsors.ts`) em vez de
+  texto — cada logo linka pro perfil/site próprio. Só a 1ª metade é
+  interativa (links reais); a 2ª é decorativa (`aria-hidden`, sem `<a>`,
+  pra não duplicar parada de tab). Array vazio não renderiza nada.
 
 ---
 
@@ -507,8 +513,10 @@ marca — não dependemos de foto profissional.
   organiza" — molduras claras estilo foto impressa, levemente rotacionadas,
   com legenda (categoria + colocação, sem nome completo do competidor) e
   crédito "Acervo ASB".
-- **Localização (pista atual, I2 fechada por D31):** colagem abaixo do
-  mapa, crédito "Cauet".
+- **Localização (pista atual, I2 fechada por D31):** carrossel
+  (`components/carrossel-fotos.tsx`, D49) abaixo do mapa, crédito "Cauet" —
+  fotos widescreen do layout da pista, formato original preservado (sem
+  recorte pra quadrado como a colagem).
 - **Patrocinadores:** sem logos confirmados, a seção da home é só CTA
   (texto + botão para `/patrocinio`). Grade de logos nasce quando houver
   patrocinador real (`data/sponsors.ts`, P4 segue aberta).
@@ -519,7 +527,10 @@ renderiza uma moldura por item — fundo `creme`, borda fina, rotação leve
 alternada (mesmo princípio de "nunca aleatória em runtime" do `StickerBadge`,
 §3.6: rotação fixa por índice, não `Math.random()`), `credito` como legenda
 visível (não só `alt`) e `legenda` opcional abaixo. **Array vazio não
-renderiza o componente** — usado hoje pelas seções Sobre e Localização.
+renderiza o componente** — usado hoje pela seção Sobre (moldura própria em
+`components/galeria-2021.tsx`, mesmo princípio visual). Localização trocou
+pra `carrossel-fotos.tsx` em D49 (fotos widescreen, formato preservado); o
+`components/colagem.tsx` original ficou sem nenhum uso e foi removido.
 
 ---
 

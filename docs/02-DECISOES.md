@@ -4,12 +4,17 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 14/08/2026.
+> Última atualização: 16/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D52 | **Letreiro abaixo do hero passa a mostrar logos de quem já apoia** (UIEMAPV, Censure Theory, Casa do Hip Hop) em vez do texto "Sua marca aqui / Seja um patrocinador". Criado `components/marquee-patrocinadores.tsx`, usado em `components/sobre.tsx` no lugar da `Marquee` de texto (que segue existindo, usada no styleguide). Cada logo linka pro Instagram/site próprio. CTA "seja um patrocinador" não se perde — já vive em `PatrocinioResumo`, mais abaixo na mesma página | Pedido do Lain (16/08/2026): trocar o letreiro pelas logos de quem já apoia, agora que existem apoiadores reais | 16/08/2026 |
+| D51 | **Nível Apoio passa a receber logo e link no site** (antes só "nome no site") — `data/contrapartidas.ts` revisado. Primeiro apoiador fechado: **Casa do Hip Hop Brazlândia** (@casadohiphopbrazlandia, https://www.instagram.com/casadohiphopbrazlandia/), um dos contatos da lista de captação (D40). Logo processada de `docs/assets/logos/logo-casa-do-hip-hop.png` (fundo azul sólido removido por floodfill) para `public/logo-casa-do-hip-hop.webp`. `data/sponsors.ts` ganha a entrada, nível `apoio`. Revisa D30 | Pedido do Lain (16/08/2026): trouxe logo pra um apoiador; decidiu estender "logo no site" pros dois níveis em vez de abrir exceção pontual | 16/08/2026 |
+| D50 | **Primeiro patrocinador comercial fechado: Censure Theory** (@censuretheory, https://www.instagram.com/censuretheory/), nível **Patrocínio** (D30 — menção no som, faixa na pista, logo/link no site, menção nas redes). `data/sponsors.ts` deixa de estar vazio; criado `components/patrocinadores.tsx` (grade de logos, regra anti-casca-vazia) e inserido em `/patrocinio` entre Contrapartidas e Parceiros institucionais. Logo processada de `docs/assets/logos/logo-censure1.png` (master) para `public/logo-censure.webp`. **P4 segue aberta** — é o primeiro patrocinador, não fecha a captação | Pedido do Lain (16/08/2026): primeiro patrocínio comercial da ASB confirmado, mais virão | 16/08/2026 |
+| D49 | **Fotos da pista trocadas + carrossel novo:** as 3 fotos de manobra (crédito Cauet, ativas desde D31) saem de `galeriaPista`; entram 3 fotos panorâmicas da pista (mesmo fotógrafo, Cauet), sem skatista em ação, mostrando o layout completo dos obstáculos. Formato widescreen original preservado — a `Colagem` (moldura quadrada, `object-cover` cortando pra 1:1) não servia mais; criado `components/carrossel-fotos.tsx` (`aspect-video`, 1 foto grande por vez, setas + dots, swipe em touch), usado em `components/localizacao.tsx`. `Colagem` ficou sem nenhum uso (a galeria de 2021 tem moldura própria) e foi removida (`components/colagem.tsx`). Também aproveitado pra tirar o sticker "Detalhes em breve" de `components/categorias.tsx` — resquício da pendência P6, fechada desde 30/07/2026 (D26): card agora linka pra `/regulamento` | Pedido do Lain (15/08/2026): trocar as fotos da pista, manter formato horizontal com melhor visualização (carrossel responsivo), e perguntou o que faltava no sticker de categorias — resposta: nada, era sobra de uma pendência já fechada | 15/08/2026 |
+| D48 | **Categoria Master adicionada** (4ª categoria, junto com Iniciante, Amador e Feminino): sem idade mínima definida — autodeclarada, quem se considera Master marca essa opção. Aproveitado para **unificar a regra de premiação do Feminino** com as demais categorias: era "camiseta e premiação para todas as participantes" (D9/D43), passa a ser a mesma regra das outras — camiseta pra todos, premiação em dinheiro e itens só pro top 3. Revisa D8 (lista de categorias) e D43 (premiação do Feminino). Opção "Master" adicionada ao campo "Categoria" do formulário Tally (https://tally.so/r/J9bY7z) via API — as 40 respostas já recebidas não foram afetadas. `data/categories.ts`, `data/regulamento.ts`, `data/programacao.ts`, `data/faq.ts`, `components/categorias.tsx`, `AGENT.md` e `app/patrocinio/page.tsx` atualizados | Pedido do Lain (15/08/2026): adicionar opção de inscrição em Master, sem idade mínima; e simplificar a premiação do Feminino pra ficar igual às outras categorias | 15/08/2026 |
 | D47 | **Pausa de pré-inscrição revertida — inscrições reabertas.** `evento.inscricoesAbertas` volta a `true`: CTA de `/inscricao` normal com link para o Tally, sticker do hero volta a "Inscrições abertas", seção "Como funciona" volta a aparecer. Aviso `inscricoes-pausadas` removido de `data/avisos.ts` (informação desatualizada, não fica publicada). Revisa D46 | Pedido do Lain (14/08/2026): a pausa não chegou a ser necessária | 14/08/2026 |
 | D46 | **Pré-inscrição pausada temporariamente** via trava manual `evento.inscricoesAbertas = false` (`data/evento.ts`) — o CTA de `/inscricao` fica desabilitado, sem link para o formulário Tally, e o sticker do hero muda de "Inscrições abertas" para "Inscrições em breve". Formulário Tally em si não foi alterado/pausado (fora do repositório). Novo aviso `inscricoes-pausadas` em `data/avisos.ts`. Reabre só quando o Lain pedir explicitamente (flip do booleano) | Pedido do Lain (07/08/2026): "bloqueie as inscricoes ate quando eu permitir" | 07/08/2026 |
 | D45 | **Bloco de grupo do WhatsApp adicionado à seção de Contato**, com QR Code (`public/whatsapp-qr.png`) e link de convite, destacado em card próprio acima dos botões de contato existentes. O botão que antes chamava direto no WhatsApp da organização vira secundário e passa a se chamar "Organização no WhatsApp", para diferenciar do canal de grupo (`components/contato.tsx`) | Contribuição do Gustavo (PR #68, 14/08/2026): dar visibilidade ao grupo oficial do WhatsApp como canal de novidades do campeonato. O restante da PR #68 partia de um ponto do repositório anterior às PRs #66/#67 e revertia D34–D44 se mergeado inteiro — só este bloco foi aproveitado, aplicado manualmente sobre o `main` atual | 14/08/2026 |
@@ -77,7 +82,7 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 | # | Pendência | Bloqueia o quê no site |
 |---|-----------|------------------------|
 | P1 | Data do evento | **Resolvida em 30/07/2026 (D24), revisada em 06/08/2026 (D34)** — 13 de setembro de 2026, confirmada (não previsão). Segue sujeita a alteração de última hora; se mudar, `data/evento.ts` é o único lugar a editar |
-| P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB começa agora** — media kit revisado (D39) e primeira lista de contatos por categoria de estabelecimento definida (D40, `docs/contatos-patrocinio-2026.md`). **Itens/valores de premiação agora CONFIRMADOS (D43, 07/08/2026)** — a origem da verba (UIEMAPV vs. patrocínio captado) segue em aberto | Grade de patrocinadores; o site não pode afirmar patrocínio garantido além do que já está confirmado (política de placeholder, `AGENT.md`) |
+| P4 | Verba / patrocínio institucional. **A UIEMAPV se comprometeu** (D17) a fornecer premiação, medalhas e troféu — mas **nada disso está em mãos ainda**; é compromisso, não entrega. A **captação de patrocínio pela ASB começa agora** — media kit revisado (D39) e primeira lista de contatos por categoria de estabelecimento definida (D40, `docs/contatos-patrocinio-2026.md`). **Itens/valores de premiação agora CONFIRMADOS (D43, 07/08/2026)** — a origem da verba (UIEMAPV vs. patrocínio captado) segue em aberto. **Primeiro patrocinador comercial fechado em 16/08/2026 (D50): Censure Theory, nível Patrocínio** — `data/sponsors.ts` deixa de estar vazio, mas **P4 segue aberta**: é o primeiro, a ASB ainda vai captar mais | Grade de patrocinadores — nasceu em `/patrocinio` (D50); o site não pode afirmar patrocínio garantido além do que já está confirmado (política de placeholder, `AGENT.md`) |
 | P5 | Reparos na pista (iluminação, rachaduras) — **segue sem reparo**, mas o site agora trata a situação com um texto neutro (D27), em vez de silêncio total | Não bloqueia o site; afeta a data |
 | P6 | Regulamento completo | **Resolvida em 30/07/2026 (D26), formato corrigido em 07/08/2026 (D41)** — faixas etárias, inscrição só-online com prazo (D42), formato de bateria (modelo Braz Skate), pontuação, premiação (D43) e política de chuva definidos. Página `/regulamento` e as 3 perguntas pendentes do FAQ liberadas |
 | P7 | Composição da equipe ASB (funções/responsáveis) — **parcialmente resolvida em 30/07/2026**: seção "Quem organiza" publicada em `components/sobre.tsx` (commit `92a0920`) com os nomes do time (Luciano, Gustavo, Cauet, Samuel) em `StickerBadge`, sem cargo formal ainda | Seção "quem somos" completa — falta só atribuir função/responsável a cada nome |
@@ -103,15 +108,20 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 | # | Pendência | Ação |
 |---|-----------|------|
-| I4 | Chave Pix oficial da ASB | Definir titularidade (idealmente CNPJ/conta da associação, se existir) e gerar QR |
-| I5 | Identidade visual mínima (logo ASB/evento, paleta) | Necessária para o MVP ter cara própria |
+| I4 | ~~Chave Pix oficial da ASB~~ — **resolvida, confirmada pelo Lain em 16/08/2026** | Chave EVP e QR reais já implementados (`components/pix.tsx`, payload em `docs/pix.md`) — não é placeholder |
+| I5 | ~~Identidade visual mínima (logo ASB/evento, paleta)~~ — **resolvida, fechada em 16/08/2026** | Design system completo publicado (`docs/05-DESIGN.md`) e logos em produção (`public/logo.png`, `logo-completa.png`, `logo-pin*.png`) desde o bootstrap do site — pendência ficou aberta no doc por descuido, sem trabalho pendente real |
 | I6 | Mini media-kit de patrocínio | ~~Conteúdo da página "seja um patrocinador"~~ Conteúdo-base pronto em `docs/media-kit-braz-skate.md` (16/07/2026); falta só adaptar para a página `/patrocinio` |
-| I7 | **Logo(s) e links oficiais** da UIEMAPV | Confirmação formal da parceria **já recebida** (ver D18) — falta só o material de marca. O site **continua sem mencionar o instituto** até logo e link chegarem; quando chegarem, entra como parceiro institucional na página de patrocínio. Plano de implementação em `docs/estrategia-confirmacao-uiemapv.md` |
+| I7 | ~~**Logo(s) e links oficiais** da UIEMAPV~~ — **resolvida em 30/07/2026** | Logo recebida e publicada (`public/logo-uiemapv.jpg`, master em `docs/assets/logos/`), link oficial confirmado, UIEMAPV já entra como parceira institucional em `/patrocinio` (`data/partners.ts`). Linha ficou aberta no doc por descuido — implementação já valia desde 30/07 |
 | I8 | **Planta do local da pista** — pedida na reunião de organização de 06/08/2026, arquivo ainda não enviado | Sem o arquivo, não entra no site (política de placeholder, `AGENT.md`) — quando chegar, avaliar onde encaixa (Localização e/ou Programação) |
 | I9 | ~~Campo de tamanho de camiseta no formulário Tally~~ — **resolvida (D44, 07/08/2026)** | — |
 
 ## Decisões revisadas
 
+- **D30 (contrapartida do nível Apoio)** — versão anterior (31/07/2026):
+  recebia só "menção no som" + "nome no site" + "menção nas redes", sem
+  logo. Revisado em 16/08/2026 por **D51**: ganha "nome e logo no site",
+  igualando esse ponto ao nível Patrocínio (que segue com faixa na pista,
+  camiseta e narração exclusivas).
 - **D46 (pausa de pré-inscrição)** — `evento.inscricoesAbertas = false` desde
   07/08/2026. Revertido em 14/08/2026 por **D47**: a pausa não chegou a ser
   necessária, inscrições reabertas.
@@ -152,6 +162,14 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
   o evento é exclusivamente de skate, e nenhuma peça do site deve citar
   equipamento não-skate. Texto atual: "skate + equipamento de segurança +
   documento de identificação".
+- **D8 (categorias)** — segunda revisão, 15/08/2026 (**D48**): categoria
+  Master adicionada. Categorias atuais: iniciante, amador, feminino,
+  master.
+- **D43 (premiação do Feminino)** — versão anterior (07/08/2026): "camiseta
+  e premiação para todas as participantes" (regra própria, diferente das
+  outras categorias, mantendo a estrutura de D9). Revisado em 15/08/2026 por
+  **D48**: regra unificada com as demais categorias — camiseta pra todos,
+  premiação em dinheiro e itens só pro top 3.
 
 ## Pendências resolvidas
 

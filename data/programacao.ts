@@ -1,5 +1,5 @@
 // Fonte única da programação do dia (item 9 de docs/03-SPEC-SITE.md §3.2) —
-// ver docs/02-DECISOES.md (D26, D32, D37, D38, D41, D42). Sequência derivada
+// ver docs/02-DECISOES.md (D26, D32, D37, D38, D41, D42, D48). Sequência derivada
 // do regulamento (data/regulamento.ts, D41): formato "Braz Skate" — cada
 // competidor faz 2 voltas de 45s (cada volta seguida de 2 bomb tricks) e,
 // depois que todos da bateria completarem as voltas, uma rodada final de 3
@@ -32,7 +32,7 @@ export const programacao: { etapas: readonly ProgramacaoEtapa[] } = {
       titulo: "Baterias por categoria",
       horario: "10h",
       texto:
-        "Início das atividades. Formato Braz Skate: 2 voltas de 45 segundos por competidor dentro de sua categoria — Iniciante, Amador ou Feminino — cada volta seguida de 2 bomb tricks. Depois que todos completarem as voltas, cada competidor faz uma rodada final de 3 manobras.",
+        "Início das atividades. Formato Braz Skate: 2 voltas de 45 segundos por competidor dentro de sua categoria — Iniciante, Amador, Feminino ou Master — cada volta seguida de 2 bomb tricks. Depois que todos completarem as voltas, cada competidor faz uma rodada final de 3 manobras.",
     },
     {
       id: "best-trick",
@@ -59,7 +59,7 @@ export const programacao: { etapas: readonly ProgramacaoEtapa[] } = {
       titulo: "Premiação",
       horario: null,
       texto:
-        "Camiseta oficial do Braz Skate para todos os competidores. Top 3 de cada categoria recebe premiação em dinheiro (1º R$ 350, 2º R$ 250, 3º R$ 150) e itens de skate — shapes de maple, trucks, rolamentos e rodas. Na categoria Feminino, camiseta e premiação para todas as participantes.",
+        "Camiseta oficial do Braz Skate para todos os competidores. Top 3 de cada categoria recebe premiação em dinheiro (1º R$ 350, 2º R$ 250, 3º R$ 150) e itens de skate — shapes de maple, trucks, rolamentos e rodas.",
     },
   ],
 };

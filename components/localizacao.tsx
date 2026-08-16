@@ -1,6 +1,6 @@
 import { evento, mapaEmbedUrl } from "@/data/evento";
 import { Botao } from "./botao";
-import { Colagem } from "./colagem";
+import { CarrosselFotos } from "./carrossel-fotos";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { galeriaPista } from "@/data/gallery";
@@ -69,8 +69,8 @@ export function Localizacao() {
               <h3 className="text-[1.375rem] font-bold leading-[1.2]">
                 A pista hoje
               </h3>
-              <div className="mt-6">
-                <Colagem fotos={galeriaPista} />
+              <div className="mt-6 max-w-3xl">
+                <CarrosselFotos fotos={galeriaPista} />
               </div>
             </div>
           )}

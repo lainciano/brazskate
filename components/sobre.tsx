@@ -1,5 +1,5 @@
 import { GaleriaCamp2021 } from "./galeria-2021";
-import { Marquee } from "./marquee";
+import { MarqueePatrocinadores } from "./marquee-patrocinadores";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
@@ -25,11 +25,7 @@ export function Sobre() {
   return (
     <div className="registro-concreto">
       <Rasgo cor="tinta" />
-      <Marquee
-        texto="Braz Skate · Sua marca aqui · Brazlândia-DF · Seja um patrocinador"
-        href="/patrocinio"
-        className="border-b-2 border-tinta py-3"
-      />
+      <MarqueePatrocinadores className="border-b-2 border-tinta py-3" />
 
       <section id="sobre" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-16 sm:px-6 md:py-24">
         <Reveal>
