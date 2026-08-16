@@ -4,12 +4,13 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 15/08/2026.
+> Última atualização: 16/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D46 | **Fotos da pista trocadas + carrossel novo:** as 3 fotos de manobra (crédito Cauet, ativas desde D31) saem de `galeriaPista`; entram 3 fotos panorâmicas da pista (mesmo fotógrafo, Cauet), sem skatista em ação, mostrando o layout completo dos obstáculos. Formato widescreen original preservado — a `Colagem` (moldura quadrada, `object-cover` cortando pra 1:1) não servia mais; criado `components/carrossel-fotos.tsx` (`aspect-video`, 1 foto grande por vez, setas + dots, swipe em touch), usado em `components/localizacao.tsx`. `Colagem` ficou sem nenhum uso (a galeria de 2021 tem moldura própria) e foi removida (`components/colagem.tsx`). Também aproveitado pra tirar o sticker "Detalhes em breve" de `components/categorias.tsx` — resquício da pendência P6, fechada desde 30/07/2026 (D26): card agora linka pra `/regulamento` | Pedido do Lain (15/08/2026): trocar as fotos da pista, manter formato horizontal com melhor visualização (carrossel responsivo), e perguntou o que faltava no sticker de categorias — resposta: nada, era sobra de uma pendência já fechada | 15/08/2026 |
 | D45 | **Categoria Master adicionada** (4ª categoria, junto com Iniciante, Amador e Feminino): sem idade mínima definida — autodeclarada, quem se considera Master marca essa opção. Aproveitado para **unificar a regra de premiação do Feminino** com as demais categorias: era "camiseta e premiação para todas as participantes" (D9/D43), passa a ser a mesma regra das outras — camiseta pra todos, premiação em dinheiro e itens só pro top 3. Revisa D8 (lista de categorias) e D43 (premiação do Feminino). Opção "Master" adicionada ao campo "Categoria" do formulário Tally (https://tally.so/r/J9bY7z) via API — as 40 respostas já recebidas não foram afetadas. `data/categories.ts`, `data/regulamento.ts`, `data/programacao.ts`, `data/faq.ts`, `components/categorias.tsx`, `AGENT.md` e `app/patrocinio/page.tsx` atualizados | Pedido do Lain (15/08/2026): adicionar opção de inscrição em Master, sem idade mínima; e simplificar a premiação do Feminino pra ficar igual às outras categorias | 15/08/2026 |
 | D44 | **Campo "Tamanho de camiseta" adicionado ao formulário de pré-inscrição** (Tally, https://tally.so/r/J9bY7z): múltipla escolha, opções PP/P/M/G/GG/XG, obrigatório. Aplicado via API do Tally (`TALLY_API_KEY` em `.env.local`, chave nova do Lain) diretamente no formulário publicado — as 4 respostas já recebidas não foram afetadas. Fecha I9 | Necessário pra saber o tamanho da camiseta de premiação (D43) de cada competidor no dia do evento | 07/08/2026 |
 | D43 | **Premiação confirmada:** camiseta oficial do Braz Skate para todos os competidores (substitui a medalha). Top 3 de cada categoria recebe premiação em dinheiro — 1º R$ 350, 2º R$ 250, 3º R$ 150 — mais itens de skate para todas as categorias: shapes de maple, trucks, rolamentos e rodas. Na categoria Feminino, camiseta e premiação para todas as participantes (mantém a estrutura de D9). Substitui a lista da seção "Premiação — estrutura cogitada" abaixo. `data/regulamento.ts` e `data/programacao.ts` atualizados | Pedido do Lain (07/08/2026): valores e itens de premiação agora definidos, incluindo a troca de medalha por camiseta | 07/08/2026 |
@@ -101,10 +102,10 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 
 | # | Pendência | Ação |
 |---|-----------|------|
-| I4 | Chave Pix oficial da ASB | Definir titularidade (idealmente CNPJ/conta da associação, se existir) e gerar QR |
-| I5 | Identidade visual mínima (logo ASB/evento, paleta) | Necessária para o MVP ter cara própria |
+| I4 | ~~Chave Pix oficial da ASB~~ — **resolvida, confirmada pelo Lain em 16/08/2026** | Chave EVP e QR reais já implementados (`components/pix.tsx`, payload em `docs/pix.md`) — não é placeholder |
+| I5 | ~~Identidade visual mínima (logo ASB/evento, paleta)~~ — **resolvida, fechada em 16/08/2026** | Design system completo publicado (`docs/05-DESIGN.md`) e logos em produção (`public/logo.png`, `logo-completa.png`, `logo-pin*.png`) desde o bootstrap do site — pendência ficou aberta no doc por descuido, sem trabalho pendente real |
 | I6 | Mini media-kit de patrocínio | ~~Conteúdo da página "seja um patrocinador"~~ Conteúdo-base pronto em `docs/media-kit-braz-skate.md` (16/07/2026); falta só adaptar para a página `/patrocinio` |
-| I7 | **Logo(s) e links oficiais** da UIEMAPV | Confirmação formal da parceria **já recebida** (ver D18) — falta só o material de marca. O site **continua sem mencionar o instituto** até logo e link chegarem; quando chegarem, entra como parceiro institucional na página de patrocínio. Plano de implementação em `docs/estrategia-confirmacao-uiemapv.md` |
+| I7 | ~~**Logo(s) e links oficiais** da UIEMAPV~~ — **resolvida em 30/07/2026** | Logo recebida e publicada (`public/logo-uiemapv.jpg`, master em `docs/assets/logos/`), link oficial confirmado, UIEMAPV já entra como parceira institucional em `/patrocinio` (`data/partners.ts`). Linha ficou aberta no doc por descuido — implementação já valia desde 30/07 |
 | I8 | **Planta do local da pista** — pedida na reunião de organização de 06/08/2026, arquivo ainda não enviado | Sem o arquivo, não entra no site (política de placeholder, `AGENT.md`) — quando chegar, avaliar onde encaixa (Localização e/ou Programação) |
 | I9 | ~~Campo de tamanho de camiseta no formulário Tally~~ — **resolvida (D44, 07/08/2026)** | — |
 
