@@ -101,19 +101,19 @@ export const galeriaCamp2021: Record<CategoriaCamp2021, readonly FotoGaleria[]> 
 export const galeriaPista: readonly FotoGaleria[] = [
   {
     src: "/galeria/pista-01.webp",
-    alt: "Skatista em manobra aérea na pista de Brazlândia.",
+    alt: "Vista geral da pista de Brazlândia, com rampas, corrimãos e grafites dos obstáculos.",
     credito: "Cauet",
     permissao: true,
   },
   {
     src: "/galeria/pista-02.webp",
-    alt: "Skatista em manobra sobre obstáculo na pista de Brazlândia, com o bowl grafitado ao fundo.",
+    alt: "Pista de Brazlândia ao fim da tarde, com o bowl e os obstáculos iluminados pela luz baixa.",
     credito: "Cauet",
     permissao: true,
   },
   {
     src: "/galeria/pista-03.webp",
-    alt: "Skatista em manobra sobre obstáculo na pista de Brazlândia.",
+    alt: "Corrimão e obstáculos da pista de Brazlândia a contraluz, no fim da tarde.",
     credito: "Cauet",
     permissao: true,
   },

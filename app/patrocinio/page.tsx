@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
 import { ParceirosInstitucionais } from "@/components/parceiros-institucionais";
+import { Patrocinadores } from "@/components/patrocinadores";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
@@ -16,6 +17,10 @@ import { contrapartidas } from "@/data/contrapartidas";
 // "Infraestrutura" e "Institucional" removidos das formas de apoio em D39
 // (docs/02-DECISOES.md) — a UIEMAPV já cobre infraestrutura (D17) e o
 // selo institucional isolado deixou de fazer sentido como forma própria.
+// Patrocinadores comerciais (data/sponsors.ts, D30/D50) entram entre
+// Contrapartidas e Parceiros institucionais — grade nasce vazia até
+// haver patrocinador real (regra anti-casca-vazia), primeiro fechado em
+// 16/08/2026 (P4 segue aberta, mais patrocinadores ainda virão).
 
 export const metadata: Metadata = {
   title: "Seja um patrocinador",
@@ -42,7 +47,7 @@ const porQueApoiar = [
   {
     titulo: "Público engajado e diverso",
     texto:
-      "Categorias iniciante, amador e feminino reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.",
+      "Categorias iniciante, amador, feminino e master reúnem jovens atletas, a cena skatista adulta e o público da cidade em um único evento.",
   },
   {
     titulo: "Associação a uma causa autêntica",
@@ -190,6 +195,8 @@ export default function Patrocinio() {
               </ul>
             </Reveal>
           </section>
+
+          <Patrocinadores />
 
           <ParceirosInstitucionais />
         </div>

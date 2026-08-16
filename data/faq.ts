@@ -1,4 +1,4 @@
-// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27, D42) e
+// Fonte única do FAQ — ver docs/02-DECISOES.md (D16, D26, D27, D42, D48) e
 // docs/04-ROADMAP-V1.md (V1.3). Perguntas com `resposta: null` dependem de
 // conteúdo ainda pendente e aparecem na seção com sticker "em breve" — nunca
 // com resposta inventada (política de placeholder, AGENT.md).
@@ -12,7 +12,7 @@ export const faq = [
   {
     id: "categorias",
     pergunta: "Quais são as categorias?",
-    resposta: "Iniciante, Amador e Feminino.",
+    resposta: "Iniciante, Amador, Feminino e Master.",
   },
   {
     id: "o-que-levar",
@@ -29,7 +29,7 @@ export const faq = [
     id: "faixas-etarias",
     pergunta: "Quais as faixas etárias por categoria?",
     resposta:
-      "Iniciante: até 25 anos. Amador e Feminino: sem limite de idade.",
+      "Iniciante: até 25 anos. Amador, Feminino e Master: sem limite de idade — Master é autodeclarada, sem idade mínima exigida.",
   },
   {
     id: "cota-presencial",
