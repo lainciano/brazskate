@@ -20,6 +20,7 @@ export type FotoGaleria = {
   src: string;
   alt: string;
   credito: string; // obrigatório — quem tirou/cedeu a foto
+  creditoUrl?: string; // opcional — perfil de quem tirou (D53)
   permissao: true; // literal: `permissao: false` não compila
   legenda?: string;
 };
@@ -103,18 +104,21 @@ export const galeriaPista: readonly FotoGaleria[] = [
     src: "/galeria/pista-01.webp",
     alt: "Vista geral da pista de Brazlândia, com rampas, corrimãos e grafites dos obstáculos.",
     credito: "Cauet",
+    creditoUrl: "https://www.instagram.com/cauetista/",
     permissao: true,
   },
   {
     src: "/galeria/pista-02.webp",
     alt: "Pista de Brazlândia ao fim da tarde, com o bowl e os obstáculos iluminados pela luz baixa.",
     credito: "Cauet",
+    creditoUrl: "https://www.instagram.com/cauetista/",
     permissao: true,
   },
   {
     src: "/galeria/pista-03.webp",
     alt: "Corrimão e obstáculos da pista de Brazlândia a contraluz, no fim da tarde.",
     credito: "Cauet",
+    creditoUrl: "https://www.instagram.com/cauetista/",
     permissao: true,
   },
 ];

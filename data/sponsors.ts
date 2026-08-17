@@ -29,4 +29,10 @@ export const patrocinadores: readonly Patrocinador[] = [
     url: "https://www.instagram.com/casadohiphopbrazlandia/",
     nivel: "apoio",
   },
+  {
+    nome: "Overstreet Skateboards",
+    logoSrc: "/logo-overstreet.webp",
+    url: "https://www.instagram.com/overstreetskate/",
+    nivel: "patrocinio",
+  },
 ];

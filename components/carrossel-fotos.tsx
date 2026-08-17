@@ -58,7 +58,19 @@ export function CarrosselFotos({ fotos }: { fotos: readonly FotoGaleria[] }) {
           className="object-cover"
         />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-tinta/85 to-transparent px-4 pb-2.5 pt-8 text-[0.8125rem] text-creme/90">
-          Foto: {foto.credito}
+          Foto:{" "}
+          {foto.creditoUrl ? (
+            <a
+              href={foto.creditoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:underline"
+            >
+              {foto.credito}
+            </a>
+          ) : (
+            foto.credito
+          )}
         </div>
 
         {fotos.length > 1 && (
