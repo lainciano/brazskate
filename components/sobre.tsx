@@ -13,8 +13,14 @@ import { galeriaCamp2021 } from "@/data/gallery";
 // docs/01-CONTEXTO.md.
 
 // P7 (docs/02-DECISOES.md): funções ainda não fechadas pra todo mundo — só
-// os nomes por enquanto, sem inventar cargo formal.
-const quemOrganiza = ["Luciano", "Gustavo", "Cauet", "Samuel"];
+// os nomes por enquanto, sem inventar cargo formal. Instagram de cada um
+// adicionado em D53.
+const quemOrganiza = [
+  { nome: "Luciano", instagram: "44lain" },
+  { nome: "Gustavo", instagram: "gustavolno" },
+  { nome: "Cauet", instagram: "cauetista" },
+  { nome: "Samuel", instagram: "samuelsktg" },
+];
 
 // galeriaCamp2021 é um Record por categoria (D33) — a regra anti-casca-vazia
 // precisa checar as 3 chaves, não só "array.length", senão o título "O
@@ -69,14 +75,20 @@ export function Sobre() {
                 Quem organiza
               </h3>
               <ul className="mt-4 flex max-w-[65ch] flex-wrap gap-3">
-                {quemOrganiza.map((nome, indice) => (
-                  <li key={nome}>
-                    <StickerBadge
-                      variante={indice % 2 === 0 ? "info" : "breve"}
-                      data-carimbo
+                {quemOrganiza.map((pessoa, indice) => (
+                  <li key={pessoa.nome}>
+                    <a
+                      href={`https://instagram.com/${pessoa.instagram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {nome}
-                    </StickerBadge>
+                      <StickerBadge
+                        variante={indice % 2 === 0 ? "info" : "breve"}
+                        data-carimbo
+                      >
+                        {pessoa.nome}
+                      </StickerBadge>
+                    </a>
                   </li>
                 ))}
               </ul>
