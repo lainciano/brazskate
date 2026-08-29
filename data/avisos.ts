@@ -6,6 +6,14 @@
 
 export const avisos = [
   {
+    id: "inscricoes-encerradas",
+    dataISO: "2026-08-29",
+    data: "29/08/2026",
+    titulo: "Inscrições encerradas",
+    texto:
+      "As inscrições do Braz Skate estão encerradas. Obrigado a todos os competidores inscritos — a lista está fechada. Confira a programação do dia em /programacao.",
+  },
+  {
     id: "apoio-casa-do-hip-hop",
     dataISO: "2026-08-16",
     data: "16/08/2026",
@@ -52,14 +60,6 @@ export const avisos = [
     titulo: "Data confirmada: 13 de setembro",
     texto:
       "O Braz Skate tem nova data fechada com a Administração Regional — 13 de setembro de 2026, no Skate Park de Brazlândia.",
-  },
-  {
-    id: "inscricoes-abertas",
-    dataISO: "2026-07-30",
-    data: "30/07/2026",
-    titulo: "Inscrições abertas",
-    texto:
-      "O formulário de pré-inscrição já está no ar. Garanta sua vaga o quanto antes.",
   },
   {
     id: "parceria-uiemapv",
