@@ -4,17 +4,19 @@
 // Data do evento CONFIRMADA pela Administração/ASB em 30/07/2026 (D24) — não
 // é mais previsão, ainda que sujeita a alteração de última hora. Revisada
 // para 13/09/2026 em reunião de 06/08/2026 (D34, docs/02-DECISOES.md).
-// Inscrições abertas desde D29/D32 (31/07/2026), só online — fecham em
-// 30/08/2026 (D42, 07/08/2026): a cota de inscrição presencial no dia foi
-// descontinuada, então `dataFechamentoInscricoes*` abaixo é a única data de
-// corte que existe agora.
-// `inscricoesAbertas` (D46, 07/08/2026): trava manual do Lain para pausar
-// pré-inscrição sem mexer no formulário Tally. Reaberta em 14/08/2026 (D47)
-// — a pausa não chegou a ser necessária.
+// Histórico da inscrição: aberta desde D29/D32 (31/07/2026), só online (a
+// cota presencial no dia foi descontinuada por D42). O prazo era 30/08/2026
+// (D42, 07/08/2026); no fim do prazo o Lain encerrou o formulário Tally no
+// painel e as inscrições foram encerradas em definitivo (D54, 29/08/2026).
+// `inscricoesAbertas: false` significa agora esse encerramento definitivo —
+// não a pausa reversível de D46/D47. Os campos `dataFechamentoInscricoes*`
+// abaixo ficam só como referência histórica; nenhuma copy nova deve tratá-los
+// como prazo futuro.
 
 export const evento = {
-  // trava manual (D46/D47) — false bloqueia a pré-inscrição no site inteiro
-  inscricoesAbertas: true,
+  // encerramento definitivo das inscrições (D54) — false = inscrições
+  // encerradas no site inteiro; deixou de ser a trava reversível de D46/D47
+  inscricoesAbertas: false,
   // data canônica (textos longos: seção de local, futura página cheia)
   dataPrevista: "13 de setembro de 2026",
   // forma curta (mesmo dado, formatado para caber no sticker do hero)
@@ -23,8 +25,8 @@ export const evento = {
   // dataPrevista acima; não é derivada nem deriva as strings de exibição,
   // trocar a data é editar os dois tipos de campo aqui
   dataPrevistaISO: "2026-09-13",
-  // prazo final da inscrição online (D42) — inscrição é só online, sem cota
-  // presencial no dia; mesmo padrão de 3 campos da data do evento acima
+  // prazo que a inscrição online teve (D42) — mantido só como referência
+  // histórica; inscrições encerradas em definitivo por D54, não é prazo futuro
   dataFechamentoInscricoes: "30 de agosto de 2026",
   dataFechamentoInscricoesCurta: "30 de agosto",
   dataFechamentoInscricoesISO: "2026-08-30",

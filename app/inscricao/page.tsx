@@ -21,7 +21,7 @@ const URL_FORMULARIO = "https://tally.so/r/J9bY7z";
 export const metadata: Metadata = {
   title: "Inscrição",
   description:
-    "Inscreva-se no Braz Skate — pré-inscrição online gratuita, até 30 de agosto de 2026.",
+    "O Braz Skate acontece em 13 de setembro de 2026, no Skate Park de Brazlândia. As inscrições estão encerradas.",
 };
 
 export default function Inscricao() {
@@ -47,9 +47,16 @@ export default function Inscricao() {
                 </>
               ) : (
                 <>
-                  As inscrições estão temporariamente fechadas. O formulário
-                  volta a ficar disponível em breve — acompanhe os avisos
-                  abaixo.
+                  As inscrições do Braz Skate estão encerradas. Obrigado a todo
+                  mundo que se inscreveu — a lista de competidores está fechada.
+                  Fique de olho nos avisos e confira a{" "}
+                  <a
+                    href="/programacao"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    programação do dia
+                  </a>
+                  .
                 </>
               )}
             </p>
@@ -59,7 +66,7 @@ export default function Inscricao() {
                   Fazer pré-inscrição
                 </Botao>
               ) : (
-                <Botao disabled>Inscrições fechadas</Botao>
+                <Botao disabled>Inscrições encerradas</Botao>
               )}
             </div>
           </div>

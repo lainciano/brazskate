@@ -131,7 +131,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         </p>
 
         <div data-hero-item className="mt-4 flex flex-wrap items-center gap-2 sm:mt-10 sm:gap-4">
-          <Botao href="/inscricao">Quero competir</Botao>
+          <Botao href="/programacao">Confira a programação</Botao>
           <Botao
             href="#patrocinio"
             variante="secundario"
@@ -150,7 +150,7 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
             Apoie via Pix
           </Botao>
           <StickerBadge variante="breve" data-carimbo>
-            {evento.inscricoesAbertas ? "Inscrições abertas" : "Inscrições em breve"}
+            {evento.inscricoesAbertas ? "Inscrições abertas" : "Inscrições encerradas"}
           </StickerBadge>
         </div>
       </div>
