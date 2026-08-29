@@ -4,12 +4,13 @@
 > Nada aqui é definitivo até a reunião com a Administração Regional.
 > Ao revisar uma decisão, não apague: mova para "Decisões revisadas" com data
 > e motivo, para manter o histórico.
-> Última atualização: 16/08/2026.
+> Última atualização: 29/08/2026.
 
 ## Decisões tomadas
 
 | # | Decisão | Racional | Data |
 |---|---------|----------|------|
+| D54 | **Encerramento definitivo das inscrições online.** O prazo de inscrição (D42, 30/08/2026) venceu e o Lain encerrou o formulário Tally no painel. O site sai do estado "inscrições abertas": `evento.inscricoesAbertas` vira `false` em definitivo (deixa de ser a trava reversível de D46/D47) — sticker do hero passa a "Inscrições encerradas", o CTA primário do hero passa a "Confira a programação" → `/programacao`, a página `/inscricao` passa ao texto de encerramento, e entra o aviso `inscricoes-encerradas` em `data/avisos.ts` (o aviso `inscricoes-abertas` sai). **Nota:** os patrocinadores locais novos (De la Crew, Skid Skate, Street Loyal) entram numa decisão/entrada complementar — esta linha cobre só o fechamento das inscrições | Prazo de inscrição encerrado; o site precisa refletir o estado real antes do evento (13/09) | 29/08/2026 |
 | D53 | **Overstreet Skateboards, novo patrocinador (nível Patrocínio)** — logo convertida de `docs/assets/logos/logo-overstreet.pdf` (vetor CorelDRAW) para `public/logo-overstreet.webp` via `pdftocairo -transp` (fundo fora do emblema circular já nasceu transparente, sem precisar remover manualmente). Entrada em `data/sponsors.ts`. **Links do Instagram da equipe** adicionados em "Quem organiza" (`components/sobre.tsx`): Luciano (@44lain), Gustavo (@gustavolno), Cauet (@cauetista), Samuel (@samuelsktg). **Crédito das fotos da pista também linka** — `FotoGaleria` ganha `creditoUrl` opcional (`data/gallery.ts`), aplicado às 3 fotos do Cauet em `galeriaPista`; `components/carrossel-fotos.tsx` renderiza o crédito como link quando presente | Pedido do Lain (16/08/2026): novo patrocinador + linkar Instagram de cada um da organização e do crédito das fotos do Cauet | 16/08/2026 |
 | D52 | **Letreiro abaixo do hero passa a mostrar logos de quem já apoia** (UIEMAPV, Censure Theory, Casa do Hip Hop) em vez do texto "Sua marca aqui / Seja um patrocinador". Criado `components/marquee-patrocinadores.tsx`, usado em `components/sobre.tsx` no lugar da `Marquee` de texto (que segue existindo, usada no styleguide). Cada logo linka pro Instagram/site próprio. CTA "seja um patrocinador" não se perde — já vive em `PatrocinioResumo`, mais abaixo na mesma página | Pedido do Lain (16/08/2026): trocar o letreiro pelas logos de quem já apoia, agora que existem apoiadores reais | 16/08/2026 |
 | D51 | **Nível Apoio passa a receber logo e link no site** (antes só "nome no site") — `data/contrapartidas.ts` revisado. Primeiro apoiador fechado: **Casa do Hip Hop Brazlândia** (@casadohiphopbrazlandia, https://www.instagram.com/casadohiphopbrazlandia/), um dos contatos da lista de captação (D40). Logo processada de `docs/assets/logos/logo-casa-do-hip-hop.png` (fundo azul sólido removido por floodfill) para `public/logo-casa-do-hip-hop.webp`. `data/sponsors.ts` ganha a entrada, nível `apoio`. Revisa D30 | Pedido do Lain (16/08/2026): trouxe logo pra um apoiador; decidiu estender "logo no site" pros dois níveis em vez de abrir exceção pontual | 16/08/2026 |
@@ -126,6 +127,9 @@ Estas 4 questões foram explicitadas na spec `2026-07-25-gsap-avancado-design.md
 - **D46 (pausa de pré-inscrição)** — `evento.inscricoesAbertas = false` desde
   07/08/2026. Revertido em 14/08/2026 por **D47**: a pausa não chegou a ser
   necessária, inscrições reabertas.
+- **D42/D46/D47 (inscrição)** — encerrada em definitivo por **D54** no fim do
+  prazo. `evento.inscricoesAbertas` agora significa estado terminal, não
+  pausa reversível.
 - **D9 / "Premiação — estrutura cogitada" (itens de premiação)** — versão
   anterior (07-16/07/2026): 1º lugar 2 shapes + calçado + rolamento + lixa +
   blusa; 2º lugar 1 shape + calçado + lixa + blusa; 3º lugar 1 shape +
