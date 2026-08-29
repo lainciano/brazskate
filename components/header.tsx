@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { resultados } from "@/data/resultados";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
 import { irParaAncora } from "@/lib/motion";
 import { Grao } from "./grao";
@@ -19,12 +20,17 @@ import { Grao } from "./grao";
 const DISTANCIA_TRANSICAO_PX = 96;
 const ALTURA_HEADER_PX = 64; // h-16
 
+// A nav é por âncora; /resultados só entra depois que os resultados são
+// publicados (data/resultados.ts, D5) — antes disso a rota é 404.
 const links = [
   { href: "#sobre", rotulo: "Sobre" },
   { href: "#categorias", rotulo: "Categorias" },
   { href: "#patrocinio", rotulo: "Patrocínio" },
   { href: "#apoie", rotulo: "Apoie" },
   { href: "#contato", rotulo: "Contato" },
+  ...(resultados.publicado
+    ? [{ href: "/resultados", rotulo: "Resultados" }]
+    : []),
 ];
 
 export function Header() {
@@ -38,6 +44,8 @@ export function Header() {
   // depois do scroll visual ir pra uma seção clara.
   const aoClicarLink = useCallback(
     (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      // Link de rota (ex.: /resultados): deixa o navegador seguir normalmente.
+      if (!href.startsWith("#")) return;
       const alvo = document.querySelector(href);
       if (!alvo) return;
       evento.preventDefault();

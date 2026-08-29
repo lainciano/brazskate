@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { resultados } from "@/data/resultados";
 
 // Exigido por "output: export" (docs/03-SPEC-SITE.md §2) — sem isso o
 // build falha: rota de metadata precisa declarar geração estática.
@@ -44,5 +45,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    // /resultados só entra no sitemap depois de publicado (data/resultados.ts,
+    // D5) — enquanto a rota responde 404, fica de fora.
+    ...(resultados.publicado
+      ? [
+          {
+            url: `${SITE_URL}/resultados`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.6,
+          },
+        ]
+      : []),
   ];
 }
