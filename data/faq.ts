@@ -35,7 +35,7 @@ export const faq = [
     id: "cota-presencial",
     pergunta: "Dá pra se inscrever no dia?",
     resposta:
-      "Não — a inscrição é só online, pelo formulário de pré-inscrição, até 30 de agosto de 2026. Não há inscrição presencial no credenciamento.",
+      "Não. As inscrições estão encerradas e não há inscrição presencial no credenciamento. Eram exclusivamente online, pelo formulário de pré-inscrição, com prazo até 30 de agosto de 2026.",
   },
   {
     id: "chuva",

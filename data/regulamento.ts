@@ -22,7 +22,7 @@ export const regulamento = {
       id: "inscricao",
       titulo: "Inscrição",
       texto:
-        "Inscrição 100% online e gratuita, até 30 de agosto de 2026. Não há inscrição presencial no dia do evento.",
+        "Inscrição 100% online e gratuita, com prazo até 30 de agosto de 2026 — encerrada. Não há inscrição presencial no dia do evento.",
     },
     {
       id: "formato",
