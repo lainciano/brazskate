@@ -35,4 +35,22 @@ export const patrocinadores: readonly Patrocinador[] = [
     url: "https://www.instagram.com/overstreetskate/",
     nivel: "patrocinio",
   },
+  {
+    nome: "Skid Skateshop",
+    logoSrc: "/logo-skid-skate.webp",
+    url: "https://www.instagram.com/skidskateshop/",
+    nivel: "patrocinio",
+  },
+  {
+    nome: "De la Crew",
+    logoSrc: "/logo-delacrew.webp",
+    url: "https://www.instagram.com/hamburgueriadelacrew/",
+    nivel: "patrocinio",
+  },
+  {
+    nome: "Street Loyal",
+    logoSrc: "/logo-street-loyal.webp",
+    url: "https://www.instagram.com/streetloyalbr/",
+    nivel: "patrocinio",
+  },
 ];
