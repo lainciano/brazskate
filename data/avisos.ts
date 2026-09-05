@@ -6,6 +6,14 @@
 
 export const avisos = [
   {
+    id: "patrocinio-skid-delacrew-street-loyal",
+    dataISO: "2026-09-04",
+    data: "04/09/2026",
+    titulo: "Skid Skateshop, De la Crew e Street Loyal são patrocinadores",
+    texto:
+      "Mais três patrocínios comerciais fechados: Skid Skateshop (@skidskateshop), De la Crew (@hamburgueriadelacrew) e Street Loyal (@streetloyalbr). A captação continua em andamento.",
+  },
+  {
     id: "apoio-casa-do-hip-hop",
     dataISO: "2026-08-16",
     data: "16/08/2026",

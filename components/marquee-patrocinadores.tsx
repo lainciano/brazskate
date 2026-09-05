@@ -13,6 +13,18 @@ import { patrocinadores } from "@/data/sponsors";
 
 type LogoApoiador = { nome: string; logoSrc: string; url: string; largura: number; altura: number };
 
+// Dimensões reais de cada arquivo em public/ — Image exige width/height
+// explícitos; a altura fixa em CSS (h-10/h-12) controla o tamanho real.
+// Fallback 800×800 para logo sem entrada no mapa.
+const dimensoes: Record<string, { largura: number; altura: number }> = {
+  "/logo-censure.webp": { largura: 1200, altura: 198 },
+  "/logo-casa-do-hip-hop.webp": { largura: 800, altura: 757 },
+  "/logo-overstreet.webp": { largura: 800, altura: 800 },
+  "/logo-skid-skate.webp": { largura: 1257, altura: 250 },
+  "/logo-delacrew.webp": { largura: 535, altura: 600 },
+  "/logo-street-loyal.webp": { largura: 800, altura: 800 },
+};
+
 function logosApoiadores(): readonly LogoApoiador[] {
   const institucionais = institutionalPartners.map((p) => ({
     nome: p.nome,
@@ -28,10 +40,7 @@ function logosApoiadores(): readonly LogoApoiador[] {
       nome: p.nome,
       logoSrc: p.logoSrc as string,
       url: p.url,
-      // dimensões reais de cada arquivo em public/ — Image exige width/height
-      // explícitos; a altura fixa em CSS (h-10/h-12) controla o tamanho real.
-      largura: p.logoSrc === "/logo-censure.webp" ? 1200 : 800,
-      altura: p.logoSrc === "/logo-censure.webp" ? 198 : 757,
+      ...(dimensoes[p.logoSrc as string] ?? { largura: 800, altura: 800 }),
     }));
 
   return [...institucionais, ...comerciais];
