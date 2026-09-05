@@ -6,7 +6,7 @@
 > produziu **datas previstas** — mas **não** um compromisso formal. Data
 > oficial, valores/itens de premiação e parte da infraestrutura seguem em
 > aberto e podem alterar qualquer ponto deste documento.
-> Última atualização: 25/07/2026.
+> Última atualização: 04/09/2026.
 
 ## O que é
 
@@ -35,11 +35,10 @@ de todo o Distrito Federal e entorno.
   (composição da equipe em formação; será detalhada após reunião presencial).
 - Organização núcleo: 3 skatistas + 1 administrador regional apoiador.
 - **UIEMAPV** (instituto/ONG parceiro, [@uiemapvsocial](https://www.instagram.com/uiemapvsocial)):
-  responsável pela estrutura e premiação do evento. Escopo **comprometido**
-  a princípio (D17) — ainda não entregue: **água, tenda, som, fechamento da
-  rua, mesa de frios e frutas, premiação, medalhas e troféu**. Parceria
-  formalmente confirmada pelo instituto (D18), mas **o site ainda não o
-  menciona** — falta o logo e os links oficiais (I7).
+  responsável pela estrutura e premiação do evento. Escopo comprometido
+  (D17) e parceria confirmada pelo instituto (D18); chegou a ser publicada
+  como parceira institucional no site (D28) e foi **retirada do site em
+  04/09/2026, a pedido da organização (D57)**.
 - **Administração Regional:** confirmou banheiros e organização da área de
   público, fechando o restante da infraestrutura ao lado do compromisso da
   UIEMAPV (P3 resolvida em 25/07/2026).

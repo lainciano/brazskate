@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
@@ -9,9 +10,10 @@ import { StickerBadge } from "@/components/sticker-badge";
 import { programacao } from "@/data/programacao";
 
 // Página /programacao (item 9 de docs/03-SPEC-SITE.md §3.2; D32,
-// docs/02-DECISOES.md): renderiza SEMPRE de data/programacao.ts. Sequência
-// e formato já fechados (D26/D35); horários gerais confirmados em D37 —
-// etapa sem `horario` mostra StickerBadge "em breve" até a ASB definir.
+// docs/02-DECISOES.md): renderiza SEMPRE de data/programacao.ts. Cronograma
+// oficial do dia publicado em D58 — arte da organização (public/cronograma.jpg)
+// em destaque; best trick e apuração seguem com StickerBadge "em breve" até a
+// ASB definir horário.
 
 export const metadata: Metadata = {
   title: "Programação",
@@ -34,9 +36,10 @@ export default function Programacao() {
               Programação
             </h1>
             <p className="mt-6 max-w-[65ch] text-lg leading-[1.55] text-(--fg-secundario)">
-              Como o dia funciona, do credenciamento à premiação. Horários
-              gerais já confirmados — os de cada etapa restante ainda estão
-              em definição.
+              Como o dia funciona, da abertura e check-in à premiação.
+              Horários das baterias, da pausa e da premiação definidos no
+              cronograma oficial — best trick e apuração ainda sem horário
+              fixo.
             </p>
           </div>
         </section>
@@ -46,6 +49,36 @@ export default function Programacao() {
 
           <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
             <Reveal>
+              <div data-reveal>
+                <SectionHeader
+                  eyebrow="Cronograma"
+                  titulo="Programação visual do dia"
+                />
+              </div>
+              <figure data-reveal className="mt-8">
+                <Image
+                  src="/cronograma.jpg"
+                  alt="Cronograma do Braz Skate: 9h abertura e check-in, 10h Feminino, 10h30 Iniciante, pausa para almoço, 13h30 Amador, 15h Master, 17h Premiação."
+                  width={1080}
+                  height={1350}
+                  className="mx-auto w-full max-w-2xl rounded-card border-2 border-(--borda) object-contain"
+                  priority
+                />
+                <figcaption className="sr-only">
+                  Cronograma do dia 13 de setembro de 2026.
+                </figcaption>
+              </figure>
+            </Reveal>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
+            <Reveal>
+              <div data-reveal>
+                <SectionHeader
+                  eyebrow="Detalhamento"
+                  titulo="Como o dia funciona"
+                />
+              </div>
               <ol className="flex flex-col gap-8">
                 {programacao.etapas.map((etapa, indice) => (
                   <li key={etapa.id} data-reveal>
