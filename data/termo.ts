@@ -20,7 +20,7 @@ export const termo = {
         {
           titulo: "2. Responsabilidade e isenção",
           texto:
-            "A ASB — Associação Skate Brazlândia, a Administração Regional, o instituto UIEMAPV e os patrocinadores do evento não se responsabilizam por: lesões, acidentes ou danos pessoais durante a prova ou antes/depois dela; perda, roubo ou dano a equipamentos pessoais (skate, segurança, pertences); danos causados a terceiros ou propriedade durante a prova.",
+            "A ASB — Associação Skate Brazlândia, a Administração Regional e os patrocinadores do evento não se responsabilizam por: lesões, acidentes ou danos pessoais durante a prova ou antes/depois dela; perda, roubo ou dano a equipamentos pessoais (skate, segurança, pertences); danos causados a terceiros ou propriedade durante a prova.",
         },
         {
           titulo: "3. Saúde e condições físicas",
@@ -56,7 +56,7 @@ export const termo = {
         {
           titulo: "2. Responsabilidade",
           texto:
-            "Eu, como responsável legal, assumo a responsabilidade integral por quaisquer lesões ou acidentes do menor durante o evento e por danos causados pelo menor a terceiros ou propriedade. A ASB, a Administração Regional, o instituto UIEMAPV e patrocinadores não se responsabilizam pelos itens acima.",
+            "Eu, como responsável legal, assumo a responsabilidade integral por quaisquer lesões ou acidentes do menor durante o evento e por danos causados pelo menor a terceiros ou propriedade. A ASB, a Administração Regional e patrocinadores não se responsabilizam pelos itens acima.",
         },
         {
           titulo: "3. Saúde do menor",

@@ -61,14 +61,6 @@ export const avisos = [
     texto:
       "O formulário de pré-inscrição já está no ar. Garanta sua vaga o quanto antes.",
   },
-  {
-    id: "parceria-uiemapv",
-    dataISO: "2026-07-25",
-    data: "25/07/2026",
-    titulo: "UIEMAPV é parceira institucional",
-    texto:
-      "O instituto UIEMAPV (@uiemapvsocial) confirmou parceria institucional com o Braz Skate, dando lastro pra captação e execução do evento.",
-  },
 ] as const;
 
 export type Aviso = (typeof avisos)[number];

@@ -12,11 +12,10 @@ import { contrapartidas } from "@/data/contrapartidas";
 
 // Página /patrocinio (roadmap PR 5): copy adaptado de
 // docs/media-kit-braz-skate.md no tom institucional (§1.5 — "proposta
-// séria, retorno real"). Parceiros institucionais (I7, D18) entram depois de
-// "Formas de apoio"; contato pelos canais oficiais do evento. Tópicos
-// "Infraestrutura" e "Institucional" removidos das formas de apoio em D39
-// (docs/02-DECISOES.md) — a UIEMAPV já cobre infraestrutura (D17) e o
-// selo institucional isolado deixou de fazer sentido como forma própria.
+// séria, retorno real"). Parceiros institucionais entram depois de
+// "Formas de apoio" quando houver (data/partners.ts vazio após D57);
+// contato pelos canais oficiais do evento. Tópicos "Infraestrutura" e
+// "Institucional" removidos das formas de apoio em D39 (docs/02-DECISOES.md).
 // Patrocinadores comerciais (data/sponsors.ts, D30/D50) entram entre
 // Contrapartidas e Parceiros institucionais — grade nasce vazia até
 // haver patrocinador real (regra anti-casca-vazia), primeiro fechado em
