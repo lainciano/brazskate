@@ -16,7 +16,7 @@ import { galeriaCamp2021 } from "@/data/gallery";
 // os nomes por enquanto, sem inventar cargo formal. Instagram de cada um
 // adicionado em D53.
 const quemOrganiza = [
-  { nome: "Luciano", instagram: "44lain" },
+  { nome: "Luciano", instagram: "lainciano" },
   { nome: "Gustavo", instagram: "gustavolno" },
   { nome: "Cauet", instagram: "cauetista" },
   { nome: "Samuel", instagram: "samuelsktg" },

@@ -135,11 +135,11 @@ export function Footer() {
         <p className="mt-2 text-sm text-(--fg-secundario)">
           Desenvolvido por{" "}
           <a
-            href="https://www.instagram.com/44lain"
+            href="https://www.instagram.com/lainciano"
             rel="noopener"
             className="font-semibold underline-offset-4 hover:underline"
           >
-            @44lain
+            @lainciano
           </a>
         </p>
       </div>
