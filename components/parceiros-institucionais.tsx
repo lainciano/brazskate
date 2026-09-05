@@ -3,10 +3,12 @@ import { institutionalPartners } from "@/data/partners";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 
-// Parceiros institucionais (I7, docs/02-DECISOES.md D18): tom celebratório
-// mas respeitoso — parceiros são colaboradores, não patrocinadores
-// comerciais. Renderiza SEMPRE de data/partners.ts.
+// Parceiros institucionais: tom celebratório mas respeitoso — parceiros
+// são colaboradores, não patrocinadores comerciais. Renderiza SEMPRE de
+// data/partners.ts; se o array estiver vazio, não renderiza nada (regra
+// anti-casca-vazia).
 export function ParceirosInstitucionais() {
+  if (institutionalPartners.length === 0) return null;
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-24">
       <Reveal>
