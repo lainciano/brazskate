@@ -221,16 +221,18 @@ na entrada):
 |---|---|
 | Organização — pensou o evento desde o início e executou | Luciano, Gustavo, Cauet, Samuel |
 | Fotografia e vídeo | Duda, Ítalo, Victor, Nerd |
-| Apoio no dia — skatistas e equipe | João Paulo, Rafael, Danilo |
+| Sempre por perto | João Paulo, Rafael, Danilo |
 
 - **Fonte única:** `quemOrganiza` sai de `components/sobre.tsx:18` e vai pra
   `data/equipe.ts` (com o Instagram de cada um), consumido tanto por "Quem
   organiza" quanto pelos Agradecimentos — um nome novo na organização não
   pode ficar dessincronizado entre as duas seções.
-- `data/equipe.ts` também exporta `fotografiaEVideo` e `apoioNoDia`
-  (`{ nome: string; instagram?: string }`). Organização linka pro Instagram
-  (já existe); os demais **só com link se o Lain passar o perfil** — sem link,
-  sticker sem `<a>`.
+- `data/equipe.ts` também exporta `fotografiaEVideo` e `sempreProPerto`
+  (`{ nome: string; instagram?: string }`) — este último sem função fixa no
+  dia: cobriu o que faltava, resolveu na hora, até cobriu ausência de algum
+  organizador quando precisou. Organização linka pro Instagram (já existe);
+  os demais **só com link se o Lain passar o perfil** — sem link, sticker
+  sem `<a>`.
 - Grafia confirmada pelo Lain: "Ítalo", "João Paulo", "Victor" (a pasta
   `VECTOR` no Drive é do Victor — crédito das fotos `vector_*` é "Victor").
 - Aparece junto com a galeria (mesma flag `galeria.publicada`).
