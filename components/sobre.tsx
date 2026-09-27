@@ -68,18 +68,27 @@ export function Sobre() {
               <ul className="mt-4 flex max-w-[65ch] flex-wrap gap-3">
                 {organizacao.map((pessoa, indice) => (
                   <li key={pessoa.nome}>
-                    <a
-                      href={`https://instagram.com/${pessoa.instagram}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    {pessoa.instagram ? (
+                      <a
+                        href={`https://instagram.com/${pessoa.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <StickerBadge
+                          variante={indice % 2 === 0 ? "info" : "breve"}
+                          data-carimbo
+                        >
+                          {pessoa.nome}
+                        </StickerBadge>
+                      </a>
+                    ) : (
                       <StickerBadge
                         variante={indice % 2 === 0 ? "info" : "breve"}
                         data-carimbo
                       >
                         {pessoa.nome}
                       </StickerBadge>
-                    </a>
+                    )}
                   </li>
                 ))}
               </ul>
