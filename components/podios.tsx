@@ -21,13 +21,13 @@ export function Podios({
   podios: Record<CategoriaId, FotoEvento | null>;
 }) {
   const entradas = (Object.entries(podios) as [CategoriaId, FotoEvento | null][]).filter(
-    ([, foto]) => foto !== null,
+    (entrada): entrada is [CategoriaId, FotoEvento] => entrada[1] !== null,
   );
 
   if (entradas.length === 0) return null;
 
   return (
-    <ul className="grid grid-cols-2 gap-4 sm:gap-6" data-reveal>
+    <ul className="grid grid-cols-2 gap-4 sm:gap-6">
       {entradas.map(([categoriaId, foto], indice) => (
         <li key={categoriaId} data-carimbo>
           <figure
@@ -35,8 +35,8 @@ export function Podios({
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-card">
               <Image
-                src={(foto as FotoEvento).src}
-                alt={(foto as FotoEvento).alt}
+                src={foto.src}
+                alt={foto.alt}
                 fill
                 sizes="(min-width: 640px) 260px, 45vw"
                 className="object-cover"
@@ -48,17 +48,17 @@ export function Podios({
               </p>
               <p className="mt-1 text-[0.8125rem] text-(--fg-secundario)">
                 Foto:{" "}
-                {(foto as FotoEvento).creditoUrl ? (
+                {foto.creditoUrl ? (
                   <a
-                    href={(foto as FotoEvento).creditoUrl}
+                    href={foto.creditoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline-offset-2 hover:underline"
                   >
-                    {(foto as FotoEvento).credito}
+                    {foto.credito}
                   </a>
                 ) : (
-                  (foto as FotoEvento).credito
+                  foto.credito
                 )}
               </p>
             </figcaption>
