@@ -21,6 +21,8 @@
   faixa horizontal com `pin` + `scrub`.
 - **Home e nav:** teaser pós-evento na home e links "Galeria" e "Resultados"
   na nav, condicionais às flags de publicação.
+- **Agradecimentos** (pedido do Lain, 27/09/2026): seção completa no fim da
+  `/galeria` + uma linha curta na home apontando pra ela (§4.4).
 
 **Não entra (anti-escopo desta etapa):**
 
@@ -90,12 +92,12 @@ O prefixo do arquivo indica o fotógrafo.
 | duda_485__IMG_1041 | 3456×5184 | retrato | Duda | |
 | fem_664__IMG_8721 | 3598×4797 | retrato | a confirmar (pasta `VECTOR/Feminino`) | |
 | fem_668__IMG_8765 | 1615×2153 | retrato | a confirmar (pasta `VECTOR/Feminino`) | |
-| vector_495__IMG_0108 | 4000×6000 | retrato | Vector | |
-| vector_644__IMG_9854 | 4115×4000 | ~quadrada | Vector | |
-| vector_646__IMG_9890 | 6000×4000 | paisagem | Vector | |
-| vector_647__IMG_9891 | 4000×6000 | retrato | Vector | |
+| vector_495__IMG_0108 | 4000×6000 | retrato | Victor | |
+| vector_644__IMG_9854 | 4115×4000 | ~quadrada | Victor | |
+| vector_646__IMG_9890 | 6000×4000 | paisagem | Victor | |
+| vector_647__IMG_9891 | 4000×6000 | retrato | Victor | |
 
-`creditoUrl`: só o do Cauet é conhecido (`@cauetista`, D53). Duda e Vector
+`creditoUrl`: só o do Cauet é conhecido (`@cauetista`, D53). Duda e Victor
 entram só com nome até o Lain passar os perfis (política de placeholder).
 
 ### 2.3 Vídeo
@@ -204,6 +206,36 @@ não renderiza o slot. Entrada: `Reveal` (stencil) no título e "carimbada"
   primário "Ver a galeria"; abaixo, bloco "Pódios 2026" apontando pra
   `/resultados`. Posição exata na home: logo após o hero (mockup).
   Sobre/acervo 2021 sem mudança.
+- Abaixo do bloco "Pódios 2026", uma linha curta de agradecimento
+  ("Valeu a quem fez o dia acontecer") linkando pra `/galeria#agradecimentos`.
+
+### 4.4 Agradecimentos (fim da `/galeria`)
+
+Registro concreto (claro), `SectionHeader` com eyebrow "Quem fez acontecer"
+e h2 "Agradecimentos", `id="agradecimentos"`. Três grupos, nesta ordem, cada
+um com h3 + nomes em `StickerBadge` (mesmo padrão visual de "Quem organiza"
+em `components/sobre.tsx`, variantes alternadas `info`/`breve`, "carimbada"
+na entrada):
+
+| Grupo (h3) | Nomes |
+|---|---|
+| Organização — pensou o evento desde o início e executou | Luciano, Gustavo, Cauet, Samuel |
+| Fotografia e vídeo | Duda, Ítalo, Victor, Nerd |
+| Apoio no dia — skatistas e equipe | João Paulo, Rafael, Danilo |
+
+- **Fonte única:** `quemOrganiza` sai de `components/sobre.tsx:18` e vai pra
+  `data/equipe.ts` (com o Instagram de cada um), consumido tanto por "Quem
+  organiza" quanto pelos Agradecimentos — um nome novo na organização não
+  pode ficar dessincronizado entre as duas seções.
+- `data/equipe.ts` também exporta `fotografiaEVideo` e `apoioNoDia`
+  (`{ nome: string; instagram?: string }`). Organização linka pro Instagram
+  (já existe); os demais **só com link se o Lain passar o perfil** — sem link,
+  sticker sem `<a>`.
+- Grafia confirmada pelo Lain: "Ítalo", "João Paulo", "Victor" (a pasta
+  `VECTOR` no Drive é do Victor — crédito das fotos `vector_*` é "Victor").
+- Aparece junto com a galeria (mesma flag `galeria.publicada`).
+- Tom celebratório (D6), sem hierarquia de importância entre grupos além da
+  ordem.
 
 ## 5. Componentes e motion
 
@@ -217,7 +249,9 @@ Server Components por padrão; `"use client"` só onde há interação (D13).
 | `components/lightbox.tsx` | client | Diálogo, Flip, navegação |
 | `components/faixa-scroll.tsx` | client | `pin` + `scrub` |
 | `components/podios.tsx` | server | Grade 2×2 de Resultados |
-| `components/teaser-pos-evento.tsx` | server | Teaser da home |
+| `components/teaser-pos-evento.tsx` | server | Teaser da home (inclui a linha de agradecimento) |
+| `components/agradecimentos.tsx` | server | Seção §4.4, lê `data/equipe.ts` |
+| `data/equipe.ts` | dado | Organização (migrada de `sobre.tsx`), fotografia/vídeo, apoio no dia |
 
 **Lightbox:** `role="dialog"` + `aria-modal`, foco preso, primeiro foco em
 Fechar, Esc fecha, setas do teclado e swipe (GSAP `Observer`) navegam, foco
@@ -281,7 +315,8 @@ Metadado removido.
 |---|---|
 | Base da permissão de cada foto da §2.2 | A foto correspondente |
 | Crédito das duas fotos `fem_` | Essas duas fotos |
-| Perfis de Duda e Vector | Só o link do crédito (nome entra) |
+| Perfis de Duda e Victor | Só o link do crédito (nome entra) |
+| Perfis de Ítalo, Nerd, João Paulo, Rafael, Danilo | Só o link nos Agradecimentos (nome entra) |
 | Trecho do loop de drone | `loop-drone` (a página pode sair com poster estático) |
 | Aftermovie / vídeos editados | Nada nesta etapa — futuro |
 | Ligar `galeria.publicada` / `resultados.publicado` | Publicação (commit do Lain) |

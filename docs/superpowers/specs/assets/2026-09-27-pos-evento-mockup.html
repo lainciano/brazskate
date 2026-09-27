@@ -298,6 +298,47 @@ footer{font-size:.85rem;color:var(--fg2);border-top:1px solid var(--line);paddin
   </div>
 </div>
 
+<!-- 4. AGRADECIMENTOS -->
+<section class="sh" id="agradecimentos">
+  <span class="eyebrow">Tela 4 · Fim da /galeria + linha na home</span>
+  <h2>Agradecimentos</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+  <p class="lead">Quem pensou o evento desde o início, quem registrou e quem segurou o dia na pista. Os nomes aparecem em stickers, igual ao "Quem organiza" da home, e a organização sai da mesma fonte de dados.</p>
+</section>
+<div class="compare">
+  <div class="side">
+    <span class="side-label"><span class="dot"></span>Antes</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/ · Sobre</span></div>
+      <div class="screen">
+        <div class="pad" style="display:grid;gap:10px">
+          <b style="font-size:.85rem">Quem organiza</b>
+          <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Luciano</span><span class="sticker g" style="font-size:.6rem">Gustavo</span><span class="sticker" style="font-size:.6rem">Cauet</span><span class="sticker g" style="font-size:.6rem">Samuel</span></div>
+          <span class="mcap">Único lugar com nomes da equipe. Fotógrafos e equipe do dia não aparecem em lugar nenhum.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side depois">
+    <span class="side-label"><span class="dot"></span>Depois · fim da /galeria</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/galeria#agradecimentos</span></div>
+      <div class="screen">
+        <div class="pad" style="display:grid;gap:14px" id="agr">
+          <div style="display:grid;gap:4px"><span class="eyebrow" style="font-size:.62rem">Quem fez acontecer</span><div class="mh2">Agradecimentos</div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Organização</b><span class="mcap">Pensou o evento desde o início e executou.</span>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Luciano</span><span class="sticker g" style="font-size:.6rem">Gustavo</span><span class="sticker" style="font-size:.6rem">Cauet</span><span class="sticker g" style="font-size:.6rem">Samuel</span></div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Fotografia e vídeo</b>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Duda</span><span class="sticker g" style="font-size:.6rem">Ítalo</span><span class="sticker" style="font-size:.6rem">Victor</span><span class="sticker g" style="font-size:.6rem">Nerd</span></div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Apoio no dia · skatistas e equipe</b>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">João Paulo</span><span class="sticker g" style="font-size:.6rem">Rafael</span><span class="sticker" style="font-size:.6rem">Danilo</span></div></div>
+        </div>
+        <div class="teaser" style="margin-top:auto"><div class="grain"></div><span class="mcap">Na home, abaixo de "Pódios 2026":</span><b style="font-size:.8rem">Valeu a quem fez o dia acontecer →</b></div>
+      </div>
+    </div>
+    <div class="ctl"><button class="btn" id="replayAgr" type="button">Rever entrada</button></div>
+  </div>
+</div>
+<p class="note">Organização linka pro Instagram, como já faz hoje. Os outros nomes ganham link só quando os perfis forem passados; até lá o sticker não é link.</p>
+
 <!-- FEATURES -->
 <section class="sh" id="feats">
   <span class="eyebrow">O que entra, quando</span>
@@ -314,6 +355,7 @@ footer{font-size:.85rem;color:var(--fg2);border-top:1px solid var(--line);paddin
     <li>Uma faixa com pin + scrub, desligada em reduced-motion</li>
     <li>Loop de drone mudo, com poster, que pausa fora da tela e com a aba oculta</li>
     <li>Script de mídia: remove EXIF, gera WebP 640w e 1600w, vídeo MP4 e WebM ≤1,5MB</li>
+    <li>Agradecimentos no fim da galeria, linha na home, nomes da organização em <code>data/equipe.ts</code></li>
   </ul></div>
   <div class="fcol"><span class="sticker b">Fase 2 · OGL (opcional)</span><h3>Só se passar na medição</h3><ul>
     <li>Um único canvas no loop de drone, com grão e duotone animados no GPU</li>
@@ -323,7 +365,7 @@ footer{font-size:.85rem;color:var(--fg2);border-top:1px solid var(--line);paddin
   <div class="fcol muted"><span class="sticker g">Pendente</span><h3>Espera você</h3><ul>
     <li>Aftermovie e qualquer vídeo editado</li>
     <li>Base da permissão de cada uma das 33 fotos da seleção</li>
-    <li>Perfis (link) da Duda e do Vector para o crédito</li>
+    <li>Perfis (link) de Duda, Victor, Ítalo, Nerd, João Paulo, Rafael e Danilo</li>
     <li>Nomes e colocações, se um dia forem publicados</li>
   </ul></div>
   <div class="fcol muted"><span class="sticker">Descartado</span><h3>Fica de fora</h3><ul>
@@ -371,6 +413,10 @@ footer{font-size:.85rem;color:var(--fg2);border-top:1px solid var(--line);paddin
     gsap.fromTo('#podios .frame', {scale:1.15, opacity:0}, {scale:1, opacity:1, duration:.5, ease:'elastic.out(1,0.6)', stagger:.09, clearProps:'scale,opacity'});
   }
   document.getElementById('replayPodios').addEventListener('click', stamp);
+  document.getElementById('replayAgr').addEventListener('click', function(){
+    if (!hasG || reduce) return;
+    gsap.fromTo('#agr .sticker', {scale:1.15, opacity:0}, {scale:1, opacity:1, duration:.4, ease:'elastic.out(1,0.6)', stagger:.05, clearProps:'scale,opacity'});
+  });
 
   // Flip lightbox
   var phone = document.getElementById('galPhone');
