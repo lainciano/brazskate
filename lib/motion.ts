@@ -111,17 +111,22 @@ export async function irParaAncora(alvo: Element, offsetPx = 0) {
   alvo.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// Flip é carregado sob demanda (não no idle da página) porque só é usado
-// numa interação — o menu mobile (docs/superpowers/specs/
-// 2026-07-26-gsap-avancado-parte2-design.md §2), não em conteúdo que
-// precisa animar ao carregar. `gsap` core já deve estar carregado antes
-// (via alguma instância de `useMotion` na página), mas o import é
-// idempotente — reimportar um módulo já resolvido só devolve o cache.
+// Flip + Observer são carregados sob demanda (não no idle da página)
+// porque só são usados em interação — o menu mobile (Flip apenas,
+// docs/superpowers/specs/2026-07-26-gsap-avancado-parte2-design.md §2) e
+// o lightbox da galeria pós-evento (Flip + Observer, docs/superpowers/
+// specs/2026-09-27-pos-evento-galeria-resultados-design.md §5). `gsap`
+// core já deve estar carregado antes (via alguma instância de `useMotion`
+// na página), mas o import é idempotente — reimportar um módulo já
+// resolvido só devolve o cache. Observer vem sempre junto: o único
+// consumidor de Observer (lightbox) também precisa do Flip, e carregar
+// os dois numa função só evita um segundo Promise.all no chamador.
 export async function carregarFlip() {
-  const [{ gsap }, { Flip }] = await Promise.all([
+  const [{ gsap }, { Flip }, { Observer }] = await Promise.all([
     import("gsap"),
     import("gsap/Flip"),
+    import("gsap/Observer"),
   ]);
-  gsap.registerPlugin(Flip);
-  return { gsap, Flip };
+  gsap.registerPlugin(Flip, Observer);
+  return { gsap, Flip, Observer };
 }
