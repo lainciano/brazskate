@@ -122,3 +122,24 @@ export const galeriaPista: readonly FotoGaleria[] = [
     permissao: true,
   },
 ];
+
+// Fotos do evento de 2026, pós-evento (docs/superpowers/specs/
+// 2026-09-27-pos-evento-galeria-resultados-design.md). `baseDaPermissao`
+// registra POR QUE a foto pode entrar — não basta `permissao: true`
+// (que só garante que alguém checou), porque menor não-inscrito precisa
+// de autorização avulsa, nunca do termo padrão (ver §3.2 da spec).
+export type BaseDaPermissao =
+  | "termo-inscrito" // inscrito; cláusula 5 do termo, data/termo.ts
+  | "autorizacao-avulsa" // não inscrito, autorização registrada à parte
+  | "sem-pessoa-identificavel"; // ninguém reconhecível na foto
+
+export type FotoEvento = FotoGaleria & {
+  largura: number; // do master, pós-orientação EXIF
+  altura: number;
+  baseDaPermissao: BaseDaPermissao;
+};
+
+// Seleção de fotos do evento (galeria pós-evento + pódios de /resultados).
+// Vazio até o Lain preencher a coluna "Base da permissão" na spec —
+// política de placeholder (AGENT.md): nenhuma foto entra sem essa coluna.
+export const galeriaPosEvento: readonly FotoEvento[] = [];
