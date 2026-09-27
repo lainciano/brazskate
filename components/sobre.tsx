@@ -5,22 +5,13 @@ import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
 import { galeriaCamp2021 } from "@/data/gallery";
+import { organizacao } from "@/data/equipe";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
 // celebratório. Fotos do camp 2021 entram como colagem (I1 fechada, D31) —
 // array vazio não renderiza nada, então a seção nunca fica com moldura
 // vazia esperando conteúdo. Conteúdo baseado em docs/ASB.md e
 // docs/01-CONTEXTO.md.
-
-// P7 (docs/02-DECISOES.md): funções ainda não fechadas pra todo mundo — só
-// os nomes por enquanto, sem inventar cargo formal. Instagram de cada um
-// adicionado em D53.
-const quemOrganiza = [
-  { nome: "Luciano", instagram: "lainciano" },
-  { nome: "Gustavo", instagram: "gustavolno" },
-  { nome: "Cauet", instagram: "cauetista" },
-  { nome: "Samuel", instagram: "samuelsktg" },
-];
 
 // galeriaCamp2021 é um Record por categoria (D33) — a regra anti-casca-vazia
 // precisa checar as 3 chaves, não só "array.length", senão o título "O
@@ -75,7 +66,7 @@ export function Sobre() {
                 Quem organiza
               </h3>
               <ul className="mt-4 flex max-w-[65ch] flex-wrap gap-3">
-                {quemOrganiza.map((pessoa, indice) => (
+                {organizacao.map((pessoa, indice) => (
                   <li key={pessoa.nome}>
                     <a
                       href={`https://instagram.com/${pessoa.instagram}`}
