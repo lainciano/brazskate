@@ -166,7 +166,7 @@ export function Lightbox({
         style={{ aspectRatio: `${foto.largura} / ${foto.altura}` }}
       >
         <Image
-          src={foto.src}
+          src={foto.srcGrande}
           alt={foto.alt}
           fill
           sizes="(min-width: 768px) 768px, 100vw"

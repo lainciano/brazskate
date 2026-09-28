@@ -38,29 +38,35 @@ export function GaleriaGrade({ fotos }: { fotos: readonly FotoEvento[] }) {
   if (fotos.length === 0) return null;
 
   return (
-    <div data-reveal className="grid grid-cols-3 gap-1.5">
-      {fotos.map((foto, indice) => (
-        <button
-          key={foto.src}
-          ref={(el) => {
-            botoesRef.current[indice] = el;
-          }}
-          type="button"
-          onClick={() => abrir(indice)}
-          aria-label={`Ver foto: ${foto.alt}`}
-          data-carimbo
-          className="relative aspect-square overflow-hidden focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-azul-600 focus-visible:outline-offset-2"
-        >
-          <Image
-            src={foto.src}
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 33vw, 33vw"
-            className="object-cover"
-          />
-        </button>
-      ))}
+    <>
+      <div data-reveal className="grid grid-cols-3 gap-1.5">
+        {fotos.map((foto, indice) => (
+          <button
+            key={foto.src}
+            ref={(el) => {
+              botoesRef.current[indice] = el;
+            }}
+            type="button"
+            onClick={() => abrir(indice)}
+            aria-label={`Ver foto: ${foto.alt}`}
+            data-carimbo
+            className="relative aspect-square overflow-hidden focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-azul-600 focus-visible:outline-offset-2"
+          >
+            <Image
+              src={foto.src}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 33vw, 33vw"
+              className="object-cover"
+            />
+          </button>
+        ))}
+      </div>
 
+      {/* Fora do div data-reveal, de propósito: depois da animação o GSAP deixa
+          `transform: matrix(1,0,0,1,0,0)` nele, e qualquer ancestral com
+          transform vira o containing block de `position: fixed` — o lightbox
+          ficava do tamanho da grade em vez da tela. */}
       <Lightbox
         fotos={fotos}
         indiceAberto={indiceAberto}
@@ -68,6 +74,6 @@ export function GaleriaGrade({ fotos }: { fotos: readonly FotoEvento[] }) {
         onFechar={fechar}
         onNavegar={navegar}
       />
-    </div>
+    </>
   );
 }

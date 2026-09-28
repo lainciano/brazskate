@@ -1,22 +1,28 @@
-import { GaleriaCamp2021 } from "./galeria-2021";
+import { Botao } from "./botao";
+import { Destaques2026 } from "./destaques-2026";
 import { MarqueePatrocinadores } from "./marquee-patrocinadores";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
-import { galeriaCamp2021 } from "@/data/gallery";
+import { galeria } from "@/data/galeria";
+import { galeriaPosEvento } from "@/data/gallery";
 import { organizacao } from "@/data/equipe";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
-// celebratório. Fotos do camp 2021 entram como colagem (I1 fechada, D31) —
-// array vazio não renderiza nada, então a seção nunca fica com moldura
-// vazia esperando conteúdo. Conteúdo baseado em docs/ASB.md e
-// docs/01-CONTEXTO.md.
+// celebratório. Conteúdo baseado em docs/ASB.md e docs/01-CONTEXTO.md. Ao
+// fim, uma faixa com fotos da edição 2026 (D63) — aparece só com a galeria
+// publicada, e nunca com moldura vazia (anti-casca-vazia). As fotos de 2021
+// que ficavam aqui foram para /galeria.
 
-// galeriaCamp2021 é um Record por categoria (D33) — a regra anti-casca-vazia
-// precisa checar as 3 chaves, não só "array.length", senão o título "O
-// campeonato de 2021" renderiza sem nenhuma foto embaixo.
-const temGaleria2021 = Object.values(galeriaCamp2021).some((fotos) => fotos.length > 0);
+// Destaques: fotos em retrato depois das 3 que o teaser da home já usa
+// (components/teaser-pos-evento.tsx), para não repetir imagem na mesma página.
+const destaques2026 = galeria.publicada
+  ? galeriaPosEvento
+      .slice(3)
+      .filter((foto) => foto.altura > foto.largura)
+      .slice(0, 6)
+  : [];
 
 export function Sobre() {
   return (
@@ -95,17 +101,22 @@ export function Sobre() {
             </div>
           </div>
 
-          {temGaleria2021 && (
+          {destaques2026.length > 0 && (
             <div data-reveal className="mt-12">
               <h3 className="text-[1.375rem] font-bold leading-[1.2]">
-                O campeonato de 2021
+                Como foi o Braz Skate 2026
               </h3>
               <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
-                Registro da primeira edição, organizada pelos próprios
-                skatistas — a inspiração direta do Braz Skate.
+                13 de setembro, no Skate Park de Brazlândia — a cena inteira
+                de volta à pista.
               </p>
               <div className="mt-6">
-                <GaleriaCamp2021 porCategoria={galeriaCamp2021} />
+                <Destaques2026 fotos={destaques2026} />
+              </div>
+              <div className="mt-6">
+                <Botao href="/galeria" variante="secundario">
+                  Ver a galeria completa
+                </Botao>
               </div>
             </div>
           )}
