@@ -616,7 +616,11 @@ Guardrails obrigatórios (quebrar qualquer um = PR reprovado):
    nascem no lugar; animação é revelação, não reposicionamento).
 3. **Lazy-init:** ScrollTrigger inicializa após hidratação/idle, nunca
    bloqueando o primeiro paint.
-4. **Nada que trave scroll:** sem `pin`, sem `scrub` pesado no MVP.
+4. **Nada que trave scroll:** sem `pin`, sem `scrub` pesado no MVP. **Exceção
+   registrada em D61** (`docs/02-DECISOES.md`): a faixa horizontal de
+   `/galeria` (`components/faixa-scroll.tsx`) usa `pin`+`scrub` — único caso
+   no site, restrito a este componente e a esta rota, desligado por completo
+   sob `prefers-reduced-motion`.
 5. **Teste em celular mediano/antigo** (Moto G ou similar, 4G) antes do
    merge — não só no desktop do dev.
 
