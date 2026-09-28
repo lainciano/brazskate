@@ -12,6 +12,7 @@ import { Pix } from "@/components/pix";
 import { Rasgo } from "@/components/rasgo";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Sobre } from "@/components/sobre";
+import { TeaserPosEvento } from "@/components/teaser-pos-evento";
 
 // Home = cartaz vertical (docs/05-DESIGN.md §2.4): asfalto (hero) →
 // concreto (sobre, categorias, patrocínio) → asfalto (Pix, contato, footer).
@@ -25,6 +26,7 @@ export default function Home() {
       <SmoothScroll>
         <main id="conteudo" className="flex-1">
           <Hero fotoSrc="/hero-manobra.webp" />
+          <TeaserPosEvento />
           <Sobre />
           <Localizacao />
           <Categorias />

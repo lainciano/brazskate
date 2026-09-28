@@ -1,0 +1,467 @@
+<title>Braz Skate pós-evento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap">
+<style>
+:root{
+  --tinta:#191314; --creme:#f5ebe4; --creme-el:#faf4ef; --rosa:#f0d9ce;
+  --v300:#d98b85; --v500:#a84b4b; --v600:#9c4242; --v700:#8e3a3a;
+  --a300:#7cc3e0; --a600:#1e7fa6; --a700:#176688;
+  --bg:var(--creme); --surface:var(--creme-el); --fg:var(--tinta);
+  --fg2:rgba(25,19,20,.72); --line:rgba(25,19,20,.16); --acc:var(--v700); --link:var(--a700);
+  --shadow:var(--tinta);
+  --display:Anton, Impact, 'Arial Narrow Bold', sans-serif;
+  --text:Archivo, system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#191314; --surface:#221b1c; --fg:#f5ebe4; --fg2:rgba(245,235,228,.75);
+    --line:rgba(245,235,228,.2); --acc:var(--v300); --link:var(--a300); --shadow:#000;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#191314; --surface:#221b1c; --fg:#f5ebe4; --fg2:rgba(245,235,228,.75);
+  --line:rgba(245,235,228,.2); --acc:var(--v300); --link:var(--a300); --shadow:#000;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--text);padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:72px}
+h1,h2{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.98;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.6rem,9vw,5.5rem)}
+h2{font-size:clamp(2rem,5.5vw,3.1rem)}
+h3{font:700 1.2rem/1.25 var(--text);margin:0}
+p{margin:0;max-width:65ch}
+.eyebrow{font:600 .8125rem/1.2 var(--text);text-transform:uppercase;letter-spacing:.1em;color:var(--acc)}
+.lead{font-size:1.125rem;color:var(--fg2)}
+a{color:var(--link)}
+code{font:600 .85em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--line);padding:.05em .35em;border-radius:3px}
+
+/* hero */
+.hero{background:var(--tinta);color:var(--creme);margin-inline:-16px;padding:56px 16px 64px;position:relative;overflow:hidden}
+.hero .in{max-width:1120px;margin:0 auto;display:grid;gap:18px;position:relative}
+.hero .eyebrow{color:var(--rosa)}
+.hero p{color:rgba(245,235,228,.78)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.shape{position:absolute;right:-80px;top:-60px;width:360px;height:360px;background:var(--v500);clip-path:polygon(30% 0,100% 0,100% 100%,0 70%);opacity:.9}
+.rabisco{display:block;width:min(340px,70%);height:18px;color:var(--v500)}
+.stickers{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.sticker{display:inline-block;font:700 .75rem/1 var(--text);text-transform:uppercase;letter-spacing:.06em;padding:.55em .95em;border:2px solid var(--tinta);border-radius:999px;background:var(--creme);color:var(--tinta);box-shadow:2px 3px 0 var(--tinta);transform:rotate(-2deg)}
+.sticker.r{background:var(--v600);color:var(--creme);transform:rotate(1.5deg)}
+.sticker.b{background:var(--a300);transform:rotate(-1deg)}
+.sticker.g{background:var(--rosa);transform:rotate(1deg)}
+.hero .sticker{border-color:var(--creme);box-shadow:2px 3px 0 #000}
+
+/* section header */
+.sh{display:grid;gap:10px}
+.sh svg{width:200px;height:14px;color:var(--v500)}
+
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.side{display:grid;gap:12px;justify-items:center}
+.side-label{justify-self:start;display:flex;align-items:center;gap:10px;font:700 .8rem/1 var(--text);text-transform:uppercase;letter-spacing:.08em}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--fg2)}
+.side.depois .dot{background:var(--v500)}
+.phone{width:100%;max-width:330px;border:3px solid var(--tinta);border-radius:22px;background:var(--creme);color:var(--tinta);box-shadow:6px 6px 0 var(--shadow);overflow:hidden;position:relative}
+.phone .bar{height:34px;background:var(--tinta);display:flex;align-items:center;justify-content:space-between;padding:0 12px;color:var(--creme);font:700 .62rem/1 var(--text);letter-spacing:.08em;text-transform:uppercase}
+.phone .url{font:600 .62rem/1 ui-monospace,monospace;opacity:.7;text-transform:none;letter-spacing:0}
+.screen{min-height:470px;display:flex;flex-direction:column}
+.dark{background:var(--tinta);color:var(--creme)}
+.pad{padding:16px}
+.mh2{font-family:var(--display);text-transform:uppercase;font-size:1.7rem;line-height:1}
+.mcap{font-size:.72rem;line-height:1.35;color:rgba(25,19,20,.7)}
+.dark .mcap{color:rgba(245,235,228,.7)}
+.note{font-size:.9rem;color:var(--fg2);max-width:60ch}
+
+/* photo placeholder: duotone tinta->vermelho + grain */
+.ph{position:relative;background:linear-gradient(160deg,#3a2224 0%,var(--v500) 55%,#d9a79b 100%);border-radius:6px;overflow:hidden;display:flex;align-items:flex-end}
+.ph::after{content:"";position:absolute;inset:0;opacity:.18;background-image:inherit}
+.ph span{position:relative;z-index:1;font:600 .58rem/1.2 ui-monospace,monospace;color:var(--creme);background:rgba(25,19,20,.55);padding:3px 5px;margin:5px;border-radius:3px}
+.ph.alt{background:linear-gradient(200deg,#2a1d1e,#6e3434 60%,#c98f86)}
+.ph.cold{background:linear-gradient(170deg,#1b2a31,#1e7fa6 60%,#9fd3e6)}
+.frame{background:var(--creme-el);padding:6px 6px 18px;box-shadow:3px 3px 0 var(--tinta);border:1px solid rgba(25,19,20,.2)}
+
+/* 404 */
+.e404{flex:1;display:grid;place-items:center;text-align:center;padding:24px}
+.e404 b{font-family:var(--display);font-size:4.2rem;line-height:1;display:block;color:var(--v500)}
+
+/* old results list */
+.oldlist{display:grid;gap:10px}
+.oldcat{border:1px solid rgba(25,19,20,.18);border-radius:6px;padding:8px 10px;background:var(--creme-el)}
+.oldcat h4{margin:0 0 4px;font:700 .8rem/1.2 var(--text);text-transform:uppercase}
+.oldrow{display:flex;gap:8px;font-size:.75rem;align-items:center}
+.oldrow i{font-style:normal;font-weight:700;width:22px}
+.oldrow s{color:var(--v700)}
+.flag{font:700 .62rem/1.3 var(--text);text-transform:uppercase;letter-spacing:.06em;color:var(--v700)}
+
+/* new results */
+.podios{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.podio .ph{aspect-ratio:4/5}
+.podio .cat{font-family:var(--display);text-transform:uppercase;font-size:1.05rem;margin-top:6px;line-height:1}
+.podio:nth-child(odd) .frame{transform:rotate(-1.2deg)}
+.podio:nth-child(even) .frame{transform:rotate(1deg)}
+
+/* gallery new */
+.loop{position:relative;aspect-ratio:16/10;overflow:hidden}
+.loop .ph{position:absolute;inset:-10%;border-radius:0;animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(-4%,0,0) scale(1.05)}to{transform:translate3d(4%,-3%,0) scale(1.12)}}
+.loop .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(25,19,20,.85),rgba(25,19,20,.2));display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:6px}
+.loop .tag{align-self:flex-start;font:700 .55rem/1 var(--text);text-transform:uppercase;letter-spacing:.08em;background:var(--creme);color:var(--tinta);padding:4px 7px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.grid .ph{aspect-ratio:1;cursor:pointer;border:0;padding:0}
+.grid .ph.tall{grid-row:span 2;aspect-ratio:auto}
+.grid .ph:focus-visible{outline:3px solid var(--a600);outline-offset:2px}
+.strip-wrap{overflow:hidden;padding:4px 0}
+.strip{display:flex;gap:8px;will-change:transform}
+.strip .ph{flex:0 0 120px;aspect-ratio:3/4}
+
+/* lightbox inside phone */
+.lb{position:absolute;inset:34px 0 0;background:rgba(25,19,20,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;z-index:5}
+.lb .big{width:100%;aspect-ratio:3/4;max-height:340px}
+.lb .lbbar{display:flex;justify-content:space-between;align-items:center;width:100%;color:var(--creme);font-size:.72rem}
+.lb button{font:700 .7rem/1 var(--text);text-transform:uppercase;background:var(--creme);color:var(--tinta);border:2px solid var(--creme);border-radius:4px;padding:8px 10px;min-height:32px;cursor:pointer}
+.lb button:focus-visible,.btn:focus-visible,input[type=range]:focus-visible{outline:3px solid var(--a600);outline-offset:2px}
+
+/* controls */
+.ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;font-size:.8rem;color:var(--fg2);width:100%;max-width:330px}
+.ctl label{display:flex;gap:8px;align-items:center;width:100%}
+.ctl input{flex:1;accent-color:var(--v600)}
+.btn{font:700 .8rem/1 var(--text);text-transform:uppercase;letter-spacing:.02em;padding:11px 16px;border-radius:4px;border:2px solid var(--fg);background:transparent;color:var(--fg);box-shadow:2px 3px 0 var(--shadow);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 5px 0 var(--shadow)}
+
+/* home mock */
+.hm-sec{padding:14px 16px;display:grid;gap:8px;border-top:1px solid rgba(25,19,20,.12)}
+.hm-row{display:flex;gap:6px}
+.hm-row .ph{flex:1;aspect-ratio:1}
+.nav{display:flex;gap:10px;flex-wrap:wrap;font:700 .6rem/1 var(--text);text-transform:uppercase;letter-spacing:.06em;padding:10px 16px;background:var(--tinta);color:var(--creme)}
+.nav .new{color:var(--v300)}
+.cta{display:inline-block;font:700 .66rem/1 var(--text);text-transform:uppercase;background:var(--v600);color:var(--creme);padding:9px 12px;border-radius:4px;box-shadow:3px 3px 0 var(--tinta);justify-self:start}
+.teaser{background:var(--tinta);color:var(--creme);padding:16px;display:grid;gap:10px;position:relative;overflow:hidden}
+
+/* feature table */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.fcol{background:var(--surface);border:2px solid var(--fg);border-radius:8px;box-shadow:4px 4px 0 var(--shadow);padding:18px;display:grid;gap:12px;align-content:start}
+.fcol ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:.93rem}
+.fcol .sticker{justify-self:start}
+.fcol.muted{border-style:dashed;box-shadow:none}
+
+/* perf table */
+.tablewrap{overflow-x:auto;border:2px solid var(--fg);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.9rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .75rem/1.2 var(--text);text-transform:uppercase;letter-spacing:.06em;color:var(--fg2)}
+td.num{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+tr.pick td{background:color-mix(in srgb,var(--v500) 12%,transparent)}
+tr:last-child td{border-bottom:0}
+.ok{color:#2f7a4b}.bad{color:var(--acc)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ok{color:#7fcf9c}}
+:root[data-theme="dark"] .ok{color:#7fcf9c}
+
+footer{font-size:.85rem;color:var(--fg2);border-top:1px solid var(--line);padding-top:18px}
+@media (prefers-reduced-motion: reduce){.loop .ph{animation:none}.btn{transition:none}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="grain"></div><div class="shape" aria-hidden="true"></div>
+  <div class="in">
+    <span class="eyebrow">Etapa pós-evento · 13/09/2026 aconteceu</span>
+    <h1>Braz Skate<br>depois do dia</h1>
+    <svg class="rabisco" viewBox="0 0 340 18" aria-hidden="true"><path d="M3 12 C 60 3, 120 17, 180 9 S 290 4, 337 11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+    <p>Antes e depois das telas que a etapa pós-evento mexe, e o que entra em cada fase. As fotos aparecem como blocos com o tratamento duotone da marca e o nome do arquivo de origem. As fotos reais ficam fora desta página porque os pódios têm menores.</p>
+    <div class="stickers">
+      <span class="sticker r">Galeria: efeito principal</span>
+      <span class="sticker">Resultados: leve, sem nomes</span>
+      <span class="sticker g">Aftermovie: pendente</span>
+    </div>
+  </div>
+</header>
+
+<!-- 1. RESULTADOS -->
+<section class="sh" id="resultados">
+  <span class="eyebrow">Tela 1 · /resultados</span>
+  <h2>Resultados só com pódio</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+  <p class="lead">A branch <code>feat/pagina-resultados</code> já tinha a página, mas o schema previa nome e colocação 1º/2º/3º. Agora cada categoria mostra só a foto do seu pódio.</p>
+</section>
+<div class="compare">
+  <div class="side">
+    <span class="side-label"><span class="dot"></span>Antes · branch atual</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/resultados</span></div>
+      <div class="screen">
+        <div class="pad dark" style="display:grid;gap:6px"><span class="mcap">publicado: false → rota 404</span><div class="mh2">Resultados</div></div>
+        <div class="pad oldlist">
+          <div class="oldcat"><h4>Iniciante</h4>
+            <div class="oldrow"><i>1º</i><s>nome: string</s></div>
+            <div class="oldrow"><i>2º</i><s>nome: string</s></div>
+            <div class="oldrow"><i>3º</i><s>nome: string</s></div></div>
+          <div class="oldcat"><h4>Amador</h4>
+            <div class="oldrow"><i>1º</i><s>nome: string</s></div>
+            <div class="oldrow"><i>2º</i><s>nome: string</s></div></div>
+          <div class="oldcat"><h4>Best trick</h4>
+            <div class="oldrow"><i>★</i><s>bestTrick.nome</s></div></div>
+          <span class="flag">Contraria a regra nova: sem nome, sem colocação</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side depois">
+    <span class="side-label"><span class="dot"></span>Depois · fase 1</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/resultados</span></div>
+      <div class="screen">
+        <div class="pad dark" style="display:grid;gap:6px"><span class="mcap">13 de setembro de 2026</span><div class="mh2">Pódios 2026</div></div>
+        <div class="pad podios" id="podios">
+          <figure class="podio" style="margin:0"><div class="frame"><div class="ph"><span>IMG_0923</span></div></div><div class="cat">Iniciante</div><div class="mcap">Foto: Duda</div></figure>
+          <figure class="podio" style="margin:0"><div class="frame"><div class="ph alt"><span>IMG_1029</span></div></div><div class="cat">Amador</div><div class="mcap">Foto: Duda</div></figure>
+          <figure class="podio" style="margin:0"><div class="frame"><div class="ph alt"><span>IMG_0954</span></div></div><div class="cat">Feminino</div><div class="mcap">Foto: Duda</div></figure>
+          <figure class="podio" style="margin:0"><div class="frame"><div class="ph"><span>IMG_1060</span></div></div><div class="cat">Master</div><div class="mcap">Foto: Duda</div></figure>
+        </div>
+      </div>
+    </div>
+    <div class="ctl"><button class="btn" id="replayPodios" type="button">Rever entrada</button></div>
+  </div>
+</div>
+<p class="note">Motion: só o que já existe no site (reveal em stencil no título, entrada em "carimbada" nas molduras). Nenhum efeito novo. Um pódio sem foto liberada é <code>null</code> e o slot não aparece. Se um dia houver nomes, a spec já diz onde um campo <code>colocacoes</code> entraria, sem criá-lo agora.</p>
+
+<!-- 2. GALERIA -->
+<section class="sh" id="galeria">
+  <span class="eyebrow">Tela 2 · Galeria pós-evento (rota proposta: /galeria)</span>
+  <h2>Galeria com lightbox e faixa no scroll</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+  <p class="lead">Hoje não existe galeria do evento de 2026. Na fase 1 entram o loop de drone na abertura, uma grade em colagem com lightbox animado via Flip e uma faixa horizontal que anda com o scroll. Mexa nos dois controles abaixo do celular.</p>
+</section>
+<div class="compare">
+  <div class="side">
+    <span class="side-label"><span class="dot"></span>Antes</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/galeria</span></div>
+      <div class="screen dark"><div class="e404"><div><b>404</b><p class="mcap" style="max-width:24ch;margin:8px auto 0">Não existe. As únicas fotos do site são o acervo de 2021 (Sobre) e as 3 panorâmicas da pista (Localização).</p></div></div></div>
+    </div>
+  </div>
+  <div class="side depois">
+    <span class="side-label"><span class="dot"></span>Depois · fase 1</span>
+    <div class="phone" id="galPhone"><div class="bar">Braz Skate <span class="url">/galeria</span></div>
+      <div class="screen">
+        <div class="loop dark"><div class="ph cold"><span></span></div><div class="grain"></div>
+          <div class="ov"><span class="tag">Loop drone · mudo · ≤1,5MB</span><div class="mh2" style="color:var(--creme)">13.09.2026</div><span class="mcap">Pista de Brazlândia</span></div></div>
+        <div class="pad" style="display:grid;gap:10px">
+          <div class="grid" id="grid">
+            <button class="ph tall" data-f="cauet_010" aria-label="Abrir foto cauet_010"><span>cauet_010</span></button>
+            <button class="ph alt" data-f="duda_223" aria-label="Abrir foto duda_223"><span>duda_223</span></button>
+            <button class="ph" data-f="vector_646" aria-label="Abrir foto vector_646"><span>vector_646</span></button>
+            <button class="ph cold" data-f="duda_451" aria-label="Abrir foto duda_451"><span>duda_451</span></button>
+            <button class="ph alt" data-f="fem_664" aria-label="Abrir foto fem_664"><span>fem_664</span></button>
+          </div>
+          <span class="mcap">Toque numa foto: ela cresce até o lightbox (Flip) e volta pro lugar ao fechar.</span>
+          <div class="strip-wrap"><div class="strip" id="strip">
+            <div class="ph"><span>cauet_077</span></div><div class="ph alt"><span>duda_297</span></div><div class="ph cold"><span>drone</span></div><div class="ph"><span>vector_644</span></div><div class="ph alt"><span>duda_400</span></div><div class="ph"><span>cauet_192</span></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ctl"><label for="scrub">Scroll<input type="range" id="scrub" min="0" max="100" value="0"></label></div>
+  </div>
+</div>
+<p class="note">A faixa horizontal é a única seção com <code>pin</code> + <code>scrub</code>, como exceção explícita ao guardrail 4 do §6.2 e restrita à Galeria. Com <code>prefers-reduced-motion</code> ela vira uma rolagem horizontal comum, o lightbox abre sem animação e o loop de drone mostra só o poster. O slider acima simula o scroll.</p>
+
+<!-- 3. HOME -->
+<section class="sh" id="home">
+  <span class="eyebrow">Tela 3 · Home e navegação (proposta, a confirmar na seção 2 do design)</span>
+  <h2>Home aponta pro pós-evento</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+  <p class="lead">A home continua falando do evento. Depois de 13/09, ela ganha uma chamada para a galeria e os pódios, e a nav mostra os dois links só quando <code>publicado</code> for verdadeiro.</p>
+</section>
+<div class="compare">
+  <div class="side">
+    <span class="side-label"><span class="dot"></span>Antes</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/</span></div>
+      <div class="screen">
+        <div class="nav">Sobre · Categorias · Patrocínio · Apoie · Contato</div>
+        <div class="teaser"><div class="grain"></div><span class="mcap">Campeonato de skate · Brazlândia-DF</span><div class="mh2" style="font-size:2.2rem">Braz<br>Skate</div><span class="sticker r" style="justify-self:start">13 de setembro</span><span class="cta">Quero competir</span></div>
+        <div class="hm-sec"><b style="font-size:.75rem;text-transform:uppercase">Sobre · acervo 2021</b><div class="hm-row"><div class="ph"><span>2021-02</span></div><div class="ph alt"><span>2021-03</span></div><div class="ph"><span>2021-06</span></div></div></div>
+        <div class="hm-sec"><b style="font-size:.75rem;text-transform:uppercase">Localização · pista</b><div class="ph cold" style="aspect-ratio:16/9"><span>pista-01</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="side depois">
+    <span class="side-label"><span class="dot"></span>Depois · proposta</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/</span></div>
+      <div class="screen">
+        <div class="nav">Sobre · Categorias · <span class="new">Galeria</span> · <span class="new">Resultados</span> · Contato</div>
+        <div class="teaser"><div class="grain"></div><span class="mcap">Aconteceu em 13/09/2026</span><div class="mh2" style="font-size:2.2rem">Valeu,<br>Brazlândia</div><div class="hm-row"><div class="ph alt"><span>duda_223</span></div><div class="ph"><span>cauet_010</span></div><div class="ph cold"><span>vector_646</span></div></div><span class="cta">Ver a galeria</span></div>
+        <div class="hm-sec"><b style="font-size:.75rem;text-transform:uppercase">Pódios 2026</b><span class="mcap">4 categorias, uma foto de pódio cada → /resultados</span></div>
+        <div class="hm-sec"><b style="font-size:.75rem;text-transform:uppercase">Sobre · acervo 2021</b><span class="mcap">sem mudança</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. AGRADECIMENTOS -->
+<section class="sh" id="agradecimentos">
+  <span class="eyebrow">Tela 4 · Fim da /galeria + linha na home</span>
+  <h2>Agradecimentos</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+  <p class="lead">Quem pensou o evento desde o início, quem registrou e quem segurou o dia na pista. Os nomes aparecem em stickers, igual ao "Quem organiza" da home, e a organização sai da mesma fonte de dados.</p>
+</section>
+<div class="compare">
+  <div class="side">
+    <span class="side-label"><span class="dot"></span>Antes</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/ · Sobre</span></div>
+      <div class="screen">
+        <div class="pad" style="display:grid;gap:10px">
+          <b style="font-size:.85rem">Quem organiza</b>
+          <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Luciano</span><span class="sticker g" style="font-size:.6rem">Gustavo</span><span class="sticker" style="font-size:.6rem">Cauet</span><span class="sticker g" style="font-size:.6rem">Samuel</span></div>
+          <span class="mcap">Único lugar com nomes da equipe. Fotógrafos e equipe do dia não aparecem em lugar nenhum.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side depois">
+    <span class="side-label"><span class="dot"></span>Depois · fim da /galeria</span>
+    <div class="phone"><div class="bar">Braz Skate <span class="url">/galeria#agradecimentos</span></div>
+      <div class="screen">
+        <div class="pad" style="display:grid;gap:14px" id="agr">
+          <div style="display:grid;gap:4px"><span class="eyebrow" style="font-size:.62rem">Quem fez acontecer</span><div class="mh2">Agradecimentos</div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Organização</b><span class="mcap">Pensou o evento desde o início e executou.</span>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Luciano</span><span class="sticker g" style="font-size:.6rem">Gustavo</span><span class="sticker" style="font-size:.6rem">Cauet</span><span class="sticker g" style="font-size:.6rem">Samuel</span></div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Fotografia e vídeo</b>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">Duda</span><span class="sticker g" style="font-size:.6rem">Ítalo</span><span class="sticker" style="font-size:.6rem">Victor</span><span class="sticker g" style="font-size:.6rem">Nerd</span></div></div>
+          <div style="display:grid;gap:8px"><b style="font-size:.8rem">Sempre por perto</b>
+            <div class="stickers" style="gap:8px"><span class="sticker" style="font-size:.6rem">João Paulo</span><span class="sticker g" style="font-size:.6rem">Rafael</span><span class="sticker" style="font-size:.6rem">Danilo</span></div></div>
+        </div>
+        <div class="teaser" style="margin-top:auto"><div class="grain"></div><span class="mcap">Na home, abaixo de "Pódios 2026":</span><b style="font-size:.8rem">Valeu a quem fez o dia acontecer →</b></div>
+      </div>
+    </div>
+    <div class="ctl"><button class="btn" id="replayAgr" type="button">Rever entrada</button></div>
+  </div>
+</div>
+<p class="note">Organização linka pro Instagram, como já faz hoje. Os outros nomes ganham link só quando os perfis forem passados; até lá o sticker não é link.</p>
+
+<!-- FEATURES -->
+<section class="sh" id="feats">
+  <span class="eyebrow">O que entra, quando</span>
+  <h2>Features por fase</h2>
+  <svg viewBox="0 0 200 14" aria-hidden="true"><path d="M2 9 C 50 2, 110 13, 198 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+</section>
+<div class="feats">
+  <div class="fcol"><span class="sticker r">Fase 1 · GSAP</span><h3>Implemento nesta etapa</h3><ul>
+    <li><code>data/resultados.ts</code> reescrito: uma foto por categoria, sem nome nem colocação</li>
+    <li><code>/resultados</code> com grade 2×2 de pódios usando o motion que já existe</li>
+    <li><code>FotoEvento</code> com <code>baseDaPermissao</code> (inscrito, avulsa, sem pessoa identificável)</li>
+    <li>Galeria pós-evento: grade em colagem com entrada em carimbada</li>
+    <li>Lightbox com Flip, navegação por swipe e teclado (Observer), foco preso, Esc fecha</li>
+    <li>Uma faixa com pin + scrub, desligada em reduced-motion</li>
+    <li>Loop de drone mudo, com poster, que pausa fora da tela e com a aba oculta</li>
+    <li>Script de mídia: remove EXIF, gera WebP 640w e 1600w, vídeo MP4 e WebM ≤1,5MB</li>
+    <li>Agradecimentos no fim da galeria, linha na home, nomes da organização em <code>data/equipe.ts</code></li>
+  </ul></div>
+  <div class="fcol"><span class="sticker b">Fase 2 · OGL (opcional)</span><h3>Só se passar na medição</h3><ul>
+    <li>Um único canvas no loop de drone, com grão e duotone animados no GPU</li>
+    <li>~14KB gz, carregado sob demanda, com <code>&lt;video&gt;</code> por baixo como fallback</li>
+    <li>Só entra com Lighthouse mobile ≥90 e perda de contexto WebGL tratada</li>
+  </ul></div>
+  <div class="fcol muted"><span class="sticker g">Pendente</span><h3>Espera você</h3><ul>
+    <li>Aftermovie e qualquer vídeo editado</li>
+    <li>Base da permissão de cada uma das 33 fotos da seleção</li>
+    <li>Perfis (link) de Duda, Victor, Ítalo, Nerd, João Paulo, Rafael e Danilo</li>
+    <li>Nomes e colocações, se um dia forem publicados</li>
+  </ul></div>
+  <div class="fcol muted"><span class="sticker">Descartado</span><h3>Fica de fora</h3><ul>
+    <li>three.js: ~130KB gz para efeitos 2D que o OGL faz com ~14KB</li>
+    <li>Vídeo <code>Premiação.mp4</code>, pelo risco de mostrar nomes</li>
+    <li>Prestação de contas e "Quero ajudar", que são outra etapa</li>
+  </ul></div>
+</div>
+
+<section class="sh" id="custo">
+  <span class="eyebrow">Medido nesta sessão (esbuild + gzip -9)</span>
+  <h2>Custo de cada caminho</h2>
+</section>
+<div class="tablewrap"><table>
+  <thead><tr><th>Caminho</th><th>JS novo (gz)</th><th>JS inicial</th><th>LCP mobile</th><th>Reduced-motion</th><th>Manutenção</th></tr></thead>
+  <tbody>
+    <tr><td>three.js 0.186</td><td class="num bad">~130 KB</td><td>0 se lazy</td><td class="bad">risco se o canvas substituir o &lt;img&gt;</td><td>desliga o render</td><td class="bad">alta</td></tr>
+    <tr><td>OGL 1.0.11</td><td class="num">~14 KB</td><td>0 se lazy</td><td>mesmo risco, mesma mitigação</td><td>desliga o render</td><td>média</td></tr>
+    <tr class="pick"><td><b>GSAP evoluído</b> (escolhido)</td><td class="num ok">~0 KB (Flip já em uso)</td><td>0</td><td class="ok">neutro: o LCP continua sendo <code>next/image</code></td><td><code>gsap.matchMedia()</code></td><td class="ok">baixa</td></tr>
+  </tbody>
+</table></div>
+
+<footer>Rascunho de design da etapa pós-evento. Nada aqui é código implementado. A spec final sai em <code>docs/superpowers/specs/</code> depois da sua aprovação.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasG = typeof window.gsap !== 'undefined';
+  if (hasG && window.Flip) gsap.registerPlugin(Flip);
+
+  // scrub simulation
+  var strip = document.getElementById('strip'), scrub = document.getElementById('scrub');
+  function upd(){
+    var max = strip.scrollWidth - strip.parentElement.clientWidth;
+    strip.style.transform = 'translateX(' + (-max * scrub.value / 100) + 'px)';
+  }
+  scrub.addEventListener('input', upd); upd();
+
+  // podium stamp replay
+  function stamp(){
+    if (!hasG || reduce) return;
+    gsap.fromTo('#podios .frame', {scale:1.15, opacity:0}, {scale:1, opacity:1, duration:.5, ease:'elastic.out(1,0.6)', stagger:.09, clearProps:'scale,opacity'});
+  }
+  document.getElementById('replayPodios').addEventListener('click', stamp);
+  document.getElementById('replayAgr').addEventListener('click', function(){
+    if (!hasG || reduce) return;
+    gsap.fromTo('#agr .sticker', {scale:1.15, opacity:0}, {scale:1, opacity:1, duration:.4, ease:'elastic.out(1,0.6)', stagger:.05, clearProps:'scale,opacity'});
+  });
+
+  // Flip lightbox
+  var phone = document.getElementById('galPhone');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#grid .ph'));
+  var open = null;
+  function close(){
+    if (!open) return;
+    var lb = open.lb, src = open.src, big = lb.querySelector('.big');
+    if (hasG && window.Flip && !reduce){
+      Flip.fit(big, src, {duration:.4, ease:'power3.inOut', onComplete:function(){ src.style.visibility=''; lb.remove(); src.focus(); }});
+      gsap.to(lb, {backgroundColor:'rgba(25,19,20,0)', duration:.4});
+    } else { src.style.visibility=''; lb.remove(); src.focus(); }
+    open = null;
+  }
+  function show(src){
+    var lb = document.createElement('div');
+    lb.className = 'lb'; lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true');
+    lb.setAttribute('aria-label','Foto ' + src.dataset.f);
+    lb.innerHTML = '<div class="ph big ' + src.className.replace(/ph|tall/g,'') + '"><span>' + src.dataset.f + ' · 1600w</span></div>' +
+      '<div class="lbbar"><button type="button" data-a="prev">Anterior</button><span>Foto: crédito</span><button type="button" data-a="next">Próxima</button></div>' +
+      '<button type="button" data-a="close">Fechar</button>';
+    phone.appendChild(lb);
+    var big = lb.querySelector('.big');
+    if (hasG && window.Flip && !reduce){
+      var id = 'f-' + src.dataset.f;
+      src.setAttribute('data-flip-id', id);
+      var state = Flip.getState(src);
+      big.setAttribute('data-flip-id', id);
+      src.style.visibility = 'hidden';
+      Flip.from(state, {targets:big, duration:.45, ease:'power3.out'});
+      gsap.from(lb, {backgroundColor:'rgba(25,19,20,0)', duration:.35});
+      gsap.from(lb.querySelectorAll('button, .lbbar span'), {opacity:0, y:8, duration:.3, delay:.2, stagger:.04});
+    } else { src.style.visibility='hidden'; }
+    open = {lb:lb, src:src};
+    lb.addEventListener('click', function(e){
+      var a = e.target.getAttribute && e.target.getAttribute('data-a');
+      if (a==='close') close();
+      if (a==='next' || a==='prev'){
+        var i = items.indexOf(open.src), n = items[(i + (a==='next'?1:-1) + items.length) % items.length];
+        open.src.style.visibility=''; lb.remove(); open=null; show(n);
+      }
+    });
+    lb.querySelector('[data-a="close"]').focus();
+  }
+  items.forEach(function(b){ b.addEventListener('click', function(){ if(!open) show(b); }); });
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape') close(); });
+})();
+</script>
