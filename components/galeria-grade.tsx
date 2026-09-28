@@ -63,11 +63,10 @@ export function GaleriaGrade({ fotos }: { fotos: readonly FotoEvento[] }) {
         ))}
       </div>
 
-      {/* Fora do div data-reveal, de propósito: depois da animação o GSAP deixa
-          `transform: matrix(1,0,0,1,0,0)` nele, e qualquer ancestral com
-          transform vira o containing block de `position: fixed` — o lightbox
-          ficava do tamanho da grade em vez da tela. */}
-      <Lightbox
+      {/* O Lightbox é portado para <body> (ver lightbox.tsx); fica fora do div
+        data-reveal por clareza: o GSAP deixa `transform` nesse div depois da
+        animação de entrada. */}
+    <Lightbox
         fotos={fotos}
         indiceAberto={indiceAberto}
         elementoOrigemRef={origemRef}

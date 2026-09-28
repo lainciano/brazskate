@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { carregarFlip } from "@/lib/motion";
 import type { FotoEvento } from "@/data/gallery";
@@ -149,7 +150,11 @@ export function Lightbox({
 
   if (!aberto || !foto) return null;
 
-  return (
+  // Portal para <body>: na home o conteúdo fica dentro do #smooth-content, que o
+  // ScrollSmoother move com transform — e todo ancestral com transform vira o
+  // containing block de `position: fixed` (o lightbox ficaria preso ao conteúdo
+  // em vez de cobrir a tela). Só renderiza aberto, ou seja, nunca no SSR.
+  return createPortal(
     <div
       ref={dialogRef}
       role="dialog"
@@ -212,6 +217,7 @@ export function Lightbox({
           <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
       </button>
-    </div>
+    </div>,
+    document.body,
   );
 }

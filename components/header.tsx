@@ -29,11 +29,12 @@ const linksAncora = [
   { href: "#contato", rotulo: "Contato" },
 ];
 
-// Galeria e Resultados são rotas (não âncoras) e só entram na nav depois de
-// publicados (D5). As flags são dados estáticos de build — sem estado.
+// A Galeria é uma seção da home (âncora #galeria, logo abaixo do hero — D63)
+// e só entra na nav depois de publicada (D5); Resultados segue sendo uma
+// rota. As flags são dados estáticos de build — sem estado.
 const links = [
+  ...(galeria.publicada ? [{ href: "#galeria", rotulo: "Galeria" }] : []),
   ...linksAncora,
-  ...(galeria.publicada ? [{ href: "/galeria", rotulo: "Galeria" }] : []),
   ...(resultados.publicado
     ? [{ href: "/resultados", rotulo: "Resultados" }]
     : []),
@@ -50,7 +51,7 @@ export function Header() {
   // depois do scroll visual ir pra uma seção clara.
   const aoClicarLink = useCallback(
     (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      if (!href.startsWith("#")) return; // rota normal (/galeria, /resultados) — navegação padrão
+      if (!href.startsWith("#")) return; // rota normal (/resultados) — navegação padrão
       const alvo = document.querySelector(href);
       if (!alvo) return;
       evento.preventDefault();

@@ -1,28 +1,14 @@
-import { Botao } from "./botao";
-import { Destaques2026 } from "./destaques-2026";
 import { MarqueePatrocinadores } from "./marquee-patrocinadores";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
-import { galeria } from "@/data/galeria";
-import { galeriaPosEvento } from "@/data/gallery";
 import { organizacao } from "@/data/equipe";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
-// celebratório. Conteúdo baseado em docs/ASB.md e docs/01-CONTEXTO.md. Ao
-// fim, uma faixa com fotos da edição 2026 (D63) — aparece só com a galeria
-// publicada, e nunca com moldura vazia (anti-casca-vazia). As fotos de 2021
-// que ficavam aqui foram para /galeria.
-
-// Destaques: fotos em retrato depois das 3 que o teaser da home já usa
-// (components/teaser-pos-evento.tsx), para não repetir imagem na mesma página.
-const destaques2026 = galeria.publicada
-  ? galeriaPosEvento
-      .slice(3)
-      .filter((foto) => foto.altura > foto.largura)
-      .slice(0, 6)
-  : [];
+// celebratório. Conteúdo baseado em docs/ASB.md e docs/01-CONTEXTO.md. As
+// fotos (2026 e o arquivo de 2021) vivem na galeria logo acima, que emenda
+// direto nesta seção (D63).
 
 export function Sobre() {
   return (
@@ -101,25 +87,6 @@ export function Sobre() {
             </div>
           </div>
 
-          {destaques2026.length > 0 && (
-            <div data-reveal className="mt-12">
-              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
-                Como foi o Braz Skate 2026
-              </h3>
-              <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
-                13 de setembro, no Skate Park de Brazlândia — a cena inteira
-                de volta à pista.
-              </p>
-              <div className="mt-6">
-                <Destaques2026 fotos={destaques2026} />
-              </div>
-              <div className="mt-6">
-                <Botao href="/galeria" variante="secundario">
-                  Ver a galeria completa
-                </Botao>
-              </div>
-            </div>
-          )}
         </Reveal>
       </section>
     </div>
