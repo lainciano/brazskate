@@ -12,9 +12,22 @@
 // pré-inscrição sem mexer no formulário Tally. Reaberta em 14/08/2026 (D47)
 // — a pausa não chegou a ser necessária.
 
+// Edição 2026 encerrada em 13/09/2026 (D62). `edicaoAtiva` liga/desliga as
+// páginas que só fazem sentido com um evento a caminho (/inscricao e
+// /programacao) — false ⇒ as duas rotas respondem 404 e somem de sitemap,
+// hero e FAQ. Nada foi apagado: para a edição de 2027, antes de virar
+// `true`, é preciso ATUALIZAR o que é específico de 2026 — data e prazos
+// abaixo, URL do formulário Tally em app/inscricao/page.tsx,
+// data/programacao.ts + public/cronograma.jpg, data/regulamento.ts e
+// data/termo.ts — e reativar o <Countdown /> no hero (components/
+// countdown.tsx segue no repo, sem uso).
+
 export const evento = {
-  // trava manual (D46/D47) — false bloqueia a pré-inscrição no site inteiro
-  inscricoesAbertas: true,
+  // false ⇒ /inscricao e /programacao ocultas (D62); ver comentário acima
+  edicaoAtiva: false,
+  // trava manual (D46/D47) — false bloqueia a pré-inscrição no site inteiro.
+  // Inscrições encerraram em 30/08/2026 (formulário Tally fechado).
+  inscricoesAbertas: false,
   // data canônica (textos longos: seção de local, futura página cheia)
   dataPrevista: "13 de setembro de 2026",
   // forma curta (mesmo dado, formatado para caber no sticker do hero)

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Botao } from "@/components/botao";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
@@ -25,6 +26,9 @@ export const metadata: Metadata = {
 };
 
 export default function Inscricao() {
+  // edição encerrada (D62): 404 até `evento.edicaoAtiva` voltar a true
+  if (!evento.edicaoAtiva) notFound();
+
   return (
     <>
       <Header />
