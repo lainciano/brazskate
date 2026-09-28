@@ -19,6 +19,11 @@ export const organizacao: readonly Pessoa[] = [
   { nome: "Gustavo", instagram: "gustavolno" },
   { nome: "Cauet", instagram: "cauetista" },
   { nome: "Samuel", instagram: "samuelsktg" },
+  // Entraram na organização em 28/09/2026 (eram o grupo "Sempre por perto").
+  // Perfis pendentes.
+  { nome: "João Paulo" },
+  { nome: "Rafael" },
+  { nome: "Danilo" },
 ];
 
 // Fotografaram e filmaram o evento em 13/09/2026. Perfis pendentes
@@ -28,13 +33,4 @@ export const fotografiaEVideo: readonly Pessoa[] = [
   { nome: "Ítalo" },
   { nome: "Victor" },
   { nome: "Nerd" },
-];
-
-// Sem função fixa no dia — cobriram o que faltava, resolveram na hora, até
-// cobriram ausência de algum organizador quando precisou. Perfis
-// pendentes.
-export const sempreProPerto: readonly Pessoa[] = [
-  { nome: "João Paulo" },
-  { nome: "Rafael" },
-  { nome: "Danilo" },
 ];

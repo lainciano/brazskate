@@ -1,7 +1,7 @@
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
-import { organizacao, fotografiaEVideo, sempreProPerto, type Pessoa } from "@/data/equipe";
+import { organizacao, fotografiaEVideo, type Pessoa } from "@/data/equipe";
 
 // Agradecimentos, fim de /galeria (docs/superpowers/specs/
 // 2026-09-27-pos-evento-galeria-resultados-design.md §4.4). Mesmo padrão
@@ -11,18 +11,12 @@ import { organizacao, fotografiaEVideo, sempreProPerto, type Pessoa } from "@/da
 const GRUPOS: { titulo: string; descricao?: string; pessoas: readonly Pessoa[] }[] = [
   {
     titulo: "Organização",
-    descricao: "Pensou o evento desde o início e executou.",
+    descricao: "Quem organizou e executou o evento.",
     pessoas: organizacao,
   },
   {
     titulo: "Fotografia e vídeo",
     pessoas: fotografiaEVideo,
-  },
-  {
-    titulo: "Sempre por perto",
-    descricao:
-      "Sem função fixa no dia — cobriram o que faltava, resolveram na hora.",
-    pessoas: sempreProPerto,
   },
 ];
 

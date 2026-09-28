@@ -172,6 +172,10 @@ encodarAteCaber(
       "-c:v", "libvpx-vp9",
       "-crf", String(crf),
       "-b:v", "0",
+      // multi-thread por linha + preset mais rápido: o padrão (cpu-used 0)
+      // levava ~8 min para 9s de clipe, sem ganho visível em 720p
+      "-row-mt", "1",
+      "-cpu-used", "2",
     ]),
   [32, 35, 38, 41, 44, 47, 50],
   "CRF",
