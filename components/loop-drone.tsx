@@ -32,9 +32,19 @@ export function LoopDrone({
     ).matches;
     if (!motionPermitido) return;
 
+    // Falha de play() (AbortError por pause() pendente, política de
+    // autoplay) é ignorada: o poster continua como fallback.
+    const tocar = () => {
+      video.play().catch(() => {});
+    };
+
+    let visivel = false;
     const observer = new IntersectionObserver(
-      ([entrada]) => {
-        if (entrada.isIntersecting) void video.play();
+      (entradas) => {
+        const entrada = entradas.at(-1);
+        if (!entrada) return;
+        visivel = entrada.isIntersecting;
+        if (visivel) tocar();
         else video.pause();
       },
       { threshold: 0.25 },
@@ -43,7 +53,7 @@ export function LoopDrone({
 
     const aoMudarVisibilidade = () => {
       if (document.visibilityState === "hidden") video.pause();
-      else if (video.getBoundingClientRect().top < window.innerHeight) void video.play();
+      else if (visivel) tocar();
     };
     document.addEventListener("visibilitychange", aoMudarVisibilidade);
 
