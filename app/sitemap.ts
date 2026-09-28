@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { evento } from "@/data/evento";
 import { galeria } from "@/data/galeria";
 import { resultados } from "@/data/resultados";
 
@@ -17,12 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/inscricao`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: `${SITE_URL}/patrocinio`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -35,17 +30,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/programacao`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
       url: `${SITE_URL}/termo`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    // /inscricao e /programacao só existem com a edição ativa (D62) —
+    // enquanto a rota responde 404, ficam de fora.
+    ...(evento.edicaoAtiva
+      ? [
+          {
+            url: `${SITE_URL}/inscricao`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.9,
+          },
+          {
+            url: `${SITE_URL}/programacao`,
+            lastModified: new Date(),
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
+          },
+        ]
+      : []),
     // /galeria e /resultados só entram depois de publicados (D5) — enquanto
     // a rota responde 404, ficam de fora.
     ...(galeria.publicada

@@ -5,7 +5,6 @@ import { useCallback } from "react";
 import { evento } from "@/data/evento";
 import { irParaAncora, useMotion, type Gsap } from "@/lib/motion";
 import { Botao } from "./botao";
-import { Countdown } from "./countdown";
 import { Grao } from "./grao";
 import { RabiscoSublinhado } from "./rabiscos";
 import { StickerBadge } from "./sticker-badge";
@@ -116,10 +115,12 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           data-hero-sticker
           className="mt-4 flex flex-wrap items-center gap-4 sm:mt-8"
         >
+          {/* edição 2026 encerrada (D62): a data vira registro, o countdown
+              dá lugar a "em breve" até a próxima edição ter data */}
           <StickerBadge variante="data">
-            Data: {evento.dataPrevistaCurta}
+            Edição 2026: {evento.dataPrevistaCurta}
           </StickerBadge>
-          <Countdown />
+          <StickerBadge variante="breve">Próxima edição em breve</StickerBadge>
         </div>
 
         <p
@@ -131,10 +132,10 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
         </p>
 
         <div data-hero-item className="mt-4 flex flex-wrap items-center gap-2 sm:mt-10 sm:gap-4">
-          <Botao href="/inscricao">Quero competir</Botao>
+          {evento.edicaoAtiva && <Botao href="/inscricao">Quero competir</Botao>}
           <Botao
             href="#patrocinio"
-            variante="secundario"
+            variante={evento.edicaoAtiva ? "secundario" : "primario"}
             onClick={(evento) => aoClicarAncora(evento, "#patrocinio")}
           >
             Seja um patrocinador
@@ -149,9 +150,11 @@ export function Hero({ fotoSrc }: { fotoSrc?: string }) {
           >
             Apoie via Pix
           </Botao>
-          <StickerBadge variante="breve" data-carimbo>
-            {evento.inscricoesAbertas ? "Inscrições abertas" : "Inscrições em breve"}
-          </StickerBadge>
+          {evento.edicaoAtiva && (
+            <StickerBadge variante="breve" data-carimbo>
+              {evento.inscricoesAbertas ? "Inscrições abertas" : "Inscrições em breve"}
+            </StickerBadge>
+          )}
         </div>
       </div>
     </section>
