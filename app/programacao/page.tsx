@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
@@ -7,6 +8,7 @@ import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "@/components/section-header";
 import { StickerBadge } from "@/components/sticker-badge";
+import { evento } from "@/data/evento";
 import { programacao } from "@/data/programacao";
 
 // Página /programacao (item 9 de docs/03-SPEC-SITE.md §3.2; D32,
@@ -22,6 +24,9 @@ export const metadata: Metadata = {
 };
 
 export default function Programacao() {
+  // edição encerrada (D62): 404 até `evento.edicaoAtiva` voltar a true
+  if (!evento.edicaoAtiva) notFound();
+
   return (
     <>
       <Header />

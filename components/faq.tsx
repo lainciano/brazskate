@@ -1,3 +1,4 @@
+import { evento } from "@/data/evento";
 import { faq } from "@/data/faq";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
@@ -74,12 +75,14 @@ export function Faq() {
             >
               Ver o regulamento completo →
             </a>
-            <a
-              href="/programacao"
-              className="font-semibold underline-offset-4 hover:underline"
-            >
-              Ver a programação do dia →
-            </a>
+            {evento.edicaoAtiva && (
+              <a
+                href="/programacao"
+                className="font-semibold underline-offset-4 hover:underline"
+              >
+                Ver a programação do dia →
+              </a>
+            )}
           </p>
         </Reveal>
       </div>
