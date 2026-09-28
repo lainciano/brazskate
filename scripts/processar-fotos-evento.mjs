@@ -6,7 +6,7 @@
 // no repo; só a saída (public/galeria/).
 //
 // Uso: node scripts/processar-fotos-evento.mjs <origem.jpg> <slug>
-// Saída: public/galeria/<slug>-640w.webp, public/galeria/<slug>-1600w.webp
+// Saída: public/galeria/2026/<slug>-640w.webp, public/galeria/2026/<slug>-1600w.webp
 // Imprime em stdout: {"largura":N,"altura":N} (dimensões pós-orientação,
 // pra colar em data/gallery.ts).
 
@@ -22,30 +22,38 @@ if (!origem || !slug) {
 }
 
 const RAIZ = dirname(dirname(fileURLToPath(import.meta.url)));
-const DIR_SAIDA = join(RAIZ, "public", "galeria");
+const DIR_SAIDA = join(RAIZ, "public", "galeria", "2026");
 mkdirSync(DIR_SAIDA, { recursive: true });
 
 const TETO_640_KB = 120;
 const TETO_1600_KB = 350;
+const QUALIDADE_INICIAL = 78;
+const QUALIDADE_PISO = 30;
+const PASSO_QUALIDADE = 8;
 
 function gerarVariante(largura, tetoKb) {
   const saida = join(DIR_SAIDA, `${slug}-${largura}w.webp`);
-  let qualidade = 78;
-  for (let tentativa = 0; tentativa < 5; tentativa++) {
+  let qualidade = QUALIDADE_INICIAL;
+  for (;;) {
     execFileSync("magick", [
       origem,
       "-auto-orient",
       "-strip", // remove todo EXIF/GPS — repo é público
+      "-filter", "Lanczos", // precisa vir ANTES do -resize pra valer
       "-resize", `${largura}x${largura * 2}>`,
-      "-filter", "Lanczos",
       "-quality", String(qualidade),
       saida,
     ]);
     const tamanhoKb = statSync(saida).size / 1024;
-    if (tamanhoKb <= tetoKb) break;
-    qualidade -= 8;
+    if (tamanhoKb <= tetoKb) return saida;
+    if (qualidade <= QUALIDADE_PISO) {
+      console.error(
+        `Erro: ${saida} tem ${tamanhoKb.toFixed(1)}KB, acima do teto de ${tetoKb}KB mesmo com qualidade ${qualidade}.`,
+      );
+      process.exit(1);
+    }
+    qualidade = Math.max(QUALIDADE_PISO, qualidade - PASSO_QUALIDADE);
   }
-  return saida;
 }
 
 gerarVariante(640, TETO_640_KB);
