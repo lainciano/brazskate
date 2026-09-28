@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { galeria } from "@/data/galeria";
+import { resultados } from "@/data/resultados";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
 import { irParaAncora } from "@/lib/motion";
 import { Grao } from "./grao";
@@ -19,12 +21,22 @@ import { Grao } from "./grao";
 const DISTANCIA_TRANSICAO_PX = 96;
 const ALTURA_HEADER_PX = 64; // h-16
 
-const links = [
+const linksAncora = [
   { href: "#sobre", rotulo: "Sobre" },
   { href: "#categorias", rotulo: "Categorias" },
   { href: "#patrocinio", rotulo: "Patrocínio" },
   { href: "#apoie", rotulo: "Apoie" },
   { href: "#contato", rotulo: "Contato" },
+];
+
+// Galeria e Resultados são rotas (não âncoras) e só entram na nav depois de
+// publicados (D5). As flags são dados estáticos de build — sem estado.
+const links = [
+  ...linksAncora,
+  ...(galeria.publicada ? [{ href: "/galeria", rotulo: "Galeria" }] : []),
+  ...(resultados.publicado
+    ? [{ href: "/resultados", rotulo: "Resultados" }]
+    : []),
 ];
 
 export function Header() {
@@ -38,6 +50,7 @@ export function Header() {
   // depois do scroll visual ir pra uma seção clara.
   const aoClicarLink = useCallback(
     (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (!href.startsWith("#")) return; // rota normal (/galeria, /resultados) — navegação padrão
       const alvo = document.querySelector(href);
       if (!alvo) return;
       evento.preventDefault();
