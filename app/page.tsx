@@ -2,6 +2,7 @@ import { Avisos } from "@/components/avisos";
 import { Categorias } from "@/components/categorias";
 import { Contato } from "@/components/contato";
 import { Faq } from "@/components/faq";
+import { GaleriaSecao } from "@/components/galeria-secao";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
@@ -15,6 +16,7 @@ import { Sobre } from "@/components/sobre";
 import { TeaserPosEvento } from "@/components/teaser-pos-evento";
 
 // Home = cartaz vertical (docs/05-DESIGN.md §2.4): asfalto (hero) →
+// galeria pós-evento (D63: vídeo, Edição 2026, Edição 2021, Agradecimentos) →
 // concreto (sobre, categorias, patrocínio) → asfalto (Pix, contato, footer).
 //
 // <Header> fica FORA do <SmoothScroll> (D23.1, docs/02-DECISOES.md) — o
@@ -26,6 +28,7 @@ export default function Home() {
       <SmoothScroll>
         <main id="conteudo" className="flex-1">
           <Hero fotoSrc="/hero-manobra.webp" />
+          <GaleriaSecao />
           <TeaserPosEvento />
           <Sobre />
           <Localizacao />

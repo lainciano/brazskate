@@ -1,22 +1,14 @@
-import { GaleriaCamp2021 } from "./galeria-2021";
 import { MarqueePatrocinadores } from "./marquee-patrocinadores";
 import { Rasgo } from "./rasgo";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 import { StickerBadge } from "./sticker-badge";
-import { galeriaCamp2021 } from "@/data/gallery";
 import { organizacao } from "@/data/equipe";
 
 // Seção sobre (roadmap PR 2, docs/05-DESIGN.md §1.5 e §4.3): tom caloroso e
-// celebratório. Fotos do camp 2021 entram como colagem (I1 fechada, D31) —
-// array vazio não renderiza nada, então a seção nunca fica com moldura
-// vazia esperando conteúdo. Conteúdo baseado em docs/ASB.md e
-// docs/01-CONTEXTO.md.
-
-// galeriaCamp2021 é um Record por categoria (D33) — a regra anti-casca-vazia
-// precisa checar as 3 chaves, não só "array.length", senão o título "O
-// campeonato de 2021" renderiza sem nenhuma foto embaixo.
-const temGaleria2021 = Object.values(galeriaCamp2021).some((fotos) => fotos.length > 0);
+// celebratório. Conteúdo baseado em docs/ASB.md e docs/01-CONTEXTO.md. As
+// fotos (2026 e o arquivo de 2021) vivem na galeria logo acima, que emenda
+// direto nesta seção (D63).
 
 export function Sobre() {
   return (
@@ -95,20 +87,6 @@ export function Sobre() {
             </div>
           </div>
 
-          {temGaleria2021 && (
-            <div data-reveal className="mt-12">
-              <h3 className="text-[1.375rem] font-bold leading-[1.2]">
-                O campeonato de 2021
-              </h3>
-              <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
-                Registro da primeira edição, organizada pelos próprios
-                skatistas — a inspiração direta do Braz Skate.
-              </p>
-              <div className="mt-6">
-                <GaleriaCamp2021 porCategoria={galeriaCamp2021} />
-              </div>
-            </div>
-          )}
         </Reveal>
       </section>
     </div>

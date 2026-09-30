@@ -11,6 +11,10 @@ import { Grao } from "./grao";
 // visível (IntersectionObserver), pausa com a aba oculta
 // (visibilitychange), e nunca toca sob prefers-reduced-motion (só o
 // poster nesse caso também).
+//
+// Ocupa a tela inteira (h-tela = 100dvh) em qualquer proporção de monitor:
+// o vídeo/poster usa object-cover, então corta as bordas em vez de exigir
+// rolagem para ver o fim (o header é fixed e sobrepõe o topo).
 export function LoopDrone({
   poster,
   videoSrcMp4,
@@ -64,7 +68,7 @@ export function LoopDrone({
   }, [temVideo]);
 
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden">
+    <div className="relative h-tela w-full overflow-hidden">
       {temVideo ? (
         <video
           ref={videoRef}
