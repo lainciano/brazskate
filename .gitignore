@@ -42,3 +42,9 @@ next-env.d.ts
 
 # superpowers (artefatos de sessão: pid, log, token — nunca versionar)
 .superpowers
+
+# assets pesados de docs (Media Kit, carrosséis, Design System em PDF) —
+# ficam no disco pra consulta, fora do versionamento. O glob não é
+# recursivo: docs/assets/logos/logo-overstreet.pdf (master de logo) segue
+# versionado.
+docs/assets/*.pdf
