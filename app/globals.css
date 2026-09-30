@@ -113,4 +113,12 @@
     min-height: 100vh;
     min-height: 100dvh;
   }
+
+  /* Altura EXATA da tela (não min-height): o vídeo da galeria usa
+     h-full + object-cover e precisa de um pai com altura definida para
+     preencher qualquer proporção de monitor sem estourar a viewport. */
+  .h-tela {
+    height: 100vh;
+    height: 100dvh;
+  }
 }

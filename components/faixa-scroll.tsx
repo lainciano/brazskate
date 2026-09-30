@@ -37,6 +37,19 @@ export function FaixaScroll({ fotos }: { fotos: readonly FotoEvento[] }) {
       window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
     if (!motionPermitido) return;
 
+    // O pin insere o pin-spacer (centenas de px) ANTES das seções seguintes
+    // depois que o navegador já rolou até a âncora da URL: sem reancorar,
+    // /galeria#agradecimentos parava nas fotos de 2021. Só reancora se a
+    // pessoa ainda não mexeu na página.
+    const hashInicial = window.location.hash;
+    let usuarioMexeu = false;
+    const marcarInteracao = () => {
+      usuarioMexeu = true;
+    };
+    window.addEventListener("wheel", marcarInteracao, { passive: true, once: true });
+    window.addEventListener("touchstart", marcarInteracao, { passive: true, once: true });
+    window.addEventListener("keydown", marcarInteracao, { once: true });
+
     const distancia = () => Math.max(0, trilha.scrollWidth - container.clientWidth);
 
     const iniciar = async () => {
@@ -64,7 +77,9 @@ export function FaixaScroll({ fotos }: { fotos: readonly FotoEvento[] }) {
         });
         ScrollTrigger.create({
           trigger: container,
-          start: "top top",
+          // centralizada na tela: com "top top" a faixa grudava sob o header
+          // fixo (64px) e cobria o topo das fotos
+          start: "center center",
           end: () => `+=${distancia()}`,
           pin: true,
           scrub: 1,
@@ -73,6 +88,13 @@ export function FaixaScroll({ fotos }: { fotos: readonly FotoEvento[] }) {
         });
       }, container);
       container.setAttribute("data-pinned", "");
+
+      ScrollTrigger.refresh();
+      if (hashInicial.length > 1 && !usuarioMexeu) {
+        document
+          .getElementById(decodeURIComponent(hashInicial.slice(1)))
+          ?.scrollIntoView();
+      }
     };
 
     let idleId: number | undefined;
@@ -86,6 +108,9 @@ export function FaixaScroll({ fotos }: { fotos: readonly FotoEvento[] }) {
 
     return () => {
       cancelado = true;
+      window.removeEventListener("wheel", marcarInteracao);
+      window.removeEventListener("touchstart", marcarInteracao);
+      window.removeEventListener("keydown", marcarInteracao);
       if (usouIdle) {
         window.cancelIdleCallback(idleId as number);
       } else {

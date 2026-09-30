@@ -3,5 +3,5 @@
 // nav, sitemap e teaser da home). Ligar é commit do Lain, depois que a
 // seleção de fotos (data/gallery.ts, galeriaPosEvento) estiver completa.
 export const galeria = {
-  publicada: false,
+  publicada: true,
 };
