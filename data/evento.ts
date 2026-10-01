@@ -14,9 +14,9 @@
 
 // Edição 2026 encerrada em 13/09/2026 (D62). `edicaoAtiva` liga/desliga as
 // páginas que só fazem sentido com um evento a caminho (/inscricao e
-// /programacao) — false ⇒ as duas rotas respondem 404 e somem de sitemap,
-// hero e FAQ. Nada foi apagado: para a edição de 2027, antes de virar
-// `true`, é preciso ATUALIZAR o que é específico de 2026 — data e prazos
+// /programacao, e desde a D64 /regulamento e /termo, FAQ e Avisos) —
+// false ⇒ as rotas respondem 404 e somem de sitemap, hero e home. Nada foi apagado: para a edição de 2027, antes de
+// virar `true`, é preciso ATUALIZAR o que é específico de 2026 — data e prazos
 // abaixo, URL do formulário Tally em app/inscricao/page.tsx,
 // data/programacao.ts + public/cronograma.jpg, data/regulamento.ts e
 // data/termo.ts — e reativar o <Countdown /> no hero (components/

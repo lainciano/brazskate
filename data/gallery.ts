@@ -144,7 +144,7 @@ export type FotoEvento = FotoGaleria & {
   baseDaPermissao: BaseDaPermissao;
 };
 
-// Seleção de fotos do evento (galeria pós-evento + pódios de /resultados),
+// Seleção de fotos do evento (galeria pós-evento),
 // escolhida pelo Lain em 28/09/2026. A ordem importa: as 3 primeiras viram
 // as miniaturas do teaser da home; a faixa "destaques" da seção Sobre usa
 // as fotos em retrato seguintes (components/sobre.tsx).

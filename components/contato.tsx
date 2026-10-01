@@ -35,7 +35,7 @@ export function Contato() {
               Grupo Oficial
             </h3>
             <p className="mb-5 max-w-[45ch] text-sm leading-[1.4] text-(--fg-secundario)">
-              Entre no grupo do WhatsApp para ficar por dentro de todas as novidades, horários e resultados do campeonato em primeira mão.
+              Entre no grupo do WhatsApp para ficar por dentro de todas as novidades da próxima edição do campeonato em primeira mão.
             </p>
             <Botao href="https://chat.whatsapp.com/Eu2Tz8qt3Cl5P8gQA03Udo?s=cl&p=i&mlu=4&amv=0" rel="noopener">
               Entrar no Grupo

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { Grao } from "@/components/grao";
 import { Header } from "@/components/header";
 import { Rasgo } from "@/components/rasgo";
 import { Reveal } from "@/components/reveal";
+import { evento } from "@/data/evento";
 import { SectionHeader } from "@/components/section-header";
 import { TermoPdfBotao } from "@/components/termo-pdf-botao";
 import { termo } from "@/data/termo";
@@ -20,6 +22,9 @@ export const metadata: Metadata = {
 };
 
 export default function Termo() {
+  // edição encerrada (D62/D64): 404 até `evento.edicaoAtiva` voltar a true
+  if (!evento.edicaoAtiva) notFound();
+
   return (
     <>
       <Header />

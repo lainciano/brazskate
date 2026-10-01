@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { galeria } from "@/data/galeria";
-import { resultados } from "@/data/resultados";
 import { useMenuOverlay } from "@/hooks/use-menu-overlay";
 import { irParaAncora } from "@/lib/motion";
 import { Grao } from "./grao";
@@ -30,14 +29,11 @@ const linksAncora = [
 ];
 
 // A Galeria é uma seção da home (âncora #galeria, logo abaixo do hero — D63)
-// e só entra na nav depois de publicada (D5); Resultados segue sendo uma
-// rota. As flags são dados estáticos de build — sem estado.
+// e só entra na nav depois de publicada (D5). A flag é dado estático de
+// build — sem estado.
 const links = [
   ...(galeria.publicada ? [{ href: "#galeria", rotulo: "Galeria" }] : []),
   ...linksAncora,
-  ...(resultados.publicado
-    ? [{ href: "/resultados", rotulo: "Resultados" }]
-    : []),
 ];
 
 export function Header() {
@@ -51,7 +47,7 @@ export function Header() {
   // depois do scroll visual ir pra uma seção clara.
   const aoClicarLink = useCallback(
     (evento: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      if (!href.startsWith("#")) return; // rota normal (/resultados) — navegação padrão
+      if (!href.startsWith("#")) return; // rota normal — navegação padrão
       const alvo = document.querySelector(href);
       if (!alvo) return;
       evento.preventDefault();
