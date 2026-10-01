@@ -1,4 +1,5 @@
 import { categories, type Category } from "@/data/categories";
+import { evento } from "@/data/evento";
 import { Reveal } from "./reveal";
 import { SectionHeader } from "./section-header";
 
@@ -7,6 +8,7 @@ import { SectionHeader } from "./section-header";
 // premiação não aparecem (P4). Faixas etárias e regulamento completo
 // resolvidos em D26/D41/D43/D48 — card linka pra /regulamento em vez do
 // sticker "em breve" que ficou obsoleto (P6 fechada desde 30/07/2026).
+// Com a edição encerrada (D64) os links e a nota do regulamento somem.
 
 const descricaoPremiacao: Record<Category["premiacao"], string> = {
   "camiseta-todos-top3":
@@ -22,7 +24,7 @@ export function Categorias() {
             <SectionHeader
               eyebrow="Categorias"
               titulo="Tem lugar pra você"
-              lead="Quatro categorias, inscrição gratuita e camiseta pra quem compete — sem burocracia."
+              lead="Iniciante, Amador, Feminino e Master — tem lugar pra todo mundo que anda."
             />
           </div>
 
@@ -39,24 +41,28 @@ export function Categorias() {
                 <p className="leading-[1.6] text-(--fg-secundario)">
                   {descricaoPremiacao[categoria.premiacao]}
                 </p>
-                <a
-                  href="/regulamento"
-                  className="mt-auto w-fit pt-2 font-semibold underline-offset-4 hover:underline"
-                >
-                  Ver regulamento →
-                </a>
+                {evento.edicaoAtiva && (
+                  <a
+                    href="/regulamento"
+                    className="mt-auto w-fit pt-2 font-semibold underline-offset-4 hover:underline"
+                  >
+                    Ver regulamento →
+                  </a>
+                )}
               </li>
             ))}
           </ul>
 
-          <p
-            data-reveal
-            className="mt-8 max-w-[65ch] text-sm leading-[1.4] text-(--fg-secundario)"
-          >
-            Faixas etárias, formato das baterias e premiação completos estão
-            no regulamento. Menores de idade podem competir em qualquer
-            categoria, com autorização do responsável legal.
-          </p>
+          {evento.edicaoAtiva && (
+            <p
+              data-reveal
+              className="mt-8 max-w-[65ch] text-sm leading-[1.4] text-(--fg-secundario)"
+            >
+              Faixas etárias, formato das baterias e premiação completos estão
+              no regulamento. Menores de idade podem competir em qualquer
+              categoria, com autorização do responsável legal.
+            </p>
+          )}
         </Reveal>
       </div>
     </section>

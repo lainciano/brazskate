@@ -12,6 +12,10 @@ const linksAncora = [
   { href: "#categorias", rotulo: "Categorias" },
   { href: "#patrocinio", rotulo: "Patrocínio" },
   { href: "#apoie", rotulo: "Apoie" },
+];
+
+// Regulamento e termo só existem com a edição ativa (D64).
+const linksEdicao = [
   { href: "/regulamento", rotulo: "Regulamento" },
   { href: "/termo", rotulo: "Termo de responsabilidade" },
 ];
@@ -100,7 +104,7 @@ export function Footer() {
 
           <nav aria-label="Rodapé">
             <ul className="flex flex-col gap-2">
-              {linksAncora.map((link) => (
+              {[...linksAncora, ...(evento.edicaoAtiva ? linksEdicao : [])].map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}

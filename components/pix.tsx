@@ -38,8 +38,8 @@ export function Pix() {
           <div>
             <CopiarChave chave={CHAVE_PIX} />
             <p className="mt-5 max-w-[45ch] text-sm leading-[1.4] text-(--fg-secundario)">
-              Os recursos vão para a premiação e a estrutura do evento, com
-              prestação de contas à comunidade depois do campeonato.
+              Os recursos vão para a premiação e a estrutura dos campeonatos,
+              com prestação de contas à comunidade depois de cada edição.
             </p>
           </div>
         </div>

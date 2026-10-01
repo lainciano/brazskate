@@ -110,9 +110,7 @@ export function Localizacao() {
             </h3>
             <p className="mt-3 max-w-[65ch] leading-[1.6] text-(--fg-secundario)">
               Tem estacionamento ao lado da pista, com mais espaço do que a
-              via pública do entorno. Um trecho da rua em frente ao parque
-              pode ficar fechado no dia do evento — o formato exato ainda
-              está sendo definido com a Administração.
+              via pública do entorno.
             </p>
           </div>
         </Reveal>

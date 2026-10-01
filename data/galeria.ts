@@ -1,6 +1,5 @@
-// Flag de publicação da galeria pós-evento (mesmo contrato de
-// data/resultados.ts: publicada=false ⇒ /galeria responde 404 e some de
-// nav, sitemap e teaser da home). Ligar é commit do Lain, depois que a
+// Flag de publicação da galeria pós-evento (publicada=false ⇒ a seção some
+// da home e da nav). Ligar é commit do Lain, depois que a
 // seleção de fotos (data/gallery.ts, galeriaPosEvento) estiver completa.
 export const galeria = {
   publicada: true,
